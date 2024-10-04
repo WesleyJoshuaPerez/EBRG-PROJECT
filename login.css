@@ -1,0 +1,226 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+body {
+    background-image: url(bg_img/bg_img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: "Ysabeau Office", sans-serif;
+}
+
+/*deskstop*/
+@media only screen and (min-width: 1670px) { 
+    .header {
+        position: absolute;
+        top: 70px;
+        right: 380px;
+        bottom: 50px;
+        color: black;
+        font-size: 60px;
+    }
+    .logo {
+        position: absolute;
+        top: 200px;
+        left: 240px;
+        bottom: 50px;
+    }
+    .logo img {
+        width: 500px;
+        height: 300px;
+    }
+    .container_1 {
+        height: 350px;
+        width: 500px;
+        position: absolute;
+        background-color: #2F393B;
+        margin: 10px;
+        top: 150px;
+        right: 350px;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+    .container_2 {
+        height: 350px;
+        width: 500px;
+        position: absolute;
+        top: 460px;
+        right: 370px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+    .container_1 input {
+        width: 80%;  
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;  
+        border-radius: 5px; 
+        background-color: #D4D0CD; 
+        font-weight: bold;
+    }
+    #bt1 {
+        width: 80%;  
+        height: 40px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 5px;  
+        background-color: #95A777;   
+        cursor: pointer;  
+    }
+    #bt1:hover {
+        background-color: #4A6B6C;  
+    }
+    #bt2 {
+        width: 50%;  
+        height: 40px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 5px;  
+        background-color: #7E9C92;  
+        cursor: pointer;  
+    }
+    #bt2:hover {
+        background-color: #4A6B6C;  
+    }
+    #bt3 {
+        width: 30%;  
+        height: 40px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 5px;  
+        background-color: #2F393B;   
+        color: #D4D0CD;
+        cursor: pointer;  
+    }
+    #bt3:hover {
+        background-color: #4A6B6C;  
+    }
+    .container_1 a {
+        color: #D4D0CD; /* Link color */
+        margin: 10px 0;  
+    }
+}
+/*mobile*/
+@media only screen and (max-width: 1670px) {
+  /*use to center the divs*/
+  .header,.logo,.container_1,.container_2{
+  /*Use to center div*/
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+        
+  }
+  .logo {
+        margin-top: 25px;
+    }
+    /*Size of the image*/
+    .logo img {
+        width: 150px;
+        height: 95px;
+    }
+    .header {
+        margin-top: 20px;
+        color: black;
+        font-size: 30px;
+        font-weight: bold;
+    }
+   
+    .container_1 {
+        flex-direction: column;
+        /*use style the container 1 div*/
+        background-color: #2F393B;
+        margin: 10px auto;
+        border-radius: 15px;
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 20px;
+        /*size of the container*/
+        width: 250px;
+        height: 200px;
+    }
+
+    .container_2 {
+        margin-top: 15px;
+        flex-direction: column;
+        font-size: 10px;
+    }
+    /*for buttons and forms*/
+    .container_1 input {
+        width: 95%;  
+        margin: 5px 0;  
+        padding: 5px;  
+        border: none;  
+        border-radius: 10px; 
+        background-color: #D4D0CD; 
+        font-weight: bold;
+    }
+    #bt1 {
+        width: 100%;  
+        height: 35px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 10px;  
+        background-color: #95A777;   
+        cursor: pointer;  
+    }
+    #bt1:hover {
+        background-color: #4A6B6C;  
+    }
+    #bt2 {
+        width: 85%;   
+        height: 35px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 10px;  
+        background-color: #7E9C92;  
+        cursor: pointer;  
+    }
+    #bt2:hover {
+        background-color: #4A6B6C;  
+    }
+    #bt3 {
+        width: 145px;  
+        height: 30px;
+        margin: 10px 0;  
+        padding: 8px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 10px;  
+        background-color: #2F393B;   
+        color: #D4D0CD;
+        cursor: pointer;  
+    }
+    #bt3:hover {
+        background-color: #4A6B6C;  
+    }
+    .container_1 a {
+        color: #D4D0CD; /* Link color */
+        margin: 10px 0;  
+    }
+
+}
+
+
