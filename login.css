@@ -17,7 +17,7 @@ body {
 }
 
 /*deskstop*/
-@media only screen and (min-width: 1670px) { 
+@media only screen and (min-width: 1441px) { 
     .header {
         position: absolute;
         top: 70px;
@@ -120,8 +120,112 @@ body {
         margin: 10px 0;  
     }
 }
+/*laptop*/
+@media only screen and (min-width: 1370px){
+    .header {
+        position: absolute;
+        top: 70px;
+        right: 150px;
+        bottom: 50px;
+        color: black;
+        font-size: 60px;
+    }
+    .logo {
+        position: absolute;
+        top: 200px;
+        left: 240px;
+        bottom: 50px;
+    }
+    .logo img {
+        width: 400px;
+        height: 300px;
+    }
+    .container_1 {
+        height: 350px;
+        width: 500px;
+        position: absolute;
+        background-color: #2F393B;
+        margin: 10px;
+        top: 150px;
+        right: 150px;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+    .container_2 {
+        height: 350px;
+        width: 500px;
+        position: absolute;
+        top: 460px;
+        right: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+    .container_1 input {
+        width: 80%;  
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;  
+        border-radius: 5px; 
+        background-color: #D4D0CD; 
+        font-weight: bold;
+    }
+    #bt1 {
+        width: 80%;  
+        height: 40px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 5px;  
+        background-color: #95A777;   
+        cursor: pointer;  
+    }
+    #bt1:hover {
+        background-color: #4A6B6C;  
+    }
+    #bt2 {
+        width: 50%;  
+        height: 40px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 5px;  
+        background-color: #7E9C92;  
+        cursor: pointer;  
+    }
+    #bt2:hover {
+        background-color: #4A6B6C;  
+    }
+    #bt3 {
+        width: 30%;  
+        height: 40px;
+        margin: 10px 0;  
+        padding: 10px;  
+        border: none;   
+        font-weight: bold;
+        border-radius: 5px;  
+        background-color: #2F393B;   
+        color: #D4D0CD;
+        cursor: pointer;  
+    }
+    #bt3:hover {
+        background-color: #4A6B6C;  
+    }
+    .container_1 a {
+        color: #D4D0CD; /* Link color */
+        margin: 10px 0;  
+    }  
+}
 /*mobile*/
-@media only screen and (max-width: 1670px) {
+@media only screen and (max-width: 1369px) {
   /*use to center the divs*/
   .header,.logo,.container_1,.container_2{
   /*Use to center div*/
