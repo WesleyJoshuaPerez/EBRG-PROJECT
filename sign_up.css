@@ -4,6 +4,10 @@ html, body {
     margin: 0;
     overflow: hidden;
     font-family: 'Ysabeau Office', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Allows the content to be stacked vertically */
 }
 
 body {
@@ -14,58 +18,55 @@ body {
     font-family: 'Ysabeau Office', sans-serif;
 }
 
-img {
-    display: block;
-    max-width: 100%;
+.title {
+    width: 100%;
+    max-width: 380px; /* Constrains the content within the div */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h3 {
     text-align: center;
     font-size: 55px;
     color: #2F393B;
-    margin-top: 60px;
+    margin-bottom: 20px; /* Add margin to create spacing between the heading and the container */
 }
 
 .container1 {
-    height: 380px;
-        width: 380px;
-        position: absolute;
-        background-color: #2F393B;
-        margin: 20px;
-        top: 130px;
-        right: 410px;
-        border-radius: 10px;
-        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; 
+    height: auto; /* Allows the container height to adjust based on content */
+    width: 100%;
+    background-color: #2F393B;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.input_field1 {
+.input-row {
+    display: flex; /* Use flexbox to align items in a row */
+    justify-content: space-between; /* Space them evenly */
+    width: 100%; /* Full width of the parent container */
+}
+
+.input_field1, .input_field2 {
     height: 40px;
-    margin-top: -5px;
-    margin-left: -185px;
+    flex: 1;
+    margin-top: 10px; /* Space from the top */
     border-radius: 7px;        
     border: 1px solid #ccc;     
     background-color: #e1ddda;
-    width: calc(50% - 10px);  
-}
-.input_field2 {
-    height: 40px;
-    margin-top: -33px;
-    margin-left: 200px;
-    border-radius: 7px;        
-    border: 1px solid #ccc;     
-    background-color: #e1ddda;
-    width: calc(50% - 10px);  
+    box-sizing: border-box;
+   
 }
 
-.birthday{
+.birthday {
     font-size: 19px;
     color: #e1ddda;
-    margin-left: -297px;
     margin-top: 15px;
 }
 
@@ -73,7 +74,6 @@ h3 {
     font-size: 16px;
     height: 35px;
     width: 140px;
-    margin-left: -227px;
     margin-top: -40px;
     border-radius: 7px;        
     border: 1px solid #ccc;     
