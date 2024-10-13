@@ -9,7 +9,7 @@ body {
      background-size: cover;
      background-position: center;
      font-family: "Ysabeau Office", sans-serif;
-     min-height: 200vh;
+     background-attachment: fixed;
  }
  
  header {
@@ -189,6 +189,9 @@ footer {
 /*mobile*/
 /*1369px original i tried to adjust the  width to see changes*/
 @media only screen and (max-width: 1779px) {
+    body{
+        background-repeat:repeat;
+    }
    footer {
     visibility: hidden; /*use to make the footer invisible in the mobile devices*/
    }
