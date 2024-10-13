@@ -187,4 +187,7 @@ footer {
    footer {
     visibility: hidden; /*use to make the footer invisible in the mobile devices*/
    }
+   .search_bar{
+    width: 10vh;
+   }
 }
