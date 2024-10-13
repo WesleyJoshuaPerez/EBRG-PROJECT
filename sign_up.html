@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="sign_up.css" />
+        <title>Sign Up</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@1..1000&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <h3>Make new account</h3>
+        <div class="container1">
+            <input type="text" class="input_field1" placeholder="First name" id="firstname">
+            <input type="text" class="input_field2" placeholder="Last name" id="lastname">
+            <h6 class="birthday">Birthday</h6>
+
+            <input type="date" class="bday">
+            <h6 class="gender">Gender</h6>
+
+            <label class="gender1">
+                <input type="radio" name="gender" value="female"> Female
+            </label>
+            <label class="gender2">
+                <input type="radio" name="gender" value="male"> Male
+            </label>
+            <label class="gender3">
+                <input type="radio" name="gender" value="custom"> Custom
+            </label>
+
+            <input type="text" class="input_field3" placeholder="Username" id="username">
+            <input type="password" class="input_field4" id="password" placeholder="Password" />
+            <input type="password" class="input_field5" id="password" placeholder="Confirm Password" />
+            <p> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
+            
+            <button onclick="window.location.href='index.html';">Sign Up</button>
+            
+        </div>
+    </body>
+</html>

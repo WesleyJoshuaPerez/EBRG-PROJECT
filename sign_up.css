@@ -1,0 +1,168 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Ysabeau Office', sans-serif;
+}
+
+body {
+    background-image: url(bg_img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Ysabeau Office', sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+h3 {
+    text-align: center;
+    font-size: 55px;
+    color: #2F393B;
+    margin-top: 60px;
+}
+
+.container1 {
+    height: 380px;
+        width: 380px;
+        position: absolute;
+        background-color: #2F393B;
+        margin: 20px;
+        top: 130px;
+        right: 410px;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+}
+
+.input_field1 {
+    height: 40px;
+    margin-top: -5px;
+    margin-left: -185px;
+    border-radius: 7px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+    width: calc(50% - 10px);  
+}
+.input_field2 {
+    height: 40px;
+    margin-top: -33px;
+    margin-left: 200px;
+    border-radius: 7px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+    width: calc(50% - 10px);  
+}
+
+.birthday{
+    font-size: 19px;
+    color: #e1ddda;
+    margin-left: -297px;
+    margin-top: 15px;
+}
+
+.bday {
+    font-size: 16px;
+    height: 35px;
+    width: 140px;
+    margin-left: -227px;
+    margin-top: -40px;
+    border-radius: 7px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+}
+
+.gender {
+    font-size: 19px;
+    color: #e1ddda;
+    margin-left: -300px;
+    margin-top: 15px;
+}
+
+.gender1 {
+    font-size: 20px;
+    color: gray;
+    background-color: #e1ddda;
+    padding: 5px 18px 5px 18px;
+    border-radius: 7px;
+    margin-left: -245px;
+    margin-top: -40px;
+}
+
+.gender2 {
+    font-size: 20px;
+    color: gray;
+    background-color: #e1ddda;
+    padding: 5px 18px 5px 18px;
+    border-radius: 7px;
+    margin-left: -8px;
+    margin-top: -37.5px;
+}
+
+.gender3 {
+    font-size: 20px;
+    color: gray;
+    background-color: #e1ddda;
+    padding: 5px 18px 5px 18px;
+    border-radius: 7px;
+    margin-left: 240px;
+    margin-top: -37px;
+}
+
+.input_field3 {
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 2px;
+    border-radius: 7px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+    width: 365px;  
+}
+
+.input_field4 {
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 2px;
+    border-radius: 7px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+    width: 365px;  
+}
+
+.input_field5 {
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 2px;
+    border-radius: 7px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+    width: 365px;  
+}
+
+p {
+    font-size: 13px;
+    color: #e1ddda;
+}
+
+a {
+    color: white;
+}
+
+button {
+    background-color: #7E9C92;
+    color: #2F393B;
+    width: 280px;
+    height: 50px;
+    border: #2F393B;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+}
