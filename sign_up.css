@@ -191,15 +191,15 @@ body {
     
     h3 {
         text-align: center;
-        font-size: 55px;
+        font-size: 30px;
         color: #2F393B;
         margin-bottom: 20px; /* Add margin to create spacing between the heading and the container */
     }
     
     .container1 {
-        height: 450px;
+        height: 300px;
         width: 100%;
-        max-width: 380px;
+        max-width: 220px;
         background-color: #2F393B;
         border-radius: 10px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
@@ -218,9 +218,9 @@ body {
     }
     
     .input_field1, .input_field2 {
-        height: 40px;
+        height: 20px;
         flex: 1;
-        margin-top: 10px; /* Space from the top */
+        margin-top: 5px; /* Space from the top */
         border-radius: 7px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
@@ -229,16 +229,16 @@ body {
     }
     
     .birthday {
-        font-size: 19px;
+        font-size: 14px;
         color: #e1ddda;
-        margin-top: 15px;
+        margin-top: 13px;
     }
     
     .bday {
-        font-size: 16px;
+        font-size: 12px;
         height: 35px;
         width: 140px;
-        margin-top: -40px;
+        margin-top: -30px;
         border-radius: 7px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
@@ -246,53 +246,53 @@ body {
     }
     
     .gender {
-        font-size: 19px;
+        font-size: 14px;
         color: #e1ddda;
-        margin-left: -300px;
+        margin-left: -170px;
         margin-top: 15px;
     }
     
     .gender1 {
-        font-size: 20px;
+        font-size: 14px;
         color: gray;
         background-color: #e1ddda;
-        padding: 5px 18px 5px 18px;
+        padding: 5px 8px 5px 5px;
         border-radius: 7px;
-        margin-left: -245px;
-        margin-top: -40px;
+        margin-left: -141px;
+        margin-top: -30px;
         cursor: pointer;
     }
     
     .gender2 {
-        font-size: 20px;
+        font-size: 14px;
         color: gray;
         background-color: #e1ddda;
-        padding: 5px 18px 5px 18px;
+        padding: 5px 8px 5px 5px;
         border-radius: 7px;
-        margin-left: -8px;
-        margin-top: -37.5px;
+        margin-left: 15px;
+        margin-top: -30.3px;
         cursor: pointer;
     }
     
     .gender3 {
-        font-size: 20px;
+        font-size: 14px;
         color: gray;
         background-color: #e1ddda;
-        padding: 5px 18px 5px 18px;
+        padding: 5px 5px 5px 5px;
         border-radius: 7px;
-        margin-left: 240px;
-        margin-top: -37px;
+        margin-left: 120px;
+        margin-top: -30px;
         cursor: pointer;
     }
     
     .input_field3 {
         height: 30px;
-        margin-top: 20px;
+        margin-top: 10px;
         margin-left: 2px;
         border-radius: 7px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
-        width: 365px;  
+        width: 210px;  
     }
     
     .input_field4 {
@@ -302,7 +302,7 @@ body {
         border-radius: 7px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
-        width: 365px;  
+        width: 210px;  
     }
     
     .input_field5 {
@@ -312,11 +312,11 @@ body {
         border-radius: 7px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
-        width: 365px;  
+        width: 210px;  
     }
     
     p {
-        font-size: 13px;
+        font-size: 7px;
         color: #e1ddda;
     }
     
@@ -327,11 +327,11 @@ body {
     button {
         background-color: #7E9C92;
         color: #2F393B;
-        width: 280px;
+        width: 200px;
         height: 50px;
         border: #2F393B;
         border-radius: 7px;
-        font-size: 16px;
+        font-size: 11px;
         font-weight: bold;
         cursor: pointer;
     }  
