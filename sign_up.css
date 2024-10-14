@@ -19,159 +19,320 @@ body {
     font-family: 'Ysabeau Office', sans-serif;
     flex-direction: column; /* Allows the content to be stacked vertically */;
 }
+/*deskstop and laptop*/
+/*1370px original i tried to adjust the  width to see changes*/
+@media only screen and (min-width: 1780px){
 
-.title {
-    max-width: 480px; /* Constrains the content within the div */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 70px;
+    .title {
+        max-width: 480px; /* Constrains the content within the div */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 70px;
+    }
+    
+    h3 {
+        text-align: center;
+        font-size: 55px;
+        color: #2F393B;
+        margin-bottom: 20px; /* Add margin to create spacing between the heading and the container */
+    }
+    
+    .container1 {
+        height: 450px;
+        width: 100%;
+        max-width: 380px;
+        background-color: #2F393B;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 10px;
+        margin-top: 5px; /* Adds space at the top of the container */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .input-row {
+        display: flex; /* Use flexbox to align items in a row */
+        justify-content: space-between; /* Space them evenly */
+        width: 100%; /* Full width of the parent container */
+    }
+    
+    .input_field1, .input_field2 {
+        height: 40px;
+        flex: 1;
+        margin-top: 10px; /* Space from the top */
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        box-sizing: border-box;
+       
+    }
+    
+    .birthday {
+        font-size: 19px;
+        color: #e1ddda;
+        margin-top: 15px;
+    }
+    
+    .bday {
+        font-size: 16px;
+        height: 35px;
+        width: 140px;
+        margin-top: -40px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        cursor: pointer;
+    }
+    
+    .gender {
+        font-size: 19px;
+        color: #e1ddda;
+        margin-left: -300px;
+        margin-top: 15px;
+    }
+    
+    .gender1 {
+        font-size: 20px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 18px 5px 18px;
+        border-radius: 7px;
+        margin-left: -245px;
+        margin-top: -40px;
+        cursor: pointer;
+    }
+    
+    .gender2 {
+        font-size: 20px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 18px 5px 18px;
+        border-radius: 7px;
+        margin-left: -8px;
+        margin-top: -37.5px;
+        cursor: pointer;
+    }
+    
+    .gender3 {
+        font-size: 20px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 18px 5px 18px;
+        border-radius: 7px;
+        margin-left: 240px;
+        margin-top: -37px;
+        cursor: pointer;
+    }
+    
+    .input_field3 {
+        height: 30px;
+        margin-top: 20px;
+        margin-left: 2px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        width: 365px;  
+    }
+    
+    .input_field4 {
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 2px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        width: 365px;  
+    }
+    
+    .input_field5 {
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 2px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        width: 365px;  
+    }
+    
+    p {
+        font-size: 13px;
+        color: #e1ddda;
+    }
+    
+    a {
+        color: white;
+    }
+    
+    button {
+        background-color: #7E9C92;
+        color: #2F393B;
+        width: 280px;
+        height: 50px;
+        border: #2F393B;
+        border-radius: 7px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    } 
 }
-
-h3 {
-    text-align: center;
-    font-size: 55px;
-    color: #2F393B;
-    margin-bottom: 20px; /* Add margin to create spacing between the heading and the container */
-}
-
-.container1 {
-    height: 450px;
-    width: 100%;
-    max-width: 380px;
-    background-color: #2F393B;
-    border-radius: 10px;
-    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    padding: 10px;
-    margin-top: 5px; /* Adds space at the top of the container */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.input-row {
-    display: flex; /* Use flexbox to align items in a row */
-    justify-content: space-between; /* Space them evenly */
-    width: 100%; /* Full width of the parent container */
-}
-
-.input_field1, .input_field2 {
-    height: 40px;
-    flex: 1;
-    margin-top: 10px; /* Space from the top */
-    border-radius: 7px;        
-    border: 1px solid #ccc;     
-    background-color: #e1ddda;
-    box-sizing: border-box;
-   
-}
-
-.birthday {
-    font-size: 19px;
-    color: #e1ddda;
-    margin-top: 15px;
-}
-
-.bday {
-    font-size: 16px;
-    height: 35px;
-    width: 140px;
-    margin-top: -40px;
-    border-radius: 7px;        
-    border: 1px solid #ccc;     
-    background-color: #e1ddda;
-    cursor: pointer;
-}
-
-.gender {
-    font-size: 19px;
-    color: #e1ddda;
-    margin-left: -300px;
-    margin-top: 15px;
-}
-
-.gender1 {
-    font-size: 20px;
-    color: gray;
-    background-color: #e1ddda;
-    padding: 5px 18px 5px 18px;
-    border-radius: 7px;
-    margin-left: -245px;
-    margin-top: -40px;
-    cursor: pointer;
-}
-
-.gender2 {
-    font-size: 20px;
-    color: gray;
-    background-color: #e1ddda;
-    padding: 5px 18px 5px 18px;
-    border-radius: 7px;
-    margin-left: -8px;
-    margin-top: -37.5px;
-    cursor: pointer;
-}
-
-.gender3 {
-    font-size: 20px;
-    color: gray;
-    background-color: #e1ddda;
-    padding: 5px 18px 5px 18px;
-    border-radius: 7px;
-    margin-left: 240px;
-    margin-top: -37px;
-    cursor: pointer;
-}
-
-.input_field3 {
-    height: 30px;
-    margin-top: 20px;
-    margin-left: 2px;
-    border-radius: 7px;        
-    border: 1px solid #ccc;     
-    background-color: #e1ddda;
-    width: 365px;  
-}
-
-.input_field4 {
-    height: 30px;
-    margin-top: 10px;
-    margin-left: 2px;
-    border-radius: 7px;        
-    border: 1px solid #ccc;     
-    background-color: #e1ddda;
-    width: 365px;  
-}
-
-.input_field5 {
-    height: 30px;
-    margin-top: 10px;
-    margin-left: 2px;
-    border-radius: 7px;        
-    border: 1px solid #ccc;     
-    background-color: #e1ddda;
-    width: 365px;  
-}
-
-p {
-    font-size: 13px;
-    color: #e1ddda;
-}
-
-a {
-    color: white;
-}
-
-button {
-    background-color: #7E9C92;
-    color: #2F393B;
-    width: 280px;
-    height: 50px;
-    border: #2F393B;
-    border-radius: 7px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+@media only screen and (max-width: 1779px) {
+    .title {
+        max-width: 480px; /* Constrains the content within the div */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 70px;
+    }
+    
+    h3 {
+        text-align: center;
+        font-size: 55px;
+        color: #2F393B;
+        margin-bottom: 20px; /* Add margin to create spacing between the heading and the container */
+    }
+    
+    .container1 {
+        height: 450px;
+        width: 100%;
+        max-width: 380px;
+        background-color: #2F393B;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 10px;
+        margin-top: 5px; /* Adds space at the top of the container */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .input-row {
+        display: flex; /* Use flexbox to align items in a row */
+        justify-content: space-between; /* Space them evenly */
+        width: 100%; /* Full width of the parent container */
+    }
+    
+    .input_field1, .input_field2 {
+        height: 40px;
+        flex: 1;
+        margin-top: 10px; /* Space from the top */
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        box-sizing: border-box;
+       
+    }
+    
+    .birthday {
+        font-size: 19px;
+        color: #e1ddda;
+        margin-top: 15px;
+    }
+    
+    .bday {
+        font-size: 16px;
+        height: 35px;
+        width: 140px;
+        margin-top: -40px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        cursor: pointer;
+    }
+    
+    .gender {
+        font-size: 19px;
+        color: #e1ddda;
+        margin-left: -300px;
+        margin-top: 15px;
+    }
+    
+    .gender1 {
+        font-size: 20px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 18px 5px 18px;
+        border-radius: 7px;
+        margin-left: -245px;
+        margin-top: -40px;
+        cursor: pointer;
+    }
+    
+    .gender2 {
+        font-size: 20px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 18px 5px 18px;
+        border-radius: 7px;
+        margin-left: -8px;
+        margin-top: -37.5px;
+        cursor: pointer;
+    }
+    
+    .gender3 {
+        font-size: 20px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 18px 5px 18px;
+        border-radius: 7px;
+        margin-left: 240px;
+        margin-top: -37px;
+        cursor: pointer;
+    }
+    
+    .input_field3 {
+        height: 30px;
+        margin-top: 20px;
+        margin-left: 2px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        width: 365px;  
+    }
+    
+    .input_field4 {
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 2px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        width: 365px;  
+    }
+    
+    .input_field5 {
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 2px;
+        border-radius: 7px;        
+        border: 1px solid #ccc;     
+        background-color: #e1ddda;
+        width: 365px;  
+    }
+    
+    p {
+        font-size: 13px;
+        color: #e1ddda;
+    }
+    
+    a {
+        color: white;
+    }
+    
+    button {
+        background-color: #7E9C92;
+        color: #2F393B;
+        width: 280px;
+        height: 50px;
+        border: #2F393B;
+        border-radius: 7px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }  
 }

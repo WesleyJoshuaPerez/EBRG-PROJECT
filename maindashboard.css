@@ -185,6 +185,11 @@ footer {
     flex: 1;  
     justify-content: flex-end;  
 }
+/*deskstop and laptop*/
+/*1370px original i tried to adjust the  width to see changes*/
+@media only screen and (min-width: 1780px){
+    
+}
 /*mobile*/
 /*1369px original i tried to adjust the  width to see changes*/
 @media only screen and (max-width: 1779px) {
@@ -194,7 +199,42 @@ footer {
    footer {
     visibility: hidden; /*use to make the footer invisible in the mobile devices*/
    }
-   .search_bar{
-    width: 10vh;
-   }
+    /* Hamburger icon positioned on the left */
+ header .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the hamburger icon vertically */
+    margin-left: 20px; /* Space from the left edge */
+    margin-right: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #D4D0CD;/* use for the color of the hamburger*/
+}
+
+header .search_bar{
+    margin: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 70px;
+    border: 5px solid #95A777;
+    border-radius: 10px;
+    padding: 5px 5px;
+    background-color: white;
+}
+
+.barangay_loc p{
+    font-size: 20px;
+    margin:0;
+    line-height: 1.2; 
+ }
+ .barangay_loc h1{
+    font-size: 25px;
+    margin:0;
+    line-height: 1.2; 
+ }
+ /*use to adjust the logo*/
+ .nav_logo img {
+    width: 70px;
+    height: auto;
+}
 }
