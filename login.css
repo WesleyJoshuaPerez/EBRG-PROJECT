@@ -28,7 +28,7 @@ body {
 
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
-@media only screen and (min-width: 1780px){
+@media only screen and (min-width: 1024px){
      /*font size for buttons*/
      #bt1, #bt2, #bt3{
         font-size: 15px;
@@ -36,14 +36,14 @@ body {
     .header {
         position: absolute;
         top: 70px;
-        right: 330px;
+        right: 230px;
         color: black;
         font-size: 60px;
     }
     .logo {
         position: absolute;
         top: 180px;
-        left: 350px;
+        left: 150px;
         bottom: 50px;
     }
     .logo img {
@@ -57,7 +57,7 @@ body {
         background-color: #2F393B;
         margin: 20px;
         top: 150px;
-        right: 280px;
+        right: 170px;
         border-radius: 10px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         padding: 20px;
@@ -75,7 +75,7 @@ body {
         width: 550px;
         position: absolute;
         top: 480px;
-        right: 300px;
+        right: 190px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -139,7 +139,7 @@ body {
 }
 /*mobile*/
 /*1369px original i tried to adjust the  width to see changes*/
-@media only screen and (max-width: 1779px) {
+@media only screen and (max-width: 1023px) {
   /*use to center the divs*/
   .header,.logo,.container_1,.container_2{
   /*Use to center div*/

@@ -30,7 +30,7 @@ body {
 }
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
-@media only screen and (min-width: 1780px){
+@media only screen and (min-width: 1024px){
     .change-password-container h1 {
         font-size: 60px;
         font-family: 'Ysabeau Office';
@@ -92,7 +92,7 @@ body {
 }
 
 
-@media only screen and (max-width: 1779px) {
+@media only screen and (max-width: 1023px) {
        /*use to center the divs*/
    .change-password-container h1{
     /*Use to center div*/
