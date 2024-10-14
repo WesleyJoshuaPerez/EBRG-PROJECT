@@ -103,11 +103,13 @@ body {
           margin-top: 20px;
           color: black;
       }
-    .form-container {
-        width: 100%; /* Adjust width for smaller screens */
-        padding: 20px 30px;
-        margin: 0 auto; /* Center the form container */
-        text-align: center; /* Center text within the container */
+    .form-container { 
+        width: 100%;
+        max-width: 500px;
+        height: 330px;
+        padding: 20px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
       .change-password-container h1 {
         font-size: 30px;
