@@ -12,7 +12,7 @@ html, body {
 
 
 body {
-    background-image: url(bg_img.jpg);
+    background-image: url(bg_img/bg_img.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -21,7 +21,7 @@ body {
 }
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
-@media only screen and (min-width: 1780px){
+@media only screen and (min-width: 1025px){
 
     .title {
         max-width: 480px; /* Constrains the content within the div */
@@ -179,7 +179,7 @@ body {
         cursor: pointer;
     } 
 }
-@media only screen and (max-width: 1779px) {
+@media only screen and (max-width: 1024px) {
     .title {
         max-width: 480px; /* Constrains the content within the div */
         display: flex;
