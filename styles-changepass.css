@@ -31,6 +31,10 @@ body {
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
 @media only screen and (min-width: 1024px){
+    h1 {
+        margin-top: 5px;
+        color: black;
+    }
     .change-password-container h1 {
         font-size: 60px;
         font-family: 'Ysabeau Office';
@@ -41,7 +45,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 60px;
+        padding-top: 20px;
     }
     
     .email-label {
