@@ -14,30 +14,30 @@
             <h3 class="title">Make new account</h3>
         <div class="container1">
             <div class="one_row-con">
-                <input type="text" class="input_field1" placeholder="First name" id="firstname">
-                <input type="text" class="input_field2" placeholder="Last name" id="lastname">
+                <input type="text" class="input_field1" placeholder="First name" id="firstname" required>
+                <input type="text" class="input_field2" placeholder="Last name" id="lastname" required>
             </div>
             <h6 class="birthday">Birthday</h6>
 
             <input type="date" class="bday">
             <h6 class="gender">Gender</h6>
-
             <label class="gender1">
-                <input type="radio" name="gender" value="female"> Female
+                <input type="radio" name="gender" value="female" required> Female
             </label>
             <label class="gender2">
-                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="male" required> Male
             </label>
             <label class="gender3">
-                <input type="radio" name="gender" value="custom"> Custom
+                <input type="radio" name="gender" value="custom" required> Custom
             </label>
 
-            <input type="text" class="input_field3" placeholder="Username" id="username">
-            <input type="password" class="input_field4" id="password" placeholder="Password" />
-            <input type="password" class="input_field5" id="password" placeholder="Confirm Password" />
+            <input type="text" class="input_field3" id="username" placeholder="Username" >
+            <input type="text" class="input_field4" id="email"  placeholder="Email">
+            <input type="password" class="input_field5" id="password" placeholder="Password" />
+            <input type="password" class="input_field6" id="confirmpassword" placeholder="Confirm Password" />
             <p> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
             
-            <button onclick="window.location.href='index.html';">Sign Up</button>
+            <button type="submit">Sign Up</button>
             
         </div>
     </body>
