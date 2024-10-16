@@ -12,33 +12,38 @@
     <body>
        
             <h3 class="title">Make new account</h3>
-        <div class="container1">
-            <div class="one_row-con">
-                <input type="text" class="input_field1" placeholder="First name" id="firstname" required>
-                <input type="text" class="input_field2" placeholder="Last name" id="lastname" required>
-            </div>
-            <h6 class="birthday">Birthday</h6>
 
-            <input type="date" class="bday">
-            <h6 class="gender">Gender</h6>
-            <label class="gender1">
-                <input type="radio" name="gender" value="female" required> Female
-            </label>
-            <label class="gender2">
-                <input type="radio" name="gender" value="male" required> Male
-            </label>
-            <label class="gender3">
-                <input type="radio" name="gender" value="custom" required> Custom
-            </label>
+         <!--Form tag use in action  to another php file-->
+          <form method="post" action="userReg.php">
+          <div class="container1">
+      
+      <div class="one_row-con">
+          <input type="text" class="input_field1" placeholder="First name" name="firstname" required>
+          <input type="text" class="input_field2" placeholder="Last name" name="lastname" required>
+      </div>
+      <h6 class="birthday">Birthday</h6>
 
-            <input type="text" class="input_field3" id="username" placeholder="Username" >
-            <input type="text" class="input_field4" id="email"  placeholder="Email">
-            <input type="password" class="input_field5" id="password" placeholder="Password" />
-            <input type="password" class="input_field6" id="confirmpassword" placeholder="Confirm Password" />
-            <p> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
-            
-            <button type="submit">Sign Up</button>
-            
-        </div>
+      <input type="date" class="bday" name="birthday" required>
+      <h6 class="gender">Gender</h6>
+      <label class="gender1">
+          <input type="radio" name="gender" value="female" required> Female
+      </label>
+      <label class="gender2">
+          <input type="radio" name="gender" value="male" required> Male
+      </label>
+      <label class="gender3">
+          <input type="radio" name="gender" value="custom" required> Custom
+      </label>
+
+      <input type="text" class="input_field3" name="username" id="username" placeholder="Username" required>
+      <input type="email" class="input_field4" name="email" id="email" placeholder="Email" required>
+      <input type="password" class="input_field5" name="password" id="password" placeholder="Password" required>
+      <input type="password" class="input_field6" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" required>
+      <p> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
+      
+      <button type="submit" name="sigUp">Sign Up</button>
+      </div>
+    </form>
+       
     </body>
 </html>
