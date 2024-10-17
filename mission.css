@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-    background-image: url(bg_img.jpg);
+    background-image: url(bg_img/bg_img.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -48,67 +48,195 @@ header .nav_logo {
 }
 
 .nav_menu {
-    display: none;
-    color: #95A777;
+    display: none; /* Hide the menu by default */
+    color: #95A777;/*use for the color of the nav*/
     position: absolute;
     left: 0;
-    top: 80px; /* Align with header height */
+    top: 100%;
     width: 100%;
     background-color: #95A777;
-    padding: 20px;
-    border-radius: 0 0 10px 10px;
-    box-sizing: border-box;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 0 0 10px 10px; /*use to round the corder of the nav div*/
 }
-
+.nav_menu ul li {
+   padding-right: 50px;  /*use so the li and ul doesnt intersect to each other*/
+   color: #D4D0CD;
+}
 .nav_menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(4, auto); /* 4 rows for the first column */
+    gap: 5px; /* Space between items */
 }
 
 .nav_menu ul li a {
     text-decoration: none;
     color: white;
-    display: block;
-    padding: 2px 0;
 }
 
+/* When menu is visible after hamburger is clicked */
 .nav_menu.show {
-    display: grid;
-}
-
-.mission {
-    color: #CCAE0E;
-    font-size: 120px;
-    margin-top: 120px;
-    text-align: center;
-}
-
-.container {
-    background-image: url(bg_img.jpg);
-    margin-top: -95px;
-    height: 270px;
-    width: 542px;
-    margin-left: 360px;
     display: flex;
-    border: 11px solid #CCAE0E;
-    flex-wrap: wrap;
 }
+/*use to specific geip placements for each column*/
+/* Specific grid placements for each column */
+.nav_menu ul li:nth-child(1) { grid-column: 1; grid-row: 1; }
+.nav_menu ul li:nth-child(2) { grid-column: 1; grid-row: 2; }
+.nav_menu ul li:nth-child(3) { grid-column: 1; grid-row: 3; }
+.nav_menu ul li:nth-child(4) { grid-column: 1; grid-row: 4; }
+.nav_menu ul li:nth-child(5) { grid-column: 2; grid-row: 1; }
+.nav_menu ul li:nth-child(6) { grid-column: 2; grid-row: 2; }
+.nav_menu ul li:nth-child(7) { grid-column: 2; grid-row: 3; }
+.nav_menu ul li:nth-child(8) { grid-column: 3; grid-row: 1; }
 
-.img {
-    width: 400px;
-    height: 320px;
+@media only screen and (min-width: 1024px){
+    .mission {
+        color: #CCAE0E;
+        font-size: 120px;
+        margin-top: 150px;
+        text-align: center;
+    }
     
+    .container {
+        background-image: url(bg_img/bg_img.jpg);
+        margin-top: -95px;
+        height: 270px;
+        width: 542px;
+        margin-left: 520px;
+        display: flex;
+        border: 11px solid #CCAE0E;
+        flex-wrap: wrap;
+    }
+    
+    .img {
+        width: 400px;
+        height: 320px;
+        
+    }
+    
+    h5 {
+        color: #CCAE0E;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 30px;
+        text-align: justify;
+        margin-top: 9px;
+    }
 }
 
-h5 {
-    color: #CCAE0E;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 30px;
-    text-align: justify;
-    margin-top: 9px;
+@media only screen and (max-width: 1023px){
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        transition: 0.6s;
+        background-color: #788665;
+        padding: 0 20px; /* Add padding instead of large margins */
+        box-sizing: border-box;
+        box-shadow: 0 9px 20px rgb(90, 90, 90);
+    }
+    
+    header .hamburger {
+        font-size: 30px;
+        cursor: pointer;
+        color: #D4D0CD;
+        margin-right: 20px; /* Reduced margin */
+    }
+    
+    header .nav_logo {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav_logo img {
+        width: 90px;
+        margin-right: 40px;
+    }
+    
+    .nav_menu {
+        display: none; /* Hide the menu by default */
+        color: #95A777;/*use for the color of the nav*/
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        background-color: #95A777;
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        border-radius: 0 0 10px 10px; /*use to round the corder of the nav div*/
+    }
+    .nav_menu ul li {
+        padding-right: 0px;  /*use so the li and ul doesnt intersect to each other*/
+       color: #D4D0CD;
+    }
+    .nav_menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-rows: repeat(4, auto); /* 4 rows for the first column */
+        gap: 5px; /* Space between items */
+    }
+    
+    .nav_menu ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    /* When menu is visible after hamburger is clicked */
+    .nav_menu.show {
+        display: flex;
+    }
+    /*use to specific geip placements for each column*/
+    /* Specific grid placements for each column */
+    .nav_menu ul li:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .nav_menu ul li:nth-child(2) { grid-column: 1; grid-row: 2; }
+    .nav_menu ul li:nth-child(3) { grid-column: 1; grid-row: 3; }
+    .nav_menu ul li:nth-child(4) { grid-column: 1; grid-row: 4; }
+    .nav_menu ul li:nth-child(5) { grid-column: 2; grid-row: 1; }
+    .nav_menu ul li:nth-child(6) { grid-column: 2; grid-row: 3; }
+    .nav_menu ul li:nth-child(7) { grid-column: 2; grid-row: 4; }
+
+    .mission {
+        color: #CCAE0E;
+        font-size: 60px;
+        margin-top: 170px;
+        text-align: center;
+    }
+    
+    .container {
+        background-image: url(bg_img/bg_img.jpg);
+        margin-top: -40px;
+        height: 290px;
+        width: 260px;
+        margin-left: 20px;
+        display: flex;
+        border: 11px solid #CCAE0E;
+        flex-wrap: wrap;
+    }
+
+    h5 {
+        color: #CCAE0E;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 20px;
+        text-align: justify;
+        margin-top: 9px;
+    }
 }
 
