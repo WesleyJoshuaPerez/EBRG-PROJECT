@@ -107,9 +107,9 @@ header .nav_logo {
 .profile-pic {
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Makes the image round */
-    object-fit: cover; /* Ensures the image covers the area */
-    border: 2px solid white; /* Optional: Adds a border around the image */
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 2px solid white; 
     cursor: pointer;
     margin-right: 20px;
 }
@@ -127,8 +127,8 @@ h3 {
     background-color: #2F393B;
     width: 180px;
     color: white;
-    border-radius: 40px; /* Rounded corners, larger for a pill shape */
-    font-size: 23px; /* Reduce font size slightly */
+    border-radius: 40px; 
+    font-size: 23px; 
     padding: 5px 5px; /* Adjust padding to better center the text */
     text-align: center; /* Ensure the text is centered horizontally */
     margin-left: 120px;
