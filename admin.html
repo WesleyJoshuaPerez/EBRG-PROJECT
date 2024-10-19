@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator</title>
+    <link rel="stylesheet" href="admin.css" />
+    <!--font style links-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<body>
+    <header>
+        <div class="hamburger" id="hamburger">
+            &#9776; <!-- Unicode character for hamburger icon -->
+        </div>
+        <nav id="nav-menu" class="nav_menu">
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Conducted Projects</a></li>
+                <li><a href="#">Vission</a></li>
+                <li><a href="#">Mission</a></li>
+                <li><a href="#">Guest Mode</a></li>
+                <li><a href="#">Dark Mode</a></li>
+                <li><a href="index.html">Log Out</a></li>
+                
+            </ul>
+        </nav>
+        <div class="nav_logo">
+            <img src="logo/logo_dark.png" alt="EBRGY logo">
+        </div>
+        <div class="nav-right">
+            <img src="logo/icon.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+        
+    </header>
+
+    <h3>admin <br> istrator <br> page</h3>
+    <button class="create"><strong>create</strong></button>
+    <div class="separator"></div>
+    <button class="manage"><strong>manage</strong></button>
+
+    <div class="input-file">
+        <div class="select-bg">
+            <input type="file" id="file">
+            <label for="file" class="select"><strong>
+                <i class="fas fa-upload"></i> <!-- Upload icon -->
+                &nbsp; Select a picture
+            </strong>
+            </label>
+        </div>
+    </div>
+
+    <div class="translation">
+        <h4>Write a <i class="highlight">translation</i>:</h4>
+        <textarea class="txt1"></textarea>
+    </div>
+    
+    <div class="caption">
+        <h4>Write a caption:</h4>
+        <textarea class="txt2"></textarea>
+    </div>
+
+    <button class="publish"><strong>Publish</strong></button>
+
+    <div class="content1">
+        <img src="bg_img/sample_img.jpg" alt="sample_img" class="ts">
+        <button class="edit1"><strong>edit photo</strong></button>
+        <button class="translation1"><strong>edit translation</strong></button>
+        <button class="caption1"><strong>edit caption</strong></button>
+        <button class="delete1"><strong>delete</strong></button>
+
+        <button class="translate"><strong>Translate</strong></button>
+        <p class="cp1">Lorem ipsum dolor sit amet, consectetur 
+            adipiscing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis 
+            nostrud exercitation ullamco laboris nisi ut 
+            aliquip ex ea commodo consequat Duis 
+            aute irure dolor in reprehenderit in 
+            voluptate velit esse cillum dolore eu fugiat 
+            nulla pariatur.
+            </p>
+
+            <button class="save">
+                <i class="fa fa-check"></i>
+            </button>
+
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="check"></span>
+            </label>
+              
+
+
+    </div>
+    <div class="content2">
+        
+    </div>
+    <script src="darkmode.js"></script>
+    <script src="hamburgermenu.js"></script>
+
+</body>
