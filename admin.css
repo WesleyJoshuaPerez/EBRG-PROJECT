@@ -394,14 +394,6 @@ h4 {
     cursor: pointer;
 }
 
-/* start of dark mode */
-
-/* Hide the checkbox */
-
-/* Your existing CSS code */
-
-/* Add the dark mode CSS at the very bottom */
-
 body.dark-mode {
     background-color: #15202B; /* Twitter's dark mode background */
     background-image: none; /* Remove background image in dark mode */
