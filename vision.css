@@ -100,19 +100,22 @@ header .nav_logo {
     .vision {
         color: #CCAE0E;
         font-size: 125px;
-        margin-top: 150px;
+        margin-top: 90px;
         text-align: center;
     }
     
     .container {
         background-image: url(bg_img/bg_img.jpg);
-        margin-top: -95px;
+        margin-top: 0px;
         height: 270px;
         width: 480px;
-        margin-left: 553px;
+        margin: 0 auto; /* Center the container horizontally */
         display: flex;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
     }
     
     .img {
@@ -216,20 +219,23 @@ header .nav_logo {
     .vision {
         color: #CCAE0E;
         font-size: 60px;
-        margin-top: 170px;
+        margin-top: 90px;
         text-align: center;
     }
     
     .container {
-        background-image: url(bg_img/bg_img.jpg);
-        margin-top: -40px;
+        background-image: url('bg_img/bg_img.jpg');
+        margin-top: 0px;
         height: 230px;
         width: 260px;
-        margin-left: 20px;
+        margin: 0 auto; /* Centers the container horizontally */
         display: flex;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
+        background-size: cover;
+        background-position: center;
     }
+    
     
     h5 {
         color: #CCAE0E;

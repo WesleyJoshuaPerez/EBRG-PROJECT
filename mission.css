@@ -108,7 +108,7 @@ header .nav_logo {
         margin-top: -95px;
         height: 270px;
         width: 542px;
-        margin-left: 520px;
+        margin: 0 auto; /* Centers the container horizontally */
         display: flex;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
@@ -215,16 +215,16 @@ header .nav_logo {
     .mission {
         color: #CCAE0E;
         font-size: 60px;
-        margin-top: 170px;
+        margin-top: 90px;
         text-align: center;
     }
     
     .container {
         background-image: url(bg_img/bg_img.jpg);
-        margin-top: -40px;
+        margin-top: -50px;
         height: 290px;
         width: 260px;
-        margin-left: 20px;
+        margin: 0 auto; /* Centers the container horizontally */
         display: flex;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;

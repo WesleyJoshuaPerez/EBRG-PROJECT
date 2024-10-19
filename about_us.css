@@ -101,18 +101,18 @@ header .nav_logo {
         color: #CCAE0E;
         font-size: 110px;
         margin-top: 150px;
-        margin-left: 250px;
+        margin-left: 450px;
     }
     
     .container {
-        margin-top: -80px;
+        margin: 5px auto; 
         height: 330px;
         width: 1000px;
-        margin-left: 260px;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
     }
     
+   
     .img {
         width: 400px;
         height: 320px;
@@ -235,18 +235,23 @@ header .nav_logo {
     .aboutus {
         color: #CCAE0E;
         font-size: 60px;
-        margin-top: 140px;
-        margin-left: 13px;
+        margin-top: 120px;
+        text-align: center; /* Center the text inside the element */
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content; /* Ensures the element takes up only as much space as needed */
     }
     
     .container {
         margin-top: -40px;
         height: 400px;
         width: 270px;
-        margin-left: 13px;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto; /* Center the container horizontally */
     }
+    
     
     .img {
         width: 265px;
