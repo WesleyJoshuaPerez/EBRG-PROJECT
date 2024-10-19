@@ -10,12 +10,6 @@ body {
     background-attachment: fixed;
     font-family: "Ysabeau Office", sans-serif;
 }
-
-/* Dark mode */
-body.dark-mode {
-    background-color: black;
-    background-image: none; /* Remove background image in dark mode */
-}
  
  header {
     position: fixed;
