@@ -33,7 +33,7 @@ header {
 .locktitle {
     position: sticky; /* Keeps the locktitle fixed while scrolling */
     top: 90px; /* Adjust this based on header height */
-    margin-left: 90px;
+    width: 500px;
     z-index: 1; /* Make sure it appears above other content */
 }
 .navigate {
