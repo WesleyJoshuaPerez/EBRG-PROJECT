@@ -9,6 +9,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     font-family: "Ysabeau Office", sans-serif;
+    scroll-behavior: smooth; /* Enables smooth scrolling */
 }
  
 header {
@@ -25,6 +26,19 @@ header {
     z-index: 10; /* Ensure the header stays on top */
 }
 
+.stickycontainer {
+    height:  100fr;  /*use for the height is scrolling function*/
+    padding-top: 10px; /* Space for the fixed header */
+}
+.locktitle {
+    position: sticky; /* Keeps the locktitle fixed while scrolling */
+    top: 90px; /* Adjust this based on header height */
+    margin-left: 90px;
+    z-index: 1; /* Make sure it appears above other content */
+}
+.navigate {
+    text-decoration: none; /* Remove underline from links */
+}
  header .hamburger {
     display: flex;
     align-items: center;
@@ -98,43 +112,7 @@ header .nav_logo {
 .nav_menu ul li:nth-child(7) { grid-column: 2; grid-row: 3; }
 .nav_menu ul li:nth-child(8) { grid-column: 3; grid-row: 1; }
 
-body.dark-mode {
-    background-color: #15202B; /* Twitter's dark mode background */
-    background-image: none; /* Remove background image in dark mode */
-    color: white; /* Change body text to white */
-}
-
-body.dark-mode div {
-    background-color: #334c66; /* Bluish color for divs */
-    color: white; /* Ensure text inside divs stays white */
-    box-shadow: none;
-}
-
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p, body.dark-mode span, body.dark-mode a {
-    color: white; /* Keep text white */
-}
-
-body.dark-mode .create, body.dark-mode .manage, body.dark-mode .separator, body.dark-mode .input-file, body.dark-mode .translation, body.dark-mode .caption, body.dark-mode .publish {
-    background-color: #334c66; /* Bluish dark background for buttons */
-    color: white; /* Text remains white */
-}
-
-body.dark-mode .highlight {
-    color: #CCAE0E; /* Maintain highlight color for contrast */
-}
-
-body.dark-mode .profile-pic {
-    border-color: #ffffff; /* White border for profile picture */
-}
-
-body.dark-mode .nav_menu {
-    background-color: #1C2733; /* Bluish background for nav menu */
-    color: white; /* White text */
-}
-
-body.dark-mode .nav_menu ul li a {
-    color: white; /* Keep menu links white */
-}
+ 
 
 @media only screen and (min-width: 1024px){
     .profile-pic {

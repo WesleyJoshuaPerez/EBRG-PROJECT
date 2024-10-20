@@ -1,0 +1,55 @@
+body.dark-mode {
+    background-color: #15202B; /* Twitter's dark mode background */
+    background-image: none; /* Remove background image in dark mode */
+    color: white; /* Change body text to white */
+}
+
+body.dark-mode div {
+   
+    color: white; /* Ensure text inside divs stays white */
+    box-shadow: none;
+}
+body.dark-mode header {
+    background-color: #334c66; /* Bluish color for header */
+    box-shadow: 0 9px 20px rgb(0, 0, 0); 
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4,body.dark-mode h5, body.dark-mode p, body.dark-mode span, body.dark-mode a {
+    color: white; /* Keep text white */
+}
+
+body.dark-mode .create, body.dark-mode .manage, body.dark-mode .separator, body.dark-mode .input-file, body.dark-mode .translation, body.dark-mode .caption, body.dark-mode .publish {
+    background-color: #334c66; /* Bluish dark background for buttons */
+    color: white; /* Text remains white */
+}
+
+body.dark-mode .container{
+    background-color: #334c66;
+    background-image: none;
+    border: 11px solid #ffffff;
+}
+body.dark-mode .highlight {
+    color: #CCAE0E; /* Maintain highlight color for contrast */
+}
+
+body.dark-mode .profile-pic {
+    border-color: #ffffff; /* White border for profile picture */
+}
+
+body.dark-mode .nav_menu {
+    background-color: #1C2733; /* Bluish background for nav menu */
+    color: white; /* White text */
+}
+
+body.dark-mode .nav_menu ul li a {
+    color: white; /* Keep menu links white */
+}
+body.dark-mode .search_bar{
+    border: 5px solid #15202B;
+}
+/*admin darkmode*/
+body.dark-mode .content1 ,body.dark-mode .content2{
+    background-color: #334c66;
+    background-image: none;
+    border: 11px solid #ffffff;
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrator</title>
     <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="darkmode.css"/>
     <!--font style links-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,7 @@
                 <li><a href="vision.html">Vision</a></li>
                 <li><a href="mission.html">Mission</a></li>
                 <li><a href="#">Guest Mode</a></li>
-                <li><a href="#">Dark Mode</a></li>
+                <li><a href="#" id="darkModeLink">Dark Mode</a></li>
                 <li><a href="index.html">Log Out</a></li>
                 
             </ul>
@@ -36,12 +37,14 @@
         </div>
         
     </header>
-
-    <h3>admin <br> istrator <br> page</h3>
-    <button class="create"><strong>create</strong></button>
+    <div class="stickycontainer" id="locktitle">
+        <div class="locktitle">
+            <h3>admin <br> istrator <br> page</h3>
+            <a href="#locktitle" class="navigate"><button class="create"><strong>create</strong></button></a>
     <div class="separator"></div>
-    <button class="manage"><strong>manage</strong></button>
-
+    <a href="#content1" class="navigate"><button class="manage"><strong>manage</strong></button></a>
+        </div>
+   
     <div class="input-file">
         <div class="select-bg">
             <input type="file" id="file">
@@ -65,7 +68,7 @@
 
     <button class="publish"><strong>Publish</strong></button>
 
-    <div class="content1">
+    <div class="content1" id="content1">
         <img src="bg_img/sample_img.jpg" alt="sample_img" class="ts">
         <button class="edit1"><strong>edit photo</strong></button>
         <button class="translation1"><strong>edit translation</strong></button>
@@ -88,10 +91,7 @@
                 <i class="fa fa-check"></i>
             </button>
 
-            <label class="switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="check"></span>
-            </label>
+         
               
     </div>
     <div class="content2">
