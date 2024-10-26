@@ -132,5 +132,8 @@
             label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; Select a picture</strong>`;
         }
     }
+
+     // Add this line to connect the event
+     document.getElementById('image').addEventListener('change', updateLabelText);
     </script> 
 </body>
