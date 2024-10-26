@@ -37,6 +37,7 @@
         </div>
         
     </header>
+    <!--use for sticky container-->
     <div class="stickycontainer" id="locktitle">
         <div class="locktitle">
             <h3>admin <br> istrator <br> page</h3>
@@ -45,37 +46,53 @@
     <a href="#content1" class="navigate"><button class="manage"><strong>manage</strong></button></a>
         </div>
    
-    <div class="input-file">
-        <div class="select-bg">
-            <input type="file" id="file">
-            <label for="file" class="select"><strong>
-                <i class="fas fa-upload"></i> <!-- Upload icon -->
-                &nbsp; Select a picture
-            </strong>
-            </label>
-        </div>
-    </div>
 
-    <div class="translation">
-        <h4>Write a <i class="highlight">translation</i>:</h4>
-        <textarea class="txt1" placeholder="Type in english..."></textarea>
-    </div>
-    
-    <div class="caption">
-        <h4>Write a caption:</h4>
-        <textarea class="txt2" placeholder="Translation appears here..."></textarea>
-    </div>
-
-    <button class="publish"><strong>Publish</strong></button>
+        <form action="ebrgy_publishinfo.php" method="POST" enctype="multipart/form-data">
+            <!-- Image File Input -->
+            <div class="input-file">
+                <div class="select-bg">
+                    <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" required>
+                    <label for="image" class="select" id="fileLabel">
+                        <strong><i class="fas fa-upload"></i> &nbsp; Select a picture</strong>
+                    </label>
+                </div>
+            </div>
+        
+            <!-- Dropdown for Updates Type -->
+            <div class="updates">
+                <label for="updates">Barangay Updates:</label>
+                <div class="select-wrapper">
+                    <select name="updates" id="updates" required>
+                        <option value="announcement">Announcement</option>
+                        <option value="event">Event</option>
+                    </select>
+                </div>
+            </div>
+        
+            <!-- Title Field -->
+            <div class="title">
+                <h4>Write a Title:</h4>
+                <textarea class="txt2" name="title" placeholder="Title appears here..." required></textarea>
+        
+            </div>
+        
+            <!-- Caption Field -->
+            <div class="caption">
+                <h4>Write a caption:</h4>
+                <textarea class="txt3" name="captions" placeholder="Captions appear here..." required></textarea>
+            </div>  
+        
+            <!-- Publish Button -->
+            <button class="publish" type="submit" name="publish"><strong>Publish</strong></button>
+        </form>
+        
 
     <div class="content1" id="content1">
-        <img src="bg_img/sample_img.jpg" alt="sample_img" class="ts">
-        <button class="edit1"><strong>edit photo</strong></button>
-        <button class="translation1"><strong>edit translation</strong></button>
-        <button class="caption1"><strong>edit caption</strong></button>
-        <button class="delete1"><strong>delete</strong></button>
-
-        <button class="translate"><strong>Translate</strong></button>
+        <img src="bg_img/sample_img.jpg" alt="sample_img" class="uploadimg">
+      
+        
+        <label class="brgy_updates"><strong>Brgy updates</strong></label>
+        <p class="fortitle">This is for teh ebrgy title</p>
         <p class="cp1">Lorem ipsum dolor sit amet, consectetur 
             adipiscing elit, sed do eiusmod tempor 
             incididunt ut labore et dolore magna 
@@ -91,10 +108,29 @@
                 <i class="fa fa-check"></i>
             </button>
     </div>
-    <div class="content2">
-        
-    </div>
+    <!--use for styling buttons for the crud-->
+     <div class="editbuttons">
+        <button class="edit1"><strong>edit photo</strong></button>
+        <button class="edit_brgyupdates"><strong>edit updates</strong></button>
+        <button class="caption1"><strong>edit caption</strong></button>
+        <button class="delete1"><strong>delete</strong></button>
+     </div>
     <script src="darkmode.js"></script>
     <script src="hamburgermenu.js"></script>
-
+<!--use on changing the text when image is selected-->
+<script>
+    function updateLabelText() {
+        const fileInput = document.getElementById('image');
+        const label = document.getElementById('fileLabel');
+        if (fileInput.files.length > 0) {
+            // Get the name of the selected file
+            const fileName = fileInput.files[0].name;
+            // Change the label text
+            label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${fileName}</strong>`;
+        } else {
+            // Reset the label text if no file is selected
+            label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; Select a picture</strong>`;
+        }
+    }
+    </script> 
 </body>
