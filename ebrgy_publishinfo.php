@@ -24,7 +24,9 @@ if (isset($_POST["publish"])) {
     } else {
         // Check if image is uploaded
         if ($_FILES["image"]["error"] == 4) {
-            echo "<script>alert('Image Does Not Exist');</script>";
+            echo "<script>alert('Image Does Not Exist');
+               window.history.back();
+               </script>";
         } else {
             $fileName = $_FILES["image"]["name"];
             $fileSize = $_FILES["image"]["size"];
@@ -35,9 +37,15 @@ if (isset($_POST["publish"])) {
             $imageExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
             if (!in_array($imageExtension, $validImageExtensions)) {
-                echo "<script>alert('Invalid Image Extension');</script>";
-            } else if ($fileSize > 1000000) {
-                echo "<script>alert('Image Size Is Too Large');</script>";
+                echo "<script>alert('Invalid Image Extension');
+                 window.history.back();
+                </script>";
+            } 
+              //the capacity of the image can be exceed to 3mb
+              else if ($fileSize > 3145728) {
+                echo "<script>alert('Image Size Is Too Large');
+                 window.history.back();
+                 </script>";
             } else {
                 // Create unique image name and save to folder
                 $newImageName = uniqid() . '.' . $imageExtension;
@@ -53,9 +61,13 @@ if (isset($_POST["publish"])) {
                 }
 
                 if (mysqli_query($conn, $query)) {
-                    echo "<script>alert('Successfully Added');</script>";
+                    echo "<script>alert('Successfully Added');
+                     window.history.back();
+                    </script>";
                 } else {
-                    echo "<script>alert('Error Adding Record');</script>";
+                    echo "<script>alert('Error Adding Record');
+                     window.history.back();
+                    </script>";
                 }
             }
         }

@@ -53,3 +53,7 @@ body.dark-mode .content1 ,body.dark-mode .content2{
     background-image: none;
     border: 11px solid #ffffff;
 }
+body.dark-mode .nav_left a, 
+body.dark-mode .nav_right a {
+    color: white;
+}
