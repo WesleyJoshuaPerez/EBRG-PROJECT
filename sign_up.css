@@ -19,6 +19,11 @@ body {
     font-family: 'Ysabeau Office', sans-serif;
     flex-direction: column; /* Allows the content to be stacked vertically */;
 }
+
+.swal-button-centered {
+    display: block;
+    margin: 0 auto;
+}
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
 @media only screen and (min-width: 1024px){
