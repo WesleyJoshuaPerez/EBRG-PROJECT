@@ -412,10 +412,10 @@ header .nav_logo {
     justify-content: space-between;
     margin-left: 770px; /* Aligns with .content1 */
     margin-top: 20px; /* Adds space below .content1 */
-    width: 600px;
+    width: 500px;
     border-radius: 10px; 
     }  
-    .edit1, .edit_brgyupdates, .caption1, .delete1 {
+    .edit1, .edit_brgyupdates,  .delete1 {
         font-family: "Ysabeau Office", sans-serif;
         font-size: 20px;
         background-color: #2F393B;
@@ -431,8 +431,8 @@ header .nav_logo {
     }
     
     /* Optional adjustments to align buttons more closely */
-    .edit1, .edit_brgyupdates, .caption1, .delete1 {
-        margin: 0 5px; /* Space between buttons */
+    .edit1, .edit_brgyupdates,  .delete1 {
+        margin: 0 10px; /* Space between buttons */
     }
 
     

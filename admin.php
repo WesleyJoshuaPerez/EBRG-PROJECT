@@ -40,13 +40,14 @@
     </header>
     <div class="stickycontainer" id="locktitle">
         <div class="locktitle">
-            <h3>admin <br> istrator <br> page</h3>
+            <h3>Admin <br> istrator <br> page</h3>
             <a href="#locktitle" class="navigate"><button class="create"><strong>create</strong></button></a>
             <div class="separator"></div>
             <a href="#content1" class="navigate"><button class="manage"><strong>manage</strong></button></a>
         </div>
-      <!--use for inserting data into table using form-->
-        <form action="" method="POST" enctype="multipart/form-data">
+        
+        <!-- Form for submitting announcements and events -->
+        <form id="updateForm" enctype="multipart/form-data">
             <div class="input-file">
                 <div class="select-bg">
                     <input type="file" id="image" name="image" required>
@@ -72,41 +73,34 @@
                 <h4>Write a caption:</h4>
                 <textarea class="txt3" name="captions" placeholder="Captions appear here..." required></textarea>
             </div>
-            <button class="publish" type="submit" name="publish"><strong>Publish</strong></button>
+            <button class="publish" type="submit"><strong>Publish</strong></button>
         </form>
 
-        <div class="content1" id="content1">
-            <label class="brgy_updates"><strong>Brgy updates</strong></label>
-            <img src="bg_img/sample_img.jpg" alt="sample_img" class="uploadimg">
-            <p class="fortitle">This is for the ebrgy title</p>
-            <p class="cp1">Lorem ipsum dolor sit amet, consectetur 
-                adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna 
-                aliqua. Ut enim ad minim veniam, quis 
-                nostrud exercitation ullamco laboris nisi ut 
-                aliquip ex ea commodo consequat Duis 
-                aute irure dolor in reprehenderit in 
-                voluptate velit esse cillum dolore eu fugiat 
-                nulla pariatur.
-            </p>
-            <button class="save">
-                <i class="fa fa-check"></i>
-            </button>
+        <div id="contentContainer">
+            <!-- Example structure for dynamically loaded announcements and events -->
+            <div id="announcement_1" class="announcement">
+                <div class="fortitle">Announcement Title</div>
+                <div class="cp1">Announcement Content</div>
+                <button onclick="editUpdates('announcement', 1)">Edit</button>
+                <button onclick="deleteAnnouncement(1)">Delete</button>
+                <button onclick="editPhoto(1)">Edit Photo</button>
+            </div>
+            <div id="event_1" class="event">
+                <div class="fortitle">Event Title</div>
+                <div class="cp1">Event Content</div>
+                <button onclick="editUpdates('event', 1)">Edit</button>
+                <button onclick="deleteEvent(1)">Delete</button>
+                <button onclick="editPhoto(1)">Edit Photo</button>
+            </div>
         </div>
-        
-        <div class="editbuttons">
-            <button class="edit1"><strong>edit photo</strong></button>
-            <button class="edit_brgyupdates"><strong>edit updates</strong></button>
-            <button class="caption1"><strong>edit caption</strong></button>
-            <button class="delete1"><strong>delete</strong></button>
-        </div>
-      <!--for darkmode feature-->
+
+        <!-- for darkmode feature -->
         <script src="darkmode.js"></script>
-     <!--for navigation-->
+        <!-- for navigation -->
         <script src="hamburgermenu.js"></script>
-           <!--for alerts-->
+        <!-- for alerts -->
         <script src="sweetalert.js"></script>
-        
+
         <script>
             function updateLabelText() {
                 const fileInput = document.getElementById('image');
@@ -120,53 +114,197 @@
             }
 
             document.getElementById('image').addEventListener('change', updateLabelText);
-        </script> 
-<!--use for connecting into the database and inserting data into the specific tables for announcement and events-->
-<?php
-require 'connectdb.php';
 
-if (isset($_POST["publish"])) {
-    $title = $_POST["title"];
-    $caption = $_POST["captions"];
-    $selectedTable = $_POST["updates"];
-    
-    $mintitle_Length = 10;
-    $mincaption_Length = 100;
+            // AJAX for form submission
+            document.getElementById('updateForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
 
-    if (strlen($title) < $mintitle_Length) {
-        echo "<script>swal('Error','Title must be at least $mintitle_Length characters long.', 'error');</script>";
-    } elseif (strlen($caption) < $mincaption_Length) {
-        echo "<script>swal('Error','Caption must be at least $mincaption_Length characters long.', 'error');</script>";
-    } elseif ($_FILES["image"]["error"] == UPLOAD_ERR_NO_FILE) { // Check if no file was uploaded
-        echo "<script>swal('Error','Please select an image to upload.', 'error');</script>";
-    } else {
-        // Continue processing the uploaded file
-        $fileName = $_FILES["image"]["name"];
-        $fileSize = $_FILES["image"]["size"];
-        $tmpName = $_FILES["image"]["tmp_name"];
-        $validImageExtensions = ['jpg', 'jpeg', 'png'];
-        $imageExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+                const formData = new FormData(this);
 
-        if (!in_array($imageExtension, $validImageExtensions)) {
-            echo "<script>swal('Error','Invalid Image Extension', 'error');</script>";
-        } elseif ($fileSize > 3145728) {
-            echo "<script>swal('Error','Image Size Is Too Large', 'error');</script>";
-        } else {
-            $newImageName = uniqid() . '.' . $imageExtension;
-            move_uploaded_file($tmpName, 'uploads/' . $newImageName);
+                fetch('submit_update.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        swal('Success', 'Successfully Added', 'success');
+                        loadContent(); // Reload the content after adding new announcement/event
+                    } else {
+                        swal('Error', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal('Error', 'An unexpected error occurred.', 'error');
+                });
+            });
 
-            $query = $selectedTable == 'announcement' 
-                ? "INSERT INTO brgy_announcement (announcement_title, announcement_img, announcement_content) VALUES ('$title', '$newImageName', '$caption')"
-                : "INSERT INTO brgy_event (brgyevent_title, brgy_img, bgry_content) VALUES ('$title', '$newImageName', '$caption')";
-
-            if (mysqli_query($conn, $query)) {
-                echo "<script>swal('Success','Successfully Added', 'success');</script>";
-            } else {
-                echo "<script>swal('Error','Error Adding Record', 'error');</script>";
+            // Load announcements and events content
+            function loadContent() {
+                fetch('load_content.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('contentContainer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading content:', error));
             }
-        }
+
+            // Initial load of content on page load
+            loadContent();
+
+            function editAnnouncement(id) {
+    const announcementDiv = document.getElementById('announcement_' + id);
+    const title = announcementDiv.querySelector('.fortitle').innerText;
+    const content = announcementDiv.querySelector('.cp1').innerText;
+
+    const newTitle = prompt("Edit Title:", title);
+    const newContent = prompt("Edit Content:", content);
+
+    if (newTitle !== null || newContent !== null) {
+        const formData = new FormData(); // Define formData here
+        formData.append('updates', 'announcement');
+        formData.append('title', newTitle !== null ? newTitle : title); // Keep old title if canceled
+        formData.append('captions', newContent !== null ? newContent : content); // Keep old content if canceled
+        formData.append('id', id); // Send the ID of the announcement to update
+
+        fetch('submit_update.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                swal('Success', 'Announcement updated successfully', 'success');
+                loadContent(); // Reload the content after updating
+            } else {
+                swal('Error', data.message, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            swal('Error', 'An unexpected error occurred.', 'error');
+        });
     }
 }
-?>
+
+function editEvent(id) {
+    const eventDiv = document.getElementById('event_' + id);
+    const title = eventDiv.querySelector('.fortitle').innerText;
+    const content = eventDiv.querySelector('.cp1').innerText;
+
+    const newTitle = prompt("Edit Title:", title);
+    const newContent = prompt("Edit Content:", content);
+
+    if (newTitle !== null || newContent !== null) {
+        const formData = new FormData(); // Define formData here
+        formData.append('updates', 'event');
+        formData.append('title', newTitle !== null ? newTitle : title); // Keep old title if canceled
+        formData.append('captions', newContent !== null ? newContent : content); // Keep old content if canceled
+        formData.append('id', id); // Send the ID of the event to update
+
+        fetch('submit_update.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                swal('Success', 'Event updated successfully', 'success');
+                loadContent(); // Reload the content after updating
+            } else {
+                swal('Error', data.message, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            swal('Error', 'An unexpected error occurred.', 'error');
+        });
+    }
+}
+
+
+          // Function to edit the photo with file upload
+function editPhoto(id) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*'; // Accept image files only
+
+    fileInput.onchange = function() {
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('image', fileInput.files[0]); // Append the selected file
+
+        fetch('update_photo.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            return response.text(); // Get raw text first
+        })
+        .then(text => {
+            console.log('Response text:', text); // Log the response
+            const data = JSON.parse(text); // Then parse it as JSON
+            if (data.success) {
+                swal('Success', 'Photo updated successfully', 'success');
+                loadContent(); // Reload the content after updating the photo
+            } else {
+                swal('Error', data.message, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            swal('Error', 'An unexpected error occurred.', 'error');
+        });
+    };
+
+    fileInput.click(); // Trigger file input click
+}
+
+       
+// Function to delete announcements
+function deleteAnnouncement(id) {
+    if (confirm("Are you sure you want to delete this announcement?")) {
+        fetch('delete.php?type=announcement&id=' + id, { method: 'GET' }) // Updated method to GET
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    swal('Success', 'Announcement deleted successfully', 'success');
+                    loadContent(); // Reload content after deletion
+                } else {
+                    swal('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                swal('Error', 'An unexpected error occurred.', 'error');
+            });
+    }
+}
+
+// Function to delete events
+function deleteEvent(id) {
+    if (confirm("Are you sure you want to delete this event?")) {
+        fetch('delete.php?type=event&id=' + id, { method: 'GET' }) // Updated method to GET
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    swal('Success', 'Event deleted successfully', 'success');
+                    loadContent(); // Reload content after deletion
+                } else {
+                    swal('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                swal('Error', 'An unexpected error occurred.', 'error');
+            });
+    }
+}
+
+
+        </script>
+    </div>
+</div>
 </body>
 </html>
