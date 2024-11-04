@@ -257,6 +257,7 @@ header .search_bar{
     padding: 17px 25px 17px 25px;
     border-radius: 32px;
     border:none;
+    cursor: pointer;
 }
 
 .a1::before{
@@ -281,6 +282,7 @@ header .search_bar{
     border-radius: 32px;
     border:none;
     position: relative;
+    cursor: pointer;
 }
 
 .e1::before{
@@ -305,6 +307,7 @@ header .search_bar{
     padding: 17px 70px 17px 70px;
     border-radius: 32px;
     border:none;
+    cursor: pointer;
 }
 
 .s1::before{
@@ -329,6 +332,7 @@ header .search_bar{
     padding: 17px 70px 17px 70px;
     border-radius: 32px;
     border:none;
+    cursor: pointer;
 }
 
 .h1::before{
@@ -421,17 +425,70 @@ p {
 
 .type {
     color: white;
-    font-size: 30px;
+    font-size: 27px;
+    margin-left: 27px;
+    position: relative;
+    top: 20px; /* Adjust this value to move it downward */
+}
+
+#dropdown {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 40px 10px 15px; /* Padding to match the image */
+    border-radius: 15px; /* Rounded corners */
+    width: 740px; /* Set width */
+    font-size: 23px;
+    font-family: inherit; /* Match the font family */
+    cursor: pointer;
+    position: relative;
     margin-left: 20px;
 }
 
-#serv2 {
-    background-color: #6AC2A5;
-    height: 400px;
-    width: 800px;
-    margin-left: 390px;
-    margin-top: 70px;
-    border-radius: 15px;
+.detail {
+    color: white;
+    font-size: 27px;
+    margin-left: 27px;
+    position: relative;
+    bottom: 10px;
+}
+
+.lastname {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 130px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    margin-left: 20px;
+    position: relative;
+    bottom: 40px;
+}
+
+.firstname {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 70px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    margin-left: 445px;
+    position: relative;
+    bottom: 93px;
+}
+
+.age {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 5px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    margin-left: 20px;
+    position: relative;
+    bottom: 85px;
 }
 
 #hotl {

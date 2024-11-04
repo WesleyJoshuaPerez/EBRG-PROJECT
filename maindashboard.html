@@ -90,9 +90,30 @@
     <div id="services" class="content-div" style="display: none;">
         <div id="serv">
             <h4 class="type">Type of Service:</h4>
+            <select id="dropdown" onchange="showField()">
+                <option value="">--Select an option--</option>
+                <option value="val1">Certificate of Indigency</option>
+                <option value="val2">Certificate of Residency</option>
+                <option value="val3">Certificate of First Time Job Seeker</option>
+                <option value="val3">Certificate of Job Absence</option>
+                <option value="val3">Certificate of Solo Parent</option>
+                <option value="val3">Barangay Clearance</option>
+                <option value="val3">Fencing Clearance</option>
+                <option value="val3">Building Clearance</option>
+                <option value="val3">Order of Payment</option>
+                <option value="val3">Electricity Installation Clearance</option>
+                <option value="val3">Daycare Admission Shortlistin</option>
+            </select>
 
+        <div id="div1" class="val-div" style="display: none;">
+            <h4 class="detail">Details:</h4>
+            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
+            <input type="text" class="age" name="age" placeholder="Age" required>
         </div>
-        <div id="serv2"></div>
+        <div id="div2" class="val-div" style="display: none;">Content for Option 2</div>
+        <div id="div3" class="val-div" style="display: none;">Content for Option 3</div>
+        </div>
     </div>
     <div id="hotlines" class="content-div" style="display: none;">
         <div id="hotl"></div>
@@ -104,6 +125,7 @@
         <script src="darkmode.js"></script>
        <!-- Link to the JavaScript file for hamburger menu function -->
        <script src="hamburgermenu.js"></script>
-       <script src="div.js"></script>
+       <script src="AESH.js"></script>
+       <script src="services.js"></script>
 </body>
 </html>
