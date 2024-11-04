@@ -419,6 +419,12 @@ p {
     border-radius: 15px;
 }
 
+.type {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
 #serv2 {
     background-color: #6AC2A5;
     height: 400px;
@@ -445,6 +451,7 @@ p {
     margin-top: 70px;
     border-radius: 15px;
 }
+
 
 
 
