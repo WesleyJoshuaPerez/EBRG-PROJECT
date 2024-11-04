@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="darkmode.css"/>
     <!-- Include SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Font style links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,34 +161,62 @@
     const title = announcementDiv.querySelector('.fortitle').innerText;
     const content = announcementDiv.querySelector('.cp1').innerText;
 
-    const newTitle = prompt("Edit Title:", title);
-    const newContent = prompt("Edit Content:", content);
-
-    if (newTitle !== null || newContent !== null) {
-        const formData = new FormData(); // Define formData here
-        formData.append('updates', 'announcement');
-        formData.append('title', newTitle !== null ? newTitle : title); // Keep old title if canceled
-        formData.append('captions', newContent !== null ? newContent : content); // Keep old content if canceled
-        formData.append('id', id); // Send the ID of the announcement to update
-
-        fetch('submit_update.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                swal('Success', 'Announcement updated successfully', 'success');
-                loadContent(); // Reload the content after updating
-            } else {
-                swal('Error', data.message, 'error');
+    Swal.fire({
+        title: 'Edit Announcement',
+        html: `
+            <input id="swal-title" class="swal2-input custom-input" placeholder="Title" value="${title}">
+            <textarea id="swal-content" class="swal2-input custom-textarea" placeholder="Content">${content}</textarea>
+        `,
+        focusConfirm: false,
+        showCancelButton: true, // Show the cancel button
+        confirmButtonText: 'Update', // Custom confirm button text
+        cancelButtonText: 'Cancel', // Custom cancel button text
+        customClass: {
+            popup: 'custom-popup',
+            title: 'custom-title',
+            content: 'custom-content',
+            input: 'custom-input',
+            textarea: 'custom-textarea',
+            confirmButton: 'custom-confirm-button',
+            cancelButton: 'custom-cancel-button'
+        },
+        preConfirm: () => {
+            const newTitle = document.getElementById('swal-title').value;
+            const newContent = document.getElementById('swal-content').value;
+            if (!newTitle || !newContent) {
+                Swal.showValidationMessage('Please enter both title and content');
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            swal('Error', 'An unexpected error occurred.', 'error');
-        });
-    }
+            return { newTitle, newContent };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const formData = new FormData();
+            formData.append('updates', 'announcement');
+            formData.append('title', result.value.newTitle);
+            formData.append('captions', result.value.newContent);
+            formData.append('id', id);
+
+            fetch('submit_update.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Success', 'Announcement updated successfully', 'success');
+                    loadContent();
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Error', 'An unexpected error occurred.', 'error');
+            });
+        } else if (result.isDismissed) {
+            console.log('Canceled'); // Optional: handle the cancel action
+        }
+    });
 }
 
 function editEvent(id) {
@@ -193,39 +224,69 @@ function editEvent(id) {
     const title = eventDiv.querySelector('.fortitle').innerText;
     const content = eventDiv.querySelector('.cp1').innerText;
 
-    const newTitle = prompt("Edit Title:", title);
-    const newContent = prompt("Edit Content:", content);
-
-    if (newTitle !== null || newContent !== null) {
-        const formData = new FormData(); // Define formData here
-        formData.append('updates', 'event');
-        formData.append('title', newTitle !== null ? newTitle : title); // Keep old title if canceled
-        formData.append('captions', newContent !== null ? newContent : content); // Keep old content if canceled
-        formData.append('id', id); // Send the ID of the event to update
-
-        fetch('submit_update.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                swal('Success', 'Event updated successfully', 'success');
-                loadContent(); // Reload the content after updating
-            } else {
-                swal('Error', data.message, 'error');
+    Swal.fire({
+        title: 'Edit Event',
+        html: `
+            <input id="swal-title" class="swal2-input custom-input" placeholder="Title" value="${title}">
+            <textarea id="swal-content" class="swal2-input custom-textarea" placeholder="Content">${content}</textarea>
+        `,
+        focusConfirm: false,
+        showCancelButton: true, // Show the cancel button
+        confirmButtonText: 'Update', // Custom confirm button text
+        cancelButtonText: 'Cancel', // Custom cancel button text
+        customClass: {
+            popup: 'custom-popup',
+            title: 'custom-title',
+            content: 'custom-content',
+            input: 'custom-input',
+            textarea: 'custom-textarea',
+            confirmButton: 'custom-confirm-button',
+            cancelButton: 'custom-cancel-button'
+        },
+        preConfirm: () => {
+            const newTitle = document.getElementById('swal-title').value;
+            const newContent = document.getElementById('swal-content').value;
+            if (!newTitle || !newContent) {
+                Swal.showValidationMessage('Please enter both title and content');
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            swal('Error', 'An unexpected error occurred.', 'error');
-        });
-    }
+            return { newTitle, newContent };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const formData = new FormData();
+            formData.append('updates', 'event');
+            formData.append('title', result.value.newTitle);
+            formData.append('captions', result.value.newContent);
+            formData.append('id', id);
+
+            fetch('submit_update.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Success', 'Event updated successfully', 'success');
+                    loadContent();
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Error', 'An unexpected error occurred.', 'error');
+            });
+        } else if (result.isDismissed) {
+            console.log('Canceled'); // Optional: handle the cancel action
+        }
+    });
 }
 
 
+
           // Function to edit the photo with file upload
-function editPhoto(id) {
+// Function to edit the photo with file upload
+function editPhoto(id, type) {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*'; // Accept image files only
@@ -233,18 +294,15 @@ function editPhoto(id) {
     fileInput.onchange = function() {
         const formData = new FormData();
         formData.append('id', id);
+        formData.append('type', type); // Append the type ('announcement' or 'event')
         formData.append('image', fileInput.files[0]); // Append the selected file
 
         fetch('update_photo.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            return response.text(); // Get raw text first
-        })
-        .then(text => {
-            console.log('Response text:', text); // Log the response
-            const data = JSON.parse(text); // Then parse it as JSON
+        .then(response => response.json()) // Directly parse JSON response
+        .then(data => {
             if (data.success) {
                 swal('Success', 'Photo updated successfully', 'success');
                 loadContent(); // Reload the content after updating the photo
@@ -262,47 +320,68 @@ function editPhoto(id) {
 }
 
        
+
 // Function to delete announcements
 function deleteAnnouncement(id) {
-    if (confirm("Are you sure you want to delete this announcement?")) {
-        fetch('delete.php?type=announcement&id=' + id, { method: 'GET' }) // Updated method to GET
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    swal('Success', 'Announcement deleted successfully', 'success');
-                    loadContent(); // Reload content after deletion
-                } else {
-                    swal('Error', data.message, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                swal('Error', 'An unexpected error occurred.', 'error');
-            });
-    }
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this announcement!",
+        icon: "warning",
+        buttons: true, // Show confirm and cancel buttons
+        dangerMode: true, // Style the cancel button as dangerous
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            fetch('delete.php?type=announcement&id=' + id, { method: 'GET' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        swal('Success', 'Announcement deleted successfully', 'success');
+                        loadContent(); // Reload content after deletion
+                    } else {
+                        swal('Error', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal('Error', 'An unexpected error occurred.', 'error');
+                });
+        } else {
+            swal("Your announcement is safe!"); // Inform user if the action was cancelled
+        }
+    });
 }
 
 // Function to delete events
 function deleteEvent(id) {
-    if (confirm("Are you sure you want to delete this event?")) {
-        fetch('delete.php?type=event&id=' + id, { method: 'GET' }) // Updated method to GET
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    swal('Success', 'Event deleted successfully', 'success');
-                    loadContent(); // Reload content after deletion
-                } else {
-                    swal('Error', data.message, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                swal('Error', 'An unexpected error occurred.', 'error');
-            });
-    }
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this event!",
+        icon: "warning",
+        buttons: true, // Show confirm and cancel buttons
+        dangerMode: true, // Style the cancel button as dangerous
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            fetch('delete.php?type=event&id=' + id, { method: 'GET' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        swal('Success', 'Event deleted successfully', 'success');
+                        loadContent(); // Reload content after deletion
+                    } else {
+                        swal('Error', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal('Error', 'An unexpected error occurred.', 'error');
+                });
+        } else {
+            swal("Your event is safe!"); // Inform user if the action was cancelled
+        }
+    });
 }
-
-
         </script>
     </div>
 </div>
