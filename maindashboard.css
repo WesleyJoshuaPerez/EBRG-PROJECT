@@ -491,6 +491,19 @@ p {
     bottom: 85px;
 }
 
+.select {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 5px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 17px;
+    margin-left: 20px;
+    position: relative;
+    bottom: 85px;
+}
+
 #hotl {
     background-color: #7E9C92;
     height: 400px;
