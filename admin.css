@@ -113,6 +113,83 @@ header .nav_logo {
 .nav_menu ul li:nth-child(8) { grid-column: 3; grid-row: 1; }
 
  
+/* for swal.fire style */
+/* Custom Styles for SweetAlert Modals */
+.custom-popup {
+    border-radius: 10px;
+    background-color: #fff; /* Background color */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.custom-title {
+    font-size: 20px; /* Title font size */
+    color: #000000; /* Title color */
+    text-align: center; /* Center align title */
+}
+
+.custom-content {
+    margin: 20px 0;             /* Increase spacing around content */
+    font-size: 20px;      /* Increase content font size */
+    color: #000000;                /* Content color */
+    text-align: center;         /* Center-align content text */
+}
+
+/* Optional: Increase size for input and textarea */
+.custom-input, .custom-textarea {
+    width: 80%;                /* Full width of the modal */
+    padding: 12px;             /* Increased padding for comfort */
+    border: 1px solid #ccc;     /* Border color */
+    border-radius: 5px;        /* Rounded corners */
+    margin-top: 10px;          /* Spacing above inputs */
+    font-size: 16px;           /* Increased font size for inputs */
+    resize: none;              /* Disable manual resizing */
+    overflow: auto;            /* Scroll if content exceeds */
+}
+
+/* Adjust height for the textarea */
+.custom-textarea {
+    height: auto;              /* Allow height to adjust based on content */
+    min-height: 100px;        /* Set a minimum height */
+    max-height: 200px;        /* Set a maximum height to prevent overflow */
+}
+
+.custom-input:focus,
+.custom-textarea:focus {
+    border-color: #95A777;; /* Border color on focus */
+    outline: none; /* Remove outline */
+    box-shadow: 0 0 5px #95A777;; /* Shadow on focus */
+}
+
+.custom-confirm-button,
+.custom-cancel-button {
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Button padding */
+    margin-top: 10px; /* Spacing above buttons */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-confirm-button {
+    background-color: #28a745; /* Confirm button background */
+    color: #fff; /* Confirm button text color */
+}
+
+.custom-cancel-button {
+    background-color: #dc3545; /* Cancel button background */
+    color: #fff; /* Cancel button text color */
+    margin-left: 10px; /* Spacing between buttons */
+}
+
+.custom-confirm-button:hover {
+    background-color: #218838; /* Darker shade on confirm button hover */
+}
+
+.custom-cancel-button:hover {
+    background-color: #c82333; /* Darker shade on cancel button hover */
+}
+
+
+
+/* (Rest of your existing CSS) */
 
 /*@media only screen and (min-width: 1024px){ } */
 
