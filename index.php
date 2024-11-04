@@ -28,7 +28,7 @@
        <button type="submit" name="login" id="bt1">Login</button>
      </a>
     </form>
-      <a href="resetmail.html">Forgot Password?</a>
+      <a href="resetmail.php">Forgot Password?</a>
       <button id="bt2"  onclick="location.href='sign_up.php';">Make new account</button>
    </div>
 
@@ -49,7 +49,7 @@ include 'connectdb.php';
 if(isset($_POST["login"])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $password = md5($password);
+//    $password = md5($password);
 
     $sql = "SELECT * FROM registereduser_ebrg WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);

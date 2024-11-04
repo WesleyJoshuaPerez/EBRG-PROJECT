@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2024 at 09:04 AM
+-- Generation Time: Nov 04, 2024 at 04:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,15 +63,37 @@ CREATE TABLE `registereduser_ebrg` (
   `gender` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registereduser_ebrg`
 --
 
-INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`) VALUES
-(8, 'Wesley Joshua', 'Perez ', '2004-03-17', 'male', 'wes', 'wesleyjoshuaperez@gmail.com', '0db7e7a347aaa68a26218df2a01c99c6');
+INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`) VALUES
+(17, 'make', 'ekam', '1990-12-12', 'male', 'make', 'likyfili@teleg.eu', 'likyfili@teleg.eu', '3VE0P9UC6B', '2024-11-04 11:31:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resetpass_request`
+--
+
+CREATE TABLE `resetpass_request` (
+  `reset_id` int(11) NOT NULL,
+  `reguser_id` int(11) NOT NULL,
+  `reset_token` varchar(255) NOT NULL,
+  `request_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `resetpass_request`
+--
+
+INSERT INTO `resetpass_request` (`reset_id`, `reguser_id`, `reset_token`, `request_date`) VALUES
+(0, 10, '888fc7cf02a87626200eb7b8b335027ae6e5d0ee77d41ef8c73f00d7146a4fde', '2024-11-03 04:03:20');
 
 --
 -- Indexes for dumped tables
@@ -115,7 +137,7 @@ ALTER TABLE `brgy_event`
 -- AUTO_INCREMENT for table `registereduser_ebrg`
 --
 ALTER TABLE `registereduser_ebrg`
-  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

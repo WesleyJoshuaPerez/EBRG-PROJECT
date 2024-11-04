@@ -47,7 +47,7 @@
         <!--for alerts-->
   <script src="sweetalert.js"></script>
 <!--php use for inputing  user information into the tables in the database that handles the  user indentifications-->
-  <?php 
+<?php 
 include 'connectdb.php';
 
 // For signup
@@ -61,15 +61,16 @@ if(isset($_POST['sigUp'])){
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmpassword'];
 
-      // Check if password and confirm password match
-      if($password !== $confirmPassword) {
+    // Check if password and confirm password match
+    if($password !== $confirmPassword) {
         echo "<script>
-           swal('Error', 'Passwords do not match'', 'error');
+           swal('Error', 'Passwords do not match', 'error');
               </script>";
         exit();
     }
 
-    $password = md5($password); // Encrypt password
+    // Remove this line to stop encrypting the password
+    // $password = md5($password); // Encrypt password
 
     // Check if the username already exists
     $checkUsername = "SELECT * FROM registereduser_ebrg WHERE username='$username'";
