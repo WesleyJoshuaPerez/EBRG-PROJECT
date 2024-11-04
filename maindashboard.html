@@ -58,15 +58,30 @@
             </ul>
         </nav>
     </footer>
-    <div class="barangay_loc">
-        <p>Location of</p>
-        <h1>barangay roosevelt,</h1>
-        <h1>dinalupihan,</h1>
-        <h1> bataan</h1>
+    
+    <div class="btns">
+        <button id="announcementsBtn" class="a1" onclick="showDiv('announcements')">announcements</button>
+        <button id="eventsBtn" class="e1" onclick="showDiv('events')">events</button>
+        <button id="servicesBtn" class="s1" onclick="showDiv('services')">services</button>
+        <button id="hotlinesBtn" class="h1" onclick="showDiv('hotlines')">hotlines</button>
     </div>
-        <!-- Link to the JavaScript file for darmmode function -->
+    
+    <div id="announcements" class="content-div">
+        <div id="anncts"></div>
+        <div id="anncts2"></div>
+    </div>
+    <div id="events" class="content-div" style="display: none;">
+        <div id="evnts"></div>
+        <div id="evnts2"></div>
+    </div>
+    <div id="services" class="content-div" style="display: none;">This is the Services content.</div>
+    <div id="hotlines" class="content-div" style="display: none;">This is the Hotlines content.</div>
+    
+
+        <!-- Link to the JavaScript file for darkmode function -->
         <script src="darkmode.js"></script>
        <!-- Link to the JavaScript file for hamburger menu function -->
        <script src="hamburgermenu.js"></script>
+       <script src="div.js"></script>
 </body>
 </html>

@@ -12,7 +12,8 @@ body {
  }
  
  header {
-     position: fixed;
+    position: fixed;
+    z-index: 1000;
      top: 0;
      left: 0;
      width: 100%;
@@ -21,6 +22,7 @@ body {
      align-items: center; /* Center items vertically */
      transition: 0.6s;
      background-color: #788665;
+     box-shadow: 0 9px 20px rgb(90, 90, 90);
  }
  .barangay_loc{
     margin-top: 130px;
@@ -238,3 +240,151 @@ header .search_bar{
     height: auto;
 }
 }
+
+.btns {
+    margin-top: 140px;
+    margin-left: 270px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.a1 {
+    background-color: #9C905E;
+    color: #D4D0CD;
+    font-size: 30px;
+    padding: 17px 25px 17px 25px;
+    border-radius: 32px;
+    border:none;
+}
+
+.a1::before{
+    content: "";
+    position: absolute;
+    height: 7px;
+    width: 0%;
+    background-color: #9C905E;
+    margin-top: 65px;
+    transition: all 0.3s;
+    border-radius: 20px;
+}
+.a1:hover::before {
+    width: 13.5%; /* Adjust width for the desired line length */
+}
+
+.e1 {
+    background-color: #64551A;
+    color: #D4D0CD;
+    font-size: 30px;
+    padding: 17px 70px 17px 70px;
+    border-radius: 32px;
+    border:none;
+    position: relative;
+}
+
+.e1::before{
+    content: "";
+    position: absolute;
+    margin-left: -40px;
+    border-radius: 32px;
+    height: 7px;
+    width: 0%;
+    background-color: #64551A;
+    margin-top: 65px;
+    transition: all 0.3s;
+}
+.e1:hover::before {
+    width: 72%; /* Adjust width for the desired line length */
+}
+
+.s1 {
+    background-color: #6AC2A5;
+    color: #D4D0CD;
+    font-size: 30px;
+    padding: 17px 70px 17px 70px;
+    border-radius: 32px;
+    border:none;
+}
+
+.s1::before{
+    content: "";
+    position: absolute;
+    margin-left: -40px;
+    border-radius: 32px;
+    height: 7px;
+    width: 0%;
+    background-color: #6AC2A5;
+    margin-top: 65px;
+    transition: all 0.3s;
+}
+.s1:hover::before {
+    width: 12%; /* Adjust width for the desired line length */
+}
+
+.h1 {
+    background-color: #7E9C92;
+    color: #D4D0CD;
+    font-size: 30px;
+    padding: 17px 70px 17px 70px;
+    border-radius: 32px;
+    border:none;
+}
+
+.h1::before{
+    content: "";
+    position: absolute;
+    margin-left: -40px;
+    border-radius: 32px;
+    height: 7px;
+    width: 0%;
+    background-color: #7E9C92;
+    margin-top: 65px;
+    transition: all 0.3s;
+}
+.h1:hover::before {
+    width: 11.5%; /* Adjust width for the desired line length */
+}
+
+.content-div {
+    display: none; /* Initially hide all divs */
+    margin-top: 20px;
+}
+
+#anncts {
+    background-color: #9C905E;
+    height: 400px;
+    width: 800px;
+    margin-left: 390px;
+    margin-top: 70px;
+    border-radius: 15px;
+}
+
+#anncts2 {
+    background-color: #9C905E;
+    height: 400px;
+    width: 800px;
+    margin-left: 390px;
+    margin-top: 70px;
+    border-radius: 15px;
+}
+
+#evnts {
+    background-color: #64551A;
+    height: 400px;
+    width: 800px;
+    margin-left: 390px;
+    margin-top: 70px;
+    border-radius: 15px;
+}
+
+#evnts2 {
+    background-color: #64551A;
+    height: 400px;
+    width: 800px;
+    margin-left: 390px;
+    margin-top: 70px;
+    border-radius: 15px;
+}
+
+
