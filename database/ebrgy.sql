@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2024 at 04:33 AM
+-- Generation Time: Nov 04, 2024 at 09:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -73,7 +73,9 @@ CREATE TABLE `registereduser_ebrg` (
 --
 
 INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`) VALUES
-(17, 'make', 'ekam', '1990-12-12', 'male', 'make', 'likyfili@teleg.eu', 'likyfili@teleg.eu', '3VE0P9UC6B', '2024-11-04 11:31:28');
+(17, 'make', 'ekam', '1990-12-12', 'male', 'make', 'likyfili@teleg.eu', 'likyfili@teleg.eu', '3VE0P9UC6B', '2024-11-04 11:31:28'),
+(18, 'Perez', 'WesleyJoshua, Heramis', '2004-03-18', 'male', 'Wesley', 'perezwesley17@gmail.com', 'Wesley', '1Q80HCUIZ7', '2024-11-04 15:56:37'),
+(19, 'Wilfredo M.', 'Perez Jr', '2024-11-04', 'male', 'Wilfredo', 'wesleyjoshuaperez@gmail.com', 'Wilfredo', '1A25SIWL4F', '2024-11-04 16:01:39');
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,7 @@ ALTER TABLE `brgy_event`
 -- AUTO_INCREMENT for table `registereduser_ebrg`
 --
 ALTER TABLE `registereduser_ebrg`
-  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
