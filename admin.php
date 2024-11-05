@@ -46,7 +46,7 @@
             <h3>Admin <br> istrator <br> page</h3>
             <a href="#locktitle" class="navigate"><button class="create"><strong>create</strong></button></a>
             <div class="separator"></div>
-            <a href="#content1" class="navigate"><button class="manage"><strong>manage</strong></button></a>
+            <a href="#contentContainer" class="navigate"><button class="manage"><strong>manage</strong></button></a>
         </div>
         
         <!-- Form for submitting announcements and events -->

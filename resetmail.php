@@ -100,7 +100,7 @@ try {
         $mail->send();
         $alertTitle = 'Email sending successful!';
         $alertText = 'Message has been sent, check your email';
-        $redirectUrl = 'https://mail.google.com/';
+        $redirectUrl = 'https://mail.google.com';
 
     } else {
         $alertTitle = 'Email Gather Failed!';
