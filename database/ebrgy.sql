@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2024 at 09:02 AM
+-- Generation Time: Nov 05, 2024 at 04:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,10 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `brgy_announcement` (
   `announcement_id` int(11) NOT NULL,
   `admin_id` int(11) DEFAULT NULL,
-  `announcement_title` varchar(30) NOT NULL,
+  `announcement_title` varchar(100) NOT NULL,
   `announcement_img` varchar(50) NOT NULL,
-  `announcement_content` varchar(100) NOT NULL
+  `announcement_content` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `brgy_announcement`
+--
+
+INSERT INTO `brgy_announcement` (`announcement_id`, `admin_id`, `announcement_title`, `announcement_img`, `announcement_content`) VALUES
+(5, NULL, 'Heads up! Sewage segregation', '1730776542_Screenshot 2024-11-05 110638.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu');
 
 -- --------------------------------------------------------
 
@@ -44,10 +51,18 @@ CREATE TABLE `brgy_announcement` (
 CREATE TABLE `brgy_event` (
   `brgyevent_id` int(11) NOT NULL,
   `admin_id` int(11) DEFAULT NULL,
-  `brgyevent_title` varchar(20) NOT NULL,
+  `brgyevent_title` varchar(100) NOT NULL,
   `brgy_img` varchar(100) NOT NULL,
-  `bgry_content` varchar(50) NOT NULL
+  `bgry_content` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `brgy_event`
+--
+
+INSERT INTO `brgy_event` (`brgyevent_id`, `admin_id`, `brgyevent_title`, `brgy_img`, `bgry_content`) VALUES
+(1, NULL, 'New look for the barangay hall', 'Screenshot 2024-11-05 110750.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu'),
+(2, NULL, 'Father visited the barangay hall', 'Screenshot 2024-11-05 110805.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu');
 
 -- --------------------------------------------------------
 
@@ -75,7 +90,8 @@ CREATE TABLE `registereduser_ebrg` (
 INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`) VALUES
 (17, 'make', 'ekam', '1990-12-12', 'male', 'make', 'likyfili@teleg.eu', 'likyfili@teleg.eu', '3VE0P9UC6B', '2024-11-04 11:31:28'),
 (18, 'Perez', 'WesleyJoshua, Heramis', '2004-03-18', 'male', 'Wesley', 'perezwesley17@gmail.com', 'Wesley', '1Q80HCUIZ7', '2024-11-04 15:56:37'),
-(19, 'Wilfredo M.', 'Perez Jr', '2024-11-04', 'male', 'Wilfredo', 'wesleyjoshuaperez@gmail.com', 'Wilfredo', '1A25SIWL4F', '2024-11-04 16:01:39');
+(19, 'Wilfredo M.', 'Perez Jr', '2024-11-04', 'male', 'Wilfredo', 'wesleyjoshuaperez@gmail.com', 'Wilfredo', '1A25SIWL4F', '2024-11-04 16:01:39'),
+(20, 'Troy', 'Mendoza', '2004-09-09', 'male', 'troymendoza9', 'troymendoza099@gmail.com', 'billiejoe', '2Z1BG4ORTC', '2024-11-05 10:54:14');
 
 -- --------------------------------------------------------
 
@@ -127,19 +143,19 @@ ALTER TABLE `registereduser_ebrg`
 -- AUTO_INCREMENT for table `brgy_announcement`
 --
 ALTER TABLE `brgy_announcement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `brgy_event`
 --
 ALTER TABLE `brgy_event`
-  MODIFY `brgyevent_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `brgyevent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `registereduser_ebrg`
 --
 ALTER TABLE `registereduser_ebrg`
-  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
