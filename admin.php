@@ -44,14 +44,17 @@
     <div class="stickycontainer" id="locktitle">
         <div class="locktitle">
             <h3>Admin <br> istrator <br> page</h3>
-            <a href="#locktitle" class="navigate"><button class="create"><strong>create</strong></button></a>
-            <div class="separator"></div>
-            <a href="#contentContainer" class="navigate"><button class="manage"><strong>manage</strong></button></a>
+            <div class="btns">
+                <a href="#updates" class="navigate"> <button id="createbtn" class="create"onclick="showDiv('updateForm')">create</button></a>
+                <a href="#anounce&event_cont" class="navigate"><button id="mangebtn" class="manage"onclick="showDiv('anounce&event_cont')">manage</button></a>
+                 <button id="services" class="services">services</button>           
+            </div>
         </div>
         
         <!-- Form for submitting announcements and events -->
-        <form id="updateForm" enctype="multipart/form-data">
-            <div class="input-file">
+        <form id="updateForm" class="content-div"  enctype="multipart/form-data">
+          
+           <div class="input-file">
                 <div class="select-bg">
                     <input type="file" id="image" name="image" required>
                     <label for="image" class="select" id="fileLabel">
@@ -79,7 +82,7 @@
             <button class="publish" type="submit"><strong>Publish</strong></button>
         </form>
 
-        <div id="contentContainer">
+        <div id="anounce&event_cont" class="content-div" style="display: none;">
             <!-- Example structure for dynamically loaded announcements and events -->
             <div id="announcement_1" class="announcement">
                 <div class="fortitle">Announcement Title</div>
@@ -103,6 +106,7 @@
         <script src="hamburgermenu.js"></script>
         <!-- for alerts -->
         <script src="sweetalert.js"></script>
+        <script src="AESH.js"></script>
 
         <script>
             function updateLabelText() {
@@ -148,7 +152,7 @@
                 fetch('load_content.php')
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('contentContainer').innerHTML = data;
+                    document.getElementById('anounce&event_cont').innerHTML = data;
                 })
                 .catch(error => console.error('Error loading content:', error));
             }

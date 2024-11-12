@@ -10,10 +10,11 @@ body {
     background-attachment: fixed;
     font-family: "Ysabeau Office", sans-serif;
     scroll-behavior: smooth; /* Enables smooth scrolling */
+   
 }
  
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -28,13 +29,13 @@ header {
 
 .stickycontainer {
     height:  100fr;  /*use for the height is scrolling function*/
-    padding-top: 10px; /* Space for the fixed header */
+    top: 90px; /* Space for the fixed header */
 }
 .locktitle {
     position: sticky; /* Keeps the locktitle fixed while scrolling */
     top: 90px; /* Adjust this based on header height */
+    left: 0; 
     width: 500px;
-    z-index: 1; /* Make sure it appears above other content */
 }
 .navigate {
     text-decoration: none; /* Remove underline from links */
@@ -213,7 +214,7 @@ header .nav_logo {
     
     }
     
-    .create, .manage, .separator {
+    .create, .manage, .services {
         background-color: #2F393B;
         width: 180px;
         color: white;
@@ -228,19 +229,22 @@ header .nav_logo {
         border: none;
         cursor: pointer;
     }
-    
-    .create {
+    .create::before, .manage::before, .services::before{
+        content: "";
+        position: absolute;
+        margin-left: -40px;
+        border-radius: 32px;
+        height: 7px;
+        width: 0%;
+        background-color: #2F393B;
+        margin-top: 40px;
+        transition: all 0.3s;
+    }
+    .create:hover::before, .manage:hover::before, .services:hover::before {
+        width: 28%; /* Adjust width for the desired line length */
+    }
+    .create, .manage {
         margin-bottom: 15px; /* Space between buttons */
-    }
-    
-    .separator {
-        width: 200px;
-        margin-left: 105px;
-        margin-top: -10px;
-    }
-    
-    .manage {
-        margin-top: 20px; /* Space between buttons */
     }
     
     .input-file {
@@ -424,14 +428,13 @@ header .nav_logo {
     .content1 {
         background-color: #9C905E;
         margin-left: 670px;
-        margin-top: 100px;
+        top: 90px;
         height: 400px;
         width: 750px;
         border-radius: 10px;
         position: relative;
     }
-          
-   
+    
     .brgy_updates {
         background-color: #CCAE0E;
         font-family: "Ysabeau Office", sans-serif;
@@ -452,8 +455,6 @@ header .nav_logo {
         position: absolute;
         top: 60px;
         left: 310px;
-        
-
     }
      .cp1 {
         font-family: "Ysabeau Office", sans-serif;
@@ -471,24 +472,11 @@ header .nav_logo {
         margin-top: 20px;
         margin-left: 30px;
     }  
-    .save {
-        background-color: #2F393B;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        color: white;
-        border: none;
-        left: 670px;
-        position: absolute;
-        top: 22px;
-        cursor: pointer;
-    }
-
     .editbuttons{
     display: flex;
     justify-content: space-between;
     margin-left: 770px; /* Aligns with .content1 */
-    margin-top: 20px; /* Adds space below .content1 */
+    margin-top: 95px; /* Adds space below .content1 */
     width: 500px;
     border-radius: 10px; 
     }  
