@@ -22,8 +22,10 @@
     <!--Container for the login -->
     <div class="container_1">
       <!--use for login-->
-      <input type="text" placeholder="Username" id="username" name="username" required>
-      <input type="password" placeholder="Password" id="password" name="password"  required>
+      <label for="username">Username</label>
+      <input type="text" placeholder="Enter your username" id="username" name="username" required>
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter your password" id="password" name="password"  required>
       <a href="maindashboard.html">
        <button type="submit" name="login" id="bt1">Login</button>
      </a>

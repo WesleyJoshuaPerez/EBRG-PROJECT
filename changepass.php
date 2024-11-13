@@ -39,7 +39,7 @@ if (isset($_GET['code'])) {
         die('Could not connect to the database');
     }
 
-    $verifyQuery = $conn->prepare("SELECT * FROM registereduser_ebrg WHERE code = ? AND (updated_time IS NULL OR updated_time >= NOW() - INTERVAL 1 DAY)");
+    $verifyQuery = $conn->prepare("SELECT * FROM resetpass_request WHERE reset_token = ? AND (request_date IS NULL OR request_date >= NOW() - INTERVAL 1 DAY)");
     $verifyQuery->bind_param("s", $code);
     $verifyQuery->execute();
     $result = $verifyQuery->get_result();

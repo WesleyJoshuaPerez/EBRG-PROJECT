@@ -24,12 +24,12 @@ body {
 @media only screen and (min-width: 1024px){
 
     .title {
+        margin-top: 10px;
         max-width: 480px; /* Constrains the content within the div */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-top: 10px;
     }
     
     h3 {
@@ -40,9 +40,9 @@ body {
     }
     
     .container1 {
-        height: 450px;
+        height: 500px;
         width: 100%;
-        max-width: 380px;
+        max-width: 480px;
         background-color: #2F393B;
         border-radius: 10px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
@@ -55,26 +55,48 @@ body {
         
     }
     
-    .input-row {
-        display: flex; /* Use flexbox to align items in a row */
-        justify-content: space-between; /* Space them evenly */
-        width: 100%; /* Full width of the parent container */
+    .one_row-con {
+        display: flex; /* Ensures items are placed in a row */
+        justify-content: space-between; /* Adjusts the spacing between label-input pairs */
+        gap: 15px; /* Adds spacing between the elements */
+        width: 100%; /* Ensures the row takes the full available width */
+    }
+    
+    .fistnamelb, .lastnamelb {
+        display: flex; /* Ensures items are placed in a row */
+        justify-content: center; /* Centers the label text horizontally */
+        align-items: center; /* Ensures the label text is vertically centered */
+        height: 40px; /* Increase height to ensure the label text fits */
+        flex: 1; /* Distribute space evenly between labels */
+        margin-top: 5px; /* Space from the top */
+        font-weight: bold;  
+        font-size: 19px;
+        color: #e1ddda;
+        text-align: center;
+        margin-bottom: 0; 
     }
     
     .input_field1, .input_field2 {
         height: 40px;
         flex: 1;
-        margin-top: 10px; /* Space from the top */
         border-radius: 10px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
         box-sizing: border-box;
         font-weight: bold;
-       
     }
     
-    .birthday {
+    label {
         font-size: 19px;
+        color: #e1ddda;
+        text-align: center;
+        font-weight: bold;
+        display: block; /* Ensures labels are on their own line above each input */
+        margin-bottom: 5px; /* Adds space between the label and input */
+    }  
+    
+    .birthday {
+        font-size: 16px;
         color: #e1ddda;
         margin-top: 15px;
         font-weight: bold;
@@ -92,92 +114,52 @@ body {
         font-weight: bold;
     }
     
-    .gender {
+    .sex {
         font-size: 19px;
+        margin-top: 10px;
         color: #e1ddda;
-        margin-left: -300px;
-        margin-top: 15px;
+        text-align: center; /* Center-align text within the element */
         font-weight: bold;
+        margin-bottom: 5px; /* Reduce space below gender title */
     }
     
-    .gender1 {
-        font-size: 20px;
+    .gender-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 300px; /* Adjust width as needed */
+        margin: 0 auto; /* Center the container */
+        gap: 2px; /* Optional: Adjust spacing between options */
+        margin-top: -5px; /* Use negative margin to bring it closer to .gender */
+    }
+    
+    .gender1, .gender2, .gender3 {
+        font-size: 15px;
         color: gray;
         background-color: #e1ddda;
-        padding: 5px 18px 5px 18px;
+        padding: 5px 18px;
         border-radius: 10px;
-        margin-left: -245px;
-        margin-top: -40px;
         cursor: pointer;
         font-weight: bold;
+        text-align: center;
+        flex: 1; /* Each label takes equal space */
+        margin: 0; /* Remove margin to control spacing */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-    .gender2 {
-        font-size: 20px;
-        color: gray;
-        background-color: #e1ddda;
-        padding: 5px 18px 5px 18px;
-        border-radius: 10px;
-        margin-left: -8px;
-        margin-top: -37.5px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    
-    .gender3 {
-        font-size: 20px;
-        color: gray;
-        background-color: #e1ddda;
-        padding: 5px 18px 5px 18px;
-        border-radius: 10px;
-        margin-left: 240px;
-        margin-top: -37px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    
-    .input_field3 {
-        height: 30px;
-        margin-top: 20px;
-        margin-left: 2px;
-        border-radius: 10px;        
-        border: 1px solid #ccc;     
-        background-color: #e1ddda;
-        width: 365px;  
-        font-weight: bold;
-    }
-    
-    .input_field4 {
-        height: 30px;
-        margin-top: 10px;
-        margin-left: 2px;
-        border-radius: 10px;        
-        border: 1px solid #ccc;     
-        background-color: #e1ddda;
-        width: 365px;  
-        font-weight: bold;
-    }
-    
-    .input_field5 {
-        height: 30px;
-        margin-top: 10px;
-        margin-left: 2px;
-        border-radius: 10px;        
-        border: 1px solid #ccc;     
-        background-color: #e1ddda;
-        width: 365px;  
-        font-weight: bold;
-    }
-    .input_field6 {
-        height: 30px;
-        margin-top: 10px;
-        margin-left: 2px;
-        border-radius: 10px;        
-        border: 1px solid #ccc;     
-        background-color: #e1ddda;
-        width: 365px;  
-        font-weight: bold;
-    }
+     
+       
+   /* Combined styles for all input fields */
+.input_field3, .input_field4, .input_field5, .input_field6 {
+    height: 40px;
+    margin-left: 2px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #e1ddda;
+    width: 365px;
+    font-weight: bold;
+}
+
     p {
         font-size: 14px;
         color: #e1ddda;
@@ -221,7 +203,7 @@ body {
     
     .container1 {
         height: 410px;
-        width: 270px;
+        width: 280px;
         background-color: #2F393B;
         border-radius: 15px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
@@ -232,36 +214,55 @@ body {
         justify-content: center;
         align-items: center;
     }
+    .one_row-con {
+        display: flex; /* Ensures items are placed in a row */
+        justify-content: space-between; /* Adjusts the spacing between label-input pairs */
+        width: 100%; /* Ensures the row takes the full available width */
+        gap: 2px;
+    }
     
-    .input-row {
-        display: flex; /* Use flexbox to align items in a row */
-        justify-content: space-between; /* Space them evenly */
-        width: 100%; /* Full width of the parent container */
+    .fistnamelb, .lastnamelb {
+        display: flex; /* Ensures items are placed in a row */
+        justify-content: center; /* Centers the label text horizontally */
+        align-items: center; /* Ensures the label text is vertically centered */
+        height: 35px; /* Increase height to ensure the label text fits */
+        width: 100%;
+        max-width: 300px;
+        flex: 1; /* Distribute space evenly between labels */
+        margin-top: 5px; /* Space from the top */
+        font-weight: bold;  
+        font-size:14px;
+        color: #e1ddda;
+        text-align: center;
+        margin-bottom: 0; 
     }
     
     .input_field1, .input_field2 {
-        height: 35px;
+        height: 40px;
         width: 100%;
-        max-width: 110px;
+        max-width: 300px;
         flex: 1;
-        margin-top: 10px; /* Space from the top */
         border-radius: 10px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
         box-sizing: border-box;
         font-weight: bold;
-       
     }
-    
     .birthday {
         font-size: 14px;
         color: #e1ddda;
         margin-top: 13px;
         font-weight: bold;
     }
-    
-    .bday {
+    label {
         font-size: 12px;
+        color: #e1ddda;
+        text-align: center;
+        font-weight: bold;
+        display: block; /* Ensures labels are on their own line above each input */
+        margin-bottom: 5px; /* Adds space between the label and input */
+    }
+    .bday {
         height: 45px;
         width: 170px;
         margin-top: -30px;
@@ -272,71 +273,49 @@ body {
         font-weight: bold;
     }
     
-    .gender {
-        font-size: 14px;
+    .sex {
+        font-size: 12px;
+        margin-top: 10px;
         color: #e1ddda;
-        margin-top: 15px;
-        padding-bottom: 20px;
-    }
-     
-
-    /*use to adjust the width of the checkboxes*/
-    .gender1,.gender2,.gender3{
-     width: 57px;
-     height: 65px;
-     font-weight: bold;
-    }
-    
-    .gender1 {
-        font-size: 10px;
-        color: gray;
-        background-color: #e1ddda;
-        padding: 5px 8px 5px 5px;
-        border-radius: 10px;
-        margin-right: 150px;
-        margin-top: -47px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        
-    }
-    
-    .gender2 {
-        font-size: 10px;
-        color: gray;
-        background-color: #e1ddda;
-        padding: 5px 8px 5px 5px;
-        border-radius: 10px;
-        margin-left: 15px;
-        margin-top: -54px;
-        margin-bottom: 10px; 
-        cursor: pointer;
-    }
-    
-    .gender3 {
-        font-size: 10px;
-        color: gray;
-        background-color: #e1ddda;
-        padding: 5px 5px 5px 5px;
-        border-radius: 10px;
-        margin-left: 170px;
-        margin-top: -52px;
-        margin-bottom: 10px;
-        cursor: pointer;
-    }
-    .input_field3{
-        margin-top: 30px;
-    }
-    .input_field3, .input_field4, .input_field5 , .input_field6{
-        width: 100%;
-        height: 45px;
-        margin-top: 15px;
-        border-radius: 10px;        
-        border: 1px solid #ccc;     
-        background-color: #e1ddda;
-        width: 210px; 
+        text-align: center; /* Center-align text within the element */
         font-weight: bold;
+        margin-bottom: 5px; /* Reduce space below gender title */
     }
-      
+    
+    .gender-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 300px; /* Adjust width as needed */
+        margin: 0 auto; /* Center the container */
+        gap: 2px; /* Optional: Adjust spacing between options */
+        margin-top: -5px; /* Use negative margin to bring it closer to .gender */
+    }
+    
+    .gender1, .gender2, .gender3 {
+        font-size: 10px;
+        color: gray;
+        background-color: #e1ddda;
+        padding: 5px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: center;
+        flex: 1; /* Each label takes equal space */
+        margin: 0; /* Remove margin to control spacing */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+       /* Combined styles for all input fields */
+.input_field3, .input_field4, .input_field5, .input_field6 {
+    height: 45px;
+    margin-left: 2px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #e1ddda;
+    width: 210px;
+    font-weight: bold;
+} 
     
     p {
         font-size: 10px;

@@ -51,6 +51,7 @@ body {
         width: 500px;
         height: 350px;
     }
+  
     .container_1 {
         height: 350px;
         width: 550px;
@@ -66,6 +67,13 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center; 
+    }
+    label {
+        color: #e1ddda;
+        text-align: center;
+        font-weight: bold;
+        display: block; /* Ensures labels are on their own line above each input */
+        margin-bottom: 5px; /* Adds space between the label and input */
     }
     .container_1 a{
         width: 80%;  
@@ -173,7 +181,14 @@ body {
         padding: 20px;
         /*size of the container*/
         width: 250px;
-        height: 200px;
+        height: 270px;
+    }
+    label {
+        color: #e1ddda;
+        text-align: center;
+        font-weight: bold;
+        display: block; /* Ensures labels are on their own line above each input */
+        margin-bottom: 5px; /* Adds space between the label and input */
     }
     .container_1 a{
         width: 80%; 
