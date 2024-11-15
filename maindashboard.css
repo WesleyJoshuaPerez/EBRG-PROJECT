@@ -163,11 +163,6 @@ footer {
     flex-direction: column; 
 }
 
-.footer_center img {
-    width: 90px;  
-    height: auto;  
-    margin-bottom: 0; /* Space between logo and text */
-}
 .footer_center p{
     margin: 0;
 }
@@ -355,69 +350,10 @@ header .search_bar{
     margin-top: 20px;
 }
 
-#anncts {
-    display: flex;
-    height: 400px;
-    width: 800px; 
-    background-color: #9C905E; 
-    border-radius: 15px;
-    margin: auto; 
-    margin-top: 70px;
-}
-
-.img {
-    height: 350px;
-    width: 300px;
-    margin-left: 30px;
-    margin-top: 25px;
-}
-
-.A1 {
-    color: white;
-    margin-left: 30px;
-    font-size: 40px;
-    margin-bottom: 50px;
-}
-
-p {
-    font-size: 20px;
-    color: white;
-    position: relative;
-    margin-right: 20px;
-    margin-left: -130px;
-}
-
-#anncts2 {
-    background-color: #9C905E;
-    height: 400px;
-    width: 800px;
-    margin-left: 390px;
-    margin-top: 70px;
-    border-radius: 15px;
-}
-
-#evnts {
-    background-color: #64551A;
-    height: 400px;
-    width: 800px;
-    margin-left: 390px;
-    margin-top: 70px;
-    border-radius: 15px;
-}
-
-#evnts2 {
-    background-color: #64551A;
-    height: 400px;
-    width: 800px;
-    margin-left: 390px;
-    margin-top: 70px;
-    border-radius: 15px;
-}
-
 #serv {
     background-color: #6AC2A5;
-    height: 400px;
-    width: 800px;
+    height: 460px;
+    width: 840px;
     margin-left: 390px;
     margin-top: 70px;
     border-radius: 15px;
@@ -431,77 +367,1135 @@ p {
     top: 20px; /* Adjust this value to move it downward */
 }
 
-#dropdown {
-    background-color: #d8d6d2; /* Match the color of the input */
-    color: #9b9089; /* Text color */
-    padding: 10px 40px 10px 15px; /* Padding to match the image */
-    border-radius: 15px; /* Rounded corners */
-    width: 740px; /* Set width */
-    font-size: 23px;
-    font-family: inherit; /* Match the font family */
-    cursor: pointer;
+#daycare_container2 {
+    background-color: #6AC2A5;
+    height: 340px;
+    width: 840px;
     position: relative;
-    margin-left: 20px;
+    right: 0px;
+    bottom: 30px;
+    border-radius: 15px;
 }
+
+/* START OF DROPDOWN */
+.custom-dropdown {
+    width: 600px;
+    background-color: #D4D0CD;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.selected-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #A69D96;
+    font-size: 23px;
+    font-weight: bold;
+
+}
+
+.dropdown-icon {
+    font-size: 12px;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 5px;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Set a higher z-index to bring it on top of other elements */
+}
+
+.dropdown-option {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: #e0e0e0;
+}
+
+/* Submenu styling */
+.certificates-option {
+    position: relative;
+}
+
+.submenu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 270px;
+}
+
+.submenu-option {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.submenu-option:hover {
+    background-color: #e0e0e0;
+}
+
+/* Show the submenu on hover */
+.certificates-option:hover .submenu {
+    display: block;
+}
+
+/* END OF DROPDOWN */
 
 .detail {
     color: white;
     font-size: 27px;
     margin-left: 27px;
     position: relative;
-    bottom: 10px;
+    bottom: 20px;
 }
 
-.lastname {
-    background-color: #d8d6d2; /* Match the color of the input */
-    color: #9b9089; /* Text color */
-    padding: 10px 130px 10px 15px; /* Padding to match the image */
-    border-radius: 12px; /* Rounded corners */
-    font-family: inherit; /* Match the font family */
-    border: none;
-    font-size: 23px;
-    margin-left: 20px;
+.detail2 {
+    color: white;
+    font-size: 27px;
+    margin-left: 27px;
     position: relative;
-    bottom: 40px;
+    top: 40px;
 }
 
 .firstname {
     background-color: #d8d6d2; /* Match the color of the input */
     color: #9b9089; /* Text color */
-    padding: 10px 70px 10px 15px; /* Padding to match the image */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
     border-radius: 12px; /* Rounded corners */
     font-family: inherit; /* Match the font family */
     border: none;
     font-size: 23px;
-    margin-left: 445px;
+    left: 30px;
     position: relative;
-    bottom: 93px;
+    bottom: 43px;
 }
 
-.age {
+.middlename {
     background-color: #d8d6d2; /* Match the color of the input */
     color: #9b9089; /* Text color */
-    padding: 10px 5px 10px 15px; /* Padding to match the image */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
     border-radius: 12px; /* Rounded corners */
     font-family: inherit; /* Match the font family */
     border: none;
     font-size: 23px;
-    margin-left: 20px;
+    left: 30px;
     position: relative;
-    bottom: 85px;
+    bottom: 43px;
+}
+
+.lastname {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 30px;
+    position: relative;
+    bottom: 43px;
+}
+
+.firstname2 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 30px;
+    position: relative;
+    top: 30px;
+}
+
+.middlename2 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 30px;
+    position: relative;
+    top: 30px;
+}
+
+.lastname2 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 30px;
+    position: relative;
+    top: 30px;
+}
+
+#age {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 100px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 30px;
+    left: 30px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+#age2 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 100px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 30px;
+    left: 30px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+#age3 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 100px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    top: 40px;
+    left: 30px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+.address {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 240px;
+    position: relative;
+    bottom: 28px;
+    width: 325px;
+}
+
+.address1 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 460px;
+    position: relative;
+    bottom: 29px;
+    width: 325px;
+}
+
+.address2 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 485px;
+    position: relative;
+    bottom: 80px;
+    width: 300px;
+}
+
+.address3 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 30px;
+    position: relative;
+    bottom: 110px;
+    width: 750px;
+}
+
+.business_name {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 200px;
+    position: relative;
+    bottom: 80px;
+    width: 300px;
+}
+
+.employer {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 240px;
+    position: relative;
+    bottom: 80px;
+    width: 543px;
+}
+
+.employer2 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 240px;
+    position: relative;
+    bottom: 80px;
+    width:330px;
+}
+
+.contact_num {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 340px;
+    position: relative;
+    bottom: 57px;
+}
+
+.absence_date {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 160px;
+    height: 40px;
+    margin-left: 185px;
+    position: relative;
+    bottom: 70px;
+    border-radius: 12px;
+    font-size: 21px;
+    border: none;
+}
+
+.absence_label {
+    color: white;
+    font-size: 23px;
+    right: 320px;
+    position: relative;
+    bottom: 20px;
+}
+
+#duration {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 100px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 70px;
+    left: 1px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+.reason {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    padding: 10px 10px 10px 15px; /* Padding to match the image */
+    border-radius: 12px; /* Rounded corners */
+    font-family: inherit; /* Match the font family */
+    border: none;
+    font-size: 23px;
+    left: 1px;
+    position: relative;
+    bottom: 70px;
+    width: 310px;
+}
+
+#years_of_occupancy {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 190px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 30px;
+    left: 30px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+#years_of_occupancy1 {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 200px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 130px;
+    left: 370px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+
+#years_of_separation {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 190px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 80px;
+    left: 237px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+#number_of_children {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 146px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 80px;
+    left: 237px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+#measurement {
+    background-color: #d8d6d2; /* Match the color of the input */
+    color: #9b9089; /* Text color */
+    width: 155px; /* Adjust width as needed */
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 80px;
+    left: 320px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 18px;
+    border: none;
+}
+
+.measurement_label {
+    font-family: inherit; /* Match the font family */
+    color: white;
+    font-size: 20px;
+    position: relative;
+    left: 320px;
+    bottom: 80px;
+}
+
+.select-bg {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 200px;
+    height: 50px;
+    margin-left: 160px;
+    position: relative;
+    bottom: 80px;
+    border-radius: 12px;
+}
+
+.select-bg2 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 200px;
+    height: 50px;
+    margin-left: 250px;
+    position: relative;
+    bottom: 80px;
+    border-radius: 12px;
+}
+
+.select-bg3 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 200px;
+    height: 50px;
+    margin-left: 33px;
+    position: relative;
+    bottom: 30px;
+    border-radius: 12px;
+}
+
+.select-bg4 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 160px;
+    height: 50px;
+    margin-left: 33px;
+    position: relative;
+    bottom: 30px;
+    border-radius: 12px;
+}
+
+.select-bg5 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 275px;
+    height: 50px;
+    margin-left: 200px;
+    position: relative;
+    bottom: 130px;
+    border-radius: 12px;
+}
+
+.select-bg6 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 275px;
+    height: 50px;
+    margin-left: 30px;
+    position: relative;
+    bottom: 30px;
+    border-radius: 12px;
+}
+
+.select-bg7 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 350px;
+    height: 50px;
+    margin-left: 240px;
+    position: relative;
+    bottom: 80px;
+    border-radius: 12px;
+}
+
+.select-bg8 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 200px;
+    height: 50px;
+    margin-left: 240px;
+    position: relative;
+    bottom: 80px;
+    border-radius: 12px;
+}
+
+.select-bg9 {
+    background-color: #d8d6d2;
+    color: #9b9089;
+    width: 170px;
+    height: 50px;
+    margin-left: 160px;
+    position: relative;
+    bottom: 5px;
+    border-radius: 12px;
+}
+
+input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 1px; /* Keeps it minimal but still focusable */
+    height: 1px;
+    cursor: pointer;
 }
 
 .select {
-    background-color: #d8d6d2; /* Match the color of the input */
-    color: #9b9089; /* Text color */
-    padding: 10px 5px 10px 15px; /* Padding to match the image */
-    border-radius: 12px; /* Rounded corners */
+    font-size: 20px;
     font-family: inherit; /* Match the font family */
-    border: none;
-    font-size: 17px;
-    margin-left: 20px;
     position: relative;
-    bottom: 85px;
+    top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.lastname, .firstname, .age, .select {
+    z-index: 1; /* Lower z-index to ensure they stay behind the dropdown */
+}
+
+.type-dropdown {
+    width: 240px;
+    background-color: #d8d6d2; /* Background color to match your design */
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    margin-left: 370px;
+    bottom: 130px;
+    cursor: pointer;
+    color: #9b9089; /* Text color */
+    font-family: inherit;
+    font-size: 18px;
+}
+
+.selected-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-icon {
+    font-size: 12px;
+}
+
+.type-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #d8d6d2; /* Background color to match */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden initially */
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.type-option {
+    padding: 10px;
+    cursor: pointer;
+    color: #9b9089; /* Match text color */
+}
+
+.type-option:hover {
+    background-color: #e0e0e0; /* Lighten background on hover */
+    border-radius: 15px;
+}
+
+.type-dropdown2 {
+    width: 200px;
+    background-color: #d8d6d2; /* Background color to match your design */
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    margin-left: 590px;
+    bottom: 70px;
+    cursor: pointer;
+    color: #9b9089; /* Text color */
+    font-family: inherit;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-option2 {
+    flex: 1; /* Takes up available space to push the icon to the right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-type2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-icon2 {
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.type-options2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #d8d6d2; /* Background color to match */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden initially */
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.type-option2 {
+    padding: 10px;
+    cursor: pointer;
+    color: #9b9089; /* Match text color */
+}
+
+.type-option2:hover {
+    background-color: #e0e0e0; /* Lighten background on hover */
+    border-radius: 15px;
+}
+
+.type-dropdown3 {
+    width: 170px;
+    background-color: #d8d6d2; /* Background color to match your design */
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    margin-left: 620px;
+    bottom: 170px;
+    cursor: pointer;
+    color: #9b9089; /* Text color */
+    font-family: inherit;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-option3 {
+    flex: 1; /* Takes up available space to push the icon to the right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-type3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-icon3 {
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.type-options3 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #d8d6d2; /* Background color to match */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden initially */
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.type-option3 {
+    padding: 10px;
+    cursor: pointer;
+    color: #9b9089; /* Match text color */
+}
+
+.type-option3:hover {
+    background-color: #e0e0e0; /* Lighten background on hover */
+    border-radius: 15px;
+}
+
+.type-dropdown4 {
+    width: 260px;
+    background-color: #d8d6d2; /* Background color to match your design */
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    margin-left: 530px;
+    bottom: 127px;
+    cursor: pointer;
+    color: #9b9089; /* Text color */
+    font-family: inherit;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-option4 {
+    flex: 1; /* Takes up available space to push the icon to the right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-type4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-icon4 {
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.type-options4 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #d8d6d2; /* Background color to match */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden initially */
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.type-option4 {
+    padding: 10px;
+    cursor: pointer;
+    color: #9b9089; /* Match text color */
+}
+
+.type-option4:hover {
+    background-color: #e0e0e0; /* Lighten background on hover */
+    border-radius: 15px;
+}
+
+.type-dropdown5 {
+    width: 160px;
+    background-color: #d8d6d2; /* Background color to match your design */
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    margin-left: 450px;
+    bottom: 127px;
+    cursor: pointer;
+    color: #9b9089; /* Text color */
+    font-family: inherit;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-option5 {
+    flex: 1; /* Takes up available space to push the icon to the right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-type5 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-icon5 {
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.type-options5 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #d8d6d2; /* Background color to match */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden initially */
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.type-option5 {
+    padding: 10px;
+    cursor: pointer;
+    color: #9b9089; /* Match text color */
+}
+
+.type-option5:hover {
+    background-color: #e0e0e0; /* Lighten background on hover */
+    border-radius: 15px;
+}
+
+.myself-option {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 100px;
+    margin-left: 35px;
+    color: white;
+    cursor: pointer;
+}
+
+.myself-option2 {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 50px;
+    margin-left: 35px;
+    color: white;
+    cursor: pointer;
+}
+
+.myself-option3 {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 10px;
+    right: 540px;
+    color: white;
+    cursor: pointer;
+}
+
+.myself-option4 {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 90px;
+    margin-left: 35px;
+    color: white;
+    cursor: pointer;
+}
+
+.myself-option5 {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 50px;
+    right: 190px;
+    color: white;
+    cursor: pointer;
+}
+
+.myself-option6 {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    top: 10px;
+    right: 360px;
+    color: white;
+    cursor: pointer;
+}
+
+.myself-option7 {
+    font-size: 20px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    bottom: 80px;
+    margin-left: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.clear {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 40px;
+    margin-left: 367px;
+}
+
+.clear2 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    top: 10px;
+    margin-left: 367px;
+}
+
+.clear3 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    top: 10px;
+    margin-left: 570px;
+}
+
+.clear4 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 34px;
+    margin-left: 370px;
+}
+
+.clear5 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 38px;
+    margin-left: 570px;
+}
+
+.clear6 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 60px;
+    margin-left: 367px;
+}
+
+.clear7 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    top: 10px;
+    margin-left: 570px;
+}
+
+.clear8 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #FF3131;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 100px;
+    margin-left: 570px;
+}
+
+.submit {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 77px;
+    margin-left: 690px;
+}
+
+.submit2 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 27px;
+    margin-left: 690px;
+}
+
+.submit3 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 27px;
+    margin-left: 690px;
+}
+
+.submit4 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 70px;
+    margin-left: 690px;
+}
+
+.submit5 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 97px;
+    margin-left: 690px;
+}
+
+.submit6 {
+    cursor: pointer;
+    font-size: 19px;
+    font-family: inherit; /* Match the font family */
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+    bottom: 137px;
+    margin-left: 690px;
 }
 
 #hotl {
