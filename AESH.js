@@ -1,10 +1,13 @@
 function showDiv(divId) {
-    // Hide all content divs
-    const contentDivs = document.querySelectorAll('.content-div');
+    // Hide all content-div elements
+    const contentDivs = document.querySelectorAll('.content-div, .servicesdiv');
     contentDivs.forEach(div => {
         div.style.display = 'none';
     });
 
-    // Show the clicked div
-    document.getElementById(divId).style.display = 'block';
+    // Show the selected div
+    const selectedDiv = document.getElementById(divId);
+    if (selectedDiv) {
+        selectedDiv.style.display = 'block';
+    }
 }

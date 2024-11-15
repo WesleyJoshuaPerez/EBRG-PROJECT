@@ -291,7 +291,7 @@ header .nav_logo {
         height: 200px;
         border-radius: 10px;
         padding: 20px;
-        margin-left: 570px;
+        left: 570px;
         position: relative;
         margin-top: 40px;
         box-shadow: 0 9px 20px rgb(90, 90, 90);
@@ -358,7 +358,7 @@ header .nav_logo {
         height: 150px;
         border-radius: 10px;
         padding: 20px;
-        margin-left: 1050px;
+        left: 1050px;
         position: relative;
         margin-top: -470px;
         box-shadow: 0 9px 20px rgb(90, 90, 90);
@@ -387,7 +387,7 @@ header .nav_logo {
         height: 200px;
         border-radius: 10px;
         padding: 20px;
-        margin-left: 1050px;
+        left: 1050px;
         margin-top: 40px;
         position: relative;
         box-shadow: 0 9px 20px rgb(90, 90, 90);
@@ -434,7 +434,162 @@ header .nav_logo {
         border-radius: 10px;
         position: relative;
     }
+/* The parent div - servicesdiv */
+.servicesdiv {
+    margin-left: 670px;
+      margin-top: 40px;
+    height: 530px;
+    width: 750px;
+     position: relative; /* Make this relative so that child elements can be absolutely positioned inside it */
+}
+
+/* Positioning the servetype content inside the div */
+.servetype {
+    background-color: #6AC2A5;
+    height: 295px;
+    border-radius: 10px;
+    position: absolute;  /* Positioning relative to servicesdiv */
+    top: 20px;  
+    left: 20px;   
+    right: 20px;   
+}
+
+/* Title */
+.servetype h4 {
+    color: white;
+    padding-top: 25px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Details Section: using flex to align the details */
+.details {
+    padding-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;  /* Space between the elements */
+}
+
+
+/* Each <p> inside details section */
+.details p {
+    font-size: 16px;
+    margin: 5px 0; /* Add spacing between the elements */
+    font-weight: bold;
+    color:  #A69D96;
+}
+.typeofservice{
+    background-color: #D4D0CD;
+    border-radius: 5px;
+    height: 40px;
+    width: 97%;  
+}
+/* Specific styling for each p tag */
+.surname, .firstname {
+    background-color: #D4D0CD;
+    border-radius: 5px;
+    height: 40px;
+    width: 325px;
+}
+
+.age, .idpicture, .type {
+    background-color: #D4D0CD;
+    border-radius: 5px;
+    height: 40px;
+    width: 210px;
+}
+
+ 
+ 
+
+/* Notification Section */
+/* Notification Section */
+.notification {
+    margin-top: 80px;
+    background-color: #2F393B;
+    font-family: "Ysabeau Office", sans-serif;
+    border-radius: 10px;
+    height: 140px;
+    width: 60%;
+    position: absolute;  /* Absolute positioning inside servicesdiv */
+    bottom: 20px;  /* Positioned at the bottom */
+    left: 20px;  /* Adjust to align with the left side */
+    padding-bottom: 40px;  /* Ensure space for the button */
+}
+
+/* Heading Styling */
+.notification h4 {
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Textarea Styling */
+.txt4 {
+    border-color: #D4D0CD;
+    border-radius: 8px;
+    width: 400px;
+    height: 40px;  /* Set a fixed height for consistency */
+    margin-left: 20px;   
+    padding-left: 10px;   
+    box-sizing: border-box;  /* Ensures padding is included in width/height */
+    font-family: "Ysabeau Office", sans-serif;
+    font-size: 16px;
+    resize: none;
+    overflow-y: auto;
+    text-align: left;
+    line-height: 1.5;
+    word-wrap: break-word;  /* Ensures long words break and wrap to next line */
+}
+
+/* Send Button Styling */
+.sendnofit {
+    position: absolute;
+    bottom: 10px;  /* Push the button to the bottom of the container */
+    left: 320px;
+    background-color: #4CAF50;  /* Green background */
+    color: #2F393B;
+    border: none;
+    border-radius: 15px;
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Ysabeau Office", sans-serif;
+    font-weight: bold;
+}
+
+/* Delete Section */
+.delele {
+    position: absolute; /* Absolute positioning inside servicesdiv */
+    height: 140px;
+    width: 250px;   
+    bottom: 60px;  
+    left: 490px; 
     
+}
+.deletenotif{
+    position: absolute;
+    background-color: #FF3131;  /* Green background */
+    font-weight: bold;
+    color: #D4D0CD;
+    border: none;
+    border-radius: 15px;
+    width: 100%;
+    height: 60px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Ysabeau Office", sans-serif; 
+}
+
+
+
+
     .brgy_updates {
         background-color: #CCAE0E;
         font-family: "Ysabeau Office", sans-serif;

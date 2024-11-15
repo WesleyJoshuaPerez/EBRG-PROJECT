@@ -47,7 +47,7 @@
             <div class="btns">
                 <a href="#updates" class="navigate"> <button id="createbtn" class="create"onclick="showDiv('updateForm')">create</button></a>
                 <a href="#anounce&event_cont" class="navigate"><button id="mangebtn" class="manage"onclick="showDiv('anounce&event_cont')">manage</button></a>
-                 <button id="services" class="services">services</button>           
+                <a href="#notifanddelete" class="navigate"> <button id="services" class="services" onclick="showDiv('servicesdiv')">services</button> </a>          
             </div>
         </div>
         
@@ -81,7 +81,7 @@
             </div>
             <button class="publish" type="submit"><strong>Publish</strong></button>
         </form>
-
+         <!--for updating the events and announcement-->
         <div id="anounce&event_cont" class="content-div" style="display: none;">
             <!-- Example structure for dynamically loaded announcements and events -->
             <div id="announcement_1" class="announcement">
@@ -99,6 +99,35 @@
                 <button onclick="editPhoto(1)">Edit Photo</button>
             </div>
         </div>
+    
+        <div id="servicesdiv" class="servicesdiv"  style="display: none;">
+    <div class="servetype">
+        <h4>Types of Services:</h4>
+        <div class="details">
+        <p class="typeofservice">Certificate of Indegency</p>
+        </div>
+        <h4>Details:</h4> 
+        <div class="details">
+            <p class="surname">Gabriel</p>
+            <p class="firstname">Annalyn</p>
+        </div>
+        <div class="details">
+            <p class="age">24</p>
+            <p class="idpicture">picture</p>
+            <p class="type">Financial</p>
+        </div>
+    </div>
+    <div class="notification" id="notifanddelete">
+        <h4>Write a notification:</h4>
+        <textarea class="txt4" name="notification" placeholder="Write here" required></textarea>
+        <button class="sendnofit">Send</button>
+    </div>
+    <div class="delele" id="notifanddelete">
+        <button class="deletenotif">Delete</button>
+    </div>
+</div>
+
+
 
         <!-- for darkmode feature -->
         <script src="darkmode.js"></script>
