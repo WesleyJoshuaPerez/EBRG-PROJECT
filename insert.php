@@ -61,19 +61,27 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         // Insert data into the database for first time job seeker
         $sql = "INSERT INTO jobseek_cert (first_name, middle_name, last_name, id_pic, employer, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name','$id_pic', '$employer', '$apply_myself')"; 
+    
+    } else if (isset($_POST['years_of_separation']) && isset($_POST['num_children']) && isset($_POST['source_income']) && isset($_POST['monthly_income'])) {
+        // Certificate of Solo Parent fields
+        $years_of_separation = $_POST['years_of_separation'];
+        $num_children = $_POST['num_children'];
+        $source_income = $_POST['source_income'];
+        $monthly_income = $_POST['monthly_income'];
+    
+        // Insert data into the database for solo parent 
+        $sql = "INSERT INTO soloparent_cert (first_name, middle_name, last_name, id_pic, years_of_separation, num_children, monthly_income, source_income, apply_myself)
+                VALUES ('$first_name', '$middle_name', '$last_name','$id_pic', '$years_of_separation', '$num_children', '$monthly_income', '$source_income', '$apply_myself')"; 
     } else {
-        // Insert data into the database for indigency certificate with default values if assistance_type or age are not set
-        $sql = "INSERT INTO indigency_cert (first_name, middle_name, last_name, age, id_pic, assistance_type, apply_myself)
-                VALUES ('$first_name', '$middle_name', '$last_name', NULL, '$id_pic', NULL, '$apply_myself')";
+        // else handler here
+        echo "No matching condition found for the provided data.";
+        $sql = null; // Set $sql to null to avoid executing an undefined query
     }
     
-    
- 
-
-    // Execute the query
-    if ($conn->query($sql) === TRUE) {
+    // Execute the query if $sql is set
+    if ($sql !== null && $conn->query($sql) === TRUE) {
         echo "Record added successfully";
-    } else {
+    } elseif ($sql !== null) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 

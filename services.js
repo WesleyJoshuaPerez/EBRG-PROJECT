@@ -81,6 +81,31 @@ function selectTypeOption5(optionText) {
     document.getElementById("type-options5").style.display = "none";
 }
 
+// for source and monthly income
+
+function selectTypeOption2(optionText) {
+    document.querySelector(".selected-option2").innerHTML = `${optionText} <span class="type-icon2">&#9662;</span>`;
+    document.getElementById("source_income").value = optionText;
+    document.getElementById("type-options2").style.display = "none";
+}
+
+function selectTypeOption3(optionText) {
+    document.querySelector(".selected-option3").innerHTML = `${optionText} <span class="type-icon3">&#9662;</span>`;
+    document.getElementById("monthly_income").value = optionText;
+    document.getElementById("type-options3").style.display = "none";
+}
+
+function toggleTypeDropdown2() {
+    const typeOptions2 = document.getElementById("type-options2");
+    typeOptions2.style.display = typeOptions2.style.display === "none" ? "block" : "none";
+}
+
+function toggleTypeDropdown3() {
+    const typeOptions3 = document.getElementById("type-options3");
+    typeOptions3.style.display = typeOptions3.style.display === "none" ? "block" : "none";
+}
+
+
 function showCertificateDetails(type) {
     const div1 = document.getElementById("div1");
     const daycare_container2 = document.getElementById("daycare_container2");
@@ -196,46 +221,55 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'solo_parent') {
         div1.innerHTML = `
-        <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
-        <div class="select-bg3">
-                    <input type="file" id="image" name="id_pic" required>
-                    <label for="image" class="select" id="fileLabel">
-                        <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
-                    </label>
-        </div>
-        <input type="number" id="years_of_separation" name="years_of_separation" min="0" step="1" value="" placeholder="Years of Separation">
-        <input type="number" id="number_of_children" name="number_of_children" min="0" step="1" value="" placeholder="No. of Children">
-        <div class="type-dropdown2">
-            <div class="selected-option2" onclick="toggleTypeDropdown2()">
-            -- Source of Income -- <span class="type-icon2">&#9662;</span> <!-- Dropdown arrow -->
+        <form id="soloparentForm" action="insert.php" method="POST" enctype="multipart/form-data">
+            <h4 class="detail">Details:</h4>
+            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
+            <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
+            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+            <div class="select-bg3">
+                <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
+                <label for="image" class="select" id="fileLabel">
+                    <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
+                </label>
             </div>
-            <div class="type-options2" id="type-options2" style="display: none;">
-            <div class="type-option2" onclick="selectTypeOption2('Employment')">Employment</div>
-            <div class="type-option2" onclick="selectTypeOption2('Self-Employment')">Self-Employment</div>
-            <div class="type-option2" onclick="selectTypeOption2('Investment')">Investment</div>
-            <div class="type-option2" onclick="selectTypeOption2('Retirement Income')">Retirement Income</div>
-            <div class="type-option2" onclick="selectTypeOption2('Savings')">Savings</div>
-            <div class="type-option2" onclick="selectTypeOption2('No Income')">No Income</div>
+            <input type="number" id="years_of_separation" name="years_of_separation" min="0" step="1" value="" placeholder="Years of Separation">
+            <input type="number" id="number_of_children" name="num_children" min="0" step="1" value="" placeholder="No. of Children">
+            
+            <!-- Source of Income Dropdown -->
+            <div class="type-dropdown2">
+                <div class="selected-option2" onclick="toggleTypeDropdown2()"> 
+                    -- Source of Income -- <span class="type-icon2">&#9662;</span> <!-- Dropdown arrow -->
+                </div>
+                <div class="type-options2" id="type-options2" style="display: none;">
+                    <div class="type-option2" onclick="selectTypeOption2('Employment')">Employment</div>
+                    <div class="type-option2" onclick="selectTypeOption2('Self-Employment')">Self-Employment</div>
+                    <div class="type-option2" onclick="selectTypeOption2('Investment')">Investment</div>
+                    <div class="type-option2" onclick="selectTypeOption2('Retirement Income')">Retirement Income</div>
+                    <div class="type-option2" onclick="selectTypeOption2('Savings')">Savings</div>
+                    <div class="type-option2" onclick="selectTypeOption2('No Income')">No Income</div>
+                </div>
+                <input type="hidden" id="source_income" name="source_income" value="">
             </div>
-        </div>
-        <div class="type-dropdown3">
-            <div class="selected-option3" onclick="toggleTypeDropdown3()">
-            -- Monthly Income -- <span class="type-icon3">&#9662;</span> <!-- Dropdown arrow -->
+            
+            <!-- Monthly Income Dropdown -->
+            <div class="type-dropdown3">
+                <div class="selected-option3" onclick="toggleTypeDropdown3()"> 
+                    -- Monthly Income -- <span class="type-icon3">&#9662;</span> <!-- Dropdown arrow -->
+                </div>
+                <div class="type-options3" id="type-options3" style="display: none;">
+                    <div class="type-option3" onclick="selectTypeOption3('₱10,000 - ₱20,000')">₱10,000 - ₱20,000</div>
+                    <div class="type-option3" onclick="selectTypeOption3('₱20,000 - ₱30,000')">₱20,000 - ₱30,000</div>
+                    <div class="type-option3" onclick="selectTypeOption3('Above ₱30,000')">Above ₱30,000</div>
+                </div>
+                <input type="hidden" id="monthly_income" name="monthly_income" value="">
             </div>
-            <div class="type-options3" id="type-options3" style="display: none;">
-            <div class="type-option3" onclick="selectTypeOption3('₱10,000 - ₱20,000')">₱10,000 - ₱20,000</div>
-            <div class="type-option3" onclick="selectTypeOption3('₱20,000 - ₱30,000')">₱20,000 - ₱30,000</div>
-            <div class="type-option3" onclick="selectTypeOption3('Above ₱30,000')">Above ₱30,000</div>
-            </div>
-        </div>
-        <label class="myself-option4">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
-        </label>
-        <button id="clearBtn" class="clear6" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit5" onclick="submit('submit')">SUBMIT</button>
+    
+            <label class="myself-option4">
+                <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            </label>
+            <button id="clearBtn" class="clear6" onclick="clearForm('div1')">CLEAR</button>
+            <button type="submit" id="submitBtn" class="submit5">SUBMIT</button>
+        </form>
         `;
     } else if (type === 'brgy_clearance') {
         div1.innerHTML = `
