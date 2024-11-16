@@ -97,7 +97,7 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         
         if (move_uploaded_file($_FILES['bldg_lot_cert']['tmp_name'], $lot_cert_path)) {
             // Insert data into the database for building clearance
-            $sql = "INSERT INTO bldgclearance_cert (first_name, middle_name, last_name, lot_cert, measurement, apply_myself)
+            $sql = "INSERT INTO blgclearance_cert (first_name, middle_name, last_name, lot_cert, measurement, apply_myself)
                         VALUES ('$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself')";
         } 
     
