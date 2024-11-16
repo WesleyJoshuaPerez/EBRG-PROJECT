@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 03:46 AM
+-- Generation Time: Nov 16, 2024 at 08:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,27 +33,49 @@ CREATE TABLE `jobseek_cert` (
   `last_name` varchar(30) NOT NULL,
   `id_pic` varchar(30) NOT NULL,
   `employer` varchar(50) NOT NULL,
-  `apply_myself` varchar(30) NOT NULL
+  `apply_myself` varchar(30) NOT NULL,
+  `jobseek_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jobseek_cert`
 --
 
-INSERT INTO `jobseek_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `employer`, `apply_myself`) VALUES
-('kate', 'enri', 'rezada', 'msc.png', 'MSC', ''),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', ''),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC2', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', ''),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', ''),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', ''),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC4', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC4', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC5', 'myself'),
-('kate ', 'enri', 'rezada', 'msc.png', 'MSC6', 'myself');
+INSERT INTO `jobseek_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `employer`, `apply_myself`, `jobseek_id`) VALUES
+('kate', 'enri', 'rezada', 'msc.png', 'MSC', '', 1),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', '', 2),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC2', 'myself', 3),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', '', 4),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', '', 5),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', 'myself', 6),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', 'myself', 7),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', '', 8),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC4', 'myself', 9),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC4', 'myself', 10),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', 'myself', 11),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC5', 'myself', 12),
+('kate ', 'enri', 'rezada', 'msc.png', 'MSC6', 'myself', 13),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC7', 'myself', 14);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `jobseek_cert`
+--
+ALTER TABLE `jobseek_cert`
+  ADD PRIMARY KEY (`jobseek_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `jobseek_cert`
+--
+ALTER TABLE `jobseek_cert`
+  MODIFY `jobseek_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

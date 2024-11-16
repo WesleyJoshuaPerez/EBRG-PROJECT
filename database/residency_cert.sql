@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 03:46 AM
+-- Generation Time: Nov 16, 2024 at 08:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,21 +34,43 @@ CREATE TABLE `residency_cert` (
   `yrs_occupancy` int(12) NOT NULL,
   `id_pic` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `apply_myself` varchar(30) NOT NULL
+  `apply_myself` varchar(30) NOT NULL,
+  `residency_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `residency_cert`
 --
 
-INSERT INTO `residency_cert` (`first_name`, `middle_name`, `last_name`, `yrs_occupancy`, `id_pic`, `address`, `apply_myself`) VALUES
-('kate', 'enri', 'rezada', 0, 'msc.png', '123', ''),
-('kate', 'enri', 'rezada', 0, 'msc.png', '123', ''),
-('kate', 'enri', 'rezada', 1, 'msc.png', '123', ''),
-('kate', 'enri', 'rezada', 2, 'msc.png', '123', ''),
-('kate', 'enri', 'rezada', 3, 'msc.png', '123', ''),
-('kate', 'enri', 'rezada', 4, 'msc.png', '123', 'myself'),
-('kate', 'enri', 'rezada', 5, 'msc.png', '123', 'myself');
+INSERT INTO `residency_cert` (`first_name`, `middle_name`, `last_name`, `yrs_occupancy`, `id_pic`, `address`, `apply_myself`, `residency_id`) VALUES
+('kate', 'enri', 'rezada', 0, 'msc.png', '123', '', 1),
+('kate', 'enri', 'rezada', 0, 'msc.png', '123', '', 2),
+('kate', 'enri', 'rezada', 1, 'msc.png', '123', '', 3),
+('kate', 'enri', 'rezada', 2, 'msc.png', '123', '', 4),
+('kate', 'enri', 'rezada', 3, 'msc.png', '123', '', 5),
+('kate', 'enri', 'rezada', 4, 'msc.png', '123', 'myself', 6),
+('kate', 'enri', 'rezada', 5, 'msc.png', '123', 'myself', 7),
+('kate', 'enri', 'rezada', 6, 'NW3D_REZADA_ANGELINEKATE.png', '6', '', 8);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `residency_cert`
+--
+ALTER TABLE `residency_cert`
+  ADD PRIMARY KEY (`residency_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `residency_cert`
+--
+ALTER TABLE `residency_cert`
+  MODIFY `residency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
