@@ -328,8 +328,8 @@ function showCertificateDetails(type) {
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg6">
-            <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
-            <label for="lot_cert" class="select" id="fileLabel2">
+            <input type="file" id="bldg_lot_cert" name="bldg_lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
+            <label for="bldg_lot_cert" class="select" id="fileLabel2">
                 <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
             </label>
         </div>

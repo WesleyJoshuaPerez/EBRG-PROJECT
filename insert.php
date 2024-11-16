@@ -31,12 +31,14 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         // Indigency certificate
         $sql = "INSERT INTO indigency_cert (first_name, middle_name, last_name, age, id_pic, assistance_type, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name', '$age', '$id_pic', '$assistance_type', '$apply_myself')";
+   
     } else if (isset($_POST['yrs_of_occupancy']) && isset($_POST['address'])) {
         // Residency certificate
         $yrs_of_occupancy = $_POST['yrs_of_occupancy'];
         $address = $_POST['address'];
         $sql = "INSERT INTO residency_cert (first_name, middle_name, last_name, yrs_occupancy, address, id_pic, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name', '$yrs_of_occupancy', '$address', '$id_pic', '$apply_myself')";
+   
     } else if (isset($_POST['employer']) && isset($_POST['absence_date']) && isset($_POST['duration']) && isset($_POST['reason'])) {
         // Job absence certificate
         $employer = $_POST['employer'];
@@ -45,11 +47,13 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         $reason = $_POST['reason'];
         $sql = "INSERT INTO jobabsence_cert (first_name, middle_name, last_name, id_pic, employer, absence_date, duration, reason, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$employer', '$absence_date', '$duration', '$reason', '$apply_myself')";
+   
     } else if (isset($_POST['employer'])) {
         // First-time job seeker certificate
         $employer = $_POST['employer'];
         $sql = "INSERT INTO jobseek_cert (first_name, middle_name, last_name, id_pic, employer, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$employer', '$apply_myself')";
+   
     } else if (isset($_POST['years_of_separation']) && isset($_POST['num_children']) && isset($_POST['source_income']) && isset($_POST['monthly_income'])) {
         // Solo parent certificate
         $years_of_separation = $_POST['years_of_separation'];
@@ -58,6 +62,7 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         $monthly_income = $_POST['monthly_income'];
         $sql = "INSERT INTO soloparent_cert (first_name, middle_name, last_name, id_pic, years_of_separation, num_children, monthly_income, source_income, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name','$id_pic', '$years_of_separation', '$num_children', '$monthly_income', '$source_income', '$apply_myself')";
+    
     } else if (isset($_POST['yrs_occupancy'])) {
         // Certificate of Barangay Clearance fields
         $yrs_occupancy = $_POST['yrs_occupancy'];
@@ -65,6 +70,7 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         // Insert data into the database for barangay clearance
         $sql = "INSERT INTO brgyclearance_cert (first_name, middle_name, last_name, age, id_pic, yrs_occupancy, apply_myself)
                 VALUES ('$first_name', '$middle_name', '$last_name', '$age', '$id_pic', '$yrs_occupancy', '$apply_myself')";
+    
     } else if (isset($_POST['address']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
         // Certificate of Fencing Clearance fields
         $address = $_POST['address'];
@@ -79,23 +85,21 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
             $sql = "INSERT INTO fencingclearance_cert (first_name, middle_name, last_name, id_pic, lot_cert, address, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$address', '$apply_myself')";
         }
-    } else if (isset($_POST['measurement']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
-            // Certificate of Building Clearance fields
-            $measurement = $_POST['measurement'];
-            $lot_cert = $_FILES['lot_cert']['name'];
+   
+     } else if (isset($_POST['measurement']) && isset($_FILES['bldg_lot_cert']) && $_FILES['bldg_lot_cert']['error'] === UPLOAD_ERR_OK) {
+        // Certificate of Building Clearance fields
+        $measurement = $_POST['measurement'];
+        $lot_cert = $_FILES['bldg_lot_cert']['name'];
     
-            // Handle file upload
-            $target_dir = "uploads/";
-            $lot_cert_path = $target_dir . basename($lot_cert);
+        // Handle file upload
+        $target_dir = "uploads/";
+        $lot_cert_path = $target_dir . basename($lot_cert);
         
-            if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
-                // Insert data into the database for fencing clearance
-                $sql = "INSERT INTO bldgclearance_cert (first_name, middle_name, last_name, lot_cert, measurement, apply_myself)
+        if (move_uploaded_file($_FILES['bldg_lot_cert']['tmp_name'], $lot_cert_path)) {
+            // Insert data into the database for building clearance
+            $sql = "INSERT INTO bldgclearance_cert (first_name, middle_name, last_name, lot_cert, measurement, apply_myself)
                         VALUES ('$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself')";
-            } else {
-                echo "Error uploading file.";
-                $sql = null;
-            }
+        } 
     
     } else {
         // else handler here
