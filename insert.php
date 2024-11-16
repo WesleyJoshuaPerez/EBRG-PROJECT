@@ -101,6 +101,12 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
                         VALUES ('$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself')";
         } 
     
+    } else if (isset($_POST['business_address'])) {
+        // Order of Payment
+        $business_address = $_POST['address'];
+        $sql = "INSERT INTO jobseek_cert (first_name, middle_name, last_name, id_pic, employer, apply_myself)
+                VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$employer', '$apply_myself')";
+   
     } else {
         // else handler here
         echo "No matching condition found for the provided data.";

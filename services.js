@@ -349,7 +349,7 @@ function showCertificateDetails(type) {
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg4">
-                    <input type="file" id="image" name="image" required>
+                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
                     <label for="image" class="select" id="fileLabel">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
@@ -369,7 +369,7 @@ function showCertificateDetails(type) {
         </div>
         <input type="text" class="address3" name="address" placeholder="Business Address" required>
             <label class="myself-option7">
-            <input type="radio" name="for-myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear8" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit6" onclick="submit('submit')">SUBMIT</button>
