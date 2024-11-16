@@ -1,6 +1,6 @@
 function showDiv(divId) {
     // Hide all content-div elements
-    const contentDivs = document.querySelectorAll('.content-div, .servicesdiv');
+    const contentDivs = document.querySelectorAll('.content-div');
     contentDivs.forEach(div => {
         div.style.display = 'none';
     });

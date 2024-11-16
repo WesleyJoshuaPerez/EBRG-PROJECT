@@ -437,7 +437,7 @@ header .nav_logo {
 /* The parent div - servicesdiv */
 .servicesdiv {
     margin-left: 670px;
-      margin-top: 40px;
+    top: 90px;
     height: 530px;
     width: 750px;
      position: relative; /* Make this relative so that child elements can be absolutely positioned inside it */
