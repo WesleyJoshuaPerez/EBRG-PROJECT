@@ -322,23 +322,25 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `
+        <form id="bldgclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
-            <div class="select-bg6">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
-                        <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
-                    </label>
-            </div>
+        <div class="select-bg6">
+            <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
+            <label for="lot_cert" class="select" id="fileLabel2">
+                <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
+            </label>
+        </div>
             <label class="measurement_label"> Lot Measurement in sqm: </label>
             <input type="number" id="measurement" name="measurement" min="0" step="1" value="" placeholder="Lot Measurement">
             <label class="myself-option6">
-            <input type="radio" name="for-myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear7" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
+        </form>
         `;
     } else if (type === 'order_payment') {
         div1.innerHTML = `
