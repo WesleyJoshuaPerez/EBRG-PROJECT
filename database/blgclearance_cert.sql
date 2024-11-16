@@ -24,47 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brgyclearance_cert`
+-- Table structure for table `blgclearance_cert`
 --
 
-CREATE TABLE `brgyclearance_cert` (
+CREATE TABLE `blgclearance_cert` (
   `first_name` varchar(30) NOT NULL,
   `middle_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
-  `age` int(20) NOT NULL,
-  `id_pic` varchar(50) NOT NULL,
-  `yrs_occupancy` int(12) NOT NULL,
-  `apply_myself` varchar(30) NOT NULL,
-  `brgyclearance_id` int(11) NOT NULL
+  `lot_cert` varchar(50) NOT NULL,
+  `measurement` varchar(50) NOT NULL,
+  `apply_myself` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `brgyclearance_cert`
---
-
-INSERT INTO `brgyclearance_cert` (`first_name`, `middle_name`, `last_name`, `age`, `id_pic`, `yrs_occupancy`, `apply_myself`, `brgyclearance_id`) VALUES
-('kate', 'enri', 'rezada', 1, 'msc.png', 1, 'myself', 1),
-('kate', 'enri', 'rezada', 2, 'msc.png', 2, 'myself', 2);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `brgyclearance_cert`
---
-ALTER TABLE `brgyclearance_cert`
-  ADD PRIMARY KEY (`brgyclearance_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `brgyclearance_cert`
---
-ALTER TABLE `brgyclearance_cert`
-  MODIFY `brgyclearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 03:47 AM
+-- Generation Time: Nov 16, 2024 at 08:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,16 +36,38 @@ CREATE TABLE `soloparent_cert` (
   `num_children` int(30) NOT NULL,
   `monthly_income` varchar(20) DEFAULT NULL,
   `source_income` varchar(30) NOT NULL,
-  `apply_myself` varchar(30) NOT NULL
+  `apply_myself` varchar(30) NOT NULL,
+  `soloparent_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `soloparent_cert`
 --
 
-INSERT INTO `soloparent_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `years_of_separation`, `num_children`, `monthly_income`, `source_income`, `apply_myself`) VALUES
-('kate', 'enri', 'rezada', 'msc.png', 1, 1, '', '', 'myself'),
-('kate', 'enri', 'rezada', 'msc.png', 2, 2, '₱10,000 - ₱20,000', 'Employment', 'myself');
+INSERT INTO `soloparent_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `years_of_separation`, `num_children`, `monthly_income`, `source_income`, `apply_myself`, `soloparent_id`) VALUES
+('kate', 'enri', 'rezada', 'msc.png', 1, 1, '', '', 'myself', 1),
+('kate', 'enri', 'rezada', 'msc.png', 2, 2, '₱10,000 - ₱20,000', 'Employment', 'myself', 2),
+('kate', 'enri', 'rezada', 'msc.png', 3, 3, '₱10,000 - ₱20,000', 'Self-Employment', 'myself', 3);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `soloparent_cert`
+--
+ALTER TABLE `soloparent_cert`
+  ADD PRIMARY KEY (`soloparent_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `soloparent_cert`
+--
+ALTER TABLE `soloparent_cert`
+  MODIFY `soloparent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
