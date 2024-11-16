@@ -123,8 +123,8 @@ function showCertificateDetails(type) {
                 
                 <!-- File input for ID Picture with label -->
                 <div class="select-bg">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
                 </div>
@@ -161,8 +161,8 @@ function showCertificateDetails(type) {
             <input type="number" id="years_of_occupancy" name="yrs_of_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
             <input type="text" class="address" name="address" placeholder="Complete Address" required>
                 <div class="select-bg2">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                      </label>
                 </div>
@@ -181,8 +181,8 @@ function showCertificateDetails(type) {
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg3">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
         </div>
@@ -202,8 +202,8 @@ function showCertificateDetails(type) {
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg3">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
         </div>
@@ -227,8 +227,8 @@ function showCertificateDetails(type) {
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
             <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
             <div class="select-bg3">
-                <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
-                <label for="image" class="select" id="fileLabel">
+                <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                <label for="image" class="select" id="fileLabel1">
                     <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                 </label>
             </div>
@@ -273,49 +273,52 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'brgy_clearance') {
         div1.innerHTML = `
+        <form id="brgyclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
             <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
             <input type="number" id="age2" name="age" min="0" step="1" value="" placeholder="Age">
             <div class="select-bg">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
             </div>
-            <input type="number" id="years_of_occupancy1" name="years_of_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
+            <input type="number" id="years_of_occupancy1" name="yrs_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
         <label class="myself-option5">
-            <input type="radio" name="for-myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear5" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit" onclick="submit('submit')">SUBMIT</button>
-
+        </form>
         `;
     } else if (type === 'fencing_clearance') {
         div1.innerHTML = `
+        <form id="fencingclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg4">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
-                        <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
-                    </label>
-            </div>
+            <input type="file" id="id_pic" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+            <label for="id_pic" class="select" id="fileLabel1">
+                <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
+            </label>
+        </div>
         <input type="text" class="address2" name="address" placeholder="Complete Address" required>
-            <div class="select-bg5">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
-                        <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
-                    </label>
-            </div>
+        <div class="select-bg5">
+            <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
+            <label for="lot_cert" class="select" id="fileLabel2">
+                <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
+            </label>
+        </div>
             <label class="myself-option4">
-            <input type="radio" name="for-myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear4" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit4" onclick="submit('submit')">SUBMIT</button>
+        </form>
         `;
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `

@@ -57,27 +57,68 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         $source_income = $_POST['source_income'];
         $monthly_income = $_POST['monthly_income'];
         $sql = "INSERT INTO soloparent_cert (first_name, middle_name, last_name, id_pic, years_of_separation, num_children, monthly_income, source_income, apply_myself)
-                VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$years_of_separation', '$num_children', '$monthly_income', '$source_income', '$apply_myself')";
-    } else {
-        // Handle case with no matching condition
-        $sql = null;
-    }
+                VALUES ('$first_name', '$middle_name', '$last_name','$id_pic', '$years_of_separation', '$num_children', '$monthly_income', '$source_income', '$apply_myself')"; 
+    } else if (isset($_POST['yrs_occupancy'])) {
+        // Certificate of Barangay Clearance fields
+        $yrs_occupancy = $_POST['yrs_occupancy'];
+    
+        // Insert data into the database for barangay clearance
+        $sql = "INSERT INTO brgyclearance_cert (first_name, middle_name, last_name, age, id_pic, yrs_occupancy, apply_myself)
+                VALUES ('$first_name', '$middle_name', '$last_name', '$age', '$id_pic', '$yrs_occupancy', '$apply_myself')"; 
+    } else if (isset($_POST['address']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
+        // Certificate of Fencing Clearance fields
+        $address = $_POST['address'];   
+        $lot_cert = $_FILES['lot_cert']['name'];
+    
+        // Handle file upload
+        $target_dir = "uploads/";
+        $lot_cert_path = $target_dir . basename($lot_cert);
+    
+        if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
+            // Insert data into the database for fencing clearance
+            $sql = "INSERT INTO fencingclearance_cert (first_name, middle_name, last_name, id_pic, lot_cert, address, apply_myself)
+                    VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$address', '$apply_myself')";
+        } else {
+            echo "Error uploading file.";
+            $sql = null;
+        }
+    } else if (isset($_POST['measurement']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
+        // Certificate of Building Clearance fields
+        $measurement = $_POST['measurement'];
+        $lot_cert = $_FILES['lot_cert']['name'];
 
-    if ($sql !== null && $conn->query($sql) === TRUE) {
-        // Redirect with success status
-        header("Location: maindashboard.php?status=success");
-        exit();
+        // Handle file upload
+        $target_dir = "uploads/";
+        $lot_cert_path = $target_dir . basename($lot_cert);
+    
+        if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
+            // Insert data into the database for fencing clearance
+            $sql = "INSERT INTO bldgclearance_cert (first_name, middle_name, last_name, lot_cert, measurement, apply_myself)
+                    VALUES ('$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself')";
+        } else {
+            echo "Error uploading file.";
+            $sql = null;
+        }
+    
     } else {
-        // Redirect with error status
-        header("Location: maindashboard.php?status=error");
-        exit();
+        // else handler here
+        echo "No matching condition found for the provided data.";
+        $sql = null; // Set $sql to null to avoid executing an undefined query
     }
-} else {
-    // Redirect with file upload error
-    header("Location: maindashboard.php?status=file_error");
-    exit();
-}
-
-// Close the connection
-$conn->close();
-?>
+    
+    
+    // Execute the query if $sql is set
+        // Execute the query
+        if ($conn->query($sql) === TRUE) {
+            echo "Record added successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    
+    } else {
+        echo "Error uploading file or no file uploaded.";
+    }
+    
+    $conn->close();
+    ?>
+    

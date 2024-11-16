@@ -183,18 +183,19 @@
        <script src="insert.php"></script>
        <script>
 
-        // updates selected image
-        function updateLabel(input) {
-            const label = document.getElementById("fileLabel");
-            const iconHTML = `<i class="fas fa-upload"></i>&nbsp;`; // Icon HTML
+        // Updates the selected image label
+        function updateLabel(input, labelId) {
+        const label = document.getElementById(labelId); // Get the corresponding label by ID
+        const iconHTML = `<i class="fas fa-upload"></i>&nbsp;`; // Icon HTML
 
-            if (input.files && input.files[0]) {
-                label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${input.files[0].name}</strong>`;
-            } else {
-        label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; Select a picture</strong>`;
-            }
+        if (input.files && input.files[0]) {
+        // Update the label with the selected file name
+        label.innerHTML = `<strong>${iconHTML}${input.files[0].name}</strong>`;
+        } else {
+        // Reset the label text if no file is selected
+        label.innerHTML = `<strong>${iconHTML}Select a picture</strong>`;
         }
-
+    }
        </script>
         <script>
         // Get the query parameter
