@@ -12,6 +12,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <!-- Include SweetAlert CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 <body>
@@ -191,6 +196,32 @@
         }
 
        </script>
+        <script>
+        // Get the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        // Display SweetAlert based on status
+        if (status === 'success') {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Record added successfully. Please wait for admin approval.',
+                icon: 'success'
+            });
+        } else if (status === 'error') {
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred while processing your request.',
+                icon: 'error'
+            });
+        } else if (status === 'file_error') {
+            Swal.fire({
+                title: 'File Upload Error!',
+                text: 'Failed to upload the file. Please try again.',
+                icon: 'warning'
+            });
+        }
+    </script>
 
 </body>
 </html>

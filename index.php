@@ -65,7 +65,7 @@ if(isset($_POST["login"])){
             text: 'Welcome to the EBRGY!',
             icon: 'success'
         }).then(function() {
-            window.location.href = 'maindashboard.html';
+            window.location.href = 'maindashboard.php';
         });
               </script>";
         exit();
