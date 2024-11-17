@@ -59,14 +59,21 @@ function selectTypeOption3(optionText) {
 
 // dropdown for type of business
 function toggleTypeDropdown4() {
-    const typeOptions = document.getElementById("type-options4");
-    typeOptions.style.display = typeOptions.style.display === "none" ? "block" : "none";
+    const options = document.getElementById('type-options4');
+    options.style.display = options.style.display === 'none' ? 'block' : 'none';
 }
 
-function selectTypeOption4(optionText) {
-    const selectedTypeOption = document.querySelector(".type-dropdown4 .selected-option4");
-    selectedTypeOption.innerHTML = `${optionText} <span class="type-icon4">&#9662;</span>`;
-    document.getElementById("type-options4").style.display = "none";
+function selectTypeOption4(type) {
+    // Update the visible selected option
+    const selectedOption = document.querySelector('.selected-option4');
+    selectedOption.innerHTML = `${type} <span class="type-icon4">&#9662;</span>`;
+
+    // Update the hidden input field
+    const businessTypeInput = document.getElementById('business_type');
+    businessTypeInput.value = type;
+
+    // Hide the dropdown options
+    toggleTypeDropdown4();
 }
 
 // dropdown for kinder level
@@ -328,8 +335,8 @@ function showCertificateDetails(type) {
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg6">
-            <input type="file" id="bldg_lot_cert" name="bldg_lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
-            <label for="bldg_lot_cert" class="select" id="fileLabel2">
+            <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
+            <label for="lot_cert" class="select" id="fileLabel2">
                 <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
             </label>
         </div>
@@ -344,17 +351,18 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'order_payment') {
         div1.innerHTML = `
+        <form id="orderpaymentForm" action="insert.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg4">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this)">
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="id_pic" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="id_pic" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
             </div>
-        <input type="text" class="business_name" name="address" placeholder="Business Name" required>
+        <input type="text" class="business_name" name="business_name" placeholder="Business Name" required>
         <div class="type-dropdown4">
             <div class="selected-option4" onclick="toggleTypeDropdown4()">
             -- Type of Business -- <span class="type-icon4">&#9662;</span> <!-- Dropdown arrow -->
@@ -366,37 +374,41 @@ function showCertificateDetails(type) {
             <div class="type-option4" onclick="selectTypeOption4('Manufacturing and Production')">Manufacturing and Production</div>
             <div class="type-option4" onclick="selectTypeOption4('Finance and Real Estate')">Finance and Real Estate</div>
             </div>
+            <input type="hidden" id="business_type" name="business_type" value="">
         </div>
-        <input type="text" class="address3" name="address" placeholder="Business Address" required>
+        <input type="text" class="address3" name="business_address" placeholder="Business Address" required>
             <label class="myself-option7">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear8" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit6" onclick="submit('submit')">SUBMIT</button>
+        </form>
         `;
     } else if (type === 'electricity') {
         div1.innerHTML = `
+        <form id="electricityForm" action="insert.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
         <div class="select-bg3">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="id_pic" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="id_pic" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
         </div>
         <div class="select-bg7">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
+                    <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
+                    <label for="lot_cert" class="select" id="fileLabel2">
                         <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
                     </label>
         </div>
         <label class="myself-option2">
-            <input type="radio" name="for-myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
+        </form>
         `;
     }
 }
