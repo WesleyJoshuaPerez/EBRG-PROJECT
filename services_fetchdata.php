@@ -7,8 +7,13 @@ $tables = [
     'residency_cert' => 'Certificate of Residency',
     'jobabsence_cert' => 'Certificate of Job Absence',
     'jobseek_cert' => 'Certificate of Job Seeking',
-    'soloparent_cert' => 'Certificate of Solo Parenting'
-];
+    'soloparent_cert' => 'Certificate of Solo Parenting',
+    'brgyclearance_cert' => 'Barangay Clearance',
+    'fencingclearance_cert' => 'Fencing Clearance',
+    'blgclearance_cert' => 'Building Clearance',
+    'order_payment' => 'Order of Payment',
+    'electricity_clearance' => 'Electricity Installation Clearance'
+    ];
 
 foreach ($tables as $table => $serviceName) {
     // Determine the ID column dynamically
@@ -28,6 +33,21 @@ foreach ($tables as $table => $serviceName) {
             break;
         case 'soloparent_cert':
             $idColumn = 'soloparent_id';
+            break;
+            case 'brgyclearance_cert':
+            $idColumn = 'brgyclearance_id';
+            break;
+        case 'fencingclearance_cert':
+            $idColumn = 'fencingclearance_id';
+            break;
+        case 'blgclearance_cert':
+            $idColumn = 'blgclearance_id';
+            break;
+        case 'order_payment':
+            $idColumn = 'orderpayment_id';
+            break;
+        case 'electricity_clearance':
+            $idColumn = 'electricityclearance_id';
             break;
     }
 
@@ -51,6 +71,7 @@ foreach ($tables as $table => $serviceName) {
             case 'indigency_cert':
                 echo '<p class="age">Age: ' . $row['age'] . '</p>';
                 echo '<p class="type">Assistance Type: ' . $row['assistance_type'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
             case 'residency_cert':
                 echo '<p class="age">Years of Occupancy: ' . $row['yrs_occupancy'] . ' years</p>';
@@ -67,8 +88,31 @@ foreach ($tables as $table => $serviceName) {
                 echo '<p class="age">Number of Children: ' . $row['num_children'] . '</p>';
                 echo '<p class="type">Monthly Income: ' . $row['monthly_income'] . '</p>';
                 break;
+                case 'brgyclearance_cert':
+                echo '<p class="age"> Age: ' . $row['age'] . '</p>';
+                echo '<p class="type">Years of Occupancy: ' . $row['yrs_occupancy'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+                case 'fencingclearance_cert':
+                echo '<p class="age"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                echo '<p class="type">Address: ' . $row['address'] . '</p>';
+                break;
+                case 'blgclearance_cert':
+                echo '<p class="idpicture"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
+                echo '<p class="type">Lot Measurement in sqm: ' . $row['measurement'] . '</p>';
+                break;
+                case 'order_payment':
+                echo '<p class="age">Business Name' . $row['business_name'] . '</p>';
+                echo '<p class="type">Business Address' . $row['business_address'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+                case 'electricity_clearance':
+                echo '<p class="type"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;    
         }
-        echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+      
         echo '</div>';
         echo '</div>';
 
