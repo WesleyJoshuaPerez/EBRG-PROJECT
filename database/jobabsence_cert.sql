@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 08:25 AM
+-- Generation Time: Nov 17, 2024 at 05:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,18 +37,19 @@ CREATE TABLE `jobabsence_cert` (
   `duration` int(30) NOT NULL,
   `reason` varchar(50) NOT NULL,
   `apply_myself` varchar(30) NOT NULL,
-  `jobabsence_id` int(11) NOT NULL
+  `jobabsence_id` int(11) NOT NULL,
+  `current_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jobabsence_cert`
 --
 
-INSERT INTO `jobabsence_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `employer`, `absence_date`, `duration`, `reason`, `apply_myself`, `jobabsence_id`) VALUES
-('kate', 'enri', 'rezada', 'msc.png', 'MSC1', '2024-11-20', 1, 'MSC1', 'myself', 1),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC2', '2024-11-19', 2, 'MSC2', 'myself', 2),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC3', '2024-11-05', 3, '123', 'myself', 3),
-('kate', 'enri', 'rezada', 'msc.png', 'MSC4', '2024-11-20', 4, '4', 'myself', 4);
+INSERT INTO `jobabsence_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `employer`, `absence_date`, `duration`, `reason`, `apply_myself`, `jobabsence_id`, `current_status`) VALUES
+('kate', 'enri', 'rezada', 'msc.png', 'MSC1', '2024-11-20', 1, 'MSC1', 'myself', 1, NULL),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC2', '2024-11-19', 2, 'MSC2', 'myself', 2, NULL),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC3', '2024-11-05', 3, '123', 'myself', 3, NULL),
+('kate', 'enri', 'rezada', 'msc.png', 'MSC4', '2024-11-20', 4, '4', 'myself', 4, NULL);
 
 --
 -- Indexes for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 05:18 AM
+-- Generation Time: Nov 17, 2024 at 05:21 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,51 +24,48 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `soloparent_cert`
+-- Table structure for table `brgyclearance_cert`
 --
 
-CREATE TABLE `soloparent_cert` (
+CREATE TABLE `brgyclearance_cert` (
   `first_name` varchar(30) NOT NULL,
   `middle_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
+  `age` int(20) NOT NULL,
   `id_pic` varchar(50) NOT NULL,
-  `years_of_separation` int(30) NOT NULL,
-  `num_children` int(30) NOT NULL,
-  `monthly_income` varchar(20) DEFAULT NULL,
-  `source_income` varchar(30) NOT NULL,
+  `yrs_occupancy` int(12) NOT NULL,
   `apply_myself` varchar(30) NOT NULL,
-  `soloparent_id` int(11) NOT NULL,
+  `brgyclearance_id` int(11) NOT NULL,
   `current_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `soloparent_cert`
+-- Dumping data for table `brgyclearance_cert`
 --
 
-INSERT INTO `soloparent_cert` (`first_name`, `middle_name`, `last_name`, `id_pic`, `years_of_separation`, `num_children`, `monthly_income`, `source_income`, `apply_myself`, `soloparent_id`, `current_status`) VALUES
-('kate', 'enri', 'rezada', 'msc.png', 1, 1, '', '', 'myself', 1, NULL),
-('kate', 'enri', 'rezada', 'msc.png', 2, 2, '₱10,000 - ₱20,000', 'Employment', 'myself', 2, NULL),
-('kate', 'enri', 'rezada', 'msc.png', 3, 3, '₱10,000 - ₱20,000', 'Self-Employment', 'myself', 3, NULL);
+INSERT INTO `brgyclearance_cert` (`first_name`, `middle_name`, `last_name`, `age`, `id_pic`, `yrs_occupancy`, `apply_myself`, `brgyclearance_id`, `current_status`) VALUES
+('kate', 'enri', 'rezada', 1, 'msc.png', 1, 'myself', 1, NULL),
+('kate', 'enri', 'rezada', 2, 'msc.png', 2, 'myself', 2, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `soloparent_cert`
+-- Indexes for table `brgyclearance_cert`
 --
-ALTER TABLE `soloparent_cert`
-  ADD PRIMARY KEY (`soloparent_id`);
+ALTER TABLE `brgyclearance_cert`
+  ADD PRIMARY KEY (`brgyclearance_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `soloparent_cert`
+-- AUTO_INCREMENT for table `brgyclearance_cert`
 --
-ALTER TABLE `soloparent_cert`
-  MODIFY `soloparent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `brgyclearance_cert`
+  MODIFY `brgyclearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

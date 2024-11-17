@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 03:49 PM
+-- Generation Time: Nov 17, 2024 at 05:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,16 +34,19 @@ CREATE TABLE `electricity_clearance` (
   `id_pic` varchar(50) NOT NULL,
   `lot_cert` varchar(50) NOT NULL,
   `apply_myself` varchar(30) NOT NULL,
-  `electricityclearance_id` int(11) NOT NULL
+  `electricityclearance_id` int(11) NOT NULL,
+  `current_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `electricity_clearance`
 --
 
-INSERT INTO `electricity_clearance` (`first_name`, `middle_name`, `last_name`, `id_pic`, `lot_cert`, `apply_myself`, `electricityclearance_id`) VALUES
-('asda', 'asd', 'asd', 'NW3D_REZADA_ANGELINEKATE.png', 'ipconfig1.png', 'myself', 1),
-('dasd', 'asda', 'asda', 'PC2_straight-through.png', 'ipconfig2.png', 'myself', 2);
+INSERT INTO `electricity_clearance` (`first_name`, `middle_name`, `last_name`, `id_pic`, `lot_cert`, `apply_myself`, `electricityclearance_id`, `current_status`) VALUES
+('asda', 'asd', 'asd', 'NW3D_REZADA_ANGELINEKATE.png', 'ipconfig1.png', 'myself', 1, NULL),
+('dasd', 'asda', 'asda', 'PC2_straight-through.png', 'ipconfig2.png', 'myself', 2, NULL),
+('das', 'dkaj', 'jkasd', 'PC1-straight_through.png', 'ipconfig1_straight-through.png', 'myself', 3, NULL),
+('asdja', 'askjas', 'sjad', 'PC1-straight_through.png', 'ipconfig2_straight-through.png', 'myself', 4, NULL);
 
 --
 -- Indexes for dumped tables
@@ -63,7 +66,7 @@ ALTER TABLE `electricity_clearance`
 -- AUTO_INCREMENT for table `electricity_clearance`
 --
 ALTER TABLE `electricity_clearance`
-  MODIFY `electricityclearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `electricityclearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

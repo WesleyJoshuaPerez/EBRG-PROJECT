@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 03:24 PM
+-- Generation Time: Nov 17, 2024 at 05:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,17 +36,19 @@ CREATE TABLE `order_payment` (
   `business_type` varchar(50) NOT NULL,
   `business_address` varchar(50) NOT NULL,
   `apply_myself` varchar(30) NOT NULL,
-  `orderpayment_id` int(11) NOT NULL
+  `orderpayment_id` int(11) NOT NULL,
+  `current_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_payment`
 --
 
-INSERT INTO `order_payment` (`first_name`, `middle_name`, `last_name`, `id_pic`, `business_name`, `business_type`, `business_address`, `apply_myself`, `orderpayment_id`) VALUES
-('asda', 'asda', 'asda', 'msc.png', '1', '', '1', 'myself', 1),
-('sasd', 'asda', 'asd', 'NW3D_REZADA_ANGELINEKATE.png', 'sad', '', '2', 'myself', 2),
-('dasd', 'asd', 'asd', 'msc.png', '12', 'Food and Beverage', '3', 'myself', 3);
+INSERT INTO `order_payment` (`first_name`, `middle_name`, `last_name`, `id_pic`, `business_name`, `business_type`, `business_address`, `apply_myself`, `orderpayment_id`, `current_status`) VALUES
+('asda', 'asda', 'asda', 'msc.png', '1', '', '1', 'myself', 1, NULL),
+('sasd', 'asda', 'asd', 'NW3D_REZADA_ANGELINEKATE.png', 'sad', '', '2', 'myself', 2, NULL),
+('dasd', 'asd', 'asd', 'msc.png', '12', 'Food and Beverage', '3', 'myself', 3, NULL),
+('saj', 'ajsdaksd', 'sadj', 'PC1.png', 'ksa', 'Retail and E-commerce', 'as', 'myself', 4, NULL);
 
 --
 -- Indexes for dumped tables
@@ -66,7 +68,7 @@ ALTER TABLE `order_payment`
 -- AUTO_INCREMENT for table `order_payment`
 --
 ALTER TABLE `order_payment`
-  MODIFY `orderpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `orderpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

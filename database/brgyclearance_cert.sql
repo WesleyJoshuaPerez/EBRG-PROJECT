@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 08:25 AM
+-- Generation Time: Nov 17, 2024 at 05:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,16 +35,17 @@ CREATE TABLE `brgyclearance_cert` (
   `id_pic` varchar(50) NOT NULL,
   `yrs_occupancy` int(12) NOT NULL,
   `apply_myself` varchar(30) NOT NULL,
-  `brgyclearance_id` int(11) NOT NULL
+  `brgyclearance_id` int(11) NOT NULL,
+  `current_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `brgyclearance_cert`
 --
 
-INSERT INTO `brgyclearance_cert` (`first_name`, `middle_name`, `last_name`, `age`, `id_pic`, `yrs_occupancy`, `apply_myself`, `brgyclearance_id`) VALUES
-('kate', 'enri', 'rezada', 1, 'msc.png', 1, 'myself', 1),
-('kate', 'enri', 'rezada', 2, 'msc.png', 2, 'myself', 2);
+INSERT INTO `brgyclearance_cert` (`first_name`, `middle_name`, `last_name`, `age`, `id_pic`, `yrs_occupancy`, `apply_myself`, `brgyclearance_id`, `current_status`) VALUES
+('kate', 'enri', 'rezada', 1, 'msc.png', 1, 'myself', 1, NULL),
+('kate', 'enri', 'rezada', 2, 'msc.png', 2, 'myself', 2, NULL);
 
 --
 -- Indexes for dumped tables
