@@ -76,17 +76,21 @@ foreach ($tables as $table => $serviceName) {
             case 'residency_cert':
                 echo '<p class="age">Years of Occupancy: ' . $row['yrs_occupancy'] . ' years</p>';
                 echo '<p class="type">Address: ' . $row['address'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
             case 'jobabsence_cert':
                 echo '<p class="age">Duration: ' . $row['duration'] . '</p>';
                 echo '<p class="type">Employer: ' . $row['employer'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
             case 'jobseek_cert':
                 echo '<p class="age">Employer: ' . $row['employer'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
             case 'soloparent_cert':
                 echo '<p class="age">Number of Children: ' . $row['num_children'] . '</p>';
                 echo '<p class="type">Monthly Income: ' . $row['monthly_income'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
                 case 'brgyclearance_cert':
                 echo '<p class="age"> Age: ' . $row['age'] . '</p>';
