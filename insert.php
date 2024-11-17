@@ -86,6 +86,16 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$address', '$apply_myself')";
         }
 
+    } else if (isset($_POST['business_name']) && isset($_POST['business_type']) && isset($_POST['business_address'])) {
+        // Order of Payment
+        $business_name = $_POST['business_name'];
+        $business_type = $_POST['business_type'];
+        $business_address = $_POST['business_address'];
+
+        // insertion
+        $sql = "INSERT INTO order_payment (first_name, middle_name, last_name, id_pic, business_name, business_type, business_address, apply_myself)
+                VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$business_name', '$business_type', '$business_address', '$apply_myself')";
+
     } else if (isset($_POST['last_name']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
         // electricity installation clearance
         $last_name = $_POST['last_name'];
@@ -106,18 +116,17 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
         }
     }
 
-
-        // Execute the query if $sql is set
-        // Execute the query
+    // Execute the query if $sql is set
+    if (isset($sql) && !empty($sql)) {
         if ($conn->query($sql) === TRUE) {
             echo "Record added successfully";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error executing query: " . $conn->error;
         }
-
     } else {
-        echo "Error uploading file or no file uploaded.";
+        echo "Error: SQL query is not defined or input conditions are not met.";
     }
+}      
   
     
     $conn->close();
