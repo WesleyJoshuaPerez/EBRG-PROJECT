@@ -408,6 +408,47 @@ function deleteEvent(id) {
         }
     });
 }
+
+//function for deleting services request
+function deleteRecord(id, type) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this certificate!",
+        icon: "warning",
+        buttons: true, // Show confirm and cancel buttons
+        dangerMode: true, // Style the cancel button as dangerous
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            fetch('deletecert.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'id=' + id + '&type=' + type
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    swal('Success', 'Certificate deleted successfully!', 'success');
+                    // Optionally reload the page to reflect the deletion
+                    loadServicesData();
+                } else {
+                    swal('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                swal('Error', 'An unexpected error occurred.', 'error');
+            });
+        } else {
+            swal("Your certificate is safe!"); // Inform the user if the action is cancelled
+        }
+    });
+}
+
+
+
         </script>
     </div>
 </div>

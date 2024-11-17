@@ -3,11 +3,12 @@ require 'connectdb.php';
 
 if (isset($_GET['type']) && isset($_GET['id'])) {
     $type = $_GET['type'];
-    $id = $_GET['id'];
-    $imagePath = ''; // Initialize variable
+    $id = intval($_GET['id']); // Ensure ID is an integer
+    $imagePath = ''; // Initialize variable for image path
+    $deleteQuery = ''; // Initialize delete query
 
     if ($type === 'announcement') {
-        // Prepare and execute query to get image path
+        // Handle announcement deletion
         $getImageQuery = "SELECT announcement_img FROM brgy_announcement WHERE announcement_id = ?";
         $stmt = $conn->prepare($getImageQuery);
         $stmt->bind_param("i", $id);
@@ -16,13 +17,10 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
         $stmt->fetch();
         $stmt->close();
 
-        // Construct the full image path
         $imagePath = 'uploads/' . $imageName;
-
-        // Prepare and execute delete query for announcement
         $deleteQuery = "DELETE FROM brgy_announcement WHERE announcement_id = ?";
     } elseif ($type === 'event') {
-        // Prepare and execute query to get image path for events
+        // Handle event deletion
         $getImageQuery = "SELECT brgy_img FROM brgy_event WHERE brgyevent_id = ?";
         $stmt = $conn->prepare($getImageQuery);
         $stmt->bind_param("i", $id);
@@ -31,22 +29,43 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
         $stmt->fetch();
         $stmt->close();
 
-        // Construct the full image path for events
         $imagePath = 'uploads/' . $imageName;
-
-        // Prepare and execute delete query for event
         $deleteQuery = "DELETE FROM brgy_event WHERE brgyevent_id = ?";
+    } elseif (in_array($type, ['indigency_cert', 'residency_cert', 'jobabsence_cert', 'jobseek_cert', 'soloparent_cert'])) {
+        // Handle services deletion dynamically
+        $idColumn = '';
+        switch ($type) {
+            case 'indigency_cert':
+                $idColumn = 'indigency_id';
+                break;
+            case 'residency_cert':
+                $idColumn = 'residency_id';
+                break;
+            case 'jobabsence_cert':
+                $idColumn = 'jobabsence_id';
+                break;
+            case 'jobseek_cert':
+                $idColumn = 'jobseek_id';
+                break;
+            case 'soloparent_cert':
+                $idColumn = 'soloparent_id';
+                break;
+            default:
+                echo json_encode(['success' => false, 'message' => 'Invalid type.']);
+                exit;
+        }
+        $deleteQuery = "DELETE FROM $type WHERE $idColumn = ?";
     } else {
         echo json_encode(['success' => false, 'message' => 'Invalid type.']);
         exit;
     }
 
-    // Delete the image file if it exists
+    // Delete the image file if applicable
     if (!empty($imagePath) && file_exists($imagePath)) {
         unlink($imagePath); // Remove the file
     }
 
-    // Execute delete query
+    // Execute the delete query
     $stmt = $conn->prepare($deleteQuery);
     $stmt->bind_param("i", $id);
 
