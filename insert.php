@@ -109,18 +109,14 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
 
         // Execute the query if $sql is set
         // Execute the query
-        if (isset($sql)) {
-            echo "Executing SQL: $sql"; // Debugging
-            if ($conn->query($sql) === TRUE) {
-                echo "Record added successfully.";
-            } else {
-                echo "Error executing query: " . $conn->error;
-            }
+        if ($conn->query($sql) === TRUE) {
+            echo "Record added successfully";
         } else {
-            echo "No query was set. Check your conditions.";
+            echo "Error: " . $sql . "<br>" . $conn->error;
         }
+
     } else {
-        echo "File upload error or no file uploaded.";
+        echo "Error uploading file or no file uploaded.";
     }
   
     
