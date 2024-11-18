@@ -1,4 +1,4 @@
-function clearForm(containerId = null) {
+function clearForm1(containerId = null) {
     // Select the specific container based on containerId, or use the whole document if no containerId is provided
     const container = containerId ? document.getElementById(containerId) : document;
 
@@ -6,12 +6,31 @@ function clearForm(containerId = null) {
 
     // Clear text and number inputs within the specific container
     container.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => input.value = "");
-    
+
     // Clear date inputs
     container.querySelectorAll('input[type="date"]').forEach(input => input.value = "");
 
     // Reset file inputs within the specific container
-    container.querySelectorAll('input[type="file"]').forEach(input => input.value = "");
+    container.querySelectorAll('input[type="file"]').forEach(input => {
+        input.value = ""; // Clear the file input value
+
+        // Reset the associated label to its default placeholder
+        const label = container.querySelector(`label[for="${input.id}"]`);
+        if (label) {
+            const label = container.querySelector(`label[for="${input.id}"]`);
+                    if (label) {
+                        let labelText;
+                        if (input.id === 'image') {
+                            labelText = 'ID Picture';
+                        } else if (input.id === 'lot_cert') {
+                            labelText = 'Updated Lot Certification';
+                        } else if (input.id === 'guardian_id') {
+                            labelText = 'ID Picture';
+                        }
+                        label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${labelText}</strong>`;
+                    }
+        }
+    });
 
     // Reset specific dropdowns with unique placeholders within the specific container (or globally if no containerId)
     const dropdownSelectors = [
@@ -33,6 +52,8 @@ function clearForm(containerId = null) {
         document.getElementById("daycare_container2").style.display = "none";
     }
 }
+
+
 
 function clearForm(containerIds) {
     containerIds.forEach(containerId => {
