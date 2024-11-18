@@ -13,7 +13,7 @@ $tables = [
     'blgclearance_cert' => 'Building Clearance',
     'order_payment' => 'Order of Payment',
     'electricity_clearance' => 'Electricity Installation Clearance'
-    ];
+];
 
 foreach ($tables as $table => $serviceName) {
     // Determine the ID column dynamically
@@ -34,7 +34,7 @@ foreach ($tables as $table => $serviceName) {
         case 'soloparent_cert':
             $idColumn = 'soloparent_id';
             break;
-            case 'brgyclearance_cert':
+        case 'brgyclearance_cert':
             $idColumn = 'brgyclearance_id';
             break;
         case 'fencingclearance_cert':
@@ -51,7 +51,8 @@ foreach ($tables as $table => $serviceName) {
             break;
     }
 
-    $query = "SELECT * FROM $table";
+    // Only select rows where current_status is not 'rejected' or is NULL (if no current_status column exists, it will not filter)
+    $query = "SELECT * FROM $table WHERE current_status IS NULL OR current_status != 'rejected'";
     $result = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -92,31 +93,31 @@ foreach ($tables as $table => $serviceName) {
                 echo '<p class="type">Monthly Income: ' . $row['monthly_income'] . '</p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
-                case 'brgyclearance_cert':
-                echo '<p class="age"> Age: ' . $row['age'] . '</p>';
+            case 'brgyclearance_cert':
+                echo '<p class="age">Age: ' . $row['age'] . '</p>';
                 echo '<p class="type">Years of Occupancy: ' . $row['yrs_occupancy'] . '</p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
-                case 'fencingclearance_cert':
+            case 'fencingclearance_cert':
                 echo '<p class="age"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 echo '<p class="type">Address: ' . $row['address'] . '</p>';
                 break;
-                case 'blgclearance_cert':
+            case 'blgclearance_cert':
                 echo '<p class="idpicture"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
                 echo '<p class="type">Lot Measurement in sqm: ' . $row['measurement'] . '</p>';
                 break;
-                case 'order_payment':
-                echo '<p class="age">Business Name' . $row['business_name'] . '</p>';
-                echo '<p class="type">Business Address' . $row['business_address'] . '</p>';
+            case 'order_payment':
+                echo '<p class="age">Business Name: ' . $row['business_name'] . '</p>';
+                echo '<p class="type">Business Address: ' . $row['business_address'] . '</p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
-                case 'electricity_clearance':
+            case 'electricity_clearance':
                 echo '<p class="type"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
-                break;    
+                break;
         }
-      
+
         echo '</div>';
         echo '</div>';
 
