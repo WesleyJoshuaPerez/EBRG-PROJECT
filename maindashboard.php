@@ -156,6 +156,7 @@
     <div id="div1" class="val-div" style="display: none;">
     <!-- Content will be updated here based on the selected submenu option -->
     </div>
+    <div style="height: 90px;"></div>
 
     <div id="daycare_container2" class="val-div" style="display: none;">
     </div>
