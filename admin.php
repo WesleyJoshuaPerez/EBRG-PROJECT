@@ -45,9 +45,9 @@
         <div class="locktitle">
             <h3>Admin <br> istrator <br> page</h3>
             <div class="btns">
-                <a href="#updates" class="navigate"> <button id="createbtn" class="create"onclick="showDiv('updateForm')">create</button></a>
-                <a href="#anounce&event_cont" class="navigate"><button id="mangebtn" class="manage"onclick="showDiv('anounce&event_cont')">manage</button></a>
-                <a href="#servicesdiv" class="navigate"> <button id="services" class="services" onclick="showDiv('servicesdiv')">services</button> </a>          
+              <button id="createbtn" class="create"onclick="showDiv('updateForm')">create</button>
+               <button id="mangebtn" class="manage"onclick="showDiv('anounce&event_cont')">manage</button>
+                <button id="services" class="services" onclick="showDiv('servicesdiv')">services</button>          
             </div>
         </div>
         

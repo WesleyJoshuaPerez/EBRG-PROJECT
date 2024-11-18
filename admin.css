@@ -37,6 +37,188 @@ header {
     left: 0; 
     width: 500px;
 }
+.input-file {
+        background-color: #2F393B;
+        width: 400px;
+        height: 150px;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 570px;
+        position: relative;
+        margin-top: -450px;
+        box-shadow: 0 9px 20px rgb(90, 90, 90);
+    }
+    
+    .select-bg {
+        background-color: #D4D0CD;
+        width: 230px;
+        height: 50px;
+        margin-top: 40px; 
+        margin-left: 70px;
+        border-radius: 10px;
+        padding: 10px 10px 0px 10px;
+    }
+    
+    input[type="file"] {
+        opacity: 0;
+    position: absolute;
+    width: 1px; /* Keeps it minimal but still focusable */
+    height: 1px;
+    cursor: pointer;
+    }
+    
+    .select {
+        font-size: 25px;
+        font-family: "Ysabeau Office", sans-serif;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    
+    /*use for dropdown  list*/
+    .updates {
+        background-color: #2F393B;
+        width: 400px;
+        height: 200px;
+        border-radius: 10px;
+        padding: 20px;
+        left: 570px;
+        position: relative;
+        margin-top: 40px;
+        box-shadow: 0 9px 20px rgb(90, 90, 90);
+    }
+    .updates label {
+        margin-top: 30px;
+        color: white;
+        font-size: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .updates .select-wrapper {
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .updates select {
+        height: 50px;
+        background-color: #D4D0CD;
+        color: rgb(0, 0, 0);
+        font-size: 28px;
+        width: 70%;  
+        text-align: center;
+        border-radius: 10px;
+    }
+    
+    .txt1 {
+        border-color: white;
+        border-radius: 8px;
+        margin-top: -20px;
+        width: 390px;
+        height: 150px;
+        padding: 10px;
+        box-sizing: border-box;
+        font-family: "Ysabeau Office", sans-serif;
+        font-size: 16px;
+        resize: none;
+        overflow-y: auto;
+        text-align: left;
+        line-height: 1.5;
+        word-wrap: break-word; /* Ensures long words break and wrap to next line */
+    }
+    
+    h4 {
+        color: white;
+        font-size: 28px;
+        margin-top: -10px;
+    }
+    
+    .highlight {
+        color: #CCAE0E;
+    }
+    
+    /*use for title and caption barangay updates*/
+    .title {
+        background-color: #2F393B;
+        width: 400px;
+        height: 150px;
+        border-radius: 10px;
+        padding: 20px;
+        left: 1050px;
+        position: relative;
+        margin-top: -470px;
+        box-shadow: 0 9px 20px rgb(90, 90, 90);
+    }
+    
+    .txt2 {
+        border-color: white;
+        border-radius: 8px;
+        margin-top: -20px;
+        width: 400px;
+        height: 55%;
+        padding: 10px;
+        box-sizing: border-box;
+        font-family: "Ysabeau Office", sans-serif;
+        font-size: 16px;
+        resize: none;
+        overflow-y: auto;
+        text-align: left;
+        line-height: 1.5;
+        word-wrap: break-word; /* Ensures long words break and wrap to next line */
+    }
+       /*use for title and caption barangay updates*/
+       .caption {
+        background-color: #2F393B;
+        width: 400px;
+        height: 200px;
+        border-radius: 10px;
+        padding: 20px;
+        left: 1050px;
+        margin-top: 40px;
+        position: relative;
+        box-shadow: 0 9px 20px rgb(90, 90, 90);
+    }
+    
+    .txt3 {
+        border-color: white;
+        border-radius: 8px;
+        margin-top: -20px;
+        width: 400px;
+        height: 75%;
+        padding: 10px;
+        box-sizing: border-box;
+        font-family: "Ysabeau Office", sans-serif;
+        font-size: 16px;
+        resize: none;
+        overflow-y: auto;
+        text-align: left;
+        line-height: 1.5;
+        word-wrap: break-word; /* Ensures long words break and wrap to next line */
+    }
+    
+    
+    .publish {
+        background-color: #2F393B;
+        font-family: "Ysabeau Office", sans-serif;
+        color: white;
+        font-size: 26px;
+        height: 50px;
+        width: 300px;
+        margin-left: 860px;
+        margin-top: 40px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+    }
+    
+
+
+
+
 .navigate {
     text-decoration: none; /* Remove underline from links */
 }
@@ -247,200 +429,24 @@ header .nav_logo {
         margin-bottom: 15px; /* Space between buttons */
     }
     
-    .input-file {
-        background-color: #2F393B;
-        width: 400px;
-        height: 150px;
-        border-radius: 10px;
-        padding: 20px;
-        margin-left: 570px;
-        position: relative;
-        margin-top: -450px;
-        box-shadow: 0 9px 20px rgb(90, 90, 90);
-    }
-    
-    .select-bg {
-        background-color: #D4D0CD;
-        width: 230px;
-        height: 50px;
-        margin-top: 40px; 
-        margin-left: 70px;
-        border-radius: 10px;
-        padding: 10px 10px 0px 10px;
-    }
-    
-    input[type="file"] {
-        opacity: 0;
-    position: absolute;
-    width: 1px; /* Keeps it minimal but still focusable */
-    height: 1px;
-    cursor: pointer;
-    }
-    
-    .select {
-        font-size: 25px;
-        font-family: "Ysabeau Office", sans-serif;
-        margin-left: 10px;
-        cursor: pointer;
-    }
-    
-    /*use for dropdown  list*/
-    .updates {
-        background-color: #2F393B;
-        width: 400px;
-        height: 200px;
-        border-radius: 10px;
-        padding: 20px;
-        left: 570px;
-        position: relative;
-        margin-top: 40px;
-        box-shadow: 0 9px 20px rgb(90, 90, 90);
-    }
-    .updates label {
-        margin-top: 30px;
-        color: white;
-        font-size: 28px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .updates .select-wrapper {
-        padding-top: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-    
-    .updates select {
-        height: 50px;
-        background-color: #D4D0CD;
-        color: rgb(0, 0, 0);
-        font-size: 28px;
-        width: 70%;  
-        text-align: center;
-        border-radius: 10px;
-    }
-    
-    .txt1 {
-        border-color: white;
-        border-radius: 8px;
-        margin-top: -20px;
-        width: 390px;
-        height: 150px;
-        padding: 10px;
-        box-sizing: border-box;
-        font-family: "Ysabeau Office", sans-serif;
-        font-size: 16px;
-        resize: none;
-        overflow-y: auto;
-        text-align: left;
-        line-height: 1.5;
-        word-wrap: break-word; /* Ensures long words break and wrap to next line */
-    }
-    
-    h4 {
-        color: white;
-        font-size: 28px;
-        margin-top: -10px;
-    }
-    
-    .highlight {
-        color: #CCAE0E;
-    }
-    
-    /*use for title and caption barangay updates*/
-    .title {
-        background-color: #2F393B;
-        width: 400px;
-        height: 150px;
-        border-radius: 10px;
-        padding: 20px;
-        left: 1050px;
-        position: relative;
-        margin-top: -470px;
-        box-shadow: 0 9px 20px rgb(90, 90, 90);
-    }
-    
-    .txt2 {
-        border-color: white;
-        border-radius: 8px;
-        margin-top: -20px;
-        width: 400px;
-        height: 55%;
-        padding: 10px;
-        box-sizing: border-box;
-        font-family: "Ysabeau Office", sans-serif;
-        font-size: 16px;
-        resize: none;
-        overflow-y: auto;
-        text-align: left;
-        line-height: 1.5;
-        word-wrap: break-word; /* Ensures long words break and wrap to next line */
-    }
-       /*use for title and caption barangay updates*/
-       .caption {
-        background-color: #2F393B;
-        width: 400px;
-        height: 200px;
-        border-radius: 10px;
-        padding: 20px;
-        left: 1050px;
-        margin-top: 40px;
-        position: relative;
-        box-shadow: 0 9px 20px rgb(90, 90, 90);
-    }
-    
-    .txt3 {
-        border-color: white;
-        border-radius: 8px;
-        margin-top: -20px;
-        width: 400px;
-        height: 75%;
-        padding: 10px;
-        box-sizing: border-box;
-        font-family: "Ysabeau Office", sans-serif;
-        font-size: 16px;
-        resize: none;
-        overflow-y: auto;
-        text-align: left;
-        line-height: 1.5;
-        word-wrap: break-word; /* Ensures long words break and wrap to next line */
-    }
-    
-    
-    .publish {
-        background-color: #2F393B;
-        font-family: "Ysabeau Office", sans-serif;
-        color: white;
-        font-size: 26px;
-        height: 50px;
-        width: 300px;
-        margin-left: 860px;
-        margin-top: 40px;
-        border-radius: 20px;
-        border: none;
-        cursor: pointer;
-    }
     
     .content1 {
-        background-color: #9C905E;
-        margin-left: 670px;
-        top: 90px;
-        height: 400px;
-        width: 750px;
-        border-radius: 10px;
-        position: relative;
+    background-color: #9C905E;
+    margin-left: 670px;
+    top: -470px;
+    margin-bottom: 20px;
+    height: 430px;
+    width: 750px;
+     position: relative;  
+     border-radius: 10px;
     }
-/* The parent div - servicesdiv */
 .servicesdiv {
     margin-left: 670px;
-    top: 90px;
+    top: -470px;
+    margin-bottom: 10px;
     height: 530px;
     width: 750px;
-     position: relative; /* Make this relative so that child elements can be absolutely positioned inside it */
+     position: relative;  
 }
 
 /* Positioning the servetype content inside the div */
@@ -630,10 +636,13 @@ header .nav_logo {
     .editbuttons{
     display: flex;
     justify-content: space-between;
-    margin-left: 770px; /* Aligns with .content1 */
-    margin-top: 95px; /* Adds space below .content1 */
-    width: 500px;
-    border-radius: 10px; 
+    margin-left: 670px;
+    top: -470px;
+    margin-bottom: 10px;
+    height: 53px;
+    width: 750px;
+    position: relative;  
+    
     }  
     .edit1, .edit_brgyupdates,  .delete1 {
         font-family: "Ysabeau Office", sans-serif;
