@@ -182,6 +182,7 @@
        <script src="services.js"></script>
        <script src="clear_form.js"></script>
        <script src="insert.php"></script>
+       <script src="insert2.php"></script>
        <script>
 
         // Updates the selected image label

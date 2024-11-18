@@ -111,58 +111,6 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$apply_myself')";
         } 
 
-    } else if ($_FILES['health_record']['error'] === UPLOAD_ERR_OK &&
-    $_FILES['birth_cert']['error'] === UPLOAD_ERR_OK &&
-    $_FILES['guardian_id']['error'] === UPLOAD_ERR_OK) {
-
-    // Student's information
-    $student_fname = $_POST['first_name'];
-    $student_mname = $_POST['middle_name'];
-    $student_lname = $_POST['last_name'];
-    $student_level = $_POST['kinder_level'];
-
-    // Guardian's information
-    $guardian_fname = $_POST['first_name'];
-    $guardian_mname = $_POST['middle_name'];
-    $guardian_lname = $_POST['last_name'];
-    $guardian_age = $_POST['age'];
-    $guardian_contactnum = $_POST['contact_num'];
-
-    // Handle file uploads
-    $target_dir = "uploads/";
-
-    $student_healthrecord = $_FILES['health_record']['name'];
-    $healthrecord_path = $target_dir . basename($student_healthrecord);
-    if (!move_uploaded_file($_FILES['health_record']['tmp_name'], $healthrecord_path)) {
-        echo "Failed to upload health record.";
-        exit;
-    }
-
-    $student_birthcert = $_FILES['birth_cert']['name'];
-    $birthcert_path = $target_dir . basename($student_birthcert);
-    if (!move_uploaded_file($_FILES['birth_cert']['tmp_name'], $birthcert_path)) {
-        echo "Failed to upload birth certificate.";
-        exit;
-    }
-
-    $guardian_id = $_FILES['guardian_id']['name'];
-    $guardian_id_path = $target_dir . basename($guardian_id);
-    if (!move_uploaded_file($_FILES['guardian_id']['tmp_name'], $guardian_id_path)) {
-        echo "Failed to upload guardian ID.";
-        exit;
-    }
-
-    // Construct SQL query
-    $sql = "INSERT INTO daycare_shortlisting (
-                student_fname, student_mname, student_lname, student_healthrecord, 
-                student_birthcert, student_level, guardian_fname, guardian_mname, 
-                guardian_lname, guardian_age, guardian_id, guardian_contactnum
-            ) VALUES (
-                '$student_fname', '$student_mname', '$student_lname', '$student_healthrecord', 
-                '$student_birthcert', '$student_level', '$guardian_fname', '$guardian_mname', 
-                '$guardian_lname', $guardian_age, '$guardian_id', '$guardian_contactnum'
-            )";
-
     } else {
             // else handler here
             echo "No matching condition found for the provided data.";
