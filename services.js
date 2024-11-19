@@ -116,8 +116,9 @@ function toggleTypeDropdown3() {
 function showCertificateDetails(type) {
     const div1 = document.getElementById("div1");
     const daycare_container2 = document.getElementById("daycare_container2");
-    div1.style.display = 'block';
-    daycare_container2.style.display = 'none';
+
+    // Clear existing content in both containers
+    clearForm(['div1', 'daycare_container2']);
 
     if (type === 'indigency') {
         div1.innerHTML = `
@@ -154,10 +155,14 @@ function showCertificateDetails(type) {
                 </label>
 
                 <!-- Clear and Submit Buttons -->
-                <button type="button" class="clear" onclick="clearForm1('div1')">CLEAR</button>
+                <button type="button" class="clear" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
                 <button type="submit" class="submit">SUBMIT</button>
             </form>
+        });
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']); 
+        });
     } else if (type === 'residency') {
         div1.innerHTML = `
             <form id="residencyForm" action="insert.php" method="POST" enctype="multipart/form-data">
@@ -176,10 +181,13 @@ function showCertificateDetails(type) {
             <label class="myself-option2">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
-            <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
+            <button id="clearBtn" class="clear2" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
             <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
         </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']);
+        });
     } else if (type === 'job_seeker') {
         div1.innerHTML = `
         <form id="jobseekForm" action="insert.php" method="POST" enctype="multipart/form-data">
@@ -197,10 +205,13 @@ function showCertificateDetails(type) {
         <label class="myself-option3">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
         </label>
-        <button id="clearBtn" class="clear3" onclick="clearForm('div1')">CLEAR</button>
+        <button id="clearBtn" class="clear3" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit3" onclick="submit('submit')">SUBMIT</button>
         </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']); 
+        });
     } else if (type === 'absence') {
         div1.innerHTML = `
         <form id="jobabsenceForm" action="insert.php" method="POST" enctype="multipart/form-data">

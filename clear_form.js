@@ -24,9 +24,7 @@ function clearForm1(containerId = null) {
                             labelText = 'ID Picture';
                         } else if (input.id === 'lot_cert') {
                             labelText = 'Updated Lot Certification';
-                        } else if (input.id === 'guardian_id') {
-                            labelText = 'ID Picture';
-                        }
+                        } 
                         label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${labelText}</strong>`;
                     }
         }
@@ -52,8 +50,6 @@ function clearForm1(containerId = null) {
         document.getElementById("daycare_container2").style.display = "none";
     }
 }
-
-
 
 function clearForm(containerIds) {
     containerIds.forEach(containerId => {
