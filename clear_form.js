@@ -17,16 +17,13 @@ function clearForm1(containerId = null) {
         // Reset the associated label to its default placeholder
         const label = container.querySelector(`label[for="${input.id}"]`);
         if (label) {
-            const label = container.querySelector(`label[for="${input.id}"]`);
-                    if (label) {
-                        let labelText;
-                        if (input.id === 'image') {
-                            labelText = 'ID Picture';
-                        } else if (input.id === 'lot_cert') {
-                            labelText = 'Updated Lot Certification';
-                        } 
-                        label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${labelText}</strong>`;
-                    }
+            let labelText;
+            if (input.id === 'image') {
+                labelText = 'ID Picture';
+            } else if (input.id === 'lot_cert') {
+                labelText = 'Updated Lot Certification';
+            }
+            label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${labelText}</strong>`;
         }
     });
 
@@ -60,7 +57,7 @@ function clearForm(containerIds) {
                 if (input.type === 'file') {
                     // Clear the file input value
                     input.value = '';
-                    
+
                     // Reset the associated label to its default state
                     const label = container.querySelector(`label[for="${input.id}"]`);
                     if (label) {
@@ -77,7 +74,7 @@ function clearForm(containerIds) {
                 } else {
                     // Clear text and number inputs
                     input.value = '';
-                    
+
                     // Reset the placeholder if needed (optional, placeholders are static by default)
                     input.placeholder = input.getAttribute('placeholder');
                 }
@@ -90,5 +87,4 @@ function clearForm(containerIds) {
 document.querySelector('#clearBtn').addEventListener('click', () => {
     clearForm(['div1', 'daycare_container2']); // Clears inputs and resets placeholders/labels in both containers
 });
-
 
