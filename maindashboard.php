@@ -180,7 +180,7 @@
        <script src="clear_form.js"></script>
        <script src="daycare_form.js"></script>
        <script src="insert.php"></script>
- 
+       <script src="insert2.php"></script>
 
         // Updates the selected image label
         function updateLabel(input, labelId) {
