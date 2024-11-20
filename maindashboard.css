@@ -135,7 +135,7 @@ footer {
     position: fixed; /* Keeps the footer at the bottom */
     left: 0;
     bottom: 0;
-    height: 100px; /* Set footer height */
+    height: 15px; /* Set footer height */
     width: 100%;
     background: none;  
     display: flex; /* Use flexbox for layout */
@@ -165,6 +165,7 @@ footer {
     align-items: center;  
     justify-content: center;  
     flex-direction: column; 
+    font-size: 12px;
 }
 
 .footer_center p{

@@ -54,11 +54,8 @@
     </header>
     <footer>
         <nav id="nav_left" class="nav_left">
-            <ul>
-                <li><a href="#">Feedback</a></li>
-                <li><a href="vision.html">Vission</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Terms and Conditions</a></li>
+            <ul>   
+                <li><a href="mission.html">Mission</a></li>
             </ul>
         </nav>
         <div class="footer_center">
@@ -66,10 +63,7 @@
         </div>
         <nav id="nav_right" class="nav_right">
             <ul>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="vision.html">Vission</a></li>
-                <li><a href="mission.html">Mission</a></li>
-                <li><a href="#">Conducted Projects</a></li>
+                <li><a href="vision.html">Vision</a></li>
             </ul>
         </nav>
     </footer>
