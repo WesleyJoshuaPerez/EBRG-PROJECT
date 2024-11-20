@@ -85,10 +85,10 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
             $sql = "INSERT INTO fencingclearance_cert (first_name, middle_name, last_name, id_pic, lot_cert, address, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$address', '$apply_myself')";
         }
-
+    
     } else if (isset($_POST['business_name']) && isset($_POST['business_type']) && isset($_POST['business_address'])) {
         // Order of Payment
-        $business_name = $_POST['business_name'];
+        $business_name = $_POST['business_name'];   
         $business_type = $_POST['business_type'];
         $business_address = $_POST['business_address'];
 
@@ -109,12 +109,15 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
             // Insert data into the database for electricity clearance
             $sql = "INSERT INTO electricity_clearance (first_name, middle_name, last_name, id_pic, lot_cert, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$apply_myself')";
-        } else {
+        } 
+
+    } else {
             // else handler here
             echo "No matching condition found for the provided data.";
             $sql = null; // Set $sql to null to avoid executing an undefined query
         }
-    }
+    
+    
 
     // Execute the query if $sql is set
     if (isset($sql) && !empty($sql)) {

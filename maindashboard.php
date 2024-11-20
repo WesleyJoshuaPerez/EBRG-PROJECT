@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
 </head>
 <body>
     <header>
@@ -32,6 +31,7 @@
                 <li><a href="mission.html">Mission</a></li>
                 <li><a href="#">Guest Mode</a></li>
                 <li><a href="#" id="darkModeLink">Dark Mode</a></li>
+                <li><a href="#" id="Langtrans">English</a></li>
                 <li><a href="index.php">Log Out</a></li>
                 <li><a href="#">Delete Account</a></li>
                 
@@ -155,10 +155,8 @@
     </div>
     <div id="div1" class="val-div" style="display: none;">
     <!-- Content will be updated here based on the selected submenu option -->
-    </div>
-
+    
     <div id="daycare_container2" class="val-div" style="display: none;">
-    </div>
     <div style="height: 90px;"></div>
 
     </div>
@@ -180,7 +178,13 @@
        <script src="AESH.js"></script>
        <script src="services.js"></script>
        <script src="clear_form.js"></script>
+       <script src="daycare_form.js"></script>
        <script src="insert.php"></script>
+<<<<<<< HEAD
+       <script src="languagetrans.js"></script>
+=======
+       <script src="insert2.php"></script>
+>>>>>>> 2e342b03be9ff34b65a2995bac5eb158cb130280
        <script>
 
         // Updates the selected image label
@@ -222,6 +226,73 @@
                 icon: 'warning'
             });
         }
+    </script>
+    <!--Function for searchbar-->
+    <script>
+document.querySelector('.search_bar').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') { // Check if the pressed key is Enter
+        event.preventDefault(); // Prevent form submission
+
+        const query = event.target.value.toLowerCase(); 
+
+        if (query.trim() === '') {
+            // If input is empty, keep the divs hidden and prevent showing them
+            hideAllContentDivs();
+        } else {
+            // Trigger the filtering function
+            filterContent(query);
+        }
+    }
+});
+
+function filterContent(query) {
+    const contentDivs = document.querySelectorAll('.content-div');
+    const titleDivs = document.querySelectorAll('.fortitle'); // This targets the title class inside the content-div
+    let foundMatch = false; // Flag to track if any match is found
+
+    titleDivs.forEach(function(titleDiv) {
+        const titleText = titleDiv.textContent || titleDiv.innerText; // Get the text inside the title
+        const titleLower = titleText.toLowerCase();
+
+        // Clear previous highlights
+        titleDiv.innerHTML = titleText;
+
+        if (titleLower.includes(query)) {
+            // If the title matches the query, show the parent content-div
+            titleDiv.closest('.content-div').style.display = 'block';
+            highlightText(titleDiv, query); // Highlight the matched text
+            foundMatch = true; // Mark as found
+        } else {
+            // If the title doesn't match the query, hide the parent content-div
+            titleDiv.closest('.content-div').style.display = 'none';
+        }
+    });
+
+    if (!foundMatch) {
+        // Show SweetAlert if no results are found
+        Swal.fire({
+            icon: 'info',
+            title: 'No Results Found',
+            text: 'Please try a different search query.',
+            confirmButtonText: 'Okay'
+        });
+    }
+}
+
+function hideAllContentDivs() {
+    const contentDivs = document.querySelectorAll('.content-div');
+    contentDivs.forEach(function(contentDiv) {
+        contentDiv.style.display = 'none'; // Hide all content-divs when input is empty
+    });
+}
+
+function highlightText(titleDiv, query) {
+    const text = titleDiv.textContent || titleDiv.innerText;
+    const regex = new RegExp(query, 'gi'); // Case-insensitive matching
+    const highlightedText = text.replace(regex, match => `<span class="highlight">${match}</span>`); // Wrap matched text in span
+    titleDiv.innerHTML = highlightedText; // Update the HTML with highlighted text
+}
+
     </script>
 
 </body>

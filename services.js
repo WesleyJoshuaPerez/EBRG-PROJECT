@@ -116,8 +116,9 @@ function toggleTypeDropdown3() {
 function showCertificateDetails(type) {
     const div1 = document.getElementById("div1");
     const daycare_container2 = document.getElementById("daycare_container2");
-    div1.style.display = 'block';
-    daycare_container2.style.display = 'none';
+
+    // Clear existing content in both containers
+    clearForm(['div1', 'daycare_container2']);
 
     if (type === 'indigency') {
         div1.innerHTML = `
@@ -154,10 +155,14 @@ function showCertificateDetails(type) {
                 </label>
 
                 <!-- Clear and Submit Buttons -->
-                <button type="button" class="clear" onclick="clearForm('div1')">CLEAR</button>
+                <button type="button" class="clear" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
                 <button type="submit" class="submit">SUBMIT</button>
             </form>
+        });
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']); 
+        });
     } else if (type === 'residency') {
         div1.innerHTML = `
             <form id="residencyForm" action="insert.php" method="POST" enctype="multipart/form-data">
@@ -176,10 +181,13 @@ function showCertificateDetails(type) {
             <label class="myself-option2">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
-            <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
+            <button id="clearBtn" class="clear2" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
             <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
         </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']);
+        });
     } else if (type === 'job_seeker') {
         div1.innerHTML = `
         <form id="jobseekForm" action="insert.php" method="POST" enctype="multipart/form-data">
@@ -197,10 +205,13 @@ function showCertificateDetails(type) {
         <label class="myself-option3">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
         </label>
-        <button id="clearBtn" class="clear3" onclick="clearForm('div1')">CLEAR</button>
+        <button id="clearBtn" class="clear3" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit3" onclick="submit('submit')">SUBMIT</button>
         </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']); 
+        });
     } else if (type === 'absence') {
         div1.innerHTML = `
         <form id="jobabsenceForm" action="insert.php" method="POST" enctype="multipart/form-data">
@@ -329,7 +340,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `
-        <form id="bldgclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="blgclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -442,53 +453,65 @@ function showField(type) {
     } else if (type === 'daycare') {
         div1.style.display = 'block';
         daycare_container2.style.display = 'block';
-        
+    
         div1.innerHTML = `
-            <h4 class="detail">Student's Information:</h4>
-            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-            <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
-            <div class="select-bg3">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
+        <!-- Shared Form -->
+        <form id="daycareForm" action="insert2.php" method="POST" enctype="multipart/form-data">
+            <!-- Student's Information -->
+            <div id="div1">
+                <h4 class="detail">Student's Information:</h4>
+                <input type="text" class="firstname" name="student_first_name" placeholder="First Name" required>
+                <input type="text" class="middlename" name="student_middle_name" placeholder="Middle Name" required>
+                <input type="text" class="lastname" name="student_last_name" placeholder="Last Name" required>
+                <div class="select-bg3">
+                    <input type="file" id="health_record" name="health_record" required onchange="updateLabel(this, 'fileLabel1')">
+                    <label for="health_record" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; Health Record</strong>
                     </label>
-            </div>
-            <div class="select-bg8">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
+                </div>
+                <div class="select-bg8">
+                    <input type="file" id="birth_cert" name="birth_cert" required onchange="updateLabel(this, 'fileLabel2')">
+                    <label for="birth_cert" class="select" id="fileLabel2">
                         <strong><i class="fas fa-upload"></i> &nbsp; Birth Certificate</strong>
                     </label>
+                </div>
+                <div class="type-dropdown5">
+                    <div class="selected-option5" onclick="toggleTypeDropdown5()">
+                        -- Kinder Level -- <span class="type-icon5">&#9662;</span>
+                    </div>
+                    <div class="type-options5" id="type-options5" style="display: none;">
+                        <div class="type-option5" onclick="selectTypeOption5('Kinder I')">Kinder I</div>
+                        <div class="type-option5" onclick="selectTypeOption5('Kinder II')">Kinder II</div>
+                    </div>
+                    <input type="hidden" id="kinder_level" name="kinder_level" value="">
+                </div>
             </div>
-            <div class="type-dropdown5">
-            <div class="selected-option5" onclick="toggleTypeDropdown5()">
-            -- Kinder Level -- <span class="type-icon5">&#9662;</span> <!-- Dropdown arrow -->
-            </div>
-            <div class="type-options5" id="type-options5" style="display: none;">
-            <div class="type-option5" onclick="selectTypeOption5('Kinder I')">Kinder I</div>
-            <div class="type-option5" onclick="selectTypeOption5('Kinder II')">Kinder II</div>
-            </div>
-            </div>
-            <button id="clearBtn" class="clear5" onclick="clearForm('div1')">CLEAR</button>
-            <button id="submitBtn" class="submit4" onclick="submit('submit')">SUBMIT</button>
-        `;
 
-        daycare_container2.innerHTML = `
-            <h4 class="detail2">Guardian's Information:</h4>
-            <input type="text" class="firstname2" name="first_name" placeholder="First Name" required>
-            <input type="text" class="middlename2" name="middle_name" placeholder="Middle Name" required>
-            <input type="text" class="lastname2" name="last_name" placeholder="Last Name" required>
-            <input type="number" id="age3" name="age" min="0" step="1" value="" placeholder="Age">
-            <div class="select-bg9">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
+            <div style="height: 90px;"></div>
+    
+            <!-- Guardian's Information -->
+            <div id="daycare_container2">
+                <h4 class="detail2">Guardian's Information:</h4>
+                <input type="text" class="firstname2" name="guardian_first_name" placeholder="First Name" required>
+                <input type="text" class="middlename2" name="guardian_middle_name" placeholder="Middle Name" required>
+                <input type="text" class="lastname2" name="guardian_last_name" placeholder="Last Name" required>
+                <input type="number" id="age3" name="guardian_age" min="0" step="1" value="" placeholder="Age">
+                <div class="select-bg9">
+                    <input type="file" id="guardian_id" name="guardian_id" required onchange="updateLabel(this, 'fileLabel3')">
+                    <label for="guardian_id" class="select" id="fileLabel3">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
+                </div>
+                <input type="text" class="contact_num" name="guardian_contact_num" placeholder="Contact Number" required>
+                <button id="clearBtn" class="clear3" type="button" onclick="clearForm(['studentContainer', 'guardianContainer'])">CLEAR</button>
+                <button id="submitBtn" class="submit3" type="submit">SUBMIT</button>
             </div>
-            <input type="text" class="contact_num" name="contact_num" placeholder="Contact Number" required>
-            <button id="clearBtn" class="clear3" onclick="clearForm('daycare_container2')">CLEAR</button>
-            <button id="submitBtn" class="submit3" onclick="submit('submit')">SUBMIT</button>
+            
+        </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1', 'daycare_container2']); // Clear both sections
+        });
     }
 }
 
