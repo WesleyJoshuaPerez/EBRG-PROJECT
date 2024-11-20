@@ -155,8 +155,10 @@
     </div>
     <div id="div1" class="val-div" style="display: none;">
     <!-- Content will be updated here based on the selected submenu option -->
-    
+    </div>
+
     <div id="daycare_container2" class="val-div" style="display: none;">
+    </div>
     <div style="height: 90px;"></div>
 
     </div>
@@ -178,9 +180,9 @@
        <script src="AESH.js"></script>
        <script src="services.js"></script>
        <script src="clear_form.js"></script>
-       <script src="daycare_form.js"></script>
        <script src="insert.php"></script>
-       <script src="insert2.php"></script>
+       <script src="languagetrans.js"></script>
+       <script>
 
         // Updates the selected image label
         function updateLabel(input, labelId) {

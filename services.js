@@ -116,9 +116,8 @@ function toggleTypeDropdown3() {
 function showCertificateDetails(type) {
     const div1 = document.getElementById("div1");
     const daycare_container2 = document.getElementById("daycare_container2");
-
-    // Clear existing content in both containers
-    clearForm(['div1', 'daycare_container2']);
+    div1.style.display = 'block';
+    daycare_container2.style.display = 'none';
 
     if (type === 'indigency') {
         div1.innerHTML = `
@@ -426,9 +425,17 @@ function showCertificateDetails(type) {
 
 function showField(type) {
     const div1 = document.getElementById("div1");
+    const daycare_container2 = document.getElementById("daycare_container2"); // Declare daycare_container2
+
+    // Hide daycare container and reset div1 content initially
     div1.style.display = 'block';
     daycare_container2.style.display = 'none';
 
+    // Clear the content of both div1 and daycare_container2
+    div1.innerHTML = '';
+    daycare_container2.innerHTML = '';
+
+    // If the selected type is health services
     if (type === 'health_services') {
         div1.innerHTML = `
             <h4 class="detail">Health Services & Medications:</h4>
@@ -436,24 +443,21 @@ function showField(type) {
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
             <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
             <div class="select-bg3">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
-                        <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
-                    </label>
+                <input type="file" id="image" name="image" required>
+                <label for="image" class="select" id="fileLabel">
+                    <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
+                </label>
             </div>
             <div class="select-bg7">
-                    <input type="file" id="image" name="image" required>
-                    <label for="image" class="select" id="fileLabel">
-                        <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
-                    </label>
+                <input type="file" id="image" name="image" required>
+                <label for="image" class="select" id="fileLabel">
+                    <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
+                </label>
             </div>
-            <button id="clearBtn" class="clear2" onclick="clear('clear')">CLEAR</button>
+            <button id="clearBtn" class="clear2" onclick="clearForm1('div1')">CLEAR</button>
             <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
         `;
     } else if (type === 'daycare') {
-        div1.style.display = 'block';
-        daycare_container2.style.display = 'block';
-    
         div1.innerHTML = `
         <!-- Shared Form -->
         <form id="daycareForm" action="insert2.php" method="POST" enctype="multipart/form-data">
@@ -490,7 +494,7 @@ function showField(type) {
             <div style="height: 90px;"></div>
     
             <!-- Guardian's Information -->
-            <div id="daycare_container2">
+            <div id="daycare_container2" style="display: block;">
                 <h4 class="detail2">Guardian's Information:</h4>
                 <input type="text" class="firstname2" name="guardian_first_name" placeholder="First Name" required>
                 <input type="text" class="middlename2" name="guardian_middle_name" placeholder="Middle Name" required>
@@ -503,17 +507,17 @@ function showField(type) {
                     </label>
                 </div>
                 <input type="text" class="contact_num" name="guardian_contact_num" placeholder="Contact Number" required>
-                <button id="clearBtn" class="clear3" type="button" onclick="clearForm(['studentContainer', 'guardianContainer'])">CLEAR</button>
+                <button id="clearBtn" class="clear3" type="button" onclick="clearForm1(['div1', 'daycare_container2'])">CLEAR</button>
                 <button id="submitBtn" class="submit3" type="submit">SUBMIT</button>
             </div>
-            
         </form>
         `;
-        document.querySelector('#clearBtn').addEventListener('click', () => {
-            clearForm(['div1', 'daycare_container2']); // Clear both sections
-        });
+
+        // Show the daycare container
+        daycare_container2.style.display = 'none';
     }
 }
+
 
 function showSubmenu(id) {
     document.getElementById(id).style.display = 'block';
@@ -526,23 +530,21 @@ document.getElementById("certificates-submenu").addEventListener("mouseleave", f
 
 // Close the dropdown if clicking outside of it
 document.addEventListener("click", function(event) {
-    const dropdown = document.querySelector(".custom-dropdown");
-    const dropdownOptions = document.getElementById("dropdown-options");
+    // Dropdown 1: Custom dropdown
+    const customDropdown = document.querySelector(".custom-dropdown");
+    const customDropdownOptions = document.getElementById("dropdown-options");
     const submenu = document.getElementById("certificates-submenu");
 
-    if (!dropdown.contains(event.target)) {
-        dropdownOptions.style.display = "none";
-        submenu.style.display = "none";
+    if (customDropdown && !customDropdown.contains(event.target)) {
+        if (customDropdownOptions) customDropdownOptions.style.display = "none";
+        if (submenu) submenu.style.display = "none";
     }
-});
 
-// Close the dropdown if clicking outside of it
-document.addEventListener("click", function(event) {
-    const dropdown = document.querySelector(".type-dropdown");
-    const dropdownOptions = document.getElementById("type-options");
+    // Dropdown 2: Type dropdown
+    const typeDropdown = document.querySelector(".type-dropdown");
+    const typeDropdownOptions = document.getElementById("type-options");
 
-    if (!dropdown.contains(event.target)) {
-        dropdownOptions.style.display = "none";
-        submenu.style.display = "none";
+    if (typeDropdown && !typeDropdown.contains(event.target)) {
+        if (typeDropdownOptions) typeDropdownOptions.style.display = "none";
     }
 });

@@ -1,90 +1,83 @@
-function clearForm1(containerId = null) {
-    // Select the specific container based on containerId, or use the whole document if no containerId is provided
-    const container = containerId ? document.getElementById(containerId) : document;
+function clearForm(divId) {
+    const div = document.getElementById(divId);
+    const form = div.querySelector('form'); // Get the form inside the div
+    form.reset();  // Reset form fields
 
-    if (!container) return; // Exit if the container does not exist
-
-    // Clear text and number inputs within the specific container
-    container.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => input.value = "");
-
-    // Clear date inputs
-    container.querySelectorAll('input[type="date"]').forEach(input => input.value = "");
-
-    // Reset file inputs within the specific container
-    container.querySelectorAll('input[type="file"]').forEach(input => {
-        input.value = ""; // Clear the file input value
-
-        // Reset the associated label to its default placeholder
-        const label = container.querySelector(`label[for="${input.id}"]`);
-        if (label) {
-            let labelText;
-            if (input.id === 'image') {
-                labelText = 'ID Picture';
-            } else if (input.id === 'lot_cert') {
-                labelText = 'Updated Lot Certification';
-            }
-            label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${labelText}</strong>`;
-        }
-    });
-
-    // Reset specific dropdowns with unique placeholders within the specific container (or globally if no containerId)
-    const dropdownSelectors = [
-        { selector: '.type-dropdown .selected-option', placeholder: '-- Assistance Type -- <span class="type-icon">&#9662;</span>' },
-        { selector: '.type-dropdown2 .selected-option2', placeholder: '-- Source of Income -- <span class="type-icon2">&#9662;</span>' },
-        { selector: '.type-dropdown3 .selected-option3', placeholder: '-- Monthly Income -- <span class="type-icon3">&#9662;</span>' },
-        { selector: '.type-dropdown4 .selected-option4', placeholder: '-- Type of Business -- <span class="type-icon4">&#9662;</span>' },
-        { selector: '.type-dropdown5 .selected-option5', placeholder: '-- Kinder Level -- <span class="type-icon5">&#9662;</span>' }
-    ];
-
-    dropdownSelectors.forEach(({ selector, placeholder }) => {
-        const dropdown = container.querySelector(selector);
-        if (dropdown) dropdown.innerHTML = placeholder;
-    });
-
-    // Hide specific divs if clearing all fields (no containerId provided)
-    if (!containerId) {
-        document.getElementById("div1").style.display = "none";
-        document.getElementById("daycare_container2").style.display = "none";
-    }
-}
-
-function clearForm(containerIds) {
-    containerIds.forEach(containerId => {
-        const container = document.getElementById(containerId);
-        if (container) {
-            const inputs = container.querySelectorAll('input');
-            inputs.forEach(input => {
-                if (input.type === 'file') {
-                    // Clear the file input value
-                    input.value = '';
-
-                    // Reset the associated label to its default state
-                    const label = container.querySelector(`label[for="${input.id}"]`);
-                    if (label) {
-                        let labelText;
-                        if (input.id === 'health_record') {
-                            labelText = 'Health Record';
-                        } else if (input.id === 'birth_cert') {
-                            labelText = 'Birth Certificate';
-                        } else if (input.id === 'guardian_id') {
-                            labelText = 'ID Picture';
-                        }
-                        label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ${labelText}</strong>`;
-                    }
+    // Clear all input fields
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        if (input.type === 'file') {
+            input.value = ''; // Clear file input
+            // Clear label associated with the file input
+            const label = form.querySelector(`label[for="${input.id}"]`);
+            if (label) {
+                label.classList.remove('select'); // Remove select class (if any)
+                
+                // Use if-else to reset the label text based on the file input id
+                if (input.id === 'id_pic') {
+                    label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>`;
+                } else if (input.id === 'lot_cert') {
+                    label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>`;
                 } else {
-                    // Clear text and number inputs
-                    input.value = '';
-
-                    // Reset the placeholder if needed (optional, placeholders are static by default)
-                    input.placeholder = input.getAttribute('placeholder');
+                    label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>`; // Default label
                 }
-            });
+            }
+        } else if (input.type === 'radio' || input.type === 'checkbox') {
+            input.checked = false; // Uncheck radio or checkbox inputs
+        } else {
+            input.value = ''; // Clear text, number, and other types of inputs
         }
+    });
+
+    // Reset hidden inputs like dropdown selections
+    const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+    hiddenInputs.forEach(input => {
+        input.value = ''; // Reset hidden inputs
     });
 }
 
-// Attach the clear button functionality
-document.querySelector('#clearBtn').addEventListener('click', () => {
-    clearForm(['div1', 'daycare_container2']); // Clears inputs and resets placeholders/labels in both containers
-});
+
+
+
+function clearForm1(containerIds) {
+    // Check if containerIds is an array or a single string
+    const containers = Array.isArray(containerIds) ? containerIds : [containerIds];
+
+    containers.forEach(containerId => {
+        const container = document.getElementById(containerId);
+
+        // Reset all input fields (text and number)
+        const inputs = container.querySelectorAll('input[type="text"], input[type="number"], input[type="hidden"]');
+        inputs.forEach(input => {
+            input.value = '';  // Clear the input value
+        });
+
+        // Reset all file inputs and update the label text
+        const fileInputs = container.querySelectorAll('input[type="file"]');
+        fileInputs.forEach(fileInput => {
+            fileInput.value = '';  // Clear the file input (remove the attached file)
+
+            // Update the label text to the default for each file input
+            const label = container.querySelector(`label[for="${fileInput.id}"]`);
+            if (label) {
+                // Check the file input ID and update label accordingly
+                if (fileInput.id === 'health_record') {
+                    label.innerHTML = '<strong><i class="fas fa-upload"></i> &nbsp; Health Record</strong>';
+                } else if (fileInput.id === 'birth_cert') {
+                    label.innerHTML = '<strong><i class="fas fa-upload"></i> &nbsp; Birth Certificate</strong>';
+                } else if (fileInput.id === 'guardian_id') {
+                    label.innerHTML = '<strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>';
+                }
+            }
+        });
+    });
+}
+
+
+
+
+// // Attach the clear button functionality
+// document.querySelector('#clearBtn').addEventListener('click', () => {
+//     clearForm(['div1', 'daycare_container2']); // Clears inputs and resets placeholders/labels in both containers
+// });
 
