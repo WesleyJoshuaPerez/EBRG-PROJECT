@@ -23,7 +23,7 @@ while ($row = mysqli_fetch_assoc($announcementResult)) {
     // Add Edit Buttons
     echo '<div class="editbuttons">';
     echo '<button class="edit1" onclick="editPhoto(' . $row['announcement_id'] . ', \'announcement\')"><strong>Edit Photo</strong></button>';
-    echo '<button class="edit_brgyupdates" onclick="editAnnouncement(' . $row['announcement_id'] . ')"><strong>Edit Title&Caption</strong></button>';
+    echo '<button class="edit_brgyupdates" onclick="editAnnouncement(' . $row['announcement_id'] . ')"><strong>Edit Information</strong></button>';
     echo '<button class="delete1" onclick="deleteAnnouncement(' . $row['announcement_id'] . ')"><strong>Delete</strong></button>';
     echo '</div>';
 }
@@ -35,13 +35,12 @@ while ($row = mysqli_fetch_assoc($eventResult)) {
     echo '<p class="fortitle">' . $row['brgyevent_title'] . '</p>';
     echo '<p class="cp1">' . $row['bgry_content'] . '</p>';
     echo '</div>';
-    
+  
     // Add Edit Buttons
     echo '<div class="editbuttons">';
     echo '<button class="edit1" onclick="editPhoto(' . $row['brgyevent_id'] . ', \'event\')"><strong>Edit Photo</strong></button>';
-    echo '<button class="edit_brgyupdates" onclick="editEvent(' . $row['brgyevent_id'] . ')"><strong>Edit Title&Caption</strong></button>';
+    echo '<button class="edit_brgyupdates" onclick="editEvent(' . $row['brgyevent_id'] . ')"><strong>Edit Information</strong></button>';
     echo '<button class="delete1" onclick="deleteEvent(' . $row['brgyevent_id'] . ')"><strong>Delete</strong></button>';
     echo '</div>';
 }
 ?>
- 

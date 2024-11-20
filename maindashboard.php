@@ -12,11 +12,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   <!-- Include SweetAlert CSS -->
+   <!-- Use to inclue SweetAlert CSS and js -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <!-- Use to inclue Google Translate API -->
+    <script  type="text/javascript" src="languagetrans.js"></script>
+     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
     <header>
@@ -24,18 +26,25 @@
             &#9776; <!-- Unicode character for hamburger icon -->
         </div>
         <nav id="nav-menu" class="nav_menu">
-            <ul>
-                <li><a href="about_us.html">About us</a></li>
-                <li><a href="#">Conducted Projects</a></li>
-                <li><a href="vision.html">Vission</a></li>
-                <li><a href="mission.html">Mission</a></li>
-                <li><a href="#">Guest Mode</a></li>
-                <li><a href="#" id="darkModeLink">Dark Mode</a></li>
-                <li><a href="#" id="Langtrans">English</a></li>
-                <li><a href="index.php">Log Out</a></li>
-                <li><a href="#">Delete Account</a></li>
-                
-            </ul>
+        <ul>
+    <li><a href="about_us.html">About us</a></li>
+    <li><a href="#">Conducted Projects</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="mission.html">Mission</a></li>
+    <li><a href="#">Guest Mode</a></li>
+    <li><a href="#" id="darkModeLink">Dark Mode</a></li>
+
+    <!-- Language translation section as a list item -->
+    <li>
+        <div id="Langtrans">
+            <div id="google_translate_element" style="display: block;"></div>
+        </div>
+    </li>
+
+    <li><a href="index.php">Log Out</a></li>
+    <li><a href="#">Delete Account</a></li>
+</ul>
+
         </nav>
         <div class="nav_logo">
             <img src="logo/mainpage_logo.png" alt="EBRGY logo">
@@ -47,7 +56,7 @@
         <nav id="nav_left" class="nav_left">
             <ul>
                 <li><a href="#">Feedback</a></li>
-                <li><a href="#">Business Email</a></li>
+                <li><a href="vision.html">Vission</a></li>
                 <li><a href="#">Privacy</a></li>
                 <li><a href="#">Terms and Conditions</a></li>
             </ul>
@@ -181,7 +190,7 @@
        <script src="services.js"></script>
        <script src="clear_form.js"></script>
        <script src="insert.php"></script>
-       <script src="languagetrans.js"></script>
+    
        <script>
 
         // Updates the selected image label
@@ -289,8 +298,6 @@ function highlightText(titleDiv, query) {
     const highlightedText = text.replace(regex, match => `<span class="highlight">${match}</span>`); // Wrap matched text in span
     titleDiv.innerHTML = highlightedText; // Update the HTML with highlighted text
 }
-
     </script>
-
 </body>
 </html>

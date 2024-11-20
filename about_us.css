@@ -12,9 +12,12 @@ body {
     font-family: "Ysabeau Office", sans-serif;
     background-attachment: fixed;
 }
-
+ /* Hides the Google Translate logo */
+ .goog-te-gadget-icon {
+    display: none !important;
+}
 header {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -112,7 +115,7 @@ header .nav_logo {
     
     .container {
         margin: 5px auto; 
-        height: 330px;
+        height: auto;
         width: 1000px;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
@@ -157,7 +160,7 @@ header .nav_logo {
 
 @media only screen and (max-width: 1023px){
     header {
-        position: fixed;
+        position: relative;
         top: 0;
         left: 0;
         width: 100%;
@@ -250,7 +253,7 @@ header .nav_logo {
     
     .container {
         margin-top: -40px;
-        height: 400px;
+        height: auto;
         width: 270px;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;

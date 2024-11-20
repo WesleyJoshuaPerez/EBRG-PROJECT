@@ -10,9 +10,12 @@ body {
      font-family: "Ysabeau Office", sans-serif;
      background-attachment: fixed;
  }
- 
+ /* Hides the Google Translate logo */
+.goog-te-gadget-icon {
+    display: none !important;
+}
  header {
-    position: fixed;
+    position: relative;
     z-index: 1000;
      top: 0;
      left: 0;
@@ -115,6 +118,7 @@ body {
 .nav_menu ul li:nth-child(6) { grid-column: 2; grid-row: 2; }
 .nav_menu ul li:nth-child(7) { grid-column: 2; grid-row: 3; }
 .nav_menu ul li:nth-child(8) { grid-column: 3; grid-row: 1; }
+.nav_menu ul li:nth-child(9) { grid-column: 3; grid-row: 2; }
 /*use for styling search bar*/
 header .search_bar{
     margin: 0;
