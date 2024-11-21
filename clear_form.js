@@ -37,8 +37,6 @@ function clearForm(divId) {
 }
 
 
-
-
 function clearForm1(containerIds) {
     // Check if containerIds is an array or a single string
     const containers = Array.isArray(containerIds) ? containerIds : [containerIds];
@@ -76,8 +74,4 @@ function clearForm1(containerIds) {
 
 
 
-// // Attach the clear button functionality
-// document.querySelector('#clearBtn').addEventListener('click', () => {
-//     clearForm(['div1', 'daycare_container2']); // Clears inputs and resets placeholders/labels in both containers
-// });
 

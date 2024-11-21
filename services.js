@@ -85,6 +85,7 @@ function toggleTypeDropdown5() {
 function selectTypeOption5(optionText) {
     const selectedTypeOption = document.querySelector(".type-dropdown5 .selected-option5");
     selectedTypeOption.innerHTML = `${optionText} <span class="type-icon5">&#9662;</span>`;
+    document.getElementById("kinder_level").value = optionText; // Ensure this is updating the hidden input
     document.getElementById("type-options5").style.display = "none";
 }
 
@@ -157,7 +158,6 @@ function showCertificateDetails(type) {
                 <button type="button" class="clear" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
                 <button type="submit" class="submit">SUBMIT</button>
             </form>
-        });
         `;
         document.querySelector('#clearBtn').addEventListener('click', () => {
             clearForm(['div1']); 
@@ -339,7 +339,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `
-        <form id="blgclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="blgclearanceForm" action="insert2.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
