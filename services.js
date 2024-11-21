@@ -122,7 +122,7 @@ function showCertificateDetails(type) {
 
     if (type === 'indigency') {
         div1.innerHTML = `
-            <form id="indigencyForm" action="insert.php" method="POST" enctype="multipart/form-data">
+            <form id="indigencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
                 <h4 class="detail">Details:</h4>
                 <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
                 <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -164,7 +164,7 @@ function showCertificateDetails(type) {
         });
     } else if (type === 'residency') {
         div1.innerHTML = `
-            <form id="residencyForm" action="insert.php" method="POST" enctype="multipart/form-data">
+            <form id="residencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -180,7 +180,7 @@ function showCertificateDetails(type) {
             <label class="myself-option2">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
             </label>
-            <button id="clearBtn" class="clear2" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
+            <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
             <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
         </form>
         `;
@@ -189,7 +189,7 @@ function showCertificateDetails(type) {
         });
     } else if (type === 'job_seeker') {
         div1.innerHTML = `
-        <form id="jobseekForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="jobseekForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -204,7 +204,7 @@ function showCertificateDetails(type) {
         <label class="myself-option3">
             <input type="radio" name="apply_myself" value="myself"> Apply for myself
         </label>
-        <button id="clearBtn" class="clear3" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
+        <button id="clearBtn" class="clear3" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit3" onclick="submit('submit')">SUBMIT</button>
         </form>
         `;
@@ -213,7 +213,7 @@ function showCertificateDetails(type) {
         });
     } else if (type === 'absence') {
         div1.innerHTML = `
-        <form id="jobabsenceForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="jobabsenceForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -238,7 +238,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'solo_parent') {
         div1.innerHTML = `
-        <form id="soloparentForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="soloparentForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -290,7 +290,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'brgy_clearance') {
         div1.innerHTML = `
-        <form id="brgyclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="brgyclearanceForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -312,7 +312,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'fencing_clearance') {
         div1.innerHTML = `
-        <form id="fencingclearanceForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="fencingclearanceForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -339,7 +339,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `
-        <form id="blgclearanceForm" action="insert2.php" method="POST" enctype="multipart/form-data">
+        <form id="blgclearanceForm" action="submit2.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -361,7 +361,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'order_payment') {
         div1.innerHTML = `
-        <form id="orderpaymentForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="orderpaymentForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -396,7 +396,7 @@ function showCertificateDetails(type) {
         `;
     } else if (type === 'electricity') {
         div1.innerHTML = `
-        <form id="electricityForm" action="insert.php" method="POST" enctype="multipart/form-data">
+        <form id="electricityForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -460,7 +460,7 @@ function showField(type) {
     } else if (type === 'daycare') {
         div1.innerHTML = `
         <!-- Shared Form -->
-        <form id="daycareForm" action="insert2.php" method="POST" enctype="multipart/form-data">
+        <form id="daycareForm" action="submit2.php" method="POST" enctype="multipart/form-data">
             <!-- Student's Information -->
             <div id="div1">
                 <h4 class="detail">Student's Information:</h4>

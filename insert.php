@@ -86,21 +86,6 @@ if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) 
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$address', '$apply_myself')";
         }
     
-    } else if (isset($_POST['measurement']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
-        // Certificate of Building Clearance fields
-        $measurement = $_POST['measurement'];
-        $lot_cert = $_FILES['lot_cert']['name'];
-
-        // Handle file upload
-        $target_dir = "uploads/";
-        $lot_cert_path = $target_dir . basename($lot_cert);
-
-        if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
-            // Insert data into the database for building clearance
-            $sql = "INSERT INTO blgclearance_cert (first_name, middle_name, last_name, lot_cert, measurement, apply_myself)
-                    VALUES ('$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself')";
-        }
-    
     } else if (isset($_POST['business_name']) && isset($_POST['business_type']) && isset($_POST['business_address'])) {
         // Order of Payment
         $business_name = $_POST['business_name'];   

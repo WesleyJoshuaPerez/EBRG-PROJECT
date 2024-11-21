@@ -11,9 +11,6 @@ function clearForm(divId) {
             // Clear label associated with the file input
             const label = form.querySelector(`label[for="${input.id}"]`);
             if (label) {
-                label.classList.remove('select'); // Remove select class (if any)
-                
-                // Use if-else to reset the label text based on the file input id
                 if (input.id === 'id_pic') {
                     label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>`;
                 } else if (input.id === 'lot_cert') {
@@ -22,6 +19,7 @@ function clearForm(divId) {
                     label.innerHTML = `<strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>`; // Default label
                 }
             }
+            
         } else if (input.type === 'radio' || input.type === 'checkbox') {
             input.checked = false; // Uncheck radio or checkbox inputs
         } else {
@@ -33,6 +31,28 @@ function clearForm(divId) {
     const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
     hiddenInputs.forEach(input => {
         input.value = ''; // Reset hidden inputs
+    });
+
+    // Reset dropdowns
+    const dropdowns = [
+        { selector: '.type-dropdown', defaultText: '-- Assistance Type --', hiddenInputId: 'assistance_type' },
+        { selector: '.type-dropdown2', defaultText: '-- Source of Income --', hiddenInputId: 'source_income' },
+        { selector: '.type-dropdown3', defaultText: '-- Monthly Income --', hiddenInputId: 'monthly_income' },
+        { selector: '.type-dropdown4', defaultText: '-- Type of Business --', hiddenInputId: 'business_type' }
+    ];
+
+    dropdowns.forEach(dropdown => {
+        const dropdownElement = form.querySelector(dropdown.selector);
+        if (dropdownElement) {
+            const selectedOption = dropdownElement.querySelector('.selected-option, .selected-option2, .selected-option3, .selected-option4');
+            const hiddenInput = form.querySelector(`#${dropdown.hiddenInputId}`);
+            if (selectedOption) {
+                selectedOption.innerHTML = `${dropdown.defaultText} <span class="type-icon">&#9662;</span>`; // Reset to default text
+            }
+            if (hiddenInput) {
+                hiddenInput.value = ''; // Reset the hidden input value
+            }
+        }
     });
 }
 

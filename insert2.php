@@ -12,9 +12,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$first_name = $_POST['first_name'];
-$middle_name = $_POST['middle_name'];
-$last_name = $_POST['last_name'];
+$first_name = isset($_POST['first_name']) ? $_POST['first_name'] : '';
+$middle_name = isset($_POST['middle_name']) ? $_POST['middle_name'] : '';
+$last_name = isset($_POST['last_name']) ? $_POST['last_name'] : '';
 $apply_myself = isset($_POST['apply_myself']) ? $_POST['apply_myself'] : null; // Radio button value
 
 // Debug uploaded files

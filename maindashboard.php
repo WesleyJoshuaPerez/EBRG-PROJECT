@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main dashboard</title>
+    <title>Primary Dashboard</title>
     <link rel="stylesheet" href="maindashboard.css" />
     <link rel="stylesheet" href="darkmode.css"/>
     <!--font style links-->
@@ -184,6 +184,8 @@
        <script src="services.js"></script>
        <script src="clear_form.js"></script>
        <script src="insert.php"></script>
+       <script src="sweetalert.js"></script>
+
     
        <script>
 
@@ -229,7 +231,7 @@
     </script>
     <!--Function for searchbar-->
     <script>
-document.querySelector('.search_bar').addEventListener('keydown', function(event) {
+    document.querySelector('.search_bar').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') { // Check if the pressed key is Enter
         event.preventDefault(); // Prevent form submission
 
@@ -243,9 +245,9 @@ document.querySelector('.search_bar').addEventListener('keydown', function(event
             filterContent(query);
         }
     }
-});
+    });
 
-function filterContent(query) {
+    function filterContent(query) {
     const contentDivs = document.querySelectorAll('.content-div');
     const titleDivs = document.querySelectorAll('.fortitle'); // This targets the title class inside the content-div
     let foundMatch = false; // Flag to track if any match is found
@@ -277,21 +279,26 @@ function filterContent(query) {
             confirmButtonText: 'Okay'
         });
     }
-}
+    }
 
-function hideAllContentDivs() {
+    function hideAllContentDivs() {
     const contentDivs = document.querySelectorAll('.content-div');
     contentDivs.forEach(function(contentDiv) {
         contentDiv.style.display = 'none'; // Hide all content-divs when input is empty
     });
-}
+    }
 
-function highlightText(titleDiv, query) {
+    function highlightText(titleDiv, query) {
     const text = titleDiv.textContent || titleDiv.innerText;
     const regex = new RegExp(query, 'gi'); // Case-insensitive matching
     const highlightedText = text.replace(regex, match => `<span class="highlight">${match}</span>`); // Wrap matched text in span
     titleDiv.innerHTML = highlightedText; // Update the HTML with highlighted text
-}
+    }
+    </script>
+
+    <!-- submit -->
+    <script>
+     
     </script>
 </body>
 </html>
