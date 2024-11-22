@@ -122,7 +122,7 @@ function showCertificateDetails(type) {
 
     if (type === 'indigency') {
         div1.innerHTML = `
-            <form id="indigencyForm" onsubmit="event.preventDefault(); submitForm();" method="POST" enctype="multipart/form-data">
+            <form id="indigencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
                 <h4 class="detail">Details:</h4>
                 <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
                 <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -162,14 +162,9 @@ function showCertificateDetails(type) {
         document.querySelector('#clearBtn').addEventListener('click', () => {
             clearForm(['div1']); 
         });
-        const form = document.getElementById("indigencyForm");
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            submitForm("indigencyForm");
-        });
     } else if (type === 'residency') {
         div1.innerHTML = `
-            <form id="residencyForm" onsubmit="event.preventDefault(); submitForm();" method="POST" enctype="multipart/form-data">
+            <form id="residencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
@@ -191,11 +186,6 @@ function showCertificateDetails(type) {
         `;
         document.querySelector('#clearBtn').addEventListener('click', () => {
             clearForm(['div1']);
-        });
-        const form = document.getElementById("residencyForm");
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            submitForm("residencyForm");
         });
     } else if (type === 'job_seeker') {
         div1.innerHTML = `
