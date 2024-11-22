@@ -594,7 +594,7 @@ header .search_bar{
     width: 100px; /* Adjust width as needed */
     font-family: inherit; /* Match the font family */
     position: relative;
-    top: 40px;
+    top: 45px;
     left: 30px;
     padding: 10px;
     border-radius: 12px;
@@ -666,10 +666,10 @@ header .search_bar{
     font-family: inherit; /* Match the font family */
     border: none;
     font-size: 23px;
-    left: 200px;
+    left: 217px;
     position: relative;
     bottom: 80px;
-    width: 300px;
+    width: 280px;
 }
 
 .employer {
@@ -708,7 +708,7 @@ header .search_bar{
     font-family: inherit; /* Match the font family */
     border: none;
     font-size: 23px;
-    left: 340px;
+    left: 370px;
     position: relative;
     bottom: 57px;
 }
@@ -843,102 +843,137 @@ header .search_bar{
 }
 
 .select-bg {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 200px;
-    height: 50px;
-    margin-left: 160px;
     position: relative;
-    bottom: 80px;
+    width: 200px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 160px;
+    bottom: 80px;
+    border: 1px solid #ccc;
 }
 
 .select-bg2 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 200px;
-    height: 50px;
-    margin-left: 250px;
     position: relative;
-    bottom: 80px;
+    width: 200px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 245px;
+    bottom: 80px;
+    border: 1px solid #ccc;
 }
 
 .select-bg3 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 200px;
-    height: 50px;
-    margin-left: 33px;
     position: relative;
-    bottom: 30px;
+    width: 200px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 30px;
+    bottom: 30px;
+    border: 1px solid #ccc;
 }
-
 .select-bg4 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 160px;
-    height: 50px;
-    margin-left: 33px;
     position: relative;
-    bottom: 30px;
+    width: 180px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 30px;
+    bottom: 27px;
+    border: 1px solid #ccc;
 }
 
 .select-bg5 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 275px;
-    height: 50px;
-    margin-left: 200px;
     position: relative;
-    bottom: 130px;
+    width: 260px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 218px;
+    bottom: 129px;
+    border: 1px solid #ccc;
 }
 
 .select-bg6 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 275px;
-    height: 50px;
-    margin-left: 30px;
     position: relative;
-    bottom: 30px;
+    width: 260px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 30px;
+    bottom: 30px;
+    border: 1px solid #ccc;
 }
 
 .select-bg7 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 350px;
-    height: 50px;
-    margin-left: 240px;
     position: relative;
-    bottom: 80px;
+    width: 260px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 240px;
+    bottom: 82px;
+    border: 1px solid #ccc;
 }
 
 .select-bg8 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 200px;
-    height: 50px;
-    margin-left: 240px;
     position: relative;
-    bottom: 80px;
+    width: 220px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 240px;
+    bottom: 82px;
+    border: 1px solid #ccc;
 }
 
 .select-bg9 {
-    background-color: #d8d6d2;
-    color: #9b9089;
-    width: 170px;
-    height: 50px;
-    margin-left: 160px;
     position: relative;
-    bottom: 5px;
+    width: 200px; /* Set desired width */
+    height: 50px; /* Set desired height */
+    background-color: #d8d6d2;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    left: 160px;
+    bottom: 5px;
+    border: 1px solid #ccc;
 }
 
 input[type="file"] {
@@ -950,11 +985,15 @@ input[type="file"] {
 }
 
 .select {
-    font-size: 20px;
-    font-family: inherit; /* Match the font family */
-    position: relative;
-    top: 10px;
-    margin-left: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 8px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -1186,8 +1225,8 @@ input[type="file"] {
     border-radius: 15px;
     padding: 10px;
     position: relative;
-    margin-left: 450px;
-    bottom: 127px;
+    margin-left: 470px;
+    bottom: 132px;
     cursor: pointer;
     color: #9b9089; /* Text color */
     font-family: inherit;

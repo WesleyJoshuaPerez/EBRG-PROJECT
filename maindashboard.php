@@ -294,9 +294,45 @@
     }
     </script>
 
-    <!-- submit -->
+    <!-- input fields functions -->
     <script>
-    
+    // Function to convert input to uppercase
+    function toUppercase(input) {
+    input.value = input.value.toUpperCase();
+    }
+
+    // Function to prevent numeric input
+    function preventNumbers(event) {
+    const key = event.key;
+    // Allow only letters, backspace, tab, arrow keys, and space
+    if (!/^[a-zA-Z\s]+$/.test(key) && key !== "Backspace" && key !== "Tab" && !key.startsWith("Arrow")) {
+        event.preventDefault();
+    }
+    }
+    // Function to validate the age input
+    function validateAge(input) {
+    // Ensure the length is limited to 2 digits
+    if (input.value.length > 2) {
+        input.value = input.value.slice(0, 2); // Trim input to 2 characters
+    }
+
+    // Optional: Validate the range (0-99)
+    if (parseInt(input.value, 10) > 99) {
+        input.value = 99; // Set to the maximum allowed value
+    } else if (parseInt(input.value, 10) < 0) {
+        input.value = 0; // Set to the minimum allowed value
+    }
+    }
+    function preventNonNumbers(event) {
+    const key = event.key;
+
+    // Allow only numbers, backspace, delete, and arrow keys
+    if (!/^\d$/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight" && key !== "Tab") {
+        event.preventDefault(); // Block non-numeric keys
+    }
+    }
+   
+
     </script>
 </body>
 </html>

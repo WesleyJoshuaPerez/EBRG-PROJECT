@@ -124,10 +124,10 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
             <form id="indigencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
                 <h4 class="detail">Details:</h4>
-                <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-                <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-                <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
-                <input type="number" id="age" name="age" min="0" step="1" value="" placeholder="Age" required>
+                <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+                <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+                <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
+                <input type="number" id="age" name="age" min="0" step="1" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age" required>
                 
                 <!-- File input for ID Picture with label -->
                 <div class="select-bg">
@@ -151,7 +151,7 @@ function showCertificateDetails(type) {
     
                 <!-- Radio button for "Apply for myself" -->
                 <label class="myself-option">
-                <input type="radio" name="apply_myself" value="myself"> Apply for myself
+                <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
                 </label>
 
                 <!-- Clear and Submit Buttons -->
@@ -166,11 +166,11 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
             <form id="residencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
-            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-            <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+            <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+            <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+            <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
             <input type="number" id="years_of_occupancy" name="yrs_of_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
-            <input type="text" class="address" name="address" placeholder="Complete Address" required>
+            <input type="text" class="address" name="address" oninput="toUppercase(this)" placeholder="Complete Address" required>
                 <div class="select-bg2">
                     <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="image" class="select" id="fileLabel1">
@@ -178,7 +178,7 @@ function showCertificateDetails(type) {
                      </label>
                 </div>
             <label class="myself-option2">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
             <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
             <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
@@ -191,18 +191,18 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="jobseekForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+        <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+        <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+        <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg3">
                     <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
         </div>
-        <input type="text" class="employer" name="employer" placeholder="Employer/Company Name" required>
+        <input type="text" class="employer" name="employer" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Employer/Company Name" required>
         <label class="myself-option3">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear3" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit3" onclick="submit('submit')">SUBMIT</button>
@@ -215,22 +215,22 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="jobabsenceForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+        <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+        <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+        <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg3">
                     <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
         </div>
-        <input type="text" class="employer2" name="employer" placeholder="Employer/Company Name" required>
+        <input type="text" class="employer2" name="employer" oninput="toUppercase(this)" placeholder="Employer/Company Name" required>
         <label for="absence_date" class="absence_label">Absence Date:</label>
         <input type="date" class="absence_date" name="absence_date" placeholder="Absence Date" required>
         <input type="number" id="duration" name="duration" min="0" step="1" value="" placeholder="Duration">
-        <input type="text" class="reason" name="reason" placeholder="Reason" required>
+        <input type="text" class="reason" name="reason" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Reason" required>
         <label class="myself-option2">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear4" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit4" onclick="submit('submit')">SUBMIT</button>
@@ -240,9 +240,9 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="soloparentForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
-            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-            <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+            <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+            <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+            <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
             <div class="select-bg3">
                 <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                 <label for="image" class="select" id="fileLabel1">
@@ -282,7 +282,7 @@ function showCertificateDetails(type) {
             </div>
     
             <label class="myself-option4">
-                <input type="radio" name="apply_myself" value="myself"> Apply for myself
+                <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
             <button id="clearBtn" class="clear6" onclick="clearForm('div1')">CLEAR</button>
             <button type="submit" id="submitBtn" class="submit5">SUBMIT</button>
@@ -292,10 +292,10 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="brgyclearanceForm" action="submit.php" method="POST" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
-            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-            <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
-            <input type="number" id="age2" name="age" min="0" step="1" value="" placeholder="Age">
+            <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+            <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+            <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
+            <input type="number" id="age2" name="age" min="0" step="1" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age">
             <div class="select-bg">
                     <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="image" class="select" id="fileLabel1">
@@ -304,7 +304,7 @@ function showCertificateDetails(type) {
             </div>
             <input type="number" id="years_of_occupancy1" name="yrs_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
         <label class="myself-option5">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear5" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit" onclick="submit('submit')">SUBMIT</button>
@@ -314,16 +314,16 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="fencingclearanceForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+        <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+        <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+        <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg4">
             <input type="file" id="id_pic" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
             <label for="id_pic" class="select" id="fileLabel1">
                 <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
             </label>
         </div>
-        <input type="text" class="address2" name="address" placeholder="Complete Address" required>
+        <input type="text" class="address2" name="address" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Complete Address" required>
         <div class="select-bg5">
             <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
             <label for="lot_cert" class="select" id="fileLabel2">
@@ -331,7 +331,7 @@ function showCertificateDetails(type) {
             </label>
         </div>
             <label class="myself-option4">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear4" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit4" onclick="submit('submit')">SUBMIT</button>
@@ -341,9 +341,9 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="blgclearanceForm" action="submit2.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+        <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+        <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+        <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg6">
             <input type="file" id="lot_cert" name="lot_cert" required onchange="updateLabel(this, 'fileLabel2')">
             <label for="lot_cert" class="select" id="fileLabel2">
@@ -353,7 +353,7 @@ function showCertificateDetails(type) {
             <label class="measurement_label"> Lot Measurement in sqm: </label>
             <input type="number" id="measurement" name="measurement" min="0" step="1" value="" placeholder="Lot Measurement">
             <label class="myself-option6">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear7" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
@@ -363,16 +363,16 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="orderpaymentForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+        <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+        <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+        <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg4">
                     <input type="file" id="id_pic" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="id_pic" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
             </div>
-        <input type="text" class="business_name" name="business_name" placeholder="Business Name" required>
+        <input type="text" class="business_name" name="business_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Business Name" required>
         <div class="type-dropdown4">
             <div class="selected-option4" onclick="toggleTypeDropdown4()">
             -- Type of Business -- <span class="type-icon4">&#9662;</span> <!-- Dropdown arrow -->
@@ -386,9 +386,9 @@ function showCertificateDetails(type) {
             </div>
             <input type="hidden" id="business_type" name="business_type" value="">
         </div>
-        <input type="text" class="address3" name="business_address" placeholder="Business Address" required>
+        <input type="text" class="address3" name="business_address" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Business Address" required>
             <label class="myself-option7">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear8" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit6" onclick="submit('submit')">SUBMIT</button>
@@ -398,9 +398,9 @@ function showCertificateDetails(type) {
         div1.innerHTML = `
         <form id="electricityForm" action="submit.php" method="POST" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
-        <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-        <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-        <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
+        <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+        <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+        <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg3">
                     <input type="file" id="id_pic" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="id_pic" class="select" id="fileLabel1">
@@ -414,7 +414,7 @@ function showCertificateDetails(type) {
                     </label>
         </div>
         <label class="myself-option2">
-            <input type="radio" name="apply_myself" value="myself"> Apply for myself
+            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
         <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
@@ -442,9 +442,9 @@ function showField(type) {
             <!-- Student's Information -->
             <div id="div1">
                 <h4 class="detail">Student's Information:</h4>
-                <input type="text" class="firstname" name="student_first_name" placeholder="First Name" required>
-                <input type="text" class="middlename" name="student_middle_name" placeholder="Middle Name" required>
-                <input type="text" class="lastname" name="student_last_name" placeholder="Last Name" required>
+                <input type="text" class="firstname" name="student_first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+                <input type="text" class="middlename" name="student_middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+                <input type="text" class="lastname" name="student_last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
                 <div class="select-bg3">
                     <input type="file" id="health_record" name="health_record" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="health_record" class="select" id="fileLabel1">
@@ -474,17 +474,17 @@ function showField(type) {
             <!-- Guardian's Information -->
             <div id="daycare_container2" style="display: block;">
                 <h4 class="detail2">Guardian's Information:</h4>
-                <input type="text" class="firstname2" name="guardian_first_name" placeholder="First Name" required>
-                <input type="text" class="middlename2" name="guardian_middle_name" placeholder="Middle Name" required>
-                <input type="text" class="lastname2" name="guardian_last_name" placeholder="Last Name" required>
-                <input type="number" id="age3" name="guardian_age" min="0" step="1" value="" placeholder="Age">
+                <input type="text" class="firstname2" name="guardian_first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+                <input type="text" class="middlename2" name="guardian_middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+                <input type="text" class="lastname2" name="guardian_last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
+                <input type="number" id="age3" name="guardian_age" min="0" step="1" value="" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age">
                 <div class="select-bg9">
                     <input type="file" id="guardian_id" name="guardian_id" required onchange="updateLabel(this, 'fileLabel3')">
                     <label for="guardian_id" class="select" id="fileLabel3">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
                 </div>
-                <input type="text" class="contact_num" name="guardian_contact_num" placeholder="Contact Number" required>
+                <input type="text" class="contact_num" name="guardian_contact_num" maxlength="11" onkeydown="preventNonNumbers(event)" placeholder="Contact Number" required>
                 <button id="clearBtn" class="clear3" type="button" onclick="clearForm1(['div1', 'daycare_container2'])">CLEAR</button>
                 <button id="submitBtn" class="submit3" type="submit">SUBMIT</button>
             </div>
