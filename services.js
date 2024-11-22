@@ -122,7 +122,7 @@ function showCertificateDetails(type) {
 
     if (type === 'indigency') {
         div1.innerHTML = `
-            <form id="indigencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
+            <form id="indigencyForm" action="submit.php" method="POST" onsubmit="handleSubmit(event, 'indigencyForm')" enctype="multipart/form-data">
                 <h4 class="detail">Details:</h4>
                 <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
                 <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
@@ -164,48 +164,49 @@ function showCertificateDetails(type) {
         });
     } else if (type === 'residency') {
         div1.innerHTML = `
-            <form id="residencyForm" action="submit.php" method="POST" enctype="multipart/form-data">
-            <h4 class="detail">Details:</h4>
-            <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
-            <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
-            <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
-            <input type="number" id="years_of_occupancy" name="yrs_of_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
-            <input type="text" class="address" name="address" oninput="toUppercase(this)" placeholder="Complete Address" required>
-                <div class="select-bg2">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
-                    <label for="image" class="select" id="fileLabel1">
-                        <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
-                     </label>
-                </div>
-            <label class="myself-option2">
-            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
-            </label>
-            <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
-            <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
-        </form>
+            <form id="residencyForm" action="submit.php" method="POST" onsubmit="handleSubmit(event, 'residencyForm')" enctype="multipart/form-data">
+    <h4 class="detail">Details:</h4>
+    <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
+    <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
+    <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
+    <input type="number" id="years_of_occupancy" name="yrs_of_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy" required>
+    <input type="text" class="address" name="address" oninput="toUppercase(this)" placeholder="Complete Address" required>
+    <div class="select-bg2">
+        <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+        <label for="image" class="select" id="fileLabel1">
+            <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
+        </label>
+    </div>
+    <label class="myself-option2">
+        <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
+    </label>
+    <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
+    <button type="submit" class="submit2">SUBMIT</button>
+</form>
+
         `;
         document.querySelector('#clearBtn').addEventListener('click', () => {
             clearForm(['div1']);
         });
     } else if (type === 'job_seeker') {
         div1.innerHTML = `
-        <form id="jobseekForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="jobseekForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'jobseekForm')" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg3">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
-                    <label for="image" class="select" id="fileLabel1">
-                        <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
-                    </label>
+        <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+        <label for="image" class="select" id="fileLabel1">
+            <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
+        </label>
         </div>
         <input type="text" class="employer" name="employer" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Employer/Company Name" required>
         <label class="myself-option3">
-            <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
+        <input type="radio" name="apply_myself" value="Apply for Myself" required> Apply for myself
         </label>
         <button id="clearBtn" class="clear3" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit3" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit3">SUBMIT</button>
         </form>
         `;
         document.querySelector('#clearBtn').addEventListener('click', () => {
@@ -213,13 +214,13 @@ function showCertificateDetails(type) {
         });
     } else if (type === 'absence') {
         div1.innerHTML = `
-        <form id="jobabsenceForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="jobabsenceForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'jobabsenceForm')" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
         <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
         <div class="select-bg3">
-                    <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
+                    <input type="file" id="image" name="id_pic" onchange="updateLabel(this, 'fileLabel1')" required>
                     <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
@@ -227,18 +228,21 @@ function showCertificateDetails(type) {
         <input type="text" class="employer2" name="employer" oninput="toUppercase(this)" placeholder="Employer/Company Name" required>
         <label for="absence_date" class="absence_label">Absence Date:</label>
         <input type="date" class="absence_date" name="absence_date" placeholder="Absence Date" required>
-        <input type="number" id="duration" name="duration" min="0" step="1" value="" placeholder="Duration">
+        <input type="number" id="duration" name="duration" min="0" step="1" value="" placeholder="Duration" required>
         <input type="text" class="reason" name="reason" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Reason" required>
         <label class="myself-option2">
             <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear4" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit4" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit4">SUBMIT</button>
         </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']); 
+        });
     } else if (type === 'solo_parent') {
         div1.innerHTML = `
-        <form id="soloparentForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="soloparentForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'soloparentForm')" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
@@ -249,8 +253,8 @@ function showCertificateDetails(type) {
                     <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                 </label>
             </div>
-            <input type="number" id="years_of_separation" name="years_of_separation" min="0" step="1" value="" placeholder="Years of Separation">
-            <input type="number" id="number_of_children" name="num_children" min="0" step="1" value="" placeholder="No. of Children">
+            <input type="number" id="years_of_separation" name="years_of_separation" min="0" step="1" value="" placeholder="Years of Separation" required>
+            <input type="number" id="number_of_children" name="num_children" min="0" step="1" value="" placeholder="No. of Children" required>
             
             <!-- Source of Income Dropdown -->
             <div class="type-dropdown2">
@@ -265,7 +269,7 @@ function showCertificateDetails(type) {
                     <div class="type-option2" onclick="selectTypeOption2('Savings')">Savings</div>
                     <div class="type-option2" onclick="selectTypeOption2('No Income')">No Income</div>
                 </div>
-                <input type="hidden" id="source_income" name="source_income" value="">
+                <input type="hidden" id="source_income" name="source_income" value="" required>
             </div>
             
             <!-- Monthly Income Dropdown -->
@@ -278,41 +282,41 @@ function showCertificateDetails(type) {
                     <div class="type-option3" onclick="selectTypeOption3('₱20,000 - ₱30,000')">₱20,000 - ₱30,000</div>
                     <div class="type-option3" onclick="selectTypeOption3('Above ₱30,000')">Above ₱30,000</div>
                 </div>
-                <input type="hidden" id="monthly_income" name="monthly_income" value="">
+                <input type="hidden" id="monthly_income" name="monthly_income" value="" required>
             </div>
     
             <label class="myself-option4">
                 <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
             <button id="clearBtn" class="clear6" onclick="clearForm('div1')">CLEAR</button>
-            <button type="submit" id="submitBtn" class="submit5">SUBMIT</button>
+            <button id="submitBtn" class="submit5">SUBMIT</button>
         </form>
         `;
     } else if (type === 'brgy_clearance') {
         div1.innerHTML = `
-        <form id="brgyclearanceForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="brgyclearanceForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'brgyclearanceForm')" enctype="multipart/form-data">
             <h4 class="detail">Details:</h4>
             <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
             <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
             <input type="text" class="lastname" name="last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
-            <input type="number" id="age2" name="age" min="0" step="1" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age">
+            <input type="number" id="age2" name="age" min="0" step="1" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age" required>
             <div class="select-bg">
                     <input type="file" id="image" name="id_pic" required onchange="updateLabel(this, 'fileLabel1')">
                     <label for="image" class="select" id="fileLabel1">
                         <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
                     </label>
             </div>
-            <input type="number" id="years_of_occupancy1" name="yrs_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy">
+            <input type="number" id="years_of_occupancy1" name="yrs_occupancy" min="0" step="1" value="" placeholder="Years of Occupancy" required>
         <label class="myself-option5">
             <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear5" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit">SUBMIT</button>
         </form>
         `;
     } else if (type === 'fencing_clearance') {
         div1.innerHTML = `
-        <form id="fencingclearanceForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="fencingclearanceForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'fencingclearanceForm')" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
@@ -334,12 +338,12 @@ function showCertificateDetails(type) {
             <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear4" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit4" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit4">SUBMIT</button>
         </form>
         `;
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `
-        <form id="blgclearanceForm" action="submit2.php" method="POST" enctype="multipart/form-data">
+        <form id="blgclearanceForm" action="submit2.php" method="POST" onsubmit="return handleSubmit(event, 'blgclearanceForm')" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
@@ -351,17 +355,17 @@ function showCertificateDetails(type) {
             </label>
         </div>
             <label class="measurement_label"> Lot Measurement in sqm: </label>
-            <input type="number" id="measurement" name="measurement" min="0" step="1" value="" placeholder="Lot Measurement">
+            <input type="number" id="measurement" name="measurement" min="0" step="1" value="" placeholder="Lot Measurement" required>
             <label class="myself-option6">
             <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear7" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit2">SUBMIT</button>
         </form>
         `;
     } else if (type === 'order_payment') {
         div1.innerHTML = `
-        <form id="orderpaymentForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="orderpaymentForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'orderpaymentForm')" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
@@ -384,19 +388,19 @@ function showCertificateDetails(type) {
             <div class="type-option4" onclick="selectTypeOption4('Manufacturing and Production')">Manufacturing and Production</div>
             <div class="type-option4" onclick="selectTypeOption4('Finance and Real Estate')">Finance and Real Estate</div>
             </div>
-            <input type="hidden" id="business_type" name="business_type" value="">
+            <input type="hidden" id="business_type" name="business_type" value="" required>
         </div>
         <input type="text" class="address3" name="business_address" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Business Address" required>
             <label class="myself-option7">
             <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
             </label>
         <button id="clearBtn" class="clear8" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit6" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit6">SUBMIT</button>
         </form>
         `;
     } else if (type === 'electricity') {
         div1.innerHTML = `
-        <form id="electricityForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="electricityForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'electricityForm')" enctype="multipart/form-data">
         <h4 class="detail">Details:</h4>
         <input type="text" class="firstname" name="first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
         <input type="text" class="middlename" name="middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
@@ -417,7 +421,7 @@ function showCertificateDetails(type) {
             <input type="radio" name="apply_myself" value="Apply for Myself"> Apply for myself
         </label>
         <button id="clearBtn" class="clear2" onclick="clearForm('div1')">CLEAR</button>
-        <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
+        <button id="submitBtn" class="submit2">SUBMIT</button>
         </form>
         `;
     }
@@ -438,7 +442,7 @@ function showField(type) {
     if (type === 'daycare') {
         div1.innerHTML = `
         <!-- Shared Form -->
-        <form id="daycareForm" action="submit2.php" method="POST" enctype="multipart/form-data">
+        <form id="daycareForm" action="submit2.php" method="POST" onsubmit="return handleSubmit(event, 'daycareForm')" enctype="multipart/form-data">
             <!-- Student's Information -->
             <div id="div1">
                 <h4 class="detail">Student's Information:</h4>
@@ -465,7 +469,7 @@ function showField(type) {
                         <div class="type-option5" onclick="selectTypeOption5('Kinder I')">Kinder I</div>
                         <div class="type-option5" onclick="selectTypeOption5('Kinder II')">Kinder II</div>
                     </div>
-                    <input type="hidden" id="kinder_level" name="kinder_level" value="">
+                    <input type="hidden" id="kinder_level" name="kinder_level" value="" required>
                 </div>
             </div>
 
@@ -477,7 +481,7 @@ function showField(type) {
                 <input type="text" class="firstname2" name="guardian_first_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="First Name" required>
                 <input type="text" class="middlename2" name="guardian_middle_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Middle Name" required>
                 <input type="text" class="lastname2" name="guardian_last_name" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Last Name" required>
-                <input type="number" id="age3" name="guardian_age" min="0" step="1" value="" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age">
+                <input type="number" id="age3" name="guardian_age" min="0" step="1" value="" value="" maxlength="2" oninput="validateAge(this)" placeholder="Age" required>
                 <div class="select-bg9">
                     <input type="file" id="guardian_id" name="guardian_id" required onchange="updateLabel(this, 'fileLabel3')">
                     <label for="guardian_id" class="select" id="fileLabel3">
@@ -486,7 +490,7 @@ function showField(type) {
                 </div>
                 <input type="text" class="contact_num" name="guardian_contact_num" maxlength="11" onkeydown="preventNonNumbers(event)" placeholder="Contact Number" required>
                 <button id="clearBtn" class="clear3" type="button" onclick="clearForm1(['div1', 'daycare_container2'])">CLEAR</button>
-                <button id="submitBtn" class="submit3" type="submit">SUBMIT</button>
+                <button id="submitBtn" class="submit3">SUBMIT</button>
             </div>
         </form>
         `;
