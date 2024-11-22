@@ -298,9 +298,78 @@
 
     <!-- submit -->
     <script>
+    // Generalized submit function for all forms
+    function submitForm(formId) {
+    const form = document.getElementById(formId);
 
+    if (!form) {
+        swal("Error", "Form not found.", "error");
+        return;
+    }
+
+    const formData = new FormData(form); // Collect the form data
+
+    // Confirmation dialog
+    swal({
+        title: "Are you sure?",
+        text: "Do you want to submit this form?",
+        icon: "warning",
+        buttons: true, // Display confirm and cancel buttons
+        dangerMode: true,
+    }).then((willSubmit) => {
+        if (willSubmit) {
+            // Submit the form data to the server
+            fetch("submit.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        // Show success message
+                        swal("Success", data.message || "Form submitted successfully!", "success").then(() => {
+                            form.reset(); // Reset the form fields
+                        });
+                    } else {
+                        // Show error message
+                        swal("Error", data.message || "Form submission failed.", "error");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    swal("Error", "An unexpected error occurred.", "error");
+                });
+        } else {
+            swal("Canceled", "Your form submission has been canceled.", "info");
+        }
+    });
+}
+
+// Add event listeners for dynamically generated forms
+function addDynamicFormListeners() {
+    const formIds = [
+        "indigencyForm",
+        "residencyForm",
+        "jobseekForm",
+        "jobabsenceForm",
+        "soloparentForm",
+        "brgyclearanceForm",
+        "fencingclearanceForm",
+        "orderpaymentForm",
+        "electricityForm",
+    ];
+
+    formIds.forEach((formId) => {
+        const form = document.getElementById(formId);
+
+        if (form) {
+            form.addEventListener("submit", (event) => {
+                event.preventDefault(); // Prevent default form submission
+                submitForm(formId); // Call the submit function
+            });
+        }
+    });
+}
     </script>
-
-    
 </body>
 </html>
