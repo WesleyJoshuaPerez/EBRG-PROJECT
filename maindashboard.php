@@ -365,9 +365,9 @@
     }
 
     return isValid;
-}
+    }
 
-function handleSubmit(event, formId) {
+    function handleSubmit(event, formId) {
     event.preventDefault(); // Prevent the default form submission behavior
 
     if (validateForm(formId)) {
@@ -378,8 +378,24 @@ function handleSubmit(event, formId) {
     }
 
     return false; // Prevent form submission on failure
-}
+    }
+    </script>
 
+    <script>
+    // disable previous dates
+    document.addEventListener("DOMContentLoaded", function () {
+    const absenceDateField = document.getElementById("absence_date");
+
+    if (absenceDateField) {
+        const today = new Date();
+        const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
+        absenceDateField.setAttribute("min", formattedDate); // Set minimum date to today
+
+        console.log("Min date set for absence_date:", formattedDate);
+    } else {
+        console.error("Element with ID 'absence_date' not found.");
+    }
+});
     </script>
 </body>
 </html>

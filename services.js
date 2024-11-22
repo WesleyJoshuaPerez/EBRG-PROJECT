@@ -227,7 +227,15 @@ function showCertificateDetails(type) {
         </div>
         <input type="text" class="employer2" name="employer" oninput="toUppercase(this)" placeholder="Employer/Company Name" required>
         <label for="absence_date" class="absence_label">Absence Date:</label>
-        <input type="date" class="absence_date" name="absence_date" placeholder="Absence Date" required>
+        <input
+        type="date"
+        min="2024-11-23"
+        id="absence_date"
+        class="absence_date"
+        name="absence_date"
+        placeholder="Absence Date"
+        required
+        />
         <input type="number" id="duration" name="duration" min="0" step="1" value="" placeholder="Duration" required>
         <input type="text" class="reason" name="reason" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Reason" required>
         <label class="myself-option2">

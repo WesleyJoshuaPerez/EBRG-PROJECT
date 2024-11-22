@@ -26,7 +26,7 @@
       </div>
       <h6 class="birthday">Birthday</h6>
 
-      <input type="date" class="bday" name="birthday" placeholder="MM/DD/YYYY" required>
+      <input type="date" class="bday" id="bday" name="birthday" placeholder="MM/DD/YYYY" required>
       <h6 class="sex">Sex</h6>
       <div class="gender-container">
     <label class="gender1">
@@ -158,6 +158,22 @@ if(isset($_POST['sigUp'])){
 }
 ?>
 
+    <script>
+    // disable previous dates
+    document.addEventListener("DOMContentLoaded", function () {
+    const absenceDateField = document.getElementById("bday");
+
+    if (absenceDateField) {
+        const today = new Date();
+        const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
+        absenceDateField.setAttribute("min", formattedDate); // Set minimum date to today
+
+        console.log("Min date set for absence_date:", formattedDate);
+    } else {
+        console.error("Element with ID 'absence_date' not found.");
+    }
+    });
+    </script>
 
     </body>
 </html>
