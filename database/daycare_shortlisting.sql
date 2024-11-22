@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 03:45 PM
+-- Generation Time: Nov 22, 2024 at 02:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,19 +40,16 @@ CREATE TABLE `daycare_shortlisting` (
   `guardian_age` int(10) NOT NULL,
   `guardian_id` varchar(50) NOT NULL,
   `guardian_contactnum` int(15) NOT NULL,
-  `daycareshortlisting_id` int(11) NOT NULL
+  `daycareshortlisting_id` int(11) NOT NULL,
+  `current_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `daycare_shortlisting`
 --
 
-INSERT INTO `daycare_shortlisting` (`student_fname`, `student_mname`, `student_lname`, `student_healthrecord`, `student_birthcert`, `student_level`, `guardian_fname`, `guardian_mname`, `guardian_lname`, `guardian_age`, `guardian_id`, `guardian_contactnum`, `daycareshortlisting_id`) VALUES
-('fsdf', 'sdfs', 'fsdfs', 'Rezada, Angeline Kate E. - LM01-packet 04 - Activi', 'PC2_straight-through.png', '', 'dsfs', 'fsdfs', 'fsdfs', 23, 'PC2_straight-through.png', 0, 1),
-('dasd', 'asda', 'adsda', 'ipconfig2_straight-through.png', 'ipconfig2.png', '', 'asda', 'asda', 'asda', 2, 'PC2_straight-through.png', 0, 2),
-('entry1', 'entry1', 'entry1', 'msc.png', 'msc.png', '', 'entry1', 'entry1', 'entry1', 1, 'msc.png', 0, 3),
-('entry2', 'entry2', 'entry2', 'msc.png', 'msc.png', 'Kinder II', 'entry2', 'entry2', 'entry2', 2, 'msc.png', 0, 4),
-('entry3', 'entry3', 'entry3', 'msc.png', 'msc.png', 'Kinder II', 'entry3', 'entry3', 'entry3', 3, 'msc.png', 3, 5);
+INSERT INTO `daycare_shortlisting` (`student_fname`, `student_mname`, `student_lname`, `student_healthrecord`, `student_birthcert`, `student_level`, `guardian_fname`, `guardian_mname`, `guardian_lname`, `guardian_age`, `guardian_id`, `guardian_contactnum`, `daycareshortlisting_id`, `current_status`) VALUES
+('kate', 'enriquez', 'rezada', 'msc.png', 'msc.png', 'Kinder II', 'hyndrix', 'enriquez', 'rezada', 100, 'msc.png', 92222222, 1, NULL);
 
 --
 -- Indexes for dumped tables
@@ -72,7 +69,7 @@ ALTER TABLE `daycare_shortlisting`
 -- AUTO_INCREMENT for table `daycare_shortlisting`
 --
 ALTER TABLE `daycare_shortlisting`
-  MODIFY `daycareshortlisting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `daycareshortlisting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
