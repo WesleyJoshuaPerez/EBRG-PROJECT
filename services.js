@@ -512,6 +512,9 @@ function showField(type) {
             </div>
         </form>
         `;
+        document.querySelector('#clearBtn').addEventListener('click', () => {
+            clearForm(['div1']);
+        });
 
         // Show the daycare container
         daycare_container2.style.display = 'none';

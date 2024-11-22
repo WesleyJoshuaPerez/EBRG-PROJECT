@@ -38,13 +38,14 @@ function clearForm(divId) {
         { selector: '.type-dropdown', defaultText: '-- Assistance Type --', hiddenInputId: 'assistance_type' },
         { selector: '.type-dropdown2', defaultText: '-- Source of Income --', hiddenInputId: 'source_income' },
         { selector: '.type-dropdown3', defaultText: '-- Monthly Income --', hiddenInputId: 'monthly_income' },
-        { selector: '.type-dropdown4', defaultText: '-- Type of Business --', hiddenInputId: 'business_type' }
+        { selector: '.type-dropdown4', defaultText: '-- Type of Business --', hiddenInputId: 'business_type' },
+        { selector: '.type-dropdown5', defaultText: '-- Kinder Level --', hiddenInputId: 'kinder_level' }
     ];
 
     dropdowns.forEach(dropdown => {
         const dropdownElement = form.querySelector(dropdown.selector);
         if (dropdownElement) {
-            const selectedOption = dropdownElement.querySelector('.selected-option, .selected-option2, .selected-option3, .selected-option4');
+            const selectedOption = dropdownElement.querySelector('.selected-option, .selected-option2, .selected-option3, .selected-option4, .selected-option5');
             const hiddenInput = form.querySelector(`#${dropdown.hiddenInputId}`);
             if (selectedOption) {
                 selectedOption.innerHTML = `${dropdown.defaultText} <span class="type-icon">&#9662;</span>`; // Reset to default text
