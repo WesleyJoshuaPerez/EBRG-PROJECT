@@ -435,29 +435,7 @@ function showField(type) {
     div1.innerHTML = '';
     daycare_container2.innerHTML = '';
 
-    // If the selected type is health services
-    if (type === 'health_services') {
-        div1.innerHTML = `
-            <h4 class="detail">Health Services & Medications:</h4>
-            <input type="text" class="firstname" name="first_name" placeholder="First Name" required>
-            <input type="text" class="middlename" name="middle_name" placeholder="Middle Name" required>
-            <input type="text" class="lastname" name="last_name" placeholder="Last Name" required>
-            <div class="select-bg3">
-                <input type="file" id="image" name="image" required>
-                <label for="image" class="select" id="fileLabel">
-                    <strong><i class="fas fa-upload"></i> &nbsp; ID Picture</strong>
-                </label>
-            </div>
-            <div class="select-bg7">
-                <input type="file" id="image" name="image" required>
-                <label for="image" class="select" id="fileLabel">
-                    <strong><i class="fas fa-upload"></i> &nbsp; Updated Lot Certification</strong>
-                </label>
-            </div>
-            <button id="clearBtn" class="clear2" onclick="clearForm1('div1')">CLEAR</button>
-            <button id="submitBtn" class="submit2" onclick="submit('submit')">SUBMIT</button>
-        `;
-    } else if (type === 'daycare') {
+    if (type === 'daycare') {
         div1.innerHTML = `
         <!-- Shared Form -->
         <form id="daycareForm" action="submit2.php" method="POST" enctype="multipart/form-data">

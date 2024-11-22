@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = $_POST['first_name'] ?? '';
     $middle_name = $_POST['middle_name'] ?? '';
     $last_name = $_POST['last_name'] ?? '';
-    $age = $_POST['age'] ?? null; // Optional
-    $assistance_type = $_POST['assistance_type'] ?? null;
+    $age = $_POST['age'] ?? null;
     $apply_myself = $_POST['apply_myself'] ?? null;
 
     // File upload handling
@@ -29,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($id_pic && move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file)) {
         // Determine the type of certificate and perform the appropriate query
-        if (isset($age) && isset($assistance_type)) {
+        if (isset($_POST['assistance_type']) && isset($age)) {
             // Indigency certificate
+            $assistance_type = $_POST['assistance_type'];
             $sql = "INSERT INTO indigency_cert (first_name, middle_name, last_name, age, id_pic, assistance_type, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$age', '$id_pic', '$assistance_type', '$apply_myself')";
         } elseif (isset($_POST['yrs_of_occupancy']) && isset($_POST['address'])) {
@@ -61,49 +61,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "INSERT INTO soloparent_cert (first_name, middle_name, last_name, id_pic, years_of_separation, num_children, monthly_income, source_income, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$years_of_separation', '$num_children', '$monthly_income', '$source_income', '$apply_myself')";
         } elseif (isset($_POST['yrs_occupancy'])) {
-            // Certificate of Barangay Clearance fields
+            // Barangay clearance
             $yrs_occupancy = $_POST['yrs_occupancy'];
-
-            // Insert data into the database for barangay clearance
             $sql = "INSERT INTO brgyclearance_cert (first_name, middle_name, last_name, age, id_pic, yrs_occupancy, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$age', '$id_pic', '$yrs_occupancy', '$apply_myself')";
         } elseif (isset($_POST['address']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
-            // Certificate of Fencing Clearance fields
+            // Fencing clearance
             $address = $_POST['address'];
             $lot_cert = $_FILES['lot_cert']['name'];
-
-            // Handle file upload
             $lot_cert_path = $target_dir . basename($lot_cert);
 
             if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
-                // Insert data into the database for fencing clearance
                 $sql = "INSERT INTO fencingclearance_cert (first_name, middle_name, last_name, id_pic, lot_cert, address, apply_myself)
                         VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$address', '$apply_myself')";
             }
         } elseif (isset($_POST['business_name']) && isset($_POST['business_type']) && isset($_POST['business_address'])) {
-            // Order of Payment
+            // Order of payment
             $business_name = $_POST['business_name'];
             $business_type = $_POST['business_type'];
             $business_address = $_POST['business_address'];
-
-            // insertion
             $sql = "INSERT INTO order_payment (first_name, middle_name, last_name, id_pic, business_name, business_type, business_address, apply_myself)
                     VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$business_name', '$business_type', '$business_address', '$apply_myself')";
         } elseif (isset($_POST['last_name']) && isset($_FILES['lot_cert']) && $_FILES['lot_cert']['error'] === UPLOAD_ERR_OK) {
             // Electricity installation clearance
             $lot_cert = $_FILES['lot_cert']['name'];
-
-            // Handle file upload
             $lot_cert_path = $target_dir . basename($lot_cert);
 
             if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
-                // Insert data into the database for electricity clearance
                 $sql = "INSERT INTO electricity_clearance (first_name, middle_name, last_name, id_pic, lot_cert, apply_myself)
                         VALUES ('$first_name', '$middle_name', '$last_name', '$id_pic', '$lot_cert', '$apply_myself')";
             }
         } else {
             echo "No matching condition found for the provided data.";
-            $sql = null; // Set $sql to null to avoid executing an undefined query
+            $sql = null;
         }
 
         // Execute the query
@@ -112,19 +102,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <html>
             <head>
                 <title>Success</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        background: #f8f9fa;
+                    }
+                    iframe {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        z-index: 0;
+                    }
+                    #popup {
+                        position: absolute;
+                        z-index: 9999;
+                    }
+                </style>
                 <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
             </head>
             <body>
-                <script>
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Record added successfully.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        window.location.href = 'maindashboard.php'; // Redirect back to the form page
-                    });
-                </script>
+                <iframe src='maindashboard.php'></iframe>
+                <div id='popup'>
+                    <script>
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Record added successfully.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href = 'maindashboard.php';
+                        });
+                    </script>
+                </div>
             </body>
             </html>";
         } else {
@@ -132,24 +149,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <html>
             <head>
                 <title>Error</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        background: #f8f9fa;
+                    }
+                    iframe {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        z-index: 0;
+                    }
+                    #popup {
+                        position: absolute;
+                        z-index: 9999;
+                    }
+                </style>
                 <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
             </head>
             <body>
-                <script>
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Error inserting record: " . $conn->error . "',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        window.location.href = 'form_page.php';
-                    });
-                </script>
+                <iframe src='maindashboard.php'></iframe>
+                <div id='popup'>
+                    <script>
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Error inserting record: " . $conn->error . "',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href = 'maindashboard.php';
+                        });
+                    </script>
+                </div>
             </body>
             </html>";
         }
     }
-}        
-
+}
 $conn->close();
 ?>
