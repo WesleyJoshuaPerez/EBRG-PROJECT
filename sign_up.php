@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@1..1000&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <h3 class="title">Make new account</h3>
 
@@ -51,84 +53,84 @@
 
     <script src="sweetalert.js"></script>
 
-<?php
-include 'connectdb.php';
+    <?php
+    include 'connectdb.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
-require 'mail/Exception.php';
-require 'mail/PHPMailer.php';
-require 'mail/SMTP.php';
+    require 'mail/Exception.php';
+    require 'mail/PHPMailer.php';
+    require 'mail/SMTP.php';
 
-if (isset($_POST['sigUp'])) {
-    $firstName = $_POST['firstname'];
-    $lastName = $_POST['lastname'];
-    $birthday = $_POST['birthday'];
-    $gender = $_POST['gender'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmpassword'];
-  // Check if password and confirm password match
-    if ($password !== $confirmPassword) {
-        echo "<script>swal('Error', 'Passwords do not match', 'error');</script>";
-        exit();
-    }
-    // Check if the username already exists
-    $checkUsername = "SELECT * FROM registereduser_ebrg WHERE username='$username'";
-    $result = $conn->query($checkUsername);
-    if($result->num_rows > 0){
-        echo "<script>
+    if (isset($_POST['sigUp'])) {
+        $firstName = $_POST['firstname'];
+        $lastName = $_POST['lastname'];
+        $birthday = $_POST['birthday'];
+        $gender = $_POST['gender'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['confirmpassword'];
+        // Check if password and confirm password match
+        if ($password !== $confirmPassword) {
+            echo "<script>swal('Error', 'Passwords do not match', 'error');</script>";
+            exit();
+        }
+        // Check if the username already exists
+        $checkUsername = "SELECT * FROM registereduser_ebrg WHERE username='$username'";
+        $result = $conn->query($checkUsername);
+        if ($result->num_rows > 0) {
+            echo "<script>
                  swal('Something went wrong', 'Username Already Exists', 'error');
               </script>";
-        exit();
-    }
+            exit();
+        }
 
-    // Check if the email already exists
-    $checkEmail = "SELECT * FROM registereduser_ebrg WHERE email='$email'";
-    $resultEmail = $conn->query($checkEmail);
-    if($resultEmail->num_rows > 0){
-        echo "<script>
+        // Check if the email already exists
+        $checkEmail = "SELECT * FROM registereduser_ebrg WHERE email='$email'";
+        $resultEmail = $conn->query($checkEmail);
+        if ($resultEmail->num_rows > 0) {
+            echo "<script>
                  swal('Something went wrong', 'Email Already Exists', 'error');
               </script>";
-        exit();
-    } 
+            exit();
+        }
 
-$checkQuery = "SELECT * FROM registereduser_ebrg 
+        $checkQuery = "SELECT * FROM registereduser_ebrg 
     WHERE firstname='$firstName' AND lastname='$lastName' 
     AND birthday='$birthday'";
-$result = $conn->query($checkQuery);
+        $result = $conn->query($checkQuery);
 
-if ($result->num_rows > 0) {
-// Update the username, password, and email for the matched record
-$updateQuery = "UPDATE registereduser_ebrg 
+        if ($result->num_rows > 0) {
+            // Update the username, password, and email for the matched record
+            $updateQuery = "UPDATE registereduser_ebrg 
          SET username = '$username', 
              password = '$password', 
              email = '$email'
          WHERE firstname = '$firstName' 
            AND lastname = '$lastName' 
            AND birthday = '$birthday'";
-        if ($conn->query($updateQuery) === TRUE) {
-            $mail = new PHPMailer(true);
-            try {
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'noreplyebrgy@gmail.com';
-                $mail->Password = 'evhbvnikpnwbhdlj';
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
+            if ($conn->query($updateQuery) === TRUE) {
+                $mail = new PHPMailer(true);
+                try {
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'noreplyebrgy@gmail.com';
+                    $mail->Password = 'evhbvnikpnwbhdlj';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port = 587;
 
-                $mail->setFrom('noreplyebrgy@gmail.com', 'EBRGY');
-                $mail->addAddress($email);
+                    $mail->setFrom('noreplyebrgy@gmail.com', 'EBRGY');
+                    $mail->addAddress($email);
 
-                $mail->isHTML(true);
-                $mail->Subject = 'Your EBRGY Account Created and Updated';
-                $mail->Body    = "Hello $firstName,<br><br>Your account has been created and updated:<br>Username: $username<br>Password: (hidden for security reasons)<br><br>Thank you,<br>EBRGY Team";
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Your EBRGY Account Created and Updated';
+                    $mail->Body    = "Hello $firstName,<br><br>Your account has been created and updated:<br>Username: $username<br>Password: (hidden for security reasons)<br><br>Thank you,<br>EBRGY Team";
 
-                $mail->send();
-                echo "<script>
+                    $mail->send();
+                    echo "<script>
                     swal({
                         title: 'Update and Creation Successful',
                         text: 'Username and password updated. Notification sent.',
@@ -137,18 +139,33 @@ $updateQuery = "UPDATE registereduser_ebrg
                         window.location.href = 'index.php';
                     });
                 </script>";
-            } catch (Exception $e) {
-                echo "<script>
+                } catch (Exception $e) {
+                    echo "<script>
                 swal('Update Successful', 'But unable to send email notification.', 'warning');
                 </script>";
+                }
+            } else {
+                echo "<script>swal('Update Failed!', 'Please try again later.', 'error');</script>";
             }
         } else {
-            echo "<script>swal('Update Failed!', 'Please try again later.', 'error');</script>";
+            echo "<script>swal('Error', 'User does not exist. Cannot register.', 'error');</script>";
         }
-    } else {
-        echo "<script>swal('Error', 'User does not exist. Cannot register.', 'error');</script>";
     }
-}
-?>
+    ?>
+    <script>
+        // disable previous dates
+        document.addEventListener("DOMContentLoaded", function() {
+            const absenceDateField = document.getElementById("bday");
+            if (absenceDateField) {
+                const today = new Date();
+                const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
+                absenceDateField.setAttribute("min", formattedDate); // Set minimum date to today
+                console.log("Min date set for absence_date:", formattedDate);
+            } else {
+                console.error("Element with ID 'absence_date' not found.");
+            }
+        });
+    </script>
 </body>
+
 </html>
