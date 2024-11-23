@@ -16,5 +16,3 @@ while ($row = mysqli_fetch_assoc($announcementResult)) {
     echo '</div>';
     echo '</div>';
 }
-
-?>

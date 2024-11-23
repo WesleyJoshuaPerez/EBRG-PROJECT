@@ -1564,3 +1564,102 @@ input[type="file"] {
     color: white; /* Text color for the highlighted part */
     font-weight: bold; /* Optional: bold the highlighted text */
 }
+
+.emergency {
+    font-family: inherit; /* Match the font family */
+    color: #D4D0CD;
+    font-size: 55px;
+    position: relative;
+    left: 83px;
+    bottom: 140px;
+}
+
+.contact1 {
+    background-color: #D4D0CD;
+    width: 220px;
+    height: 210px;
+    border-radius: 12px;
+    position: relative;
+    bottom: 180px;
+    left: 80px;
+}
+
+.contact2 {
+    background-color: #D4D0CD;
+    width: 220px;
+    height: 210px;
+    border-radius: 12px;
+    position: relative;
+    bottom: 423px;
+    left: 320px;
+}
+
+.contact3 {
+    background-color: #D4D0CD;
+    width: 220px;
+    height: 250px;
+    border-radius: 12px;
+    position: relative;
+    bottom: 667px;
+    left: 560px;
+}
+
+.national {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 30px;
+    line-height: 1.1;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.national_num {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 70px;
+    line-height: 1.1;
+    position: relative;
+    left: 10px;
+    bottom: 80px;
+}
+
+.pnp {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 34px;
+    line-height: 1.1;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.pnp_num {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 50px;
+    line-height: 1.1;
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+}
+
+.redcross {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 35px;
+    line-height: 1.0;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.redcross_num {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 50px;
+    line-height: 1.1;
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+}
