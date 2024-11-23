@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2024 at 07:56 AM
+-- Generation Time: Nov 23, 2024 at 02:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -110,6 +110,39 @@ INSERT INTO `brgy_event` (`brgyevent_id`, `admin_id`, `brgyevent_title`, `brgy_i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `daycare_shortlisting`
+--
+
+CREATE TABLE `daycare_shortlisting` (
+  `student_fname` varchar(30) NOT NULL,
+  `student_mname` varchar(30) NOT NULL,
+  `student_lname` varchar(30) NOT NULL,
+  `student_healthrecord` varchar(50) NOT NULL,
+  `student_birthcert` varchar(50) NOT NULL,
+  `student_level` varchar(30) NOT NULL,
+  `guardian_fname` varchar(30) NOT NULL,
+  `guardian_mname` varchar(30) NOT NULL,
+  `guardian_lname` varchar(30) NOT NULL,
+  `guardian_age` int(10) NOT NULL,
+  `guardian_id` varchar(50) NOT NULL,
+  `guardian_contactnum` int(15) NOT NULL,
+  `daycareshortlisting_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `daycare_shortlisting`
+--
+
+INSERT INTO `daycare_shortlisting` (`student_fname`, `student_mname`, `student_lname`, `student_healthrecord`, `student_birthcert`, `student_level`, `guardian_fname`, `guardian_mname`, `guardian_lname`, `guardian_age`, `guardian_id`, `guardian_contactnum`, `daycareshortlisting_id`) VALUES
+('fsdf', 'sdfs', 'fsdfs', 'Rezada, Angeline Kate E. - LM01-packet 04 - Activi', 'PC2_straight-through.png', '', 'dsfs', 'fsdfs', 'fsdfs', 23, 'PC2_straight-through.png', 0, 1),
+('dasd', 'asda', 'adsda', 'ipconfig2_straight-through.png', 'ipconfig2.png', '', 'asda', 'asda', 'asda', 2, 'PC2_straight-through.png', 0, 2),
+('entry1', 'entry1', 'entry1', 'msc.png', 'msc.png', '', 'entry1', 'entry1', 'entry1', 1, 'msc.png', 0, 3),
+('entry2', 'entry2', 'entry2', 'msc.png', 'msc.png', 'Kinder II', 'entry2', 'entry2', 'entry2', 2, 'msc.png', 0, 4),
+('entry3', 'entry3', 'entry3', 'msc.png', 'msc.png', 'Kinder II', 'entry3', 'entry3', 'entry3', 3, 'msc.png', 3, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `electricity_clearance`
 --
 
@@ -188,7 +221,8 @@ INSERT INTO `indigency_cert` (`first_name`, `middle_name`, `last_name`, `age`, `
 ('new', 'test', 'test', 12, 'wallpaper.jpg', 'Financial', '', 17, 'rejected'),
 ('test', 'test', 'test', 12, 'RICCS Booth3_PEREZ_NW3D.jfif', 'Medical', '', 18, NULL),
 ('Rodrigo', 'Angeles', 'Rodriguez', 12, 'id  examp.jfif', 'Medical', '', 19, NULL),
-('Troy', 'Francis N.', 'MENDOZA', 18, 'id  examp.jfif', 'Financial', '', 20, NULL);
+('Troy', 'Francis N.', 'MENDOZA', 18, 'id  examp.jfif', 'Financial', '', 20, NULL),
+('PEREZ', 'HEREMIS', 'WESLEYJOSHUA, HERAMIS', 14, 'gundam.png', 'Medical', '', 23, NULL);
 
 -- --------------------------------------------------------
 
@@ -289,19 +323,19 @@ CREATE TABLE `registereduser_ebrg` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `code` varchar(10) DEFAULT NULL,
-  `updated_time` datetime DEFAULT NULL
+  `updated_time` datetime DEFAULT NULL,
+  `account_status` varchar(200) DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registereduser_ebrg`
 --
 
-INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`) VALUES
-(17, 'make', 'ekam', '1990-12-12', 'male', 'make', 'likyfili@teleg.eu', 'likyfili@teleg.eu', '3VE0P9UC6B', '2024-11-04 11:31:28'),
-(18, 'Perez', 'WesleyJoshua, Heramis', '2004-03-18', 'male', 'Wesley', 'perezwesley17@gmail.com', 'Wesley', '09RW8JPSL4', '2024-11-13 12:32:40'),
-(19, 'Wilfredo M.', 'Perez Jr', '2024-11-04', 'male', 'Wilfredo', 'wesleyjoshuaperez@gmail.com', 'jr', 'ODJG261QTY', '2024-11-13 13:13:17'),
-(20, 'Troy', 'Mendoza', '2004-09-09', 'male', 'troymendoza9', 'troymendoza099@gmail.com', 'billiejoe', '2Z1BG4ORTC', '2024-11-05 10:54:14'),
-(24, 'wesleyjoshuaisko', 'perez', '2024-10-30', 'male', 'wes17', 'wesleyjoshuaperez.iskolar@gmail.com', 'perez', '3LMJ1ATQ9N', '2024-11-13 12:51:42');
+INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`, `account_status`) VALUES
+(1, 'Troy Francis', 'Mendoza', '2004-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
+(2, 'Sebastian Kean', 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
+(3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'Wesley', '7YLB4A3DNK', '2024-11-23 17:45:02', 'Active'),
+(4, 'Angeline Kate', 'Rezada', '2003-11-20', 'female', '', '', '', NULL, NULL, 'Active');
 
 -- --------------------------------------------------------
 
@@ -324,7 +358,8 @@ INSERT INTO `resetpass_request` (`reset_id`, `reguser_id`, `reset_token`, `reque
 (6, 18, '7OERNVS0FU', '2024-11-13 05:29:23'),
 (7, 18, '09RW8JPSL4', '2024-11-13 05:32:17'),
 (8, 24, '3LMJ1ATQ9N', '2024-11-13 05:49:22'),
-(9, 19, 'ODJG261QTY', '2024-11-13 06:12:28');
+(9, 19, 'ODJG261QTY', '2024-11-13 06:12:28'),
+(10, 3, '7YLB4A3DNK', '2024-11-23 10:44:14');
 
 -- --------------------------------------------------------
 
@@ -382,7 +417,8 @@ INSERT INTO `soloparent_cert` (`first_name`, `middle_name`, `last_name`, `id_pic
 ('Wilfredo M.', 'Mateo', 'Perez Jr', 'id  examp.jfif', 20, 1, '₱20,000 - ₱30,000', 'Employment', '', 4, 'rejected'),
 ('wess', 'wew', 'wewe', 'gundam.png', 20, 1, '₱20,000 - ₱30,000', 'Employment', '', 5, NULL),
 ('test', 'test', 'test', 'gundam.png', 20, 1, '₱10,000 - ₱20,000', 'Employment', '', 6, NULL),
-('wewe', 'wewewe', 'wewew', 'RICCS Booth2_PEREZ_NW3D.jfif', 1, 1, '₱10,000 - ₱20,000', 'Employment', '', 7, NULL);
+('wewe', 'wewewe', 'wewew', 'RICCS Booth2_PEREZ_NW3D.jfif', 1, 1, '₱10,000 - ₱20,000', 'Employment', '', 7, NULL),
+('Angel', 'Burgers', 'pizaa', 'RICCS Booth2_PEREZ_NW3D.jfif', 12, 1, '₱10,000 - ₱20,000', 'Employment', '', 8, NULL);
 
 --
 -- Indexes for dumped tables
@@ -411,6 +447,12 @@ ALTER TABLE `brgy_announcement`
 --
 ALTER TABLE `brgy_event`
   ADD PRIMARY KEY (`brgyevent_id`);
+
+--
+-- Indexes for table `daycare_shortlisting`
+--
+ALTER TABLE `daycare_shortlisting`
+  ADD PRIMARY KEY (`daycareshortlisting_id`);
 
 --
 -- Indexes for table `electricity_clearance`
@@ -501,6 +543,12 @@ ALTER TABLE `brgy_event`
   MODIFY `brgyevent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `daycare_shortlisting`
+--
+ALTER TABLE `daycare_shortlisting`
+  MODIFY `daycareshortlisting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `electricity_clearance`
 --
 ALTER TABLE `electricity_clearance`
@@ -516,7 +564,7 @@ ALTER TABLE `fencingclearance_cert`
 -- AUTO_INCREMENT for table `indigency_cert`
 --
 ALTER TABLE `indigency_cert`
-  MODIFY `indigency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `indigency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `jobabsence_cert`
@@ -540,13 +588,13 @@ ALTER TABLE `order_payment`
 -- AUTO_INCREMENT for table `registereduser_ebrg`
 --
 ALTER TABLE `registereduser_ebrg`
-  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `reguser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `resetpass_request`
 --
 ALTER TABLE `resetpass_request`
-  MODIFY `reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `residency_cert`
@@ -558,7 +606,7 @@ ALTER TABLE `residency_cert`
 -- AUTO_INCREMENT for table `soloparent_cert`
 --
 ALTER TABLE `soloparent_cert`
-  MODIFY `soloparent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `soloparent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
