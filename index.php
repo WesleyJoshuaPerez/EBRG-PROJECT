@@ -48,33 +48,47 @@
 <?php    
 include 'connectdb.php';
 // For login
-if(isset($_POST["login"])){
+if (isset($_POST["login"])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-//    $password = md5($password);
+    // $password = md5($password); // Uncomment if passwords are hashed
 
+    // Check if the account exists and its status
     $sql = "SELECT * FROM registereduser_ebrg WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);
-    if($result->num_rows > 0){
-        session_start();
+
+    if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $_SESSION['username'] = $row['username'];
-        echo "<script>
-             swal({
-            title: 'Login successful!',
-            text: 'Welcome to the EBRGY!',
-            icon: 'success'
-        }).then(function() {
-            window.location.href = 'maindashboard.php';
-        });
-              </script>";
-        exit();
+
+        if ($row['account_status'] == 'Active') {
+            session_start();
+            $_SESSION['username'] = $row['username'];
+
+            echo "<script>
+                swal({
+                    title: 'Login successful!',
+                    text: 'Welcome to the EBRGY!',
+                    icon: 'success'
+                }).then(function() {
+                    window.location.href = 'maindashboard.php';
+                });
+            </script>";
+        } else {
+            echo "<script>
+                swal({
+                    title: 'Account Inactive!',
+                    text: 'Your account is inactive. Please contact support.',
+                    icon: 'warning'
+                });
+            </script>";
+        }
     } else {
         echo "<script>
-                 swal('Login Failed!', 'Please try again', 'error');
-              </script>";
+            swal('Login Failed!', 'Invalid username or password. Please try again.', 'error');
+        </script>";
     }
-} 
+}
 ?>
+
   </body>
 </html>
