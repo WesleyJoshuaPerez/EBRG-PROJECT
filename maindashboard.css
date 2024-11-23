@@ -1604,6 +1604,36 @@ input[type="file"] {
     left: 560px;
 }
 
+.contact4 {
+    background-color: #D4D0CD;
+    width: 220px;
+    height: 265px;
+    border-radius: 12px;
+    position: relative;
+    top: 40px;
+    left: 80px;
+}
+
+.contact5 {
+    background-color: #D4D0CD;
+    width: 220px;
+    height: 265px;
+    border-radius: 12px;
+    position: relative;
+    bottom: 255px;
+    left: 320px;
+}
+
+.contact6 {
+    background-color: #D4D0CD;
+    width: 220px;
+    height: 300px;
+    border-radius: 12px;
+    position: relative;
+    bottom: 550px;
+    left: 560px;
+}
+
 .national {
     font-family: inherit; /* Match the font family */
     color: #7E9C92;
@@ -1622,6 +1652,31 @@ input[type="file"] {
     position: relative;
     left: 10px;
     bottom: 80px;
+}
+
+/* Info hover box */
+.info-hover {
+    position: absolute;
+    font-family: inherit; /* Match the font family */
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    color: #ffffff;
+    font-size: 15px;
+    text-align: justify;
+    padding: 10px;
+    border-radius: 0 0 12px 12px; /* Match the card's radius */
+    visibility: hidden; /* Initially hide the card */
+    opacity: 0; /* Make it transparent */
+    transform: translateY(100%); /* Move it below the card */
+    transition: visibility 0s, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contact1:hover .info-hover {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide it into view */
 }
 
 .pnp {
@@ -1644,6 +1699,12 @@ input[type="file"] {
     bottom: 10px;
 }
 
+.contact2:hover .info-hover {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide it into view */
+}
+
 .redcross {
     font-family: inherit; /* Match the font family */
     color: #7E9C92;
@@ -1661,5 +1722,99 @@ input[type="file"] {
     line-height: 1.1;
     position: relative;
     left: 10px;
-    bottom: 10px;
+    bottom: 40px;
+}
+
+.redcross_num2 {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 50px;
+    line-height: 1.1;
+    position: relative;
+    left: 10px;
+    bottom: 135px;
+}
+
+.contact3:hover .info-hover {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide it into view */
+}
+
+.mdrrmo {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 30px;
+    line-height: 1.1;
+    position: relative;
+    left: 5px;
+    top: 15px;
+}
+
+.mdrrmo_num {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 50px;
+    line-height: 1.1;
+    position: relative;
+    left: 0px;
+    top: 5px;
+}
+
+.contact4:hover .info-hover {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide it into view */
+}
+
+.mps {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 30px;
+    line-height: 1.1;
+    position: relative;
+    left: 5px;
+    top: 15px;
+}
+
+.mps_num {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 50px;
+    line-height: 1.1;
+    position: relative;
+    left: 0px;
+    top: 5px;
+}
+
+.contact5:hover .info-hover {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide it into view */
+}
+
+.fire {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 30px;
+    line-height: 1.1;
+    position: relative;
+    left: 5px;
+    top: 15px;
+}
+
+.fire_num {
+    font-family: inherit; /* Match the font family */
+    color: #7E9C92;
+    font-size: 50px;
+    line-height: 1.1;
+    position: relative;
+    left: 0px;
+    top: 5px;
+}
+
+.contact6:hover .info-hover {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide it into view */
 }

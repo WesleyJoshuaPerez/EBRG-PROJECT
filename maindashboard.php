@@ -200,19 +200,40 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
             <div class="contact1">
                 <h3 class="national">NATIONAL <br> EMERGENCY <br> HOTLINE</h3>
                 <h5 class="national_num">911</h5>
+                <div class="info-hover">Ensures safety and rapid response in emergencies nationwide.</div>
             </div>
             <div class="contact2">
                 <h3 class="pnp">PNP <br> BATAAN</h3>
                 <h5 class="pnp_num">633 5160</h5>
+                <div class="info-hover">Committed to maintaining peace and order in Bataan.</div>
             </div>
             <div class="contact3">
                 <h3 class="redcross">REDCROSS <br> BATAAN <br> CHAPTER</h3>
                 <h5 class="redcross_num">791 2351</h5>
                 <h5 class="redcross_num2">791 4779</h5>
+                <div class="info-hover">Provides humanitarian aid and disaster relief in times of need.</div>
             </div>
+        </div>
+
+        <div id="hotl2">
+        <div class="contact4">
+                <h3 class="mdrrmo">DINALUPIHAN <br> MDRRMO</h3>
+                <h5 class="mdrrmo_num">0998-587-0391</h5>
+                <div class="info-hover">Dedicated to disaster risk reduction, preparedness, and emergency response for the safety and resilience of Dinalupihan.</div>
+        </div>
+        <div class="contact5">
+                <h3 class="mps">DINALUPIHAN <br> MPS</h3>
+                <h5 class="mps_num">0998-598-5359</h5>
+                <div class="info-hover">Ensures public safety, crime prevention, and swift response to emergencies for the peace and order of Dinalupihan.</div>
+        </div>
+        <div class="contact6">
+                <h3 class="fire">DINALUPIHAN <br> FIRE <br> STATION</h3>
+                <h5 class="fire_num">0933-550-7373</h5>
+                <div class="info-hover">Protects lives, properties, and the environment through fire prevention, suppression, and emergency rescue services.</div>
+        </div>
 
         </div>
-        <div id="hotl2"></div>
+        <div style="height: 90px;"></div>
     </div>
 
 
@@ -380,7 +401,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
         function validateForm(formId) {
             const form = document.getElementById(formId);
             const inputs = form.querySelectorAll("input[required], select[required], textarea[required]");
-            let isValid = true;
+                let isValid = true;
 
             inputs.forEach(input => {
                 // Trim input value to handle spaces
