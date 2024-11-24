@@ -166,6 +166,21 @@
     }
     ?>
 
+    <script>
+        // disable previous dates
+        document.addEventListener("DOMContentLoaded", function() {
+            const absenceDateField = document.getElementById("bday");
+            if (absenceDateField) {
+                const today = new Date();
+                const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
+                absenceDateField.setAttribute("max", formattedDate); // Set minimum date to today
+                console.log("Max date set for birthday:", formattedDate);
+            } else {
+                console.error("");
+            }
+        });
+    </script>
+
     <!-- input fields logic -->
      <script>
         function toUppercase(input) {
