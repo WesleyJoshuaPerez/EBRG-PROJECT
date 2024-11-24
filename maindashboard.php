@@ -74,6 +74,14 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
             </ul>
 
         </nav>
+        <!-- user profile -->
+        <div class="user-profile" onclick="showUserDetails()">
+            <i class="fa-solid fa-user profile-icon"></i>
+            <div class="profile-details">
+            <p class="profile-name" id="profile-name">Loading...</p>
+            </div>
+        </div>
+
         <div class="nav_logo">
             <img src="logo/mainpage_logo.png" alt="EBRGY logo">
         </div>
@@ -609,7 +617,67 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
         });
     }
      </script>
+    
+    <!-- swal that displays details of current account logged in -->
+    <script>
+    async function fetchUserData() {
+    try {
+        const response = await fetch("getUserData.php"); // API to fetch user data
+        if (!response.ok) {
+            throw new Error("Failed to fetch user data");
+        }
+        const userData = await response.json();
+        return userData;
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return null;
+    }
+}
 
+// Fetch user data on page load and update the profile name
+async function initializeUserProfile() {
+    const userData = await fetchUserData();
+    const profileNameElement = document.getElementById("profile-name");
+    if (userData) {
+        profileNameElement.textContent = `${userData.firstname} ${userData.lastname}`;
+        // Store user data globally for modal use
+        window.currentUserData = userData;
+    } else {
+        profileNameElement.textContent = "Guest"; // Fallback for errors
+        window.currentUserData = null; // No user data
+    }
+}
+
+// Show user details in a SweetAlert modal
+function showUserDetails() {
+    if (window.currentUserData) {
+        const { firstname, lastname, email, username, account_status, updated_time } = window.currentUserData;
+        Swal.fire({
+            title: "User Profile",
+            html: `
+                <strong>Name:</strong> ${firstname} ${lastname}<br>
+                <strong>Email:</strong> ${email}<br>
+                <strong>Username:</strong> ${username}<br>
+                <strong>Account Status:</strong> ${account_status}<br>
+                <strong>Last Login:</strong> ${updated_time || "N/A"}
+            `,
+            icon: "info",
+            confirmButtonText: "Close"
+        });
+    } else {
+        Swal.fire({
+            title: "Error",
+            text: "No user data available. Please log in.",
+            icon: "error",
+            confirmButtonText: "Close"
+        });
+    }
+}
+
+// Run the function on page load
+document.addEventListener("DOMContentLoaded", initializeUserProfile);
+
+    </script>
 
 </body>
 

@@ -57,6 +57,11 @@ body {
      cursor: pointer;
      color: #D4D0CD;/* use for the color of the hamburger*/
  }
+
+ .hamburger {
+    position: relative;
+    left: 15px;
+ }
  
  header .nav_logo {
      display: flex;
@@ -1892,4 +1897,47 @@ textarea {
 
 .submit_feedback:hover {
     background-color: #7E9C92;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #788665;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    font-size: 35px;
+    color: #D4D0CD;
+    position: relative;
+    right: 80px;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #D4D0CD;
+    margin: 0;
+    position: relative;
+    right: 80px;
+    top: 10px;
+}
+
+.profile-link {
+    font-size: 14px;
+    color: #D4D0CD;
+    text-decoration: none;
+}
+
+.swal-custom-popup {
+    font-family: "Ysabeau Office", sans-serif;
 }
