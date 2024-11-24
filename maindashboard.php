@@ -426,51 +426,49 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
             }
         }
 
-        // checks if all fields are populated
-        function validateForm(formId) {
-            const form = document.getElementById(formId);
-            const inputs = form.querySelectorAll("input[required], select[required], textarea[required]");
-                let isValid = true;
+    // checks if all fields are populated
+    function validateForm(formId) {
+    const form = document.getElementById(formId);
+    const inputs = form.querySelectorAll("input[required], select[required], textarea[required]");
+    const submitButton = form.querySelector(".submit"); // Ensure your submit button has this class
+    let isValid = true;
 
-            inputs.forEach(input => {
-                // Trim input value to handle spaces
-                const value = input.type === "radio" || input.type === "checkbox" ? input.checked : input.value.trim();
+    inputs.forEach(input => {
+        // Trim input value to handle spaces
+        const value = input.type === "radio" || input.type === "checkbox" ? input.checked : input.value.trim();
 
-                if (!value) {
-                    // Highlight empty fields
-                    input.style.border = "2px solid red";
-                    isValid = false;
-                } else {
-                    // Remove highlight if the field is filled
-                    input.style.border = "";
-                }
-            });
-
-            if (!isValid) {
-                // Show an alert if validation fails
-                Swal.fire({
-                    title: "Error!",
-                    text: "Please fill out all required fields before submitting.",
-                    icon: "error",
-                    confirmButtonText: "OK",
-                });
-            }
-
-            return isValid;
+        if (!value) {
+            // Highlight empty fields
+            input.style.border = "2px solid red";
+            isValid = false;
+        } else {
+            // Remove highlight if the field is filled
+            input.style.border = "";
         }
+    });
 
-        function handleSubmit(event, formId) {
-            event.preventDefault(); // Prevent the default form submission behavior
+    // Update submit button style and state
+    if (isValid) {
+        submitButton.style.backgroundColor = "#4CAF50"; // Green when all fields are valid
+        submitButton.disabled = false; // Enable the button
+    } else {
+        submitButton.style.backgroundColor = "#D3D3D3"; // Gray when fields are missing
+        submitButton.disabled = true; // Disable the button
+    }
 
-            if (validateForm(formId)) {
-                // Submit the form if validation is successful
-                const form = document.getElementById(formId);
-                form.submit();
-                return true; // Indicate successful submission
-            }
+    if (!isValid) {
+        // Show an alert if validation fails
+        Swal.fire({
+            title: "Error!",
+            text: "Please fill out all required fields before submitting.",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+    }
 
-            return false; // Prevent form submission on failure
-        }
+    return isValid;
+}
+
     </script>
 
     <script>

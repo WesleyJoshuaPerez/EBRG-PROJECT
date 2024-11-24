@@ -156,7 +156,7 @@ function showCertificateDetails(type) {
 
                 <!-- Clear and Submit Buttons -->
                 <button type="button" class="clear" id="clearBtn" onclick="clearForm('div1')">CLEAR</button>
-                <button type="submit" class="submit">SUBMIT</button>
+                <button type="submit" class="submit" >SUBMIT</button>
             </form>
         `;
         document.querySelector('#clearBtn').addEventListener('click', () => {
