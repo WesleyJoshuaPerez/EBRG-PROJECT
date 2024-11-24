@@ -632,10 +632,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
         console.error("Error fetching user data:", error);
         return null;
     }
-}
+    }
 
-// Fetch user data on page load and update the profile name
-async function initializeUserProfile() {
+    // Fetch user data on page load and update the profile name
+    async function initializeUserProfile() {
     const userData = await fetchUserData();
     const profileNameElement = document.getElementById("profile-name");
     if (userData) {
@@ -646,10 +646,10 @@ async function initializeUserProfile() {
         profileNameElement.textContent = "Guest"; // Fallback for errors
         window.currentUserData = null; // No user data
     }
-}
+    }
 
-// Show user details in a SweetAlert modal
-function showUserDetails() {
+    // Show user details in a SweetAlert modal
+    function showUserDetails() {
     if (window.currentUserData) {
         const { firstname, lastname, email, username, account_status, updated_time } = window.currentUserData;
         Swal.fire({
@@ -672,10 +672,10 @@ function showUserDetails() {
             confirmButtonText: "Close"
         });
     }
-}
+    }
 
-// Run the function on page load
-document.addEventListener("DOMContentLoaded", initializeUserProfile);
+    // Run the function on page load
+    document.addEventListener("DOMContentLoaded", initializeUserProfile);
 
     </script>
 
