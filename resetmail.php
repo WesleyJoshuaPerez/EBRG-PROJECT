@@ -38,7 +38,7 @@ if(isset($_SESSION['status'])) {
 </head>
 <body>
     <div class="reset-password-container">
-        <h1>Reset Password</h1>
+        <h1>RESET PASSWORD</h1>
         <div class="form-container">
             <form action="" method="POST">
                 <label for="email" class="email-label">Email Address</label>
