@@ -48,7 +48,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="hamburger" id="hamburger">
             &#9776; <!-- Unicode character for hamburger icon -->
         </div>
@@ -67,7 +67,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
                         <div id="google_translate_element" style="display: block;"></div>
                     </div>
                 </li>
-                <li><a href="index.php">Log Out</a></li>
+                <li><a href="#" onclick="showFeedbackModal(); return false;">Log Out</a></li>
                 <!-- Delete Account Link -->
                 <li><a href="maindashboard.php?action=delete_account" id="changeaccount_status">Delete Account</a></li>
             </ul>
@@ -235,8 +235,26 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
         </div>
         <div style="height: 90px;"></div>
     </div>
-
-
+    
+    <!-- feedback -->
+    <div id="feedbackModal" class="modal" style="display: none;">
+    <form id="feedbackForm">
+        <div class="modal-content">
+            <h3>We value your feedback!</h3>
+            <p>How was your experience using our system?</p>
+            <div class="emoji-options">
+                <span class="emoji" data-value="😃" onclick="selectEmoji(this)">😃</span>
+                <span class="emoji" data-value="😊" onclick="selectEmoji(this)">😊</span>
+                <span class="emoji" data-value="😐" onclick="selectEmoji(this)">😐</span>
+                <span class="emoji" data-value="😢" onclick="selectEmoji(this)">😢</span>
+                <span class="emoji" data-value="😡" onclick="selectEmoji(this)">😡</span>
+            </div>
+            <input type="hidden" name="emoji" id="selectedEmoji" />
+            <textarea id="feedbackComment" name="comment" placeholder="Tell us more about your experience (optional)"></textarea>
+            <button class="submit_feedback" onclick="submitFeedback(event)">Submit Feedback</button>
+        </div>
+    </form>
+</div>
 
     <!-- Link to the JavaScript file for darkmode function -->
     <script src="darkmode.js"></script>
@@ -504,6 +522,92 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
         // Attach the confirmation handler
         document.getElementById('changeaccount_status').addEventListener('click', confirmDelete);
     </script>
+
+    <!-- feedback js -->
+     <script>
+     let selectedEmoji = null;
+
+    // Show the feedback modal
+    function showFeedbackModal() {
+    const modal = document.getElementById("feedbackModal");
+    const header = document.getElementById("header");
+    if (header) {
+        header.style.display = "none"; // Hide the header for focus
+    }
+    modal.style.display = "flex"; // Show the modal
+    }
+
+    // Select an emoji
+    function selectEmoji(emojiElement) {
+    // Deselect all emojis
+    const allEmojis = document.querySelectorAll(".emoji");
+    allEmojis.forEach((emoji) => emoji.classList.remove("selected"));
+
+    // Select the clicked emoji
+    emojiElement.classList.add("selected");
+    selectedEmoji = emojiElement.getAttribute("data-value");
+
+    // Update the hidden input for the form
+    const emojiInput = document.getElementById("selectedEmoji");
+    if (emojiInput) {
+        emojiInput.value = selectedEmoji; // Set the selected emoji value in the hidden input
+    }
+    }
+
+    // Submit feedback
+    function submitFeedback(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    if (!selectedEmoji) {
+        // Ensure that an emoji is selected
+        Swal.fire({
+            icon: "error",
+            title: "Feedback Required",
+            text: "Please select an emoji to provide your feedback.",
+            confirmButtonText: "OK",
+        });
+        return;
+    }
+
+    // Get the comment value
+    const comment = document.getElementById("feedbackComment").value;
+
+    // Prepare the form data for submission
+    const formData = new FormData();
+    formData.append("emoji", selectedEmoji);
+    formData.append("comment", comment);
+
+    // Submit feedback via an AJAX request
+    fetch("insert_feedbackdb.php", {
+        method: "POST",
+        body: formData,
+    })
+        .then((response) => response.text())
+        .then((data) => {
+            // Show success message and redirect
+            Swal.fire({
+                icon: "success",
+                title: "Thank You!",
+                text: "Your feedback has been submitted.",
+                confirmButtonText: "OK",
+            }).then(() => {
+                window.location.href = "index.php"; // Redirect to index page
+            });
+        })
+        .catch((error) => {
+            // Show error message
+            Swal.fire({
+                icon: "error",
+                title: "Submission Failed",
+                text: "An error occurred while submitting your feedback. Please try again.",
+                confirmButtonText: "OK",
+            });
+            console.error("Feedback submission error:", error);
+        });
+    }
+     </script>
+
+
 </body>
 
 </html>
