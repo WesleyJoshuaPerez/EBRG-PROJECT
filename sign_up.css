@@ -241,7 +241,8 @@ body {
     }
     
     .container1 {
-        height: 410px;
+        height: auto;
+        min-height: 410px;
         width: 280px;
         background-color: #2F393B;
         border-radius: 15px;
@@ -253,6 +254,7 @@ body {
         justify-content: center;
         align-items: center;
     }
+    
     .one_row-con {
         display: flex; /* Ensures items are placed in a row */
         justify-content: space-between; /* Adjusts the spacing between label-input pairs */

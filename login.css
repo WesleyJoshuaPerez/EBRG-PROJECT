@@ -71,9 +71,12 @@ body {
     label {
         color: #e1ddda;
         text-align: center;
+        font-size: 19px;
         font-weight: bold;
         display: block; /* Ensures labels are on their own line above each input */
         margin-bottom: 5px; /* Adds space between the label and input */
+        position: relative;
+        top: 20px;
     }
     .container_1 a{
         width: 80%;  
@@ -99,6 +102,8 @@ body {
         border-radius: 5px; 
         background-color: #D4D0CD; 
         font-weight: bold;
+        position: relative;
+        top: 10px;
     }
     #bt1 {
         width: 80%;  
@@ -110,6 +115,8 @@ body {
         border-radius: 5px;  
         background-color: #95A777;   
         cursor: pointer;  
+        position: relative;
+        top: 10px;
     }
     #bt1:hover {
         background-color: #4A6B6C;  
@@ -124,6 +131,8 @@ body {
         border-radius: 5px;  
         background-color: #7E9C92;  
         cursor: pointer;  
+        position: relative;
+        bottom: 10px;
     }
     #bt2:hover {
         background-color: #4A6B6C;  
@@ -145,6 +154,26 @@ body {
         color: #D4D0CD; /* Link color */
         margin: 10px 0;  
     }  
+    .password-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 455px;
+    }
+    
+    .password-container input {
+        width: 100%;
+        padding-right: 30px; /* Add space for the icon */
+    }
+    
+    .toggle-password {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        user-select: none;
+    }
 }
 /*mobile*/
 /*1369px original i tried to adjust the  width to see changes*/

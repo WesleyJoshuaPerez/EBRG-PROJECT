@@ -40,7 +40,7 @@
                 </label>
             </div>
             <label for="username">Username</label>
-            <input type="text" class="input_field3" name="username" id="username" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your username" required>
+            <input type="text" class="input_field3" name="username" id="username" oninput="toUppercase(this)" placeholder="Enter your username" required>
 
             <label for="email">Email</label>
             <input type="email" class="input_field4" name="email" id="email" placeholder="Enter your email address" required>
@@ -221,7 +221,7 @@
         feedback.style.fontSize = "15px";
     } else {
         feedback.textContent = "Password is strong!";
-        feedback.style.color = "green";
+        feedback.style.color = "#98e4a3";
         feedback.style.display = "block";
         feedback.style.textAlign = "center";
         feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
@@ -242,7 +242,7 @@ document.getElementById("confirmpassword").addEventListener("input", function ()
         feedback.style.fontSize = "15px";
     } else {
         feedback.textContent = "Passwords match!";
-        feedback.style.color = "green";
+        feedback.style.color = "#98e4a3";
         feedback.style.display = "block";
         feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
         feedback.style.fontSize = "15px";

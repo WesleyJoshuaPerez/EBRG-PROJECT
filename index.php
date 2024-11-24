@@ -24,9 +24,13 @@
     <div class="container_1">
       <!--use for login-->
       <label for="username">Username</label>
-      <input type="text" placeholder="Enter your username" id="username" name="username" required>
+      <input type="text" oninput="toUppercase(this)" placeholder="Enter your username" id="username" name="username" required>
       <label for="password">Password</label>
-      <input type="password" placeholder="Enter your password" id="password" name="password"  required>
+      <div class="password-container">
+            <input type="password" class="input_field5" name="password" id="password" placeholder="Create a strong password" required>
+            <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">👁️</span>
+      </div>
+      <p id="password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>
       <a href="maindashboard.html">
        <button type="submit" name="login" id="bt1">Login</button>
      </a>
@@ -90,6 +94,60 @@ if (isset($_POST["login"])) {
     }
 }
 ?>
+
+<!-- input field -->
+<script>
+        function toUppercase(input) {
+            input.value = input.value.toUpperCase();
+        }
+</script>
+
+<!-- show password -->
+<script>
+        function togglePasswordVisibility(inputId, toggleIcon) {
+    const passwordInput = document.getElementById(inputId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.textContent = "🙈"; // Change icon to hide
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.textContent = "👁️"; // Change icon to show
+    }
+}
+</script>
+
+<!-- password validation  -->
+<script>
+    document.getElementById("password").addEventListener("input", function () {
+    const password = this.value;
+    const feedback = document.getElementById("password-feedback");
+
+    // Password rules
+    const rules = [
+        { regex: /.{8,}/, message: "At least 8 characters long" },
+        { regex: /[A-Z]/, message: "At least one uppercase letter" },
+        { regex: /[a-z]/, message: "At least one lowercase letter" },
+        { regex: /\d/, message: "At least one number" },
+    ];
+
+    // Check which rules are not satisfied
+    const failedRules = rules.filter(rule => !rule.regex.test(password));
+    if (failedRules.length > 0) {
+        feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
+        feedback.style.color = "red";
+        feedback.style.display = "block";
+        feedback.style.textAlign = "center";
+        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
+        feedback.style.fontSize = "15px";
+        feedback.style.position = "relative";
+        feedback.style.top = "10px";
+    } else {
+      feedback.textContent = "";
+    }
+});
+
+</script>
 
   </body>
 </html>
