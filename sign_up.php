@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="sign_up.css">
     <title>Sign Up</title>
+    <link rel="shortcut icon" type="x-icon" href="logo/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@1..1000&display=swap" rel="stylesheet">
@@ -159,8 +160,8 @@
             if (absenceDateField) {
                 const today = new Date();
                 const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
-                absenceDateField.setAttribute("min", formattedDate); // Set minimum date to today
-                console.log("Min date set for absence_date:", formattedDate);
+                absenceDateField.setAttribute("max", formattedDate); // Set minimum date to today
+                console.log("Max date set for absence_date:", formattedDate);
             } else {
                 console.error("Element with ID 'absence_date' not found.");
             }

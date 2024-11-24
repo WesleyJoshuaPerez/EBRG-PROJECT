@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrator</title>
+    <link rel="shortcut icon" type="x-icon" href="logo/logo.png">
     <link rel="stylesheet" href="admin.css" />
     <link rel="stylesheet" href="darkmode.css"/>
     <!-- Include SweetAlert CSS -->
@@ -25,13 +26,13 @@
         </div>
         <nav id="nav-menu" class="nav_menu">
             <ul>
-                <li><a href="about_us.html">About us</a></li>
+                <li><a href="about_us.php">About us</a></li>
                 <li><a href="#">Conducted Projects</a></li>
-                <li><a href="vision.html">Vision</a></li>
-                <li><a href="mission.html">Mission</a></li>
+                <li><a href="vision.php">Vision</a></li>
+                <li><a href="mission.php">Mission</a></li>
                 <li><a href="#">Guest Mode</a></li>
                 <li><a href="#" id="darkModeLink">Dark Mode</a></li>
-                <li><a href="index.html">Log Out</a></li>
+                <li><a href="index.php">Log Out</a></li>
             </ul>
         </nav>
         <div class="nav_logo">

@@ -32,6 +32,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
         <link rel="stylesheet" href="about_us.css" />
         <link rel="stylesheet" href="darkmode.css"/>
         <title>About Us</title>
+        <link rel="shortcut icon" type="x-icon" href="logo/logo.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@1..1000&display=swap" rel="stylesheet">
