@@ -24,8 +24,9 @@ body {
 @media only screen and (min-width: 1024px){
 
     .title {
-        margin-top: 10px;
-        max-width: 480px; /* Constrains the content within the div */
+        position: relative;
+        top: 15px;
+        max-width: 600px; /* Constrains the content within the div */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -34,20 +35,20 @@ body {
     
     h3 {
         text-align: center;
-        font-size: 55px;
+        font-size: 41px;
         color: #2F393B;
-        margin-bottom: 10px; /* Add margin to create spacing between the heading and the container */
+        margin-bottom: 20px; /* Add margin to create spacing between the heading and the container */
     }
     
     .container1 {
-        height: 500px;
+        height: 600px;
         width: 100%;
         max-width: 480px;
         background-color: #2F393B;
         border-radius: 10px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         padding: 10px;
-        margin-top: 5px; /* Adds space at the top of the container */
+        margin-top: 15px; /* Adds space at the top of the container */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -98,7 +99,7 @@ body {
     .birthday {
         font-size: 16px;
         color: #e1ddda;
-        margin-top: 15px;
+        margin-top: 10px;
         font-weight: bold;
     }
     
@@ -106,7 +107,7 @@ body {
         font-size: 16px;
         height: 35px;
         width: 250px;
-        margin-top: -40px;
+        margin-top: -35px;
         border-radius: 10px;        
         border: 1px solid #ccc;     
         background-color: #e1ddda;
@@ -163,7 +164,15 @@ body {
     p {
         font-size: 14px;
         color: #e1ddda;
-        
+        position: relative;
+        bottom: 2px;
+    }
+
+    .terms {
+        font-size: 14px;
+        color: #e1ddda;
+        position: relative;
+        bottom: 10px;
     }
     
     a {
@@ -181,8 +190,38 @@ body {
         font-weight: bold;
         cursor: pointer;
         font-weight: bold;
+        position: relative;
+        bottom: 18px;
     } 
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        user-select: none;
+    }
+    .password-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 365px;
+    }
+    
+    .password-container input {
+        width: 100%;
+        padding-right: 30px; /* Add space for the icon */
+    }
+    
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        user-select: none;
+    }
 }
+
+
 @media only screen and (max-width: 1023px) {
     .title {
         max-width: 480px; /* Constrains the content within the div */

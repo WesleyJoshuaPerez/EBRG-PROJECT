@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <h3 class="title">Make new account</h3>
+    <h3 class="title">CREATE AN ACCOUNT</h3>
 
     <form method="post" action="">
         <div class="container1">
@@ -22,8 +22,8 @@
                 <h6 class="lastnamelb">Last name</h6>
             </div>
             <div class="one_row-con">
-                <input type="text" class="input_field1" placeholder="Enter your first name" name="firstname" required>
-                <input type="text" class="input_field2" placeholder="Enter your last name" name="lastname" required>
+                <input type="text" class="input_field1" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your first name" name="firstname" required>
+                <input type="text" class="input_field2" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your last name" name="lastname" required>
             </div>
             <h6 class="birthday">Birthday</h6>
             <input type="date" class="bday" id="bday" name="birthday" placeholder="MM/DD/YYYY" required>
@@ -40,15 +40,27 @@
                 </label>
             </div>
             <label for="username">Username</label>
-            <input type="text" class="input_field3" name="username" id="username" placeholder="Enter your username" required>
+            <input type="text" class="input_field3" name="username" id="username" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your username" required>
+
             <label for="email">Email</label>
             <input type="email" class="input_field4" name="email" id="email" placeholder="Enter your email address" required>
+
             <label for="password">Password</label>
+            <div class="password-container">
             <input type="password" class="input_field5" name="password" id="password" placeholder="Create a strong password" required>
+            <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">👁️</span>
+            </div>
+            <p id="password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>
+
             <label for="confirmpassword">Confirm Password</label>
+            <div class="password-container">
             <input type="password" class="input_field6" name="confirmpassword" id="confirmpassword" placeholder="Re-enter your password" required>
-            <p> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
-            <button type="submit" name="sigUp">Sign Up</button>
+            <span class="toggle-password" onclick="togglePasswordVisibility('confirmpassword', this)">👁️</span>
+            </div>
+            <p id="confirm-password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>
+
+            <p class="terms"> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
+            <button type="submit" name="sigUp" onclick="validatePassword()">Sign Up</button>
         </div>
     </form>
 
@@ -153,20 +165,92 @@
         }
     }
     ?>
-    <script>
-        // disable previous dates
-        document.addEventListener("DOMContentLoaded", function() {
-            const absenceDateField = document.getElementById("bday");
-            if (absenceDateField) {
-                const today = new Date();
-                const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
-                absenceDateField.setAttribute("max", formattedDate); // Set minimum date to today
-                console.log("Max date set for absence_date:", formattedDate);
-            } else {
-                console.error("Element with ID 'absence_date' not found.");
+
+    <!-- input fields logic -->
+     <script>
+        function toUppercase(input) {
+            input.value = input.value.toUpperCase();
+        }
+        function preventNumbers(event) {
+            const key = event.key;
+            // Allow only letters, backspace, tab, arrow keys, and space
+            if (!/^[a-zA-Z\s]+$/.test(key) && key !== "Backspace" && key !== "Tab" && !key.startsWith("Arrow")) {
+                event.preventDefault();
             }
-        });
+
+        }
+     </script>
+
+    <!-- validation of password -->
+    <script>
+    document.getElementById("password").addEventListener("input", function () {
+    const password = this.value;
+    const feedback = document.getElementById("password-feedback");
+
+    // Password rules
+    const rules = [
+        { regex: /.{8,}/, message: "At least 8 characters long" },
+        { regex: /[A-Z]/, message: "At least one uppercase letter" },
+        { regex: /[a-z]/, message: "At least one lowercase letter" },
+        { regex: /\d/, message: "At least one number" },
+    ];
+
+    // Check which rules are not satisfied
+    const failedRules = rules.filter(rule => !rule.regex.test(password));
+    if (failedRules.length > 0) {
+        feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
+        feedback.style.color = "red";
+        feedback.style.display = "block";
+        feedback.style.textAlign = "center";
+        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
+        feedback.style.fontSize = "15px";
+    } else {
+        feedback.textContent = "Password is strong!";
+        feedback.style.color = "green";
+        feedback.style.display = "block";
+        feedback.style.textAlign = "center";
+        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
+        feedback.style.fontSize = "15px";
+    }
+});
+
+document.getElementById("confirmpassword").addEventListener("input", function () {
+    const password = document.getElementById("password").value;
+    const confirmPassword = this.value;
+    const feedback = document.getElementById("confirm-password-feedback");
+
+    if (password !== confirmPassword) {
+        feedback.textContent = "Passwords do not match!";
+        feedback.style.color = "red";
+        feedback.style.display = "block";
+        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
+        feedback.style.fontSize = "15px";
+    } else {
+        feedback.textContent = "Passwords match!";
+        feedback.style.color = "green";
+        feedback.style.display = "block";
+        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
+        feedback.style.fontSize = "15px";
+    }
+});
     </script>
+
+    <!-- show password -->
+     <script>
+        function togglePasswordVisibility(inputId, toggleIcon) {
+    const passwordInput = document.getElementById(inputId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.textContent = "🙈"; // Change icon to hide
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.textContent = "👁️"; // Change icon to show
+    }
+}
+
+     </script>
+
 </body>
 
 </html>

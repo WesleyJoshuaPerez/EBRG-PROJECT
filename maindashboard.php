@@ -525,8 +525,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
     </script>
 
     <!-- feedback js -->
-     <script>
-     let selectedEmoji = null;
+    <script>
+    let selectedEmoji = null;
 
     // Show the feedback modal
     function showFeedbackModal() {

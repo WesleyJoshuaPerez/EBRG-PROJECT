@@ -50,6 +50,13 @@ INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birth
 (2, 'Sebastian Kean', 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
 (3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'wesley', NULL, NULL, 'Active'),
 (4, 'Angeline Kate', 'Rezada', '2003-11-20', '', '', '', '', NULL, NULL, 'Active');
+(1, 'TROY FRANCIS', 'MENDOZA', '2004-09-09', 'male', NULL, NULL, NULL, NULL, NULL, 'Active'),
+(2, 'SEBASTIAN KEAN', 'PACLAON', '2003-09-09', 'male', NULL, NULL, NULL, NULL, NULL, 'Active'),
+(3, 'WESLEY JOSHUA', 'PEREZ', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'wesley', NULL, NULL, 'Active'),
+(4, 'ANGELINE KATE', 'REZADA', '2003-11-20', NULL, NULL, NULL, NULL, NULL, NULL, 'Active'),
+(5, 'SYSTEM', 'ROOT', '2003-11-24', 'female', 'SYSTEM ROOT', 'akerezada@bpsu.edu.ph', 'systemRoot20', '3D24F9PTQW', '2024-11-24 14:27:26'
+, 'Active');
+
 
 --
 -- Indexes for dumped tables
