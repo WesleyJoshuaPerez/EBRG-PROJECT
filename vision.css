@@ -103,13 +103,15 @@ header .nav_logo {
     .vision {
         color: #CCAE0E;
         font-size: 125px;
-        margin-top: 90px;
+        position: relative;
+        top: 30px;
         text-align: center;
     }
     
     .container {
         background-image: url(bg_img/bg_img.jpg);
-        margin-top: 0px;
+        position: relative;
+        bottom: 60px;
         height: auto;
         width: 480px;
         margin: 0 auto; /* Center the container horizontally */

@@ -250,6 +250,16 @@ header .search_bar{
     gap: 10px;
 }
 
+.guest_buttons {
+    position: relative;
+    left: 390px;
+    top: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
 .a1 {
     background-color: #9C905E;
     color: #D4D0CD;
@@ -353,6 +363,8 @@ header .search_bar{
 .content-div {
     display: none; /* Initially hide all divs */
     margin-top: 20px;
+    position: relative;
+    top: 50px;
 }
 
 #serv {

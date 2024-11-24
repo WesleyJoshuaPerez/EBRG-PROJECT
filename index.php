@@ -43,7 +43,7 @@
     <!--Container for the guestmode-->
     <div class="container_2">
         <h2>Just here for a quick look? Try...</h2>
-        <button id="bt3" onclick="location.href='maindashboard.html';">Guest Mode</button>
+        <button id="bt3" onclick="location.href='guest_dashboard.php';">Guest Mode</button>
     </div>
 
   <!--for alerts-->

@@ -102,13 +102,15 @@ header .nav_logo {
     .mission {
         color: #CCAE0E;
         font-size: 120px;
-        margin-top: 150px;
+        position: relative;
+        top: 30px;
         text-align: center;
     }
     
     .container {
         background-image: url(bg_img/bg_img.jpg);
-        margin-top: -95px;
+        position: relative;
+        bottom: 50px;
         height: auto;
         width: 542px;
         margin: 0 auto; /* Centers the container horizontally */

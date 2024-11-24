@@ -261,7 +261,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
     <script src="darkmode.js"></script>
     <!-- Link to the JavaScript file for hamburger menu function -->
     <script src="hamburgermenu.js"></script>
+    <!-- Select button function -->
     <script src="AESH.js"></script>
+    <!-- Services forms -->
     <script src="services.js"></script>
     <script src="clear_form.js"></script>
     <script src="insert.php"></script>

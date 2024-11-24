@@ -109,8 +109,9 @@ header .nav_logo {
     .aboutus {
         color: #CCAE0E;
         font-size: 110px;
-        margin-top: 150px;
-        margin-left: 450px;
+        position: relative;
+        top: 40px;
+        left: 570px;
     }
     
     .container {
@@ -119,6 +120,8 @@ header .nav_logo {
         width: 1000px;
         border: 11px solid #CCAE0E;
         flex-wrap: wrap;
+        position: relative;
+        bottom: 40px;
     }
     
    
