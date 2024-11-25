@@ -258,18 +258,16 @@ header .search_bar{
     gap: 10px;
     height: 100px; /* Adjust the height of the parent container */
 }
-
-
 .guest_buttons {
-    position: relative;
-    left: 390px;
-    top: 30px;
+    margin-top: 80px; /* Remove unnecessary margins */
+    margin-left: 0;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    gap: 10px;
+    height: 100px; /* Adjust the height of the parent container */
 }
-
 .a1 {
     background-color: #9C905E;
     color: #D4D0CD;
@@ -372,7 +370,7 @@ header .search_bar{
 
 .content-div {
     display: none; /* Initially hide all divs */
-    margin: 20px 130px; /* Center horizontally with a top margin */
+    margin: 20px 0; /* Center horizontally with a top margin */
     width: auto;  
     position: relative;
 }

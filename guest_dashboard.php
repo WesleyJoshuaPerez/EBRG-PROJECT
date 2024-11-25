@@ -1,29 +1,4 @@
-<?php
-session_start(); // Start the session
-include 'connectdb.php'; // Include database connection
 
-// Redirect to login if no user is logged in
-if (!isset($_SESSION['username'])) {
-    header('Location: index.php');
-    exit();
-}
-
-$username = $_SESSION['username']; // Retrieve the username from session
-
-// Check if the user clicked "Delete Account"
-if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
-    $sql = "UPDATE registereduser_ebrg SET account_status='Inactive' WHERE username='$username'";
-    if ($conn->query($sql) === TRUE) {
-        // If account deactivation is successful
-        $_SESSION['account_status_message'] = "success";
-    } else {
-        // If there's an error in the query
-        $_SESSION['account_status_message'] = "error";
-    }
-    header("Location: maindashboard.php"); // Redirect back to avoid re-triggering the deletion
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
