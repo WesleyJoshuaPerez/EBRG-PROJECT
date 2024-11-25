@@ -13,24 +13,31 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="change-password-container">
-        <h1>Change Password</h1>
-        <form action="" method="post">
-            <input type="hidden" name="code" value="<?php echo $_GET['code']; ?>">
-            <div class="form-container">
-                <label for="email" class="email-label">Email Address</label>
-                <input type="email" id="email" placeholder="Enter Email Address" class="email-input" name="email" required>
+<div class="change-password-container">
+    <h1>Change Password</h1>
+    <form action="" method="post">
+        <input type="hidden" name="code" value="<?php echo $_GET['code']; ?>">
+        <div class="form-container">
+            <label for="email" class="email-label">Email Address</label>
+            <input type="email" id="email" placeholder="Enter Email Address" class="email-input" name="email" required>
 
-                <label for="new-password" class="email-label">New Password</label>
+            <label for="new-password" class="email-label">New Password</label>
+            <div class="password-wrapper">
                 <input type="password" id="new-password" placeholder="Enter New Password" class="email-input" name="new_password" required>
-
-                <label for="confirm-password" class="email-label">Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Enter Confirmed Password" class="email-input" name="confirm_password" required>
-
-                <button type="submit" class="update-button" name="update">Update Password</button>
+                <span class="toggle-password" onclick="togglePasswordVisibility('new-password', this)">👁️</span>
             </div>
-        </form>
-    </div>
+
+            <label for="confirm-password" class="email-label">Confirm Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="confirm-password" placeholder="Enter Confirmed Password" class="email-input" name="confirm_password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password', this)">👁️</span>
+            </div>
+            
+            <button type="submit" class="update-button" name="update">Update Password</button>
+        </div>
+    </form>
+</div>
+
 
    <?php
 if (isset($_GET['code'])) {
@@ -107,6 +114,91 @@ if (isset($_GET['code'])) {
     exit();
 }
 ?>
+<script>
+    // Dynamically add feedback elements if not already present
+    const newPasswordInput = document.getElementById("new-password");
+    const confirmPasswordInput = document.getElementById("confirm-password");
+
+    if (!document.getElementById("password-feedback")) {
+        const passwordFeedback = document.createElement("div");
+        passwordFeedback.id = "password-feedback";
+        newPasswordInput.insertAdjacentElement("afterend", passwordFeedback);
+    }
+
+    if (!document.getElementById("confirm-password-feedback")) {
+        const confirmPasswordFeedback = document.createElement("div");
+        confirmPasswordFeedback.id = "confirm-password-feedback";
+        confirmPasswordInput.insertAdjacentElement("afterend", confirmPasswordFeedback);
+    }
+
+    // Password validation
+    newPasswordInput.addEventListener("input", function () {
+        const password = this.value;
+        const feedback = document.getElementById("password-feedback");
+
+        // Password rules
+        const rules = [
+            { regex: /.{8,}/, message: "At least 8 characters long" },
+            { regex: /[A-Z]/, message: "At least one uppercase letter" },
+            { regex: /[a-z]/, message: "At least one lowercase letter" },
+            { regex: /\d/, message: "At least one number" },
+        ];
+
+        // Check which rules are not satisfied
+        const failedRules = rules.filter(rule => !rule.regex.test(password));
+        if (failedRules.length > 0) {
+            feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
+            feedback.style.color = "red";
+            feedback.style.display = "block";
+            feedback.style.textAlign = "center";
+            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
+            feedback.style.fontSize = "15px";
+        } else {
+            feedback.textContent = "Password is strong!";
+            feedback.style.color = "#98e4a3";
+            feedback.style.display = "block";
+            feedback.style.textAlign = "center";
+            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
+            feedback.style.fontSize = "15px";
+        }
+    });
+
+    // Confirm password validation
+    confirmPasswordInput.addEventListener("input", function () {
+        const password = newPasswordInput.value;
+        const confirmPassword = this.value;
+        const feedback = document.getElementById("confirm-password-feedback");
+
+        if (password !== confirmPassword) {
+            feedback.textContent = "Passwords do not match!";
+            feedback.style.color = "red";
+            feedback.style.display = "block";
+            feedback.style.textAlign = "center";
+            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
+            feedback.style.fontSize = "15px";
+        } else {
+            feedback.textContent = "Passwords match!";
+            feedback.style.color = "#98e4a3";
+            feedback.style.display = "block";
+            feedback.style.textAlign = "center";
+            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
+            feedback.style.fontSize = "15px";
+        }
+    });
+
+    // Toggle password visibility
+    function togglePasswordVisibility(inputId, toggleIcon) {
+        const passwordInput = document.getElementById(inputId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.textContent = "🙈"; // Change icon to hide
+        } else {
+            passwordInput.type = "password";
+            toggleIcon.textContent = "👁️"; // Change icon to show
+        }
+    }
+</script>
 
 </body>
 </html>

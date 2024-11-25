@@ -4,13 +4,13 @@ function toggleDarkMode() {
 
     //Use to  change the text inside the link base on the current mode
 const darkModeLink = document.getElementById('darkModeLink');
-const logo = document.querySelector('img[alt="EBRGY logo"]'); //use to change the logo  image
+const logo = document.querySelector('img[alt="ABOUT US logo"]'); //use to change the logo  image
 if (document.body.classList.contains('dark-mode')) {
     darkModeLink.textContent = 'Light Mode'; // Switch to light mode text
-    logo.src = 'logo/logo_dark.png';
+    logo.src = 'logo/aboutus_logodark.png';
 } else {
     darkModeLink.textContent = 'Dark Mode'; // Switch to dark mode text
-    logo.src = 'logo/mainpage_logo.png';
+    logo.src = 'logo/aboutus_logo.png';
 }
 }
 

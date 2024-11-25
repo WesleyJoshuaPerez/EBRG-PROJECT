@@ -28,6 +28,7 @@ body {
     width: 550px;                
     height: auto;  
 }
+
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
 @media only screen and (min-width: 1024px){
@@ -47,7 +48,20 @@ body {
         align-items: center;
         padding-top: 10px;
     }
-    
+    /* Password Wrapper for toggle */
+.password-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
+.toggle-password {
+    position: absolute;
+    top: 35px;
+    right: 45px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #2f393b;
+}
     .email-label {
         display: block;
         font-size: 1.3rem;
@@ -93,13 +107,20 @@ body {
     .update-button:hover {
         background-color: #44514F;
     }
+   
 }
 
+
+/*use to remove password hide unside default on edge */
+::-ms-reveal {
+    display: none;
+  }
 
 @media only screen and (max-width: 1023px) {
        /*use to center the divs*/
    .change-password-container h1{
     /*Use to center div*/
+      display: flex;
     align-items: center; 
     justify-content: center;     
     }
@@ -108,9 +129,10 @@ body {
           color: black;
       }
     .form-container { 
-        width: 100%;
-        max-width: 500px;
-        height: 330px;
+        width: auto;
+        height: auto;
+        min-width: 500px;
+        min-height: 330px;
         padding: 20px;
         margin: 0 auto;
         box-sizing: border-box;
@@ -120,7 +142,20 @@ body {
         margin-bottom: 10px;
     }
 	
-
+/* Password Wrapper for toggle */
+.password-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
+.toggle-password {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #2f393b;
+}
     .email-label {
         font-size: 10px; /* Adjust font size */
         text-align: center; /* Center the label */
