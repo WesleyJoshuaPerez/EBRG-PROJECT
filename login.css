@@ -25,7 +25,10 @@ body {
     align-items: center;
     margin: 10px 0;
 }
-
+/*use to remove password hide unside default on edge */
+::-ms-reveal {
+    display: none;
+  }
 
 /*deskstop and laptop*/
 /*1370px original i tried to adjust the  width to see changes*/
