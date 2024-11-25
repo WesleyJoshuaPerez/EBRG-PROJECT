@@ -47,14 +47,14 @@
 
             <label for="password">Password</label>
             <div class="password-container">
-            <input type="password" class="input_field5" name="password" id="password" placeholder="Create a strong password" required>
+            <input type="text" class="input_field5" name="password" id="password" placeholder="Create a strong password" required>
             <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">👁️</span>
             </div>
             <p id="password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>
 
             <label for="confirmpassword">Confirm Password</label>
             <div class="password-container">
-            <input type="password" class="input_field6" name="confirmpassword" id="confirmpassword" placeholder="Re-enter your password" required>
+            <input type="text" class="input_field6" name="confirmpassword" id="confirmpassword" placeholder="Re-enter your password" required>
             <span class="toggle-password" onclick="togglePasswordVisibility('confirmpassword', this)">👁️</span>
             </div>
             <p id="confirm-password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>

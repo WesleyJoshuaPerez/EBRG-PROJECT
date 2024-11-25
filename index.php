@@ -27,7 +27,7 @@
       <input type="text" oninput="toUppercase(this)" placeholder="Enter your username" id="username" name="username" required>
       <label for="password">Password</label>
       <div class="password-container">
-            <input type="password" class="input_field5" name="password" id="password" placeholder="Enter your password" required>
+            <input type="text" class="input_field5" name="password" id="password" placeholder="Enter your password" required>
             <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">👁️</span>
       </div>
       <p id="password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>

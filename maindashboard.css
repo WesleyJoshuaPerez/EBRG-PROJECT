@@ -249,13 +249,16 @@ header .search_bar{
 }
 
 .btns {
-    margin-top: 80px;
-    margin-left: 270px;
+    margin-top: 80px; /* Remove unnecessary margins */
+    margin-left: 0;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
     gap: 10px;
+    height: 100px; /* Adjust the height of the parent container */
 }
+
 
 .guest_buttons {
     position: relative;
@@ -369,9 +372,11 @@ header .search_bar{
 
 .content-div {
     display: none; /* Initially hide all divs */
-    margin-top: 20px;
+    margin: 20px 130px; /* Center horizontally with a top margin */
+    width: auto;  
     position: relative;
 }
+
 
 #serv {
     background-color: #6AC2A5;

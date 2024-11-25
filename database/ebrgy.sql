@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2024 at 02:45 PM
+-- Generation Time: Nov 25, 2024 at 01:48 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -420,6 +420,28 @@ INSERT INTO `soloparent_cert` (`first_name`, `middle_name`, `last_name`, `id_pic
 ('wewe', 'wewewe', 'wewew', 'RICCS Booth2_PEREZ_NW3D.jfif', 1, 1, '₱10,000 - ₱20,000', 'Employment', '', 7, NULL),
 ('Angel', 'Burgers', 'pizaa', 'RICCS Booth2_PEREZ_NW3D.jfif', 12, 1, '₱10,000 - ₱20,000', 'Employment', '', 8, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_feedback`
+--
+
+CREATE TABLE `user_feedback` (
+  `feedback_id` int(11) NOT NULL,
+  `emoji` varchar(10) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `feedback_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_feedback`
+--
+
+INSERT INTO `user_feedback` (`feedback_id`, `emoji`, `comment`, `feedback_date`) VALUES
+(1, '😃', 'Niceu', '2024-11-23 15:23:43'),
+(2, '😊', 'Galing po, nice. ', '2024-11-23 15:25:13'),
+(3, '😊', '50pts po kay Wesley, batak na batak mag-code patapos na tuloy namin. 40pts po sa amin nila Troy saka Sebastian kasi sumusunod naman kami kay Pinunong Wesley <3 ', '2024-11-23 15:27:10');
+
 --
 -- Indexes for dumped tables
 --
@@ -515,6 +537,12 @@ ALTER TABLE `soloparent_cert`
   ADD PRIMARY KEY (`soloparent_id`);
 
 --
+-- Indexes for table `user_feedback`
+--
+ALTER TABLE `user_feedback`
+  ADD PRIMARY KEY (`feedback_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -607,6 +635,12 @@ ALTER TABLE `residency_cert`
 --
 ALTER TABLE `soloparent_cert`
   MODIFY `soloparent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user_feedback`
+--
+ALTER TABLE `user_feedback`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
