@@ -52,7 +52,8 @@ INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birth
 (4, 'ANGELINE KATE', 'REZADA', '2003-11-20', NULL, NULL, NULL, NULL, NULL, NULL, 'Active'),
 (5, 'SYSTEM', 'ROOT', '2003-11-24', 'female', 'SYSTEM ROOT', 'akerezada@bpsu.edu.ph', 'systemRoot20', '3D24F9PTQW', '2024-11-24 14:27:26'
 , 'Active'),
-(6, 'JARVIS', 'DEAN', '2021-11-29', 'male', NULL, NULL, NULL, NULL, NULL, 'Active');
+(6, 'JARVIS', 'DEAN', '2021-11-29', 'male', NULL, NULL, NULL, NULL, NULL, 'Active'),
+(7, 'LOUIE', 'PANGILINAN', '2003-11-26', 'male', NULL, NULL, NULL, NULL, NULL, 'Active');
 
 
 --
