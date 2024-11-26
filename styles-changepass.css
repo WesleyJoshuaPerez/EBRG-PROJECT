@@ -49,11 +49,11 @@ body {
         padding-top: 10px;
     }
     /* Password Wrapper for toggle */
-.password-wrapper {
+    .password-wrapper {
     position: relative;
     margin-bottom: 30px;
-}
-.toggle-password {
+    }
+    .toggle-password {
     position: absolute;
     top: 35px;
     right: 45px;
@@ -61,7 +61,7 @@ body {
     cursor: pointer;
     font-size: 20px;
     color: #2f393b;
-}
+    }
     .email-label {
         display: block;
         font-size: 1.3rem;
