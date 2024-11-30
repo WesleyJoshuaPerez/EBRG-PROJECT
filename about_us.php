@@ -68,10 +68,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
             </div>
         </header>
 
-        <h1 class="aboutus">about us</h1>
+        <h1 class="aboutus">About Us</h1>
         <div class="container">
             <img src="logo/aboutus_logo.png" alt="ABOUT US logo" class="img">
-            <h4>informing residents <br> in the blink of an eye</h4>
+            <h4>Informing residents in the blink of an eye</h4>
             <p>We aim to provide the latest news, updates, schedules, and whatnot to the 
                 residents of the humble Barangay 
                 Roosevelt, Dinalupihan, Bataan in order to instill and even focus whose 

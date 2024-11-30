@@ -68,7 +68,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
             </div>
         </header>
 
-        <h1 class="vision">our vision</h1>
+        <h1 class="vision">Our Vision</h1>
         <div class="container">     
             <h5>To provide sustainable, informative, systematic, and relevant
                 communication within the barangay, fostering inclusive and

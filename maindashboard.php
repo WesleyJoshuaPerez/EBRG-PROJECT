@@ -105,10 +105,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
     </footer>
 
     <div class="btns">
-        <button id="announcementsBtn" class="a1" onclick="showDiv('announcements')">announcements</button>
-        <button id="eventsBtn" class="e1" onclick="showDiv('events')">events</button>
-        <button id="servicesBtn" class="s1" onclick="showDiv('services' , 'certupdate')">services</button>
-        <button id="contact_usBtn" class="h1" onclick="showDiv('hotlines')">contact us</button>
+        <button id="announcementsBtn" class="a1" onclick="showDiv('announcements')">Announcements</button>
+        <button id="eventsBtn" class="e1" onclick="showDiv('events')">Events</button>
+        <button id="servicesBtn" class="s1" onclick="showDiv('services' , 'certupdate')">Services</button>
+        <button id="contact_usBtn" class="h1" onclick="showDiv('hotlines')">Contact us</button>
     </div>
 
     <div id="announcements" class="content-div">
