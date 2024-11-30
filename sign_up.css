@@ -220,6 +220,7 @@ body {
         user-select: none;
     }
 }
+/*use to remove password hide unside default on edge */
 ::-ms-reveal {
     display: none;
   }

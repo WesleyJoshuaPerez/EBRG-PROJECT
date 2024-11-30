@@ -517,7 +517,7 @@ header .nav_logo {
     background-color: #2F393B;
     font-family: "Ysabeau Office", sans-serif;
     border-radius: 10px;
-    height: 140px;
+    height: 145px;
     width: 60%;
     position: absolute;  /* Absolute positioning inside servicesdiv */
     bottom: 20px;  /* Positioned at the bottom */
@@ -532,6 +532,25 @@ header .nav_logo {
     font-size: 20px;
     font-weight: bold;
     color: white;
+}
+.notification p{
+    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.pickup_date {
+    font-size: 12px;
+    height: 25px;
+    width: 200px;
+    margin-left: 20px;
+    border-radius: 10px;        
+    border: 1px solid #ccc;     
+    background-color: #e1ddda;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* Textarea Styling */

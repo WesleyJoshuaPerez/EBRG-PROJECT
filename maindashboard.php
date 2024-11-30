@@ -107,7 +107,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
     <div class="btns">
         <button id="announcementsBtn" class="a1" onclick="showDiv('announcements')">announcements</button>
         <button id="eventsBtn" class="e1" onclick="showDiv('events')">events</button>
-        <button id="servicesBtn" class="s1" onclick="showDiv('services')">services</button>
+        <button id="servicesBtn" class="s1" onclick="showDiv('services' , 'certupdate')">services</button>
         <button id="contact_usBtn" class="h1" onclick="showDiv('hotlines')">contact us</button>
     </div>
 
@@ -195,13 +195,59 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
             <div id="daycare_container2" class="val-div" style="display: none;">
             </div>
             <div style="height: 90px;"></div>
-
+        </div>
         </div>
     </div>
+ <!--use to see what happens on the certificate-->
+<?php
+// Include the external file for getting certificate updates
+include 'certupdate.php';
 
-    <!-- END OF DROPDOWN -->
+// Check if user is logged in
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username']; // Get the session username
+    $updates = getCertUpdates($username);
+} else {
+    $updates = "<p>Please log in to see your updates.</p>";
+}
+?>
 
+<div id="certupdate" class="content-div" style="display: none;">
+    <div class="titlecert">
+        <h1>UPDATES</h1>
+        <button class="clear_updates" onclick="Clearupdates()">Clear</button>
+    </div>
+        <?php echo $updates; ?>
+</div>
 
+<!--Use for clearing the certificates update-->
+<script>
+function Clearupdates() {
+    var certUpdateDiv = document.getElementById('certupdate');
+    var items = certUpdateDiv.querySelectorAll(':scope > div:not(.titlecert)');
+
+    items.forEach(function (child, index) {
+        // Add a fade-out class to each child
+        setTimeout(function () {
+            child.classList.add('fade-out');
+
+            // Remove the child after the animation ends
+            child.addEventListener('animationend', function () {
+                child.remove();
+
+                // Add the placeholder message once the last item is removed
+                if (index === items.length - 1) {
+                    var placeholder = document.createElement('p');
+                    placeholder.textContent = "No updates available.";
+                    placeholder.className = "placeholder";
+                    certUpdateDiv.appendChild(placeholder);
+                }
+            });
+        }, index * 300); // Delay removal for each item
+    });
+    console.log("Updates cleared!");
+}
+</script>
     <div id="hotlines" class="content-div" style="display: none;">
         <div id="hotl">
             <i class="fas fa-phone" style="color: white; font-size: 40px; margin-left: 30px; margin-top: 30px; color:#D4D0CD;"></i>
@@ -680,3 +726,4 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete_account') {
 </body>
 
 </html>
+

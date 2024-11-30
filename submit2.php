@@ -12,6 +12,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+session_start(); // Start session to access session variables
+
+// use to get the current username and store it in the session
+$current_username = $_SESSION['username'] ?? ''; // Get the username from session
+
 $first_name = $_POST['first_name'] ?? '';
 $middle_name = $_POST['middle_name'] ?? '';
 $last_name = $_POST['last_name'] ?? '';
@@ -110,14 +115,15 @@ if (
         renderMessage("Error", "Failed to upload guardian ID.", "error");
     }
 
+    // Add username to the query
     $sql = "INSERT INTO daycare_shortlisting (
                 student_fname, student_mname, student_lname, student_healthrecord, 
                 student_birthcert, student_level, guardian_fname, guardian_mname, 
-                guardian_lname, guardian_age, guardian_id, guardian_contactnum
+                guardian_lname, guardian_age, guardian_id, guardian_contactnum, username
             ) VALUES (
                 '$student_fname', '$student_mname', '$student_lname', '$student_healthrecord', 
                 '$student_birthcert', '$student_level', '$guardian_fname', '$guardian_mname', 
-                '$guardian_lname', $guardian_age, '$guardian_id', '$guardian_contactnum'
+                '$guardian_lname', $guardian_age, '$guardian_id', '$guardian_contactnum', '$current_username'
             )";
 
     if ($conn->query($sql) === TRUE) {
@@ -134,10 +140,11 @@ elseif (isset($_POST['measurement']) && isset($_FILES['lot_cert']) && $_FILES['l
     $lot_cert_path = $target_dir . basename($lot_cert);
 
     if (move_uploaded_file($_FILES['lot_cert']['tmp_name'], $lot_cert_path)) {
+        // Add username to the query
         $sql = "INSERT INTO blgclearance_cert (
-                    first_name, middle_name, last_name, lot_cert, measurement, apply_myself
+                    first_name, middle_name, last_name, lot_cert, measurement, apply_myself, username
                 ) VALUES (
-                    '$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself'
+                    '$first_name', '$middle_name', '$last_name', '$lot_cert', '$measurement', '$apply_myself', '$current_username'
                 )";
 
         if ($conn->query($sql) === TRUE) {

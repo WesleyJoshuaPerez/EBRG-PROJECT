@@ -51,8 +51,8 @@ foreach ($tables as $table => $serviceName) {
             break;
     }
 
-    // Only select rows where current_status is not 'rejected' or is NULL (if no current_status column exists, it will not filter)
-    $query = "SELECT * FROM $table WHERE current_status IS NULL OR current_status != 'rejected'";
+    // Only select rows where current_status is is NULL 
+    $query = "SELECT * FROM $table WHERE current_status IS NULL";
     $result = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -125,7 +125,11 @@ foreach ($tables as $table => $serviceName) {
         echo '<div class="notification" id="notifanddelete">';
         echo '<h4>Write a notification:</h4>';
         echo '<textarea class="txt4" name="notification" placeholder="Write here" required></textarea>';
-        echo '<button class="sendnofit">Send</button>';
+       // Display current date
+       $currentDate = date('Y-m-d'); // Get current date in 'YYYY-MM-DD' format
+       echo '<p>Date to pick-up:</p>'; // Display the current date
+       echo '<input type="date" id="pickup_date" class="pickup_date" name="pickup_date" value="' . $currentDate . '" min="' . $currentDate . '">'; // Set min attribute to today's date
+        echo '<button class="sendnofit" onclick="Checknotiftextarea(' .$row[$idColumn] . ', \'' . $table. '\')">Send</button>';;
         echo '</div>';
         echo '<div class="delele" id="notifanddelete">';
         echo '<button class="deletenotif" onclick="deleteRecord(' . $row[$idColumn] . ', \'' . $table . '\')">Delete</button>';
@@ -135,3 +139,14 @@ foreach ($tables as $table => $serviceName) {
     }
 }
 ?>
+  <script>
+   document.addEventListener("DOMContentLoaded", function() {
+    const dateFields = document.querySelectorAll(".pickup_date"); // Select all elements with class 'pickup_date'
+
+    dateFields.forEach(function(absenceDateField) {
+        const today = new Date();
+        const formattedDate = today.toISOString().split("T")[0]; // Format as yyyy-mm-dd
+        absenceDateField.setAttribute("min", formattedDate); // Set minimum date to today
+    });
+});
+    </script>

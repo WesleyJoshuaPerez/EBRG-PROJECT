@@ -384,6 +384,90 @@ header .search_bar{
     margin-top: 70px;
     border-radius: 15px;
 }
+#certupdate {
+    height: auto;
+    min-height: 400px;
+    width: 840px;
+    margin-left: 390px;
+    margin-top: 70px;
+    border-radius: 15px;
+    font-family: inherit;
+}
+.titlecert {
+    display: flex;
+    justify-content: space-between;  /* Aligns items to the left and right */
+    align-items: center;            /* Vertically centers the items */
+    padding: 5px 100px; /* Optional: adds some padding to the button */
+}
+
+.titlecert h1 {
+    margin: 0; /* Optional: removes default margin for the h1 */
+    color:#9b9089;
+}
+
+.titlecert button {
+    padding: 5px 10px; /* Optional: adds some padding to the button */
+}
+.certupdatecont {
+    position: relative; /* Allows absolute positioning of the bell icon */
+    padding-left:60px;  /* Adds space to the left for the bell icon */
+    background-color: #6AC2A5;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.bell-icon {
+    position: absolute;   
+    left: 10px;             /* Aligns the icon to the left */
+    top: 50%;            
+    transform: translateY(-50%); /* Corrects the vertical alignment */
+    width: 50px;        
+    height: 50px;      
+}
+/*for clearing update buttons*/
+.clear_updates {
+    cursor: pointer;
+    font-size: 19px;
+    width: 150px;
+    position: relative;
+    background-color: #9b9089;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border-radius: 15px;
+    border: none;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px); /* Optional: Adds a slight upward movement */
+    }
+}
+
+.placeholder {
+    text-align: center; /* Center text horizontally */
+    margin-top: 20px;   /* Add some spacing from the top */
+    font-size: 16px;    /* Adjust font size */
+    color: #555;         
+    animation: fadeIn 0.5s ease-in; /* Fade-in animation for the placeholder */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 .type {
     color: white;

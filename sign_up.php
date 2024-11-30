@@ -167,7 +167,7 @@
     ?>
 
     <script>
-        // disable previous dates
+        // disable future dates
         document.addEventListener("DOMContentLoaded", function() {
             const absenceDateField = document.getElementById("bday");
             if (absenceDateField) {

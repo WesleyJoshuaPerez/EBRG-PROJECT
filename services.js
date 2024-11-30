@@ -120,6 +120,9 @@ function showCertificateDetails(type) {
     div1.style.display = 'block';
     daycare_container2.style.display = 'none';
 
+    const updatecert = document.getElementById("certupdate");
+    updatecert.style.display = 'none';
+
     if (type === 'indigency') {
         div1.innerHTML = `
             <form id="indigencyForm" action="submit.php" method="POST" onsubmit="handleSubmit(event, 'indigencyForm')" enctype="multipart/form-data">

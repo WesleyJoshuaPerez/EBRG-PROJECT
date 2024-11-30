@@ -447,6 +447,63 @@ function deleteRecord(id, type) {
         }
     });
 }
+// Function to check if the notification textarea meets the length requirements
+function Checknotiftextarea(id, type) {
+    var notificationText = document.querySelector('textarea[name="notification"]').value.trim(); // Get the textarea value
+    var pickupDate = document.querySelector('input[name="pickup_date"]').value; // Get the date input value
+
+    if (notificationText === "") {
+        swal('Error', 'Please fill out the notification before sending.', 'error'); // Show error if empty
+    } else if (notificationText.length < 10) {
+        swal('Error', 'Notification must be at least 10 characters long.', 'error'); // Show error if too short
+    } else if (notificationText.length > 50) {
+        swal('Error', 'Notification must be no longer than 50 characters.', 'error'); // Show error if too long
+    } else if (pickupDate === "" || pickupDate === null) {
+        swal('Error', 'Please select a pickup date.', 'error'); // Show error if date is empty or null
+    } else {
+        // Proceed to accept the certificate if notification and date are filled
+        acceptCert(id, type, pickupDate, notificationText); // Pass pickup_date and notification text
+    }
+}
+
+// Function for accepting a service request
+function acceptCert(id, type, pickupDate, notificationText) {
+    swal({
+        title: "Are you sure?",
+        text: "Once accepted, the status will be changed to 'Accepted' and cannot be undone.",
+        icon: "warning",
+        buttons: true, // Show confirm and cancel buttons
+        dangerMode: false, // No need for danger style here
+    })
+    .then((willAccept) => {
+        if (willAccept) {
+            // Send request to change the status to accepted
+            fetch('acceptcert.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'id=' + id + '&type=' + type + '&pickup_date=' + encodeURIComponent(pickupDate) + '&remarks=' + encodeURIComponent(notificationText)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    swal('Success', 'Request accepted successfully!', 'success');
+                    // Optionally reload the page to reflect the status change
+                    loadServicesData();
+                } else {
+                    swal('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                swal('Error', 'An unexpected error occurred.', 'error');
+            });
+        } else {
+            swal("The request was not accepted."); // Inform the user if the action is cancelled
+        }
+    });
+}
 
 
 
