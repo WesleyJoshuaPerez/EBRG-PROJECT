@@ -1,3 +1,24 @@
+<?php
+// Start the session and get the username
+session_start();
+
+// Assuming the username is stored in the session
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'guest'; // Default to 'guest' if not set
+
+// Define the superadmin and admin usernames  
+$superadmin_username = 'AdminSuper';  
+$admin_username = 'Admin2004';  
+
+// Determine the role based on the username
+if ($username === $superadmin_username) {
+    $user_role = 'superadmin';
+} elseif ($username === $admin_username) {
+    $user_role = 'admin';
+} else {
+    $user_role = 'guest'; // Default role if not superadmin or admin
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,15 +63,39 @@
             <img src="logo/icon.jpg" alt="Profile Picture" class="profile-pic">
         </div>
     </header>
+
     <div class="stickycontainer" id="locktitle">
-        <div class="locktitle">
-            <h3>Admin <br> istrator <br> page</h3>
-            <div class="btns">
-              <button id="createbtn" class="create"onclick="showDiv('updateForm')">create</button>
-               <button id="mangebtn" class="manage"onclick="showDiv('anounce&event_cont')">manage</button>
-                <button id="services" class="services" onclick="showDiv('servicesdiv')">services</button>          
-            </div>
-        </div>
+    <div class="locktitle">
+    <h3>Admin <br> istrator <br> page</h3>
+    <div class="btns">
+        <!-- Create button visible to all users (superadmin and admin) -->
+        <button id="createbtn" class="create" onclick="showDiv('updateForm')">Create</button>
+        
+        <!-- Manage button visible to both superadmin and admin -->
+        <button id="managebtn" class="manage" onclick="showDiv('anounce&event_cont')">Manage</button>
+        
+        <!-- Services button visible only to superadmin -->
+        <?php if ($user_role === 'superadmin') : ?>
+            <button id="services" class="services" onclick="showDiv('servicesdiv')">Services</button>
+        <?php else : ?>
+            <!-- Disable services button if not superadmin -->
+            <button id="services" class="services" onclick="showPermissionAlert()">Services</button>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script>
+    function showPermissionAlert() {
+        // SweetAlert for permission denied
+        Swal.fire({
+            title: 'Access Denied',
+            text: 'You do not have permission to access services.',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+        });
+    }
+</script>
+
         
         <!-- Form for submitting announcements and events -->
         <form id="updateForm" class="content-div"  enctype="multipart/form-data">

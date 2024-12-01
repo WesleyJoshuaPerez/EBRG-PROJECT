@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2024 at 09:41 AM
+-- Generation Time: Dec 01, 2024 at 08:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `ebrgy`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_ebrgy`
+--
+
+CREATE TABLE `admin_ebrgy` (
+  `admin_id` int(11) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `birthday` date NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin_ebrgy`
+--
+
+INSERT INTO `admin_ebrgy` (`admin_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`, `role`) VALUES
+(1, 'Admin', 'Super', '2004-03-17', 'Male', 'AdminSuper', 'wesleyjoshuaperez.iskolar@gmail.com', 'EbgyAdmin18', '8G35FVTW79', '2024-12-01 14:58:15', 'superadmin'),
+(2, 'Admin', 'Only', '2004-03-17', 'male', 'Admin2004', 'perezwesley17@gmail.com', 'Admin2004', '', NULL, 'admin');
 
 -- --------------------------------------------------------
 
@@ -292,7 +320,7 @@ CREATE TABLE `registereduser_ebrg` (
 INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`, `account_status`) VALUES
 (1, 'Troy Francis', 'Mendoza', '2004-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
 (2, 'Sebastian Kean', 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
-(3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'WesleyPerez18', 'GFBQ7Z348D', '2024-11-25 18:13:04', 'Active'),
+(3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'WesleyJoshuaPerez1', 'GFBQ7Z348D', '2024-12-01 14:56:38', 'Active'),
 (4, 'Angeline Kate', 'Rezada', '2003-11-20', 'female', '', '', '', NULL, NULL, 'Active');
 
 -- --------------------------------------------------------
@@ -303,25 +331,22 @@ INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birth
 
 CREATE TABLE `resetpass_request` (
   `reset_id` int(11) NOT NULL,
-  `reguser_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `reset_token` varchar(255) NOT NULL,
-  `request_date` datetime NOT NULL
+  `request_date` datetime NOT NULL,
+  `user_type` varchar(50) NOT NULL,
+  `email` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `resetpass_request`
 --
 
-INSERT INTO `resetpass_request` (`reset_id`, `reguser_id`, `reset_token`, `request_date`) VALUES
-(6, 18, '7OERNVS0FU', '2024-11-13 05:29:23'),
-(7, 18, '09RW8JPSL4', '2024-11-13 05:32:17'),
-(8, 24, '3LMJ1ATQ9N', '2024-11-13 05:49:22'),
-(9, 19, 'ODJG261QTY', '2024-11-13 06:12:28'),
-(10, 3, '7YLB4A3DNK', '2024-11-23 10:44:14'),
-(11, 3, 'YW63X29MNA', '2024-11-25 10:40:15'),
-(12, 3, 'RIQ2YKT0DX', '2024-11-25 11:11:20'),
-(13, 3, 'HG4706O2EF', '2024-11-26 06:51:16'),
-(14, 3, 'GFBQ7Z348D', '2024-11-26 06:52:17');
+INSERT INTO `resetpass_request` (`reset_id`, `user_id`, `reset_token`, `request_date`, `user_type`, `email`) VALUES
+(22, 3, 'X8ATDPS5HZ', '2024-12-01 07:44:46', 'user', 'wesleyjoshuaperez@gmail.com'),
+(25, 1, 'E5SM2J6O8Q', '2024-12-01 07:54:07', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com'),
+(26, 3, '3EKP8J2DWL', '2024-12-01 07:56:05', 'user', 'wesleyjoshuaperez@gmail.com'),
+(27, 1, 'Y5PLKMAJ09', '2024-12-01 07:57:46', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -388,8 +413,23 @@ CREATE TABLE `user_feedback` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `user_feedback`
+--
+
+INSERT INTO `user_feedback` (`feedback_id`, `emoji`, `comment`, `feedback_date`) VALUES
+(1, '😃', '', '2024-12-01 05:57:19'),
+(2, '😃', '', '2024-12-01 06:57:35'),
+(3, '😃', '', '2024-12-01 07:25:22');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin_ebrgy`
+--
+ALTER TABLE `admin_ebrgy`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `blgclearance_cert`
@@ -492,6 +532,12 @@ ALTER TABLE `user_feedback`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_ebrgy`
+--
+ALTER TABLE `admin_ebrgy`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `blgclearance_cert`
 --
 ALTER TABLE `blgclearance_cert`
@@ -567,7 +613,7 @@ ALTER TABLE `registereduser_ebrg`
 -- AUTO_INCREMENT for table `resetpass_request`
 --
 ALTER TABLE `resetpass_request`
-  MODIFY `reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `residency_cert`
@@ -585,7 +631,7 @@ ALTER TABLE `soloparent_cert`
 -- AUTO_INCREMENT for table `user_feedback`
 --
 ALTER TABLE `user_feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -39,54 +39,87 @@
 </div>
 
 
-   <?php
+<?php
+$alertTitle = '';
+$alertText = '';
+$alertIcon = '';
+$redirectUrl = '';
+
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
     $conn = new mysqli('localhost', 'root', '', 'ebrgy');
+
     if ($conn->connect_error) {
         die('Could not connect to the database');
     }
 
-    $verifyQuery = $conn->prepare("SELECT * FROM resetpass_request WHERE reset_token = ? AND (request_date IS NULL OR request_date >= NOW() - INTERVAL 1 DAY)");
+    // Verify reset code and its expiration
+    $verifyQuery = $conn->prepare("
+    SELECT r.email 
+    FROM resetpass_request r
+    WHERE r.reset_token = ? 
+    AND (r.request_date IS NULL OR r.request_date >= NOW() - INTERVAL 1 DAY)
+    ");
     $verifyQuery->bind_param("s", $code);
     $verifyQuery->execute();
     $result = $verifyQuery->get_result();
-
-    $alertTitle = '';
-    $alertText = '';
-    $alertIcon = '';
-    $redirectUrl = 'changepass.php'; // Default to changepass.php on failure
 
     if ($result->num_rows == 0) {
         $alertTitle = 'Changing password failed!';
         $alertText = 'Invalid or expired reset code.';
         $alertIcon = 'error';
         $redirectUrl = 'index.php';
-    } elseif (isset($_POST['update'])) {
-        $email = $_POST['email'];
-        $new_password = $_POST['new_password'];
-        $confirm_password = $_POST['confirm_password'];
+    } else {
+        $user = $result->fetch_assoc();
+        $email = $user['email']; // Retrieve email directly from resetpass_request table
 
-        if ($new_password !== $confirm_password) {
-            $alertTitle = 'Changing password failed!';
-            $alertText = 'Passwords do not match. Please try again.';
-            $alertIcon = 'error';
-        } else {
-            $updateQuery = $conn->prepare("UPDATE registereduser_ebrg SET password = ?, updated_time = NOW() WHERE email = ? AND code = ?");
-            $updateQuery->bind_param("sss", $new_password, $email, $code);
-            $updateQuery->execute();
+        // Check if user is an admin by querying the admin_ebrgy table
+        $checkAdminQuery = $conn->prepare("SELECT admin_id FROM admin_ebrgy WHERE email = ?");
+        $checkAdminQuery->bind_param("s", $email);
+        $checkAdminQuery->execute();
+        $adminResult = $checkAdminQuery->get_result();
 
-            if ($updateQuery->affected_rows > 0) {
-                // Password was successfully updated
-                $alertTitle = 'Password update successful!';
-                $alertText = 'Click OK to go to the login page.';
-                $alertIcon = 'success';
-                $redirectUrl = 'index.php';
-            } else {
-                // No rows were updated, meaning the email or code was incorrect
-                $alertTitle = 'Password update failed!';
-                $alertText = 'Invalid email or reset code.';
+        // Determine the table to update based on whether the user is an admin
+        if (isset($_POST['update'])) {
+            $new_password = $_POST['new_password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            if ($new_password !== $confirm_password) {
+                $alertTitle = 'Changing password failed!';
+                $alertText = 'Passwords do not match. Please try again.';
                 $alertIcon = 'error';
+            } else {
+                if ($adminResult->num_rows > 0) {
+                    // User is an admin, update password in admin_ebrgy table
+                    $updateQuery = $conn->prepare("
+                        UPDATE admin_ebrgy 
+                        SET password = ?, updated_time = NOW() 
+                        WHERE email = ?
+                    ");
+                } else {
+                    // User is a regular user, update password in registereduser_ebrg table
+                    $updateQuery = $conn->prepare("
+                        UPDATE registereduser_ebrg 
+                        SET password = ?, updated_time = NOW() 
+                        WHERE email = ?
+                    ");
+                }
+                $updateQuery->bind_param("ss", $new_password, $email);
+                $updateQuery->execute();
+
+                if ($updateQuery->affected_rows > 0) {
+                    // Password was successfully updated
+                    $alertTitle = 'Password update successful!';
+                    $alertText = 'Click OK to go to the login page.';
+                    $alertIcon = 'success';
+                    $redirectUrl = 'index.php';
+
+                 
+                } else {
+                    $alertTitle = 'Password update failed!';
+                    $alertText = 'Something went wrong. Please try again.';
+                    $alertIcon = 'error';
+                }
             }
         }
     }
@@ -114,6 +147,8 @@ if (isset($_GET['code'])) {
     exit();
 }
 ?>
+
+
 <script>
     // Dynamically add feedback elements if not already present
     const newPasswordInput = document.getElementById("new-password");

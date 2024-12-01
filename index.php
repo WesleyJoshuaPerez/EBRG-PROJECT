@@ -50,7 +50,7 @@
   <script src="sweetalert.js"></script>
 
 <!--Use  for php backend that get user information in the form and confirm is the data that inputed is on  the table for the user-->
-<?php    
+<?php
 include 'connectdb.php';
 // For login
 if (isset($_POST["login"])) {
@@ -58,39 +58,61 @@ if (isset($_POST["login"])) {
     $password = $_POST['password'];
     // $password = md5($password); // Uncomment if passwords are hashed
 
-    // Check if the account exists and its status
-    $sql = "SELECT * FROM registereduser_ebrg WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
+    // Check admin table
+    $adminSql = "SELECT * FROM admin_ebrgy WHERE username='$username' AND password='$password'";
+    $adminResult = $conn->query($adminSql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($adminResult->num_rows > 0) {
+        // Admin login
+        $adminRow = $adminResult->fetch_assoc();
+        session_start();
+        $_SESSION['username'] = $adminRow['username'];
 
-        if ($row['account_status'] == 'Active') {
-            session_start();
-            $_SESSION['username'] = $row['username'];
+        echo "<script>
+            swal({
+                title: 'Admin Login Successful!',
+                text: 'Welcome to the Admin Dashboard!',
+                icon: 'success'
+            }).then(function() {
+                window.location.href = 'admin.php';
+            });
+        </script>";
+    } else {
+        // Check user table
+        $userSql = "SELECT * FROM registereduser_ebrg WHERE username='$username' AND password='$password'";
+        $userResult = $conn->query($userSql);
 
-            echo "<script>
-                swal({
-                    title: 'Login successful!',
-                    text: 'Welcome to the EBRGY!',
-                    icon: 'success'
-                }).then(function() {
-                    window.location.href = 'maindashboard.php';
-                });
-            </script>";
+        if ($userResult->num_rows > 0) {
+            // User login
+            $userRow = $userResult->fetch_assoc();
+            if ($userRow['account_status'] == 'Active') {
+                session_start();
+                $_SESSION['username'] = $userRow['username'];
+
+                echo "<script>
+                    swal({
+                        title: 'User Login Successful!',
+                        text: 'Welcome to the Main Dashboard!',
+                        icon: 'success'
+                    }).then(function() {
+                        window.location.href = 'maindashboard.php';
+                    });
+                </script>";
+            } else {
+                echo "<script>
+                    swal({
+                        title: 'Account Inactive!',
+                        text: 'Your account is inactive. Please contact support.',
+                        icon: 'warning'
+                    });
+                </script>";
+            }
         } else {
+            // Login failed
             echo "<script>
-                swal({
-                    title: 'Account Inactive!',
-                    text: 'Your account is inactive. Please contact support.',
-                    icon: 'warning'
-                });
+                swal('Login Failed!', 'Invalid username or password. Please try again.', 'error');
             </script>";
         }
-    } else {
-        echo "<script>
-            swal('Login Failed!', 'Invalid username or password. Please try again.', 'error');
-        </script>";
     }
 }
 ?>
