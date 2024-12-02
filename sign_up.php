@@ -60,7 +60,7 @@
             <p id="confirm-password-feedback" style="color: red; font-size: 14px; display: none; margin-top: 5px;"></p>
 
             <p class="terms"> By clicking Sign Up, you agree to our <a href="index.html">Terms</a> and <a href="index.html">Privacy Policy</a>.</p>
-            <button type="submit" name="sigUp" onclick="validatePassword()">Sign Up</button>
+            <button type="submit" id="signup-button" name="sigUp" onclick="validatePassword()" disabled>Sign Up</button>
         </div>
     </form>
 
@@ -198,57 +198,67 @@
 
     <!-- validation of password -->
     <script>
-    document.getElementById("password").addEventListener("input", function () {
-    const password = this.value;
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmpassword");
     const feedback = document.getElementById("password-feedback");
+    const confirmFeedback = document.getElementById("confirm-password-feedback");
+    const signUpButton = document.getElementById("signup-button"); // Adjust the ID to match your button's ID
 
-    // Password rules
-    const rules = [
-        { regex: /.{8,}/, message: "At least 8 characters long" },
-        { regex: /[A-Z]/, message: "At least one uppercase letter" },
-        { regex: /[a-z]/, message: "At least one lowercase letter" },
-        { regex: /\d/, message: "At least one number" },
-    ];
+    function validatePassword() {
+        const password = passwordInput.value;
 
-    // Check which rules are not satisfied
-    const failedRules = rules.filter(rule => !rule.regex.test(password));
-    if (failedRules.length > 0) {
-        feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
-        feedback.style.color = "red";
-        feedback.style.display = "block";
-        feedback.style.textAlign = "center";
-        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
-        feedback.style.fontSize = "15px";
-    } else {
-        feedback.textContent = "Password is strong!";
-        feedback.style.color = "#98e4a3";
-        feedback.style.display = "block";
-        feedback.style.textAlign = "center";
-        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
-        feedback.style.fontSize = "15px";
+        // Password rules
+        const rules = [
+            { regex: /.{8,}/, message: "At least 8 characters long" },
+            { regex: /[A-Z]/, message: "At least one uppercase letter" },
+            { regex: /[a-z]/, message: "At least one lowercase letter" },
+            { regex: /\d/, message: "At least one number" },
+        ];
+
+        // Check which rules are not satisfied
+        const failedRules = rules.filter(rule => !rule.regex.test(password));
+        if (failedRules.length > 0) {
+            feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
+            feedback.style.color = "red";
+            feedback.style.display = "block";
+            return false;
+        } else {
+            feedback.textContent = "Password is strong!";
+            feedback.style.color = "#98e4a3";
+            feedback.style.display = "block";
+            return true;
+        }
     }
-});
 
-document.getElementById("confirmpassword").addEventListener("input", function () {
-    const password = document.getElementById("password").value;
-    const confirmPassword = this.value;
-    const feedback = document.getElementById("confirm-password-feedback");
+    function validateConfirmPassword() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
 
-    if (password !== confirmPassword) {
-        feedback.textContent = "Passwords do not match!";
-        feedback.style.color = "red";
-        feedback.style.display = "block";
-        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
-        feedback.style.fontSize = "15px";
-    } else {
-        feedback.textContent = "Passwords match!";
-        feedback.style.color = "#98e4a3";
-        feedback.style.display = "block";
-        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
-        feedback.style.fontSize = "15px";
+        if (password !== confirmPassword) {
+            confirmFeedback.textContent = "Passwords do not match!";
+            confirmFeedback.style.color = "red";
+            confirmFeedback.style.display = "block";
+            return false;
+        } else {
+            confirmFeedback.textContent = "Passwords match!";
+            confirmFeedback.style.color = "#98e4a3";
+            confirmFeedback.style.display = "block";
+            return true;
+        }
     }
-});
-    </script>
+
+    function updateButtonState() {
+        const isPasswordValid = validatePassword();
+        const isConfirmPasswordValid = validateConfirmPassword();
+
+        // Disable the button if any validation fails
+        signUpButton.disabled = !(isPasswordValid && isConfirmPasswordValid);
+    }
+
+    passwordInput.addEventListener("input", updateButtonState);
+    confirmPasswordInput.addEventListener("input", updateButtonState);
+</script>
+
 
     <!-- show password -->
      <script>

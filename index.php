@@ -139,37 +139,42 @@ if (isset($_POST["login"])) {
 }
 </script>
 
-<!-- password validation  -->
+<!-- password validation use to dissable the login button if the password requirement lenght doesnt meet-->
 <script>
     document.getElementById("password").addEventListener("input", function () {
-    const password = this.value;
-    const feedback = document.getElementById("password-feedback");
+        const password = this.value;
+        const feedback = document.getElementById("password-feedback");
+        const loginButton = document.getElementById("bt1");
 
-    // Password rules
-    const rules = [
-        { regex: /.{8,}/, message: "At least 8 characters long" },
-        { regex: /[A-Z]/, message: "At least one uppercase letter" },
-        { regex: /[a-z]/, message: "At least one lowercase letter" },
-        { regex: /\d/, message: "At least one number" },
-    ];
+        // Password rules
+        const rules = [
+            { regex: /.{8,}/, message: "At least 8 characters long" },
+            { regex: /[A-Z]/, message: "At least one uppercase letter" },
+            { regex: /[a-z]/, message: "At least one lowercase letter" },
+            { regex: /\d/, message: "At least one number" },
+        ];
 
-    // Check which rules are not satisfied
-    const failedRules = rules.filter(rule => !rule.regex.test(password));
-    if (failedRules.length > 0) {
-        feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
-        feedback.style.color = "red";
-        feedback.style.display = "block";
-        feedback.style.textAlign = "center";
-        feedback.style.fontFamily = "font-family: 'Ysabeau Office', sans-serif";
-        feedback.style.fontSize = "15px";
-        feedback.style.position = "relative";
-        feedback.style.top = "10px";
-    } else {
-      feedback.textContent = "";
-    }
-});
+        // Check which rules are not satisfied
+        const failedRules = rules.filter(rule => !rule.regex.test(password));
 
+        if (failedRules.length > 0) {
+            feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
+            feedback.style.color = "red";
+            feedback.style.display = "block";
+            loginButton.disabled = true; // Disable the login button
+        } else {
+            feedback.textContent = "";
+            feedback.style.display = "none";
+            loginButton.disabled = false; // Enable the login button
+        }
+    });
+
+    // Ensure the login button is disabled initially
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("bt1").disabled = true;
+    });
 </script>
+
 
   </body>
 </html>

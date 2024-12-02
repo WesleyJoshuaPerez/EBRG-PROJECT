@@ -26,12 +26,14 @@
                 <input type="password" id="new-password" placeholder="Enter New Password" class="email-input" name="new_password" required>
                 <span class="toggle-password" onclick="togglePasswordVisibility('new-password', this)">👁️</span>
             </div>
+            <p id="password-feedback"style="color: red; font-size: 14px; display: none; margin-top: -25px;"></p> <!-- Feedback element for new password -->
 
             <label for="confirm-password" class="email-label">Confirm Password</label>
             <div class="password-wrapper">
                 <input type="password" id="confirm-password" placeholder="Enter Confirmed Password" class="email-input" name="confirm_password" required>
                 <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password', this)">👁️</span>
             </div>
+            <p id="confirm-password-feedback" style="color: red; font-size: 14px; display: none; margin-top: -25px;"></p> <!-- Feedback element for confirm password -->
             
             <button type="submit" class="update-button" name="update">Update Password</button>
         </div>
@@ -55,10 +57,10 @@ if (isset($_GET['code'])) {
 
     // Verify reset code and its expiration
     $verifyQuery = $conn->prepare("
-    SELECT r.email 
-    FROM resetpass_request r
-    WHERE r.reset_token = ? 
-    AND (r.request_date IS NULL OR r.request_date >= NOW() - INTERVAL 1 DAY)
+        SELECT r.email 
+        FROM resetpass_request r
+        WHERE r.reset_token = ? 
+        AND (r.request_date IS NULL OR r.request_date >= NOW() - INTERVAL 1 DAY)
     ");
     $verifyQuery->bind_param("s", $code);
     $verifyQuery->execute();
@@ -113,8 +115,6 @@ if (isset($_GET['code'])) {
                     $alertText = 'Click OK to go to the login page.';
                     $alertIcon = 'success';
                     $redirectUrl = 'index.php';
-
-                 
                 } else {
                     $alertTitle = 'Password update failed!';
                     $alertText = 'Something went wrong. Please try again.';
@@ -149,29 +149,17 @@ if (isset($_GET['code'])) {
 ?>
 
 
+
 <script>
-    // Dynamically add feedback elements if not already present
     const newPasswordInput = document.getElementById("new-password");
     const confirmPasswordInput = document.getElementById("confirm-password");
+    const updateButton = document.querySelector(".update-button");
+    const feedback = document.getElementById("password-feedback");
+    const confirmFeedback = document.getElementById("confirm-password-feedback");
 
-    if (!document.getElementById("password-feedback")) {
-        const passwordFeedback = document.createElement("div");
-        passwordFeedback.id = "password-feedback";
-        newPasswordInput.insertAdjacentElement("afterend", passwordFeedback);
-    }
-
-    if (!document.getElementById("confirm-password-feedback")) {
-        const confirmPasswordFeedback = document.createElement("div");
-        confirmPasswordFeedback.id = "confirm-password-feedback";
-        confirmPasswordInput.insertAdjacentElement("afterend", confirmPasswordFeedback);
-    }
-
-    // Password validation
-    newPasswordInput.addEventListener("input", function () {
-        const password = this.value;
-        const feedback = document.getElementById("password-feedback");
-
-        // Password rules
+    // Validation function for new password
+    function validateNewPassword() {
+        const password = newPasswordInput.value;
         const rules = [
             { regex: /.{8,}/, message: "At least 8 characters long" },
             { regex: /[A-Z]/, message: "At least one uppercase letter" },
@@ -179,61 +167,64 @@ if (isset($_GET['code'])) {
             { regex: /\d/, message: "At least one number" },
         ];
 
-        // Check which rules are not satisfied
         const failedRules = rules.filter(rule => !rule.regex.test(password));
         if (failedRules.length > 0) {
             feedback.textContent = "Password must: " + failedRules.map(rule => rule.message).join(", ");
             feedback.style.color = "red";
             feedback.style.display = "block";
-            feedback.style.textAlign = "center";
-            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
-            feedback.style.fontSize = "15px";
+            return false;
         } else {
             feedback.textContent = "Password is strong!";
             feedback.style.color = "#98e4a3";
             feedback.style.display = "block";
-            feedback.style.textAlign = "center";
-            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
-            feedback.style.fontSize = "15px";
+            return true;
         }
-    });
+    }
 
-    // Confirm password validation
-    confirmPasswordInput.addEventListener("input", function () {
+    // Validation function for confirm password
+    function validateConfirmPassword() {
         const password = newPasswordInput.value;
-        const confirmPassword = this.value;
-        const feedback = document.getElementById("confirm-password-feedback");
+        const confirmPassword = confirmPasswordInput.value;
 
         if (password !== confirmPassword) {
-            feedback.textContent = "Passwords do not match!";
-            feedback.style.color = "red";
-            feedback.style.display = "block";
-            feedback.style.textAlign = "center";
-            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
-            feedback.style.fontSize = "15px";
+            confirmFeedback.textContent = "Passwords do not match!";
+            confirmFeedback.style.color = "red";
+            confirmFeedback.style.display = "block";
+            return false;
         } else {
-            feedback.textContent = "Passwords match!";
-            feedback.style.color = "#98e4a3";
-            feedback.style.display = "block";
-            feedback.style.textAlign = "center";
-            feedback.style.fontFamily = "'Ysabeau Office', sans-serif";
-            feedback.style.fontSize = "15px";
+            confirmFeedback.textContent = "Passwords match!";
+            confirmFeedback.style.color = "#98e4a3";
+            confirmFeedback.style.display = "block";
+            return true;
         }
-    });
+    }
 
-    // Toggle password visibility
+    // Update the button state (enable/disable) based on validations
+    function updateButtonState() {
+        const isPasswordValid = validateNewPassword();
+        const isConfirmPasswordValid = validateConfirmPassword();
+
+        updateButton.disabled = !(isPasswordValid && isConfirmPasswordValid);
+    }
+
+    // Event listeners for input fields
+    newPasswordInput.addEventListener("input", updateButtonState);
+    confirmPasswordInput.addEventListener("input", updateButtonState);
+
+    // Toggle password visibility function
     function togglePasswordVisibility(inputId, toggleIcon) {
         const passwordInput = document.getElementById(inputId);
 
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            toggleIcon.textContent = "🙈"; // Change icon to hide
+            toggleIcon.textContent = "🙈";
         } else {
             passwordInput.type = "password";
-            toggleIcon.textContent = "👁️"; // Change icon to show
+            toggleIcon.textContent = "👁️";
         }
     }
 </script>
 
 </body>
 </html>
+

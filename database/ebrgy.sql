@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 08:38 AM
+-- Generation Time: Dec 02, 2024 at 04:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,7 +36,6 @@ CREATE TABLE `admin_ebrgy` (
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `code` varchar(10) NOT NULL,
   `updated_time` datetime DEFAULT NULL,
   `role` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -45,9 +44,9 @@ CREATE TABLE `admin_ebrgy` (
 -- Dumping data for table `admin_ebrgy`
 --
 
-INSERT INTO `admin_ebrgy` (`admin_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`, `role`) VALUES
-(1, 'Admin', 'Super', '2004-03-17', 'Male', 'AdminSuper', 'wesleyjoshuaperez.iskolar@gmail.com', 'EbgyAdmin18', '8G35FVTW79', '2024-12-01 14:58:15', 'superadmin'),
-(2, 'Admin', 'Only', '2004-03-17', 'male', 'Admin2004', 'perezwesley17@gmail.com', 'Admin2004', '', NULL, 'admin');
+INSERT INTO `admin_ebrgy` (`admin_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `updated_time`, `role`) VALUES
+(1, 'Admin', 'Super', '2004-03-17', 'Male', 'AdminSuper', 'wesleyjoshuaperez.iskolar@gmail.com', 'SuperAdmin18', '2024-12-02 11:29:51', 'superadmin'),
+(2, 'Admin', 'Only', '2004-03-17', 'male', 'Admin2004', 'deves39407@confmin.com', 'AdminOnly18', '2024-12-02 11:25:57', 'admin');
 
 -- --------------------------------------------------------
 
@@ -308,7 +307,6 @@ CREATE TABLE `registereduser_ebrg` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `code` varchar(10) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
   `account_status` varchar(200) DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -317,11 +315,11 @@ CREATE TABLE `registereduser_ebrg` (
 -- Dumping data for table `registereduser_ebrg`
 --
 
-INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `code`, `updated_time`, `account_status`) VALUES
-(1, 'Troy Francis', 'Mendoza', '2004-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
-(2, 'Sebastian Kean', 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, NULL, 'Active'),
-(3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'WesleyJoshuaPerez1', 'GFBQ7Z348D', '2024-12-01 14:56:38', 'Active'),
-(4, 'Angeline Kate', 'Rezada', '2003-11-20', 'female', '', '', '', NULL, NULL, 'Active');
+INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `updated_time`, `account_status`) VALUES
+(1, 'Troy Francis', 'Mendoza', '2004-09-09', 'male', 'TROY123', 'perezwesley17@gmail.com', 'Troy2004', '2024-12-02 11:28:15', 'Active'),
+(2, 'Sebastian Kean', 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, 'Active'),
+(3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'Perez17Wesley', '2024-12-02 11:19:16', 'Active'),
+(4, 'Angeline Kate', 'Rezada', '2003-11-20', 'female', '', '', '', NULL, 'Active');
 
 -- --------------------------------------------------------
 
@@ -343,10 +341,17 @@ CREATE TABLE `resetpass_request` (
 --
 
 INSERT INTO `resetpass_request` (`reset_id`, `user_id`, `reset_token`, `request_date`, `user_type`, `email`) VALUES
-(22, 3, 'X8ATDPS5HZ', '2024-12-01 07:44:46', 'user', 'wesleyjoshuaperez@gmail.com'),
-(25, 1, 'E5SM2J6O8Q', '2024-12-01 07:54:07', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com'),
-(26, 3, '3EKP8J2DWL', '2024-12-01 07:56:05', 'user', 'wesleyjoshuaperez@gmail.com'),
-(27, 1, 'Y5PLKMAJ09', '2024-12-01 07:57:46', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com');
+(34, 3, 'WA3YS2EJZF', '2024-12-02 03:53:13', 'user', 'wesleyjoshuaperez@gmail.com'),
+(35, 1, 'WZF3678QXL', '2024-12-02 03:54:15', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com'),
+(36, 1, 'HQ8SRVO4YX', '2024-12-02 03:56:54', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com'),
+(37, 1, 'AKWXZJP86H', '2024-12-02 04:14:56', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com'),
+(38, 1, 'LFM8DS02KB', '2024-12-02 04:16:09', 'user', 'perezwesley17@gmail.com'),
+(39, 3, 'N0TZRSMA1L', '2024-12-02 04:18:37', 'user', 'wesleyjoshuaperez@gmail.com'),
+(40, 1, 'REOAGK02IV', '2024-12-02 04:19:52', 'user', 'perezwesley17@gmail.com'),
+(41, 1, 'VUFYOK7C5W', '2024-12-02 04:24:26', 'user', 'perezwesley17@gmail.com'),
+(42, 2, 'TLOR0HPIVJ', '2024-12-02 04:25:25', 'admin', 'deves39407@confmin.com'),
+(43, 1, '36H5LD980Y', '2024-12-02 04:27:41', 'user', 'perezwesley17@gmail.com'),
+(44, 1, '58IPM7B23V', '2024-12-02 04:29:22', 'admin', 'wesleyjoshuaperez.iskolar@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -419,7 +424,8 @@ CREATE TABLE `user_feedback` (
 INSERT INTO `user_feedback` (`feedback_id`, `emoji`, `comment`, `feedback_date`) VALUES
 (1, '😃', '', '2024-12-01 05:57:19'),
 (2, '😃', '', '2024-12-01 06:57:35'),
-(3, '😃', '', '2024-12-01 07:25:22');
+(3, '😃', '', '2024-12-01 07:25:22'),
+(4, '😃', '', '2024-12-02 02:24:15');
 
 --
 -- Indexes for dumped tables
@@ -613,7 +619,7 @@ ALTER TABLE `registereduser_ebrg`
 -- AUTO_INCREMENT for table `resetpass_request`
 --
 ALTER TABLE `resetpass_request`
-  MODIFY `reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `reset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `residency_cert`
@@ -631,7 +637,7 @@ ALTER TABLE `soloparent_cert`
 -- AUTO_INCREMENT for table `user_feedback`
 --
 ALTER TABLE `user_feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
