@@ -175,6 +175,7 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
                         document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
@@ -183,8 +184,7 @@ function showCertificateDetails(type) {
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
-    
+    });      
     } else if (type === 'residency') {
         div1.innerHTML = `
             <form id="residencyForm" action="submit.php" method="POST" onsubmit="handleSubmit(event, 'residencyForm')" enctype="multipart/form-data">
@@ -219,14 +219,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'job_seeker') {
         div1.innerHTML = `
         <form id="jobseekForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'jobseekForm')" enctype="multipart/form-data">
@@ -259,14 +261,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'absence') {
         div1.innerHTML = `
         <form id="jobabsenceForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'jobabsenceForm')" enctype="multipart/form-data">
@@ -303,7 +307,7 @@ function showCertificateDetails(type) {
         document.querySelector('#clearBtn').addEventListener('click', () => {
             clearForm(['div1']); 
         });
-         // Use event delegation for radio button
+        // Use event delegation for radio button
     div1.addEventListener('change', (event) => {
         if (event.target.name === 'apply_myself' && event.target.value === "Apply for Myself" && event.target.checked) {
             fetch('applyformyself.php')
@@ -311,14 +315,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'solo_parent') {
         div1.innerHTML = `
         <form id="soloparentForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'soloparentForm')" enctype="multipart/form-data">
@@ -382,14 +388,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'brgy_clearance') {
         div1.innerHTML = `
         <form id="brgyclearanceForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'brgyclearanceForm')" enctype="multipart/form-data">
@@ -423,14 +431,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'fencing_clearance') {
         div1.innerHTML = `
         <form id="fencingclearanceForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'fencingclearanceForm')" enctype="multipart/form-data">
@@ -469,14 +479,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'bldg_clearance') {
         div1.innerHTML = `
         <form id="blgclearanceForm" action="submit2.php" method="POST" onsubmit="return handleSubmit(event, 'blgclearanceForm')" enctype="multipart/form-data">
@@ -510,14 +522,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'order_payment') {
         div1.innerHTML = `
         <form id="orderpaymentForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'orderpaymentForm')" enctype="multipart/form-data">
@@ -564,14 +578,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     } else if (type === 'electricity') {
         div1.innerHTML = `
         <form id="electricityForm" action="submit.php" method="POST" onsubmit="return handleSubmit(event, 'electricityForm')" enctype="multipart/form-data">
@@ -609,14 +625,16 @@ function showCertificateDetails(type) {
                 .then(data => {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
+                        document.querySelector('.middlename').value = data.middlename; // Set the middle name
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
-    });
+    }); 
     }
 }
 

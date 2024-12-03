@@ -25,7 +25,7 @@ body {
 
     .title {
         position: relative;
-        top: 15px;
+        top: 5px;
         max-width: 600px; /* Constrains the content within the div */
         display: flex;
         flex-direction: column;
@@ -41,14 +41,14 @@ body {
     }
     
     .container1 {
-        height: 600px;
+        height: 630px;
         width: 100%;
-        max-width: 480px;
+        max-width: 580px;
         background-color: #2F393B;
         border-radius: 10px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         padding: 10px;
-        margin-top: 15px; /* Adds space at the top of the container */
+        margin-top: 0px; /* Adds space at the top of the container */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -63,7 +63,7 @@ body {
         width: 100%; /* Ensures the row takes the full available width */
     }
     
-    .fistnamelb, .lastnamelb {
+    .fistnamelb, .lastnamelb, .middlenamelb {
         display: flex; /* Ensures items are placed in a row */
         justify-content: center; /* Centers the label text horizontally */
         align-items: center; /* Ensures the label text is vertically centered */
@@ -191,7 +191,7 @@ body {
         cursor: pointer;
         font-weight: bold;
         position: relative;
-        bottom: 18px;
+        bottom: 6px;
     } 
     .toggle-password {
         position: absolute;
@@ -246,7 +246,7 @@ body {
     .container1 {
         height: auto;
         min-height: 410px;
-        width: 320px;
+        width: 280px;
         background-color: #2F393B;
         border-radius: 15px;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
@@ -265,7 +265,7 @@ body {
         gap: 2px;
     }
     
-    .fistnamelb, .lastnamelb {
+    .fistnamelb, .lastnamelb, .middlenamelb {
         display: flex; /* Ensures items are placed in a row */
         justify-content: center; /* Centers the label text horizontally */
         align-items: center; /* Ensures the label text is vertically centered */

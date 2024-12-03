@@ -18,11 +18,13 @@
     <form method="post" action="">
         <div class="container1">
             <div class="one_row-con">
-                <h6 class="fistnamelb">First name</h6>
-                <h6 class="lastnamelb">Last name</h6>
+                <h6 class="fistnamelb">First Name</h6>
+                <h6 class="middlenamelb">Middle Name</h6>
+                <h6 class="lastnamelb">Last Name</h6>
             </div>
             <div class="one_row-con">
                 <input type="text" class="input_field1" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your first name" name="firstname" required>
+                <input type="text" class="input_field3" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your middle name" name="middlename" required>
                 <input type="text" class="input_field2" oninput="toUppercase(this)" onkeydown="preventNumbers(event)" placeholder="Enter your last name" name="lastname" required>
             </div>
             <h6 class="birthday">Birthday</h6>
