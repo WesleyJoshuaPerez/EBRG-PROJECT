@@ -722,7 +722,6 @@ function Clearupdates() {
     document.addEventListener("DOMContentLoaded", initializeUserProfile);
 
     </script>
-
 </body>
 
 </html>
