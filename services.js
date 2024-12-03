@@ -176,6 +176,7 @@ function showCertificateDetails(type) {
                     if (data.status === 'success') {
                         document.querySelector('.firstname').value = data.firstname;
                         document.querySelector('.lastname').value = data.lastname;
+                        document.querySelector('#age').value = data.age; // Set the calculated age
                     } else {
                         alert(data.message);
                     }
@@ -183,6 +184,7 @@ function showCertificateDetails(type) {
                 .catch(error => console.error('Error:', error));
         }
     });
+    
     } else if (type === 'residency') {
         div1.innerHTML = `
             <form id="residencyForm" action="submit.php" method="POST" onsubmit="handleSubmit(event, 'residencyForm')" enctype="multipart/form-data">

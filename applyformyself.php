@@ -8,8 +8,8 @@ session_start();
 // Check if username exists in the session
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    // Query the database for firstname and lastname
-    $query = "SELECT firstname, lastname FROM registereduser_ebrg WHERE username = ?";
+    // Query the database for firstname, lastname, and birthday
+    $query = "SELECT firstname, lastname, birthday FROM registereduser_ebrg WHERE username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -17,10 +17,18 @@ if (isset($_SESSION['username'])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+
+        // Calculate the user's age
+        $currentDate = new DateTime();
+        $birthday = new DateTime($row['birthday']);
+        $age = $currentDate->diff($birthday)->y;
+
+        // Return firstname, lastname, and age as JSON
         echo json_encode([
             'status' => 'success',
             'firstname' => $row['firstname'],
-            'lastname' => $row['lastname']
+            'lastname' => $row['lastname'],
+            'age' => $age
         ]);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'User not found']);
