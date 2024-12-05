@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2024 at 02:07 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 05, 2024 at 07:56 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,15 +41,18 @@ CREATE TABLE `daycare_shortlisting` (
   `guardian_id` varchar(50) NOT NULL,
   `guardian_contactnum` int(15) NOT NULL,
   `daycareshortlisting_id` int(11) NOT NULL,
-  `current_status` varchar(20) DEFAULT NULL
+  `username` varchar(100) NOT NULL,
+  `pickup_date` date DEFAULT NULL,
+  `remarks` varchar(50) NOT NULL,
+  `current_status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `daycare_shortlisting`
 --
 
-INSERT INTO `daycare_shortlisting` (`student_fname`, `student_mname`, `student_lname`, `student_healthrecord`, `student_birthcert`, `student_level`, `guardian_fname`, `guardian_mname`, `guardian_lname`, `guardian_age`, `guardian_id`, `guardian_contactnum`, `daycareshortlisting_id`, `current_status`) VALUES
-('kate', 'enriquez', 'rezada', 'msc.png', 'msc.png', 'Kinder II', 'hyndrix', 'enriquez', 'rezada', 100, 'msc.png', 92222222, 1, NULL);
+INSERT INTO `daycare_shortlisting` (`student_fname`, `student_mname`, `student_lname`, `student_healthrecord`, `student_birthcert`, `student_level`, `guardian_fname`, `guardian_mname`, `guardian_lname`, `guardian_age`, `guardian_id`, `guardian_contactnum`, `daycareshortlisting_id`, `username`, `pickup_date`, `remarks`, `current_status`) VALUES
+('PEREZ', 'WESLEY', 'JOSHUA, HERAMIS', 'ebrgy-entity diagram.jpg', 'ebrgy-entity diagram.jpg', 'Kinder II', 'PEREZ,', 'WILFREDO', 'JOSHUA, HERAMIS', 55, 'id example.jpg', 2147483647, 1, 'TROY123', '2024-12-05', '', 'accepted');
 
 --
 -- Indexes for dumped tables

@@ -493,23 +493,21 @@ function deleteRecord(id, type) {
     });
 }
 // Function to check if the notification textarea meets the length requirements
+// Function to check if the notification textarea meets the length requirements
 function Checknotiftextarea(id, type) {
     var notificationText = document.querySelector('textarea[name="notification"]').value.trim(); // Get the textarea value
     var pickupDate = document.querySelector('input[name="pickup_date"]').value; // Get the date input value
 
-    if (notificationText === "") {
-        swal('Error', 'Please fill out the notification before sending.', 'error'); // Show error if empty
-    } else if (notificationText.length < 10) {
-        swal('Error', 'Notification must be at least 10 characters long.', 'error'); // Show error if too short
-    } else if (notificationText.length > 50) {
-        swal('Error', 'Notification must be no longer than 50 characters.', 'error'); // Show error if too long
-    } else if (pickupDate === "" || pickupDate === null) {
+    if (pickupDate === "" || pickupDate === null) {
         swal('Error', 'Please select a pickup date.', 'error'); // Show error if date is empty or null
+    } else if (notificationText !== "" && (notificationText.length < 10 || notificationText.length > 50)) {
+        swal('Error', 'Notification must be between 10 and 50 characters long.', 'error'); // Show error for invalid notification length
     } else {
-        // Proceed to accept the certificate if notification and date are filled
+        // Proceed to accept the certificate
         acceptCert(id, type, pickupDate, notificationText); // Pass pickup_date and notification text
     }
 }
+
 
 // Function for accepting a service request
 function acceptCert(id, type, pickupDate, notificationText) {

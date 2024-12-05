@@ -12,7 +12,8 @@ $tables = [
     'fencingclearance_cert' => 'Fencing Clearance',
     'blgclearance_cert' => 'Building Clearance',
     'order_payment' => 'Order of Payment',
-    'electricity_clearance' => 'Electricity Installation Clearance'
+    'electricity_clearance' => 'Electricity Installation Clearance',
+    'daycare_shortlisting' => 'Daycare Shortlisting'
 ];
 
 foreach ($tables as $table => $serviceName) {
@@ -49,6 +50,9 @@ foreach ($tables as $table => $serviceName) {
         case 'electricity_clearance':
             $idColumn = 'electricityclearance_id';
             break;
+        case 'daycare_shortlisting':
+            $idColumn = 'daycareshortlisting_id';
+            break;
     }
 
     // Only select rows where current_status is is NULL 
@@ -56,7 +60,91 @@ foreach ($tables as $table => $serviceName) {
     $result = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="servicesdiv">';
+        
+
+      
+        switch ($table) {
+            case 'indigency_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
+                echo '<p class="age">Age: ' . $row['age'] . '</p>';
+                echo '<p class="type">Assistance Type: ' . $row['assistance_type'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+            case 'residency_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
+                echo '<p class="age">Years of Occupancy: ' . $row['yrs_occupancy'] . ' years</p>';
+                echo '<p class="type">Address: ' . $row['address'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+            case 'jobabsence_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
+                echo '<p class="age">Duration: ' . $row['duration'] . '</p>';
+                echo '<p class="type">Employer: ' . $row['employer'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+            case 'jobseek_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
+                echo '<p class="age">Employer: ' . $row['employer'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+            case 'soloparent_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
+                echo '<p class="age">Number of Children: ' . $row['num_children'] . '</p>';
+                echo '<p class="type">Monthly Income: ' . $row['monthly_income'] . '</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+            case 'brgyclearance_cert':
+            echo '<div class="servicesdiv">';
         echo '<div class="servetype">';
         echo '<h4>Types of Services:</h4>';
         echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
@@ -65,56 +153,90 @@ foreach ($tables as $table => $serviceName) {
         echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
         echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
         echo '</div>';
-
-        // Dynamic fields based on table
+              // Dynamic fields based on table
         echo '<div class="details">';
-        switch ($table) {
-            case 'indigency_cert':
-                echo '<p class="age">Age: ' . $row['age'] . '</p>';
-                echo '<p class="type">Assistance Type: ' . $row['assistance_type'] . '</p>';
-                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
-                break;
-            case 'residency_cert':
-                echo '<p class="age">Years of Occupancy: ' . $row['yrs_occupancy'] . ' years</p>';
-                echo '<p class="type">Address: ' . $row['address'] . '</p>';
-                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
-                break;
-            case 'jobabsence_cert':
-                echo '<p class="age">Duration: ' . $row['duration'] . '</p>';
-                echo '<p class="type">Employer: ' . $row['employer'] . '</p>';
-                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
-                break;
-            case 'jobseek_cert':
-                echo '<p class="age">Employer: ' . $row['employer'] . '</p>';
-                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
-                break;
-            case 'soloparent_cert':
-                echo '<p class="age">Number of Children: ' . $row['num_children'] . '</p>';
-                echo '<p class="type">Monthly Income: ' . $row['monthly_income'] . '</p>';
-                echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
-                break;
-            case 'brgyclearance_cert':
                 echo '<p class="age">Age: ' . $row['age'] . '</p>';
                 echo '<p class="type">Years of Occupancy: ' . $row['yrs_occupancy'] . '</p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
             case 'fencingclearance_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
                 echo '<p class="age"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 echo '<p class="type">Address: ' . $row['address'] . '</p>';
                 break;
             case 'blgclearance_cert':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
                 echo '<p class="idpicture"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
                 echo '<p class="type">Lot Measurement in sqm: ' . $row['measurement'] . '</p>';
                 break;
             case 'order_payment':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
                 echo '<p class="age">Business Name: ' . $row['business_name'] . '</p>';
                 echo '<p class="type">Business Address: ' . $row['business_address'] . '</p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
                 break;
             case 'electricity_clearance':
+            echo '<div class="servicesdiv">';
+            echo '<div class="servetype">';
+            echo '<h4>Types of Services:</h4>';
+            echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+            echo '<h4>Details:</h4>';
+            echo '<div class="details">';
+            echo '<p class="surname">Lastname: ' . $row['last_name'] . '</p>';
+            echo '<p class="firstname">Firstname: ' . $row['first_name'] . '</p>';
+            echo '</div>';
+              // Dynamic fields based on table
+        echo '<div class="details">';
                 echo '<p class="type"><a href="uploads/' . $row['lot_cert'] . '" target="_blank">Updated Lot Certification</a></p>';
                 echo '<p class="idpicture"><a href="uploads/' . $row['id_pic'] . '" target="_blank">View ID Picture</a></p>';
+                break;
+            case 'daycare_shortlisting':
+                echo '<div class="servicesdiv">';
+                echo '<div class="servetype">';
+                echo '<h4>Types of Services:</h4>';
+                echo '<div class="details"><p class="typeofservice">' . $serviceName . '</p></div>';
+              
+                echo '<h4>Details:</h4>';
+                echo '<div class="details">';
+                echo '<p class="surname">Student Name: ' . $row['student_fname'] . ' ' . ' ' . $row['student_lname'] . '</p>';
+                echo '<p class="firstname">Guardian Name: ' . $row['guardian_fname'] .  ' ' . $row['guardian_lname'] . '</p>';
+                echo '</div>';
+                     // Dynamic fields based on table
+        echo '<div class="details">';
+                echo '<p class="age"><a href="uploads/' . $row['student_healthrecord'] . '" target="_blank">Student Healthrecord</a></p>';
+                echo '<p class="type">Guardian Age: ' . $row['guardian_age'] .'</p>';
+                echo '<p class="idpicture"><a href="uploads/' . $row['guardian_id'] . '" target="_blank">Guardian ID</a></p>';
                 break;
         }
 

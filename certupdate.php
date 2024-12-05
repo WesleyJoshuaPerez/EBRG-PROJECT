@@ -21,7 +21,8 @@ function getCertUpdates($username) {
         'fencingclearance_cert' => 'Fencing Clearance',
         'blgclearance_cert' => 'Building Clearance',
         'order_payment' => 'Order of Payment',
-        'electricity_clearance' => 'Electricity Installation Clearance'
+        'electricity_clearance' => 'Electricity Installation Clearance',
+       'daycare_shortlisting' => 'Daycare Shortlisting'
     ];
 
     $updates = ''; // Variable to store all updates

@@ -55,6 +55,10 @@ if (isset($_POST['type']) && isset($_POST['id']) && isset($_POST['pickup_date'])
             $updateQuery = "UPDATE electricity_clearance SET current_status = 'accepted', pickup_date = ?, remarks = ? WHERE electricityclearance_id = ?";
             $idColumn = 'electricityclearance_id';
             break;
+            case 'daycare_shortlisting':
+            $updateQuery = "UPDATE daycare_shortlisting SET current_status = 'accepted', pickup_date = ?, remarks = ? WHERE daycareshortlisting_id = ?";
+            $idColumn = 'electricityclearance_id';
+            break;
         default:
             // If type is invalid
             echo json_encode(['success' => false, 'message' => 'Invalid certificate type.']);
