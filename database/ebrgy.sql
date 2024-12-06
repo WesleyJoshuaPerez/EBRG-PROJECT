@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2024 at 04:31 AM
+-- Generation Time: Dec 06, 2024 at 07:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -89,6 +89,13 @@ CREATE TABLE `brgyclearance_cert` (
   `remarks` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `brgyclearance_cert`
+--
+
+INSERT INTO `brgyclearance_cert` (`first_name`, `middle_name`, `last_name`, `age`, `id_pic`, `yrs_occupancy`, `apply_myself`, `brgyclearance_id`, `current_status`, `username`, `pickup_date`, `remarks`) VALUES
+('Wesley Joshua', 'H', 'Perez', 19, 'id example.jpg', 4, 'Apply for Myself', 1, NULL, 'Wesley', NULL, '');
+
 -- --------------------------------------------------------
 
 --
@@ -155,8 +162,16 @@ CREATE TABLE `daycare_shortlisting` (
   `daycareshortlisting_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `pickup_date` date DEFAULT NULL,
-  `remarks` varchar(50) NOT NULL
+  `remarks` varchar(50) NOT NULL,
+  `current_status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `daycare_shortlisting`
+--
+
+INSERT INTO `daycare_shortlisting` (`student_fname`, `student_mname`, `student_lname`, `student_healthrecord`, `student_birthcert`, `student_level`, `guardian_fname`, `guardian_mname`, `guardian_lname`, `guardian_age`, `guardian_id`, `guardian_contactnum`, `daycareshortlisting_id`, `username`, `pickup_date`, `remarks`, `current_status`) VALUES
+('PEREZ', 'WESLEY', 'JOSHUA, HERAMIS', 'ebrgy-entity diagram.jpg', 'ebrgy-entity diagram.jpg', 'Kinder II', 'PEREZ,', 'WILFREDO', 'JOSHUA, HERAMIS', 55, 'id example.jpg', 2147483647, 1, 'TROY123', '2024-12-05', '', 'accepted');
 
 -- --------------------------------------------------------
 
@@ -177,6 +192,13 @@ CREATE TABLE `electricity_clearance` (
   `pickup_date` date DEFAULT NULL,
   `remarks` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `electricity_clearance`
+--
+
+INSERT INTO `electricity_clearance` (`first_name`, `middle_name`, `last_name`, `id_pic`, `lot_cert`, `apply_myself`, `electricityclearance_id`, `current_status`, `username`, `pickup_date`, `remarks`) VALUES
+('WESLEY JOSHUA', 'HEREMIS', 'PEREZ', 'id example.jpg', 'OIP.jpg', '', 1, 'accepted', 'Wesley', '2024-12-06', 'Please bring the the requirements during pickup');
 
 -- --------------------------------------------------------
 
@@ -301,6 +323,7 @@ CREATE TABLE `order_payment` (
 CREATE TABLE `registereduser_ebrg` (
   `reguser_id` int(11) NOT NULL,
   `firstname` varchar(50) NOT NULL,
+  `middlename` varchar(50) DEFAULT NULL,
   `lastname` varchar(50) NOT NULL,
   `birthday` varchar(50) NOT NULL,
   `gender` varchar(50) NOT NULL,
@@ -315,11 +338,11 @@ CREATE TABLE `registereduser_ebrg` (
 -- Dumping data for table `registereduser_ebrg`
 --
 
-INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `updated_time`, `account_status`) VALUES
-(1, 'Troy Francis', 'Mendoza', '2004-09-09', 'male', 'TROY123', 'perezwesley17@gmail.com', 'Troy2004', '2024-12-02 11:28:15', 'Active'),
-(2, 'Sebastian Kean', 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, 'Active'),
-(3, 'Wesley Joshua', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'Perez17Wesley', '2024-12-02 11:19:16', 'Active'),
-(4, 'Angeline Kate', 'Rezada', '2003-11-20', 'female', '', '', '', NULL, 'Active');
+INSERT INTO `registereduser_ebrg` (`reguser_id`, `firstname`, `middlename`, `lastname`, `birthday`, `gender`, `username`, `email`, `password`, `updated_time`, `account_status`) VALUES
+(1, 'Troy Francis', 'Mendoza', 'Mendoza', '2004-09-09', 'male', 'TROY123', 'perezwesley17@gmail.com', 'Troy2004', '2024-12-02 11:28:15', 'Active'),
+(2, 'Sebastian Kean', NULL, 'Paclaon', '2003-09-09', 'male', '', '', '', NULL, 'Active'),
+(3, 'Wesley Joshua', 'Heramis', 'Perez', '2004-03-17', 'male', 'Wesley', 'wesleyjoshuaperez@gmail.com', 'Perez17Wesley', '2024-12-02 11:19:16', 'Active'),
+(4, 'Angeline Kate', NULL, 'Rezada', '2003-11-20', 'female', '', '', '', NULL, 'Active');
 
 -- --------------------------------------------------------
 
@@ -425,7 +448,11 @@ INSERT INTO `user_feedback` (`feedback_id`, `emoji`, `comment`, `feedback_date`)
 (1, '😃', '', '2024-12-01 05:57:19'),
 (2, '😃', '', '2024-12-01 06:57:35'),
 (3, '😃', '', '2024-12-01 07:25:22'),
-(4, '😃', '', '2024-12-02 02:24:15');
+(4, '😃', '', '2024-12-02 02:24:15'),
+(5, '😃', '', '2024-12-02 03:56:51'),
+(6, '😃', '', '2024-12-04 13:49:54'),
+(7, '😃', '', '2024-12-05 06:04:14'),
+(8, '😃', '', '2024-12-05 06:51:44');
 
 --
 -- Indexes for dumped tables
@@ -553,7 +580,7 @@ ALTER TABLE `blgclearance_cert`
 -- AUTO_INCREMENT for table `brgyclearance_cert`
 --
 ALTER TABLE `brgyclearance_cert`
-  MODIFY `brgyclearance_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `brgyclearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `brgy_announcement`
@@ -571,13 +598,13 @@ ALTER TABLE `brgy_event`
 -- AUTO_INCREMENT for table `daycare_shortlisting`
 --
 ALTER TABLE `daycare_shortlisting`
-  MODIFY `daycareshortlisting_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `daycareshortlisting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `electricity_clearance`
 --
 ALTER TABLE `electricity_clearance`
-  MODIFY `electricityclearance_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `electricityclearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `fencingclearance_cert`
@@ -637,7 +664,7 @@ ALTER TABLE `soloparent_cert`
 -- AUTO_INCREMENT for table `user_feedback`
 --
 ALTER TABLE `user_feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
